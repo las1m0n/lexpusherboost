@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect, JsonResponse
 
-# Create your views here.
+
+def base_view(request):
+    return render(request, 'lex_pusher/index.html', {})

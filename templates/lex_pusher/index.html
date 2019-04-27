@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="ru-RU" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <link rel="pingback" href="https://dotabooster.ru/xmlrpc.php">
+    <!--[if lt IE 9]>
+	<script src="https://dotabooster.ru/wp-content/themes/dotabooster/js/html5.js"></script>
+	<![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic" rel="stylesheet">
+    <script type="text/javascript"
+            src="https://gc.kis.v2.scr.kaspersky-labs.com/AF0FFD85-5426-8444-B107-DED373BB92C2/main.js"
+            charset="UTF-8"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <title>DotaBooster.Ru - Буст аккаунтов Dota 2</title>
+
+    <!-- This site is optimized with the Yoast SEO plugin v7.8 - https://yoast.com/wordpress/plugins/seo/ -->
+    <meta name="description"
+          content="Услуги DotaBooster: Буст аккаунтов Dota 2, прокачка MMR в Dota 2, продажа аккаунтов с высоким MMR в Dota 2"/>
+    <link rel="canonical" href="https://dotabooster.ru/"/>
+    <meta property="og:locale" content="ru_RU"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="DotaBooster.Ru - Буст аккаунтов Dota 2"/>
+    <meta property="og:description"
+          content="Услуги DotaBooster: Буст аккаунтов Dota 2, прокачка MMR в Dota 2, продажа аккаунтов с высоким MMR в Dota 2"/>
+    <meta property="og:url" content="https://dotabooster.ru/"/>
+    <meta property="og:site_name" content="DotaBooster.Ru"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:description"
+          content="Услуги DotaBooster: Буст аккаунтов Dota 2, прокачка MMR в Dota 2, продажа аккаунтов с высоким MMR в Dota 2"/>
+    <meta name="twitter:title" content="DotaBooster.Ru - Буст аккаунтов Dota 2"/>
+    <script type='application/ld+json'>{"@context":"https:\/\/schema.org","@type":"WebSite","@id":"#website","url":"https:\/\/dotabooster.ru\/","name":"DotaBooster.Ru","potentialAction":{"@type":"SearchAction","target":"https:\/\/dotabooster.ru\/?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
+    <meta name="yandex-verification" content="1dbf6f8ded4e9731"/>
+    <!-- / Yoast SEO plugin. -->
+
+    <link rel='dns-prefetch' href='//s.w.org'/>
+    <script type="text/javascript">
+        window._wpemojiSettings = {
+            "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/",
+            "ext": ".png",
+            "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/",
+            "svgExt": ".svg",
+            "source": {"concatemoji": "https:\/\/dotabooster.ru\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.0.4"}
+        };
+        !function (a, b, c) {
+            function d(a, b) {
+                var c = String.fromCharCode;
+                l.clearRect(0, 0, k.width, k.height), l.fillText(c.apply(this, a), 0, 0);
+                var d = k.toDataURL();
+                l.clearRect(0, 0, k.width, k.height), l.fillText(c.apply(this, b), 0, 0);
+                var e = k.toDataURL();
+                return d === e
+            }
+
+            function e(a) {
+                var b;
+                if (!l || !l.fillText) return !1;
+                switch (l.textBaseline = "top", l.font = "600 32px Arial", a) {
+                    case"flag":
+                        return !(b = d([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819])) && (b = d([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]), !b);
+                    case"emoji":
+                        return b = d([55358, 56760, 9792, 65039], [55358, 56760, 8203, 9792, 65039]), !b
+                }
+                return !1
+            }
+
+            function f(a) {
+                var c = b.createElement("script");
+                c.src = a, c.defer = c.type = "text/javascript", b.getElementsByTagName("head")[0].appendChild(c)
+            }
+
+            var g, h, i, j, k = b.createElement("canvas"), l = k.getContext && k.getContext("2d");
+            for (j = Array("flag", "emoji"), c.supports = {
+                everything: !0,
+                everythingExceptFlag: !0
+            }, i = 0; i < j.length; i++) c.supports[j[i]] = e(j[i]), c.supports.everything = c.supports.everything && c.supports[j[i]], "flag" !== j[i] && (c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && c.supports[j[i]]);
+            c.supports.everythingExceptFlag = c.supports.everythingExceptFlag && !c.supports.flag, c.DOMReady = !1, c.readyCallback = function () {
+                c.DOMReady = !0
+            }, c.supports.everything || (h = function () {
+                c.readyCallback()
+            }, b.addEventListener ? (b.addEventListener("DOMContentLoaded", h, !1), a.addEventListener("load", h, !1)) : (a.attachEvent("onload", h), b.attachEvent("onreadystatechange", function () {
+                "complete" === b.readyState && c.readyCallback()
+            })), g = c.source || {}, g.concatemoji ? f(g.concatemoji) : g.wpemoji && g.twemoji && (f(g.twemoji), f(g.wpemoji)))
+        }(window, document, window._wpemojiSettings);
+    </script>
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+    </style>
+    <link rel='stylesheet' id='wp-block-library-css'
+          href='https://dotabooster.ru/wp-includes/css/dist/block-library/style.min.css?ver=5.0.4' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='dotabooster-style-css'
+          href='https://dotabooster.ru/wp-content/themes/dotabooster/style.css?ver=1.0.3' type='text/css' media='all'/>
+    <link rel='stylesheet' id='dotabooster-style-icons-css'
+          href='https://dotabooster.ru/wp-content/themes/dotabooster/css/icons.css?ver=5.0.4' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='dotabooster-style-tabs-css'
+          href='https://dotabooster.ru/wp-content/themes/dotabooster/css/tabs.css?ver=5.0.4' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='dotabooster-style-calc-css'
+          href='https://dotabooster.ru/wp-content/themes/dotabooster/css/calc.css?ver=5.0.4' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='dotabooster-style-blog-css'
+          href='https://dotabooster.ru/wp-content/themes/dotabooster/css/blog.css?ver=5.0.4' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='dotabooster-style-home-css'
+          href='https://dotabooster.ru/wp-content/themes/dotabooster/css/home.css?ver=1.0.5' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='dotabooster-style-page-css'
+          href='https://dotabooster.ru/wp-content/themes/dotabooster/css/page.css?ver=5.0.4' type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='jquery-formstyler-css-css'
+          href='https://dotabooster.ru/wp-content/themes/dotabooster/js/formstyler/jquery.formstyler.css?ver=5.0.4'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='jquery-formstyler-template-css-css'
+          href='https://dotabooster.ru/wp-content/themes/dotabooster/js/formstyler/jquery.formstyler.theme.css?ver=5.0.4'
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='fancybox-css'
+          href='https://dotabooster.ru/wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox.css?ver=1.3.19'
+          type='text/css' media='screen'/>
+    <script type='text/javascript' src='https://dotabooster.ru/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+    <script type='text/javascript'
+            src='https://dotabooster.ru/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+    <link rel='https://api.w.org/' href='https://dotabooster.ru/wp-json/'/>
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://dotabooster.ru/xmlrpc.php?rsd"/>
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml"
+          href="https://dotabooster.ru/wp-includes/wlwmanifest.xml"/>
+    <meta name="generator" content="WordPress 5.0.4"/>
+    <link rel='shortlink' href='https://dotabooster.ru/'/>
+    <link rel="alternate" type="application/json+oembed"
+          href="https://dotabooster.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdotabooster.ru%2F"/>
+    <link rel="alternate" type="text/xml+oembed"
+          href="https://dotabooster.ru/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdotabooster.ru%2F&#038;format=xml"/>
+    <link rel="icon" href="https://dotabooster.ru/wp-content/uploads/2018/07/cropped-favicon-32x32.png" sizes="32x32"/>
+    <link rel="icon" href="https://dotabooster.ru/wp-content/uploads/2018/07/cropped-favicon-192x192.png"
+          sizes="192x192"/>
+    <link rel="apple-touch-icon-precomposed"
+          href="https://dotabooster.ru/wp-content/uploads/2018/07/cropped-favicon-180x180.png"/>
+    <meta name="msapplication-TileImage"
+          content="https://dotabooster.ru/wp-content/uploads/2018/07/cropped-favicon-270x270.png"/>
+</head>
+
+<body class="home page-template page-template-templates page-template-homepage page-template-templateshomepage-php page page-id-35">
+<div id='page'>
+    <header>
+        <div class='pre-header'>
+            <div class='container'>
+                <ul class='menu social-menu'>
+                    <li><a target='_blank' class='social-vk' href='https://vk.com/dotabooster'></a></li>
+                    <li><a target='_blank' class='social-instagram'
+                           href='https://www.instagram.com/Dotabooster.ru/'></a></li>
+                </ul>
+                <ul class='menu support-menu'>
+                    <li><span class='support-icon'></span><a href='/support/'>Поддержка</a></li>
+                    <li><span class='phone-icon'></span><a href='tel:+79060604488'>+7 906 060 44 88</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class='main-header'>
+            <div class='container'>
+                <div class='header-logo'><a rel='nofollow' href='/'><img
+                        src='https://dotabooster.ru/wp-content/themes/dotabooster/img/logo.png' alt='DotaBooster Logo'></a>
+                </div>
+                <div class='mobile-menu-stack'><span></span><span></span><span></span></div>
+                <ul id="menu-header-menu" class="menu header-menu">
+                    <li id="menu-item-167"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-167">
+                        <a href="https://dotabooster.ru/service/">Сервис</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-70"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-70"><a
+                                    href="https://dotabooster.ru/service/">О нас</a></li>
+                            <li id="menu-item-73"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-73"><a
+                                    href="https://dotabooster.ru/guarantee/">Гарантии</a></li>
+                            <li id="menu-item-147"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-147"><a
+                                    href="https://dotabooster.ru/inventory/">Сохранность инвентаря</a></li>
+                            <li id="menu-item-72"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-72"><a
+                                    href="https://dotabooster.ru/work/">Бустерам</a></li>
+                            <li id="menu-item-148"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-148"><a
+                                    href="https://dotabooster.ru/pravila-busta-dota-2/">Правила буста</a></li>
+                            <li id="menu-item-74"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74"><a
+                                    href="https://dotabooster.ru/support/">Поддержка</a></li>
+                            <li id="menu-item-181"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-181"><a
+                                    href="https://dotabooster.ru/contacts/">Контакты</a></li>
+                            <li id="menu-item-197"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a
+                                    href="https://dotabooster.ru/regulations/">Пользовательское соглашение</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-168"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-168">
+                        <a href="https://dotabooster.ru/task/boost/">Услуги</a>
+                        <ul class="sub-menu">
+                            <li id="menu-item-81"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-81"><a
+                                    href="https://dotabooster.ru/task/boost/">Буст MMR</a></li>
+                            <li id="menu-item-87"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-87"><a
+                                    href="https://dotabooster.ru/task/calibration/">Калибровка</a></li>
+                            <li id="menu-item-86"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-86"><a
+                                    href="https://dotabooster.ru/task/lp/">Отыгровка Low Priority</a></li>
+                            <li id="menu-item-141"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-141"><a
+                                    href="https://dotabooster.ru/task/teach/">Обучение</a></li>
+                        </ul>
+                    </li>
+                    <li id="menu-item-231"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a
+                            href="https://dotabooster.ru/shop/">Магазин</a></li>
+                    <li id="menu-item-203"
+                        class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-203"><a
+                            href="https://dotabooster.ru/blog/">Блог</a></li>
+                    <li id="menu-item-253"
+                        class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-253"><a
+                            href="https://dotabooster.ru/faq/">FAQ</a></li>
+                    <li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41">
+                        <a href="#client-log">Лог клиента</a></li>
+                </ul>
+                <div class='client-log-popup' id='client-log' style='display: none;'>
+                    <h6>Укажите пин-код Вашего заказа</h6>
+                    <p>для просмотра состояния<br>и хода выполнения заказа</p>
+                    <form action='/log/' method='POST'>
+                        <input autocomplete='off' type='text' name='pin' id='pin-value' placeholder='PIN-CODE'/>
+                        <div class='client-log-error'></div>
+                        <input type="hidden" id="pin_log" name="pin_log" value="b5a6a87055"/><input type="hidden"
+                                                                                                    name="_wp_http_referer"
+                                                                                                    value="/"/></form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class='content'>
+        <section class='main'>
+            <h1>Пора на новые уровни. Там лучше и интересней!</h1>
+            <h3>Поднимем ваш MMR рейтинг до небывалых высот за оптимально короткий срок!</h3>
+            <div class='advantage'>
+                <div class='item'>
+                    <h4><span class='rocket-icon'></span>8853<span> MMR</span></h4>
+                    <p>Столько рейтинга мы <b>заработали</b> за последние 30 дней</p>
+                </div>
+                <div class='item'>
+                    <h4><span class='smiles-icon'></span>75<span>%</span></h4>
+                    <p>Средний <b>Winrate</b> бустеров на клиентских аккаунтах за последние 30 дней</p>
+                </div>
+                <div class='item'>
+                    <h4><span class='pirate-icon'></span>26</h4>
+                    <p>Столько <b>проверенных</b> и опытных бустеров в нашей команде</p>
+                </div>
+            </div>
+            <div class='calculator'>
+                <form id='calculator-form' action='/cart/' method='POST'>
+                    <div class='calc-controls'>
+                        <div class='calc-inputs'>
+                            <input type='text' id='input-mmr-from' name='mmr_from' placeholder='Текущий MMR'/>
+                            <div class='calc-slider'>
+                                <div class='calc-progress'></div>
+                                <div class='calc-slider-btn'><span>+0</span></div>
+                            </div>
+                            <input type='text' id='input-mmr-to' name='mmr_to' placeholder='Желаемый MMR'/>
+                            <div class='calc-options'>
+                                <input type='checkbox' name='play_time' id='input-play-time'/><label
+                                    for='input-play-time'>Играть в <u id='calc-select-time'>указанное время
+                                <span>с <input type='number' name='hour1' placeholder='0'/><input type='number'
+                                                                                                  name='hour2'
+                                                                                                  placeholder='0'/> по <input
+                                        type='number' name='hour3' placeholder='2'/><input type='number' name='hour4'
+                                                                                           placeholder='3'/>
+						</span>
+                            </u> (+20%)</label>
+                                <input type='checkbox' name='play_hero' id='input-play-hero'/><label
+                                    for='input-play-hero'>Не менее 50% игр <u id='calc-select-hero'>на герое
+                                <span>
+								<i class='icon-hero-ember'></i>
+								<i class='icon-hero-invok'></i>
+								<i class='icon-hero-jugg'></i>
+								<i class='icon-hero-lone'></i>
+								<i class='icon-hero-od'></i>
+								<i class='icon-hero-slark'></i>
+								<i class='icon-hero-spectre'></i>
+								<i class='icon-hero-sven'></i>
+								<i class='icon-hero-wind'></i>
+								<i class='icon-hero-wraith'></i>
+							</span>
+                            </u> (+20%)</label>
+                                <input type='hidden' name='play_hero_val' id='play-hero-val'/>
+                                <input type='checkbox' name='party_mmr' id='input-party-mmr'/><label
+                                    for='input-party-mmr'>Пати MMR (+10%)</label>
+                            </div>
+                        </div>
+                        <div class='calc-price'>
+                            <div class='calc-price-days'>Цена: <span>на 1 день</span></div>
+                            <div class='calc-price-value'><span>47</span> <u>c</u></div>
+                            <div class='calc-buy'>
+                                <button class='btn shadow' type='submit'>Заказать Буст</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class='calc-footer'>
+                        <ul class='menu help-menu'>
+                            <li><a href='/privacy-policy/'>Пользовательское соглашение</a></li>
+                            <li><a href='/support/'>Помощь</a></li>
+                        </ul>
+                    </div>
+                    <input type='hidden' name='action' value='calculate'>
+                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="cadf39b1c7"/><input type="hidden"
+                                                                                                  name="_wp_http_referer"
+                                                                                                  value="/"/></form>
+            </div>
+            <div class='add-info'>
+                <h2><span>Еще безопасней</span><span>Еще быстрее</span><span>Еще выгодней</span></h2>
+                <p>Наша команда специализируется только на профессиональном Boost Dota 2. Это значит, что мы не
+                    разрываемся между играми и берем качеством. Каждое обновление, буквально каждый вздох разработчиков
+                    учитывается при поднятии рейтинга персонажа.<br>Мы всегда в курсе событий: у нас собственные
+                    программы, особые уровни защиты и крутые бустеры. Мы умеем оставаться незаметными для разработчиков
+                    и незаменимыми для игроков</p><br><br>
+                <p style='text-align: center;'>Цена за буст MMR Dota 2 – меньше. Гарантий – больше.</p></div>
+        </section>
+        <section class='why-us'>
+            <h2>Почему мы?</h2>
+            <h3><b>1500+</b> клиентов не могут ошибаться</h3>
+            <div class='advantage'>
+                <div class='advantage-row'>
+                    <div class='advantage-item-text'>
+                        <h5>Выгодный Boost<br/>MMR Dota 2</h5>
+                        <div class='advantage-ul'>
+                            <div class='advantage-li icon-star'>Делаешь у нас заказ во второй раз?<br/>Тебе скидка 10%
+                            </div>
+                        </div>
+                    </div>
+                    <div class='advantage-item-img'><img
+                            src='https://dotabooster.ru/wp-content/themes/dotabooster/img/item-av-1.png'/></div>
+                </div>
+                <div class='advantage-row'>
+                    <div class='advantage-item-img'><img
+                            src='https://dotabooster.ru/wp-content/themes/dotabooster/img/item-av-2.png'/></div>
+                    <div class='advantage-item-text'>
+                        <h5>Наблюдение<br/>за процессом</h5>
+                    </div>
+                </div>
+                <div class='advantage-row'>
+                    <div class='advantage-item-text'>
+                        <h5>Быстрая прокачка</h5>
+                        <div class='advantage-ul'>
+                            <div class='advantage-li icon-star'>Мы опоздали со сдачей заказа хоть на минуту? Тебе 100
+                                MMR бесплатно
+                            </div>
+                        </div>
+                    </div>
+                    <div class='advantage-item-img'><img
+                            src='https://dotabooster.ru/wp-content/themes/dotabooster/img/item-av-3.png'/></div>
+                </div>
+                <div class='advantage-row'>
+                    <div class='advantage-item-img'><img
+                            src='https://dotabooster.ru/wp-content/themes/dotabooster/img/item-av-4.png'/></div>
+                    <div class='advantage-item-text'>
+                        <h5>Безопасно</h5>
+                        <div class='advantage-ul'>
+                            <div class='advantage-li icon-block'>Данные аккаунтов зашифрованы;</div>
+                            <div class='advantage-li icon-vpn'>Собственные VPN;</div>
+                            <div class='advantage-li icon-ip'>Изменение IP и MAC-адресов</div>
+                        </div>
+                    </div>
+                </div>
+                <div class='advantage-row'>
+                    <div class='advantage-item-text'>
+                        <h5>Надёжно</h5>
+                        <div class='advantage-ul'>
+                            <div class='advantage-li icon-clicker'>Жесткий отбор бустеров</div>
+                            <div class='advantage-li icon-silent'>Бустеры молчат. Всегда</div>
+                            <div class='advantage-li icon-writing'>Страхование стим-аккаунта</div>
+                            <div class='advantage-li icon-security'>Финансовая защита клиента</div>
+                        </div>
+                    </div>
+                    <div class='advantage-item-img'><img
+                            src='https://dotabooster.ru/wp-content/themes/dotabooster/img/item-av-5.png'/></div>
+                </div>
+            </div>
+        </section>
+        <section class='guarantees'>
+            <h2>Какие гарантии?</h2>
+            <h3><b>Отзывы клиентов &ndash; лучшее подтверждение</b> нашей работы.<br>Но если тебе этого мало, можешь
+                почитать еще и <strong><a href='/guarantee/' title='Гарантии'>вот это</a></strong> :)</h3>
+            <div class='reviews'>
+                <div class='item'>
+                    <div class='info'>
+                        <img src='https://pp.userapi.com/c307708/u54843931/e_56912641.jpg?ava=1'>
+                        <div class='date'>06 03 2019</div>
+                    </div>
+                    <div class='text'>
+                        <h6>Sashka Kuznetsov</h6>
+                        <p>Быстро все сделали, 5 каток подряд на 4500+ рейтинге
+                            рекомендую</p>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='info'>
+                        <img src='https://sun1.dataix-by-minsk.userapi.com/c851228/v851228794/e7201/NGP04MGX9eE.jpg?ava=1'>
+                        <div class='date'>25 03 2019</div>
+                    </div>
+                    <div class='text'>
+                        <h6>Полина Ревтова</h6>
+                        <p>заказала буст для пробы с 2620 до 2870, быстро и качественно, да и выполнили раньше срока,
+                            советую)</p>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='info'>
+                        <img src='https://sun1-16.userapi.com/c845219/v845219089/1e098d/j1tiMBV-6O0.jpg?ava=1'>
+                        <div class='date'>10 04 2019</div>
+                    </div>
+                    <div class='text'>
+                        <h6>Роман Логунов</h6>
+                        <p>Продал аккаунт,деньги пришли сразу все чётко</p>
+                    </div>
+                </div>
+            </div>
+            <div class='text-center'><a href='https://vk.com/topic-111967943_33651174' target='_blank'
+                                        class='btn shadow'>Посмотреть все отзывы</a></div>
+        </section>
+        <section class='we-work'>
+            <h2>Как мы работаем?</h2>
+            <h3>Всего <b>шесть простых шагов</b> отделяет Вас от новых эмоций в любимой игре.</h3>
+            <ul class='steps'>
+                <li><span class='lightning-icon'></span>
+                    <div class='text'>Выбираете количество MMR<br>в нашем калькуляторе</div>
+                </li>
+                <li><span class='man-icon'></span>
+                    <div class='text'>Оформляете заказ, указываете<br>логин и пароль от аккаунта</div>
+                </li>
+                <li><span class='pay-icon'></span>
+                    <div class='text'>Выбираете способ оплаты<br>и оплачиваете</div>
+                </li>
+                <li><span class='pin-icon'></span>
+                    <div class='text'>Получаете PIN для<br>отслеживания заказа</div>
+                </li>
+                <li><span class='warning-icon'></span>
+                    <div class='text'>Получаете оповешение<br>об окончании буста</div>
+                </li>
+                <li><span class='champion-icon'></span>
+                    <div class='text'>Наслаждаетесь игрой<br>на новом уровне</div>
+                </li>
+            </ul>
+        </section>
+        <section class='packs'>
+            <h2>Наши услуги</h2>
+            <h3>Хочешь откалибровать аккаунт, отмыть ЛП или научиться побеждать?<br>Наш сервис поможет тебе в этом! <b>Низкие</b>
+                цены и <b>качественная</b> работа!</h3>
+            <div class='list'>
+                <div class='item'>
+                    <span class='newbie-icon'></span>
+                    <div class='title'>ОБУЧЕНИЕ</div>
+                    <hr>
+                    <div class='desc'>1 час обучения с<br><b>профессиональным игроком</b></div>
+                    <hr>
+                    <div class='price'>400</div>
+                    <a href='/task/teach/' class='btn-inv'>Заказать</a>
+                </div>
+                <div class='item popular'>
+                    <div class='preheader'>популярная услуга</div>
+                    <span class='professional-icon'></span>
+                    <div class='title'>КАЛИБРОВКА</div>
+                    <hr>
+                    <div class='desc'>Всего за 1 день мы<br>откалибруем вам<br><b>Solo</b> или <b>Party MMR</b> с
+                        максимальным результатом
+                    </div>
+                    <hr>
+                    <div class='price'>1200</div>
+                    <a href='/task/calibration/' class='btn-inv shadow'>Заказать</a>
+                </div>
+                <div class='item'>
+                    <span class='confident-icon'></span>
+                    <div class='title'>ОТМЫТЬ ЛП</div>
+                    <hr>
+                    <div class='desc'>Получил ЛП? Не беда<br>Наши бустеры быстро его <b>отмоют</b></div>
+                    <hr>
+                    <div class='price'>90</div>
+                    <a href='/task/lp/' class='btn-inv'>Заказать</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <ul id="menu-footer-menu" class="menu footer-menu">
+            <li id="menu-item-124" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-124"><a
+                    href="https://dotabooster.ru/service/">О нас</a></li>
+            <li id="menu-item-201" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-201"><a
+                    href="https://dotabooster.ru/privacy-policy/">Cookies</a></li>
+        </ul>
+        <div class='copyright'>DotaBooster &copy; 2015-2018</div>
+        <ul class='menu social-menu'>
+            <li><a target='_blank' class='social-vk' href='https://vk.com/dotabooster'></a></li>
+            <li><a target='_blank' class='social-instagram' href='https://www.instagram.com/Dotabooster.ru/'></a></li>
+        </ul>
+        <div class="wm-logos">
+            <a rel="nofollow" href="http://www.megastock.ru/" target="_blank"><img
+                    src="https://dotabooster.ru/wp-content/themes/dotabooster/img/acc_white_on_transp_ru.png"
+                    alt="www.megastock.ru" border="0"></a>
+            <a rel="nofollow" href="https://passport.webmoney.ru/asp/certview.asp?wmid=137881575363"
+               target="_blank"><img
+                    src="https://dotabooster.ru/wp-content/themes/dotabooster/img/v_white_on_transp_ru.png"
+                    alt="����� ��������� �������� ������ WM �������������� 324890845718" border="0"></a>
+        </div>
+    </footer>
+
+</div>
+
+<script>var wp_ajax_url = 'https://dotabooster.ru/wp-admin/admin-ajax.php';</script>
+<script type='text/javascript'>
+    (function () {
+        var widget_id = 'tK8Wo9OONy';
+        var d = document;
+        var w = window;
+
+        function l() {
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = '//code.jivosite.com/script/widget/' + widget_id;
+            var ss = document.getElementsByTagName('script')[0];
+            ss.parentNode.insertBefore(s, ss);
+        }
+
+        if (d.readyState == 'complete') {
+            l();
+        } else {
+            if (w.attachEvent) {
+                w.attachEvent('onload', l);
+            } else {
+                w.addEventListener('load', l, false);
+            }
+        }
+    })();
+</script>
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function () {
+            try {
+                w.yaCounter49539616 = new Ya.Metrika2({
+                    id: 49539616,
+                    clickmap: true,
+                    trackLinks: true,
+                    accurateTrackBounce: true,
+                    webvisor: true
+                });
+            } catch (e) {
+            }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () {
+                n.parentNode.insertBefore(s, n);
+            };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else {
+            f();
+        }
+    })(document, window, "yandex_metrika_callbacks2");
+</script>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/49539616" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
+<script type='text/javascript'
+        src='https://dotabooster.ru/wp-content/themes/dotabooster/js/forms.js?ver=1.0.0'></script>
+<script type='text/javascript'
+        src='https://dotabooster.ru/wp-content/themes/dotabooster/js/calc.min.js?ver=5.0.4'></script>
+<script type='text/javascript'
+        src='https://dotabooster.ru/wp-content/themes/dotabooster/js/tabs.min.js?ver=5.0.4'></script>
+<script type='text/javascript'
+        src='https://dotabooster.ru/wp-content/themes/dotabooster/js/formstyler/jquery.formstyler.min.js?ver=5.0.4'></script>
+<script type='text/javascript' src='https://dotabooster.ru/wp-content/themes/dotabooster/js/main.js?ver=5.0.4'></script>
+<script type='text/javascript'
+        src='https://dotabooster.ru/wp-content/themes/dotabooster/js/shop-filter.js?ver=5.0.4'></script>
+<script type='text/javascript'
+        src='https://dotabooster.ru/wp-content/plugins/easy-fancybox/fancybox/jquery.fancybox.js?ver=1.3.19'></script>
+<script type='text/javascript'>
+    var fb_timeout, fb_opts = {
+        'overlayShow': true,
+        'hideOnOverlayClick': true,
+        'showCloseButton': true,
+        'margin': 20,
+        'centerOnScroll': false,
+        'enableEscapeButton': true,
+        'autoScale': true,
+        'scriptPriority': 10
+    };
+    if (typeof easy_fancybox_handler === 'undefined') {
+        var easy_fancybox_handler = function () {
+            jQuery('.nofancybox,a.pin-it-button,a[href*="pinterest.com/pin/create"]').addClass('nolightbox');
+            /* IMG */
+            jQuery('a.fancybox,area.fancybox,li.fancybox a').each(function () {
+                jQuery(this).fancybox(jQuery.extend({}, fb_opts, {
+                    'transitionIn': 'elastic',
+                    'easingIn': 'easeOutBack',
+                    'transitionOut': 'elastic',
+                    'easingOut': 'easeInBack',
+                    'opacity': false,
+                    'hideOnContentClick': false,
+                    'titleShow': true,
+                    'titlePosition': 'over',
+                    'titleFromAlt': true,
+                    'showNavArrows': true,
+                    'enableKeyboardNav': true,
+                    'cyclic': true
+                }))
+            });
+        };
+        jQuery('a.fancybox-close').on('click', function (e) {
+            e.preventDefault();
+            jQuery.fancybox.close()
+        });
+    }
+    ;
+    jQuery(easy_fancybox_handler);
+    jQuery(document).on('post-load', easy_fancybox_handler);
+</script>
+<script type='text/javascript'
+        src='https://dotabooster.ru/wp-content/plugins/easy-fancybox/js/jquery.easing.js?ver=1.4.1'></script>
+<script type='text/javascript'
+        src='https://dotabooster.ru/wp-content/plugins/easy-fancybox/js/jquery.mousewheel.js?ver=3.1.13'></script>
+<script type='text/javascript' src='https://dotabooster.ru/wp-includes/js/wp-embed.min.js?ver=5.0.4'></script>
+<script>if (jQuery('#calculator-form').length > 0) {
+    jQuery('#calculator-form').calc(1, 6500, 25, 25, jQuery('#input-mmr-from'), jQuery('#input-mmr-to'));
+}</script>
+<script>if (jQuery('#calculator-form-lp').length > 0) {
+    jQuery('#calculator-form-lp').calc(3, 5, 1, 0, jQuery('#input-mmr-from'), jQuery('#input-mmr-to'));
+}</script>
+<script>if (jQuery('#calculator-form-teach').length > 0) {
+    jQuery('#calculator-form-teach').calc(1, 12, 1, 0, jQuery('#input-mmr-from'), jQuery('#input-mmr-to'));
+}</script>
+</body>
+</html>
