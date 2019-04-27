@@ -64,24 +64,119 @@
 </head>
 <body>
 
-
+<input type="number" id="input-mmr-from" name="mmr_from" placeholder="Текущий MMR" value="1">
 <div class="slidecontainer">
     <span id="slider-label" class="slider-label">0</span>
-    <input type="range" min="25" max="7000" value="0" step="25" class="slider" id="slider">
+    <input type="range" min="25" max="6499" value="25" step="1" class="slider" id="slider">
 </div>
+<input type="number" id="input-mmr-to" name="mmr_to" placeholder="Желаемый MMR" value="26">
+
+<div id="price"></div>
 
 <script>
+var fromMMR = document.getElementById("input-mmr-from");
+var toMMR = document.getElementById("input-mmr-to");
 var rangeSlider = document.getElementById("slider");
 var rangeBullet = document.getElementById("slider-label");
+var priceDiv = document.getElementById("price");
 
-rangeSlider.addEventListener("input", showSliderValue, false);
-showSliderValue()
 
-function showSliderValue() {
-  rangeBullet.innerHTML = "+" + rangeSlider.value;
-  var bulletPosition = (rangeSlider.value /rangeSlider.max);
-  rangeBullet.style.left = (bulletPosition * rangeSlider.clientWidth) + "px";
+fromMMR.oninput= changeFromMMR;
+toMMR.oninput = changeToMMR;
+rangeSlider.oninput = changeSlider;
+changeSlider()
+
+
+function changeFromMMR(e) {
+    console.log(fromMMR.value);
+  var v = +fromMMR.value;
+
+  if (v < 1)
+    fromMMR.value = 1;
+  if (v > 6475)
+    fromMMR.value = 6475;
+
+  rangeSlider.max = 6500 - v;
+  toMMR.value = +rangeSlider.value + v;
+  changeLabel();
+  changePrice();
+
+  if (v < 1 || v > 6475)
+    return false;
 }
+
+function changeToMMR(e) {
+  var v = +toMMR.value;
+
+  if (v < 1)
+    toMMR.value = 1;
+  if (v > 6500)
+    toMMR.value = 6500;
+
+  rangeSlider.value= v - fromMMR.value;
+  console.log(rangeSlider.value);
+  changeLabel();
+  changePrice();
+
+  if (v < 1 || v > 6500)
+    return false;
+
+}
+
+
+function changeLabel() {
+  var v = +rangeSlider.value;
+  rangeBullet.innerHTML = "+" + v;
+  rangeBullet.style.left = (v / (rangeSlider.max - rangeSlider.min) * rangeSlider.clientWidth) + "px";
+}
+
+function changeSlider() {
+  var v = +rangeSlider.value;
+  toMMR.value = +fromMMR.value + v;
+  changeLabel();
+  changePrice();
+}
+
+
+PRICELIST = [
+    [1,     500,    150],
+    [501,   1000,   154],
+    [1001,  1500,   154],
+    [1501,  2500,   170],
+    [2501,  3500,   220],
+    [3501,  4000,   304],
+    [4001,  4500,   374],
+    [4501,  4900,   525],
+    [4901,  5000,   600],
+    [5001,  5100,   750],
+    [5101,  5200,   810],
+    [5201,  5300,   890],
+    [5301,  5400,   950],
+    [5401,  5500,   1080],
+    [5501,  5600,   1450],
+    [5601,  5700,   1590],
+    [5701,  5800,   1795],
+    [5801,  5900,   1975],
+    [5901,  6000,   2250],
+]
+
+
+
+function changePrice() {
+    var from = +fromMMR.value;
+    var to = +toMMR.value;
+
+    var price = 0;
+
+    // todo calc price
+    // todo calc days
+
+    priceDiv.value = price;
+}
+
+
+
+
 
 </script>
 
