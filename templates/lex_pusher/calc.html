@@ -1,0 +1,39 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static "calc/calc.css" %}">
+<script src={% static "calc/calc.js" %}></script>
+
+<div class="jumbotron mt-3">
+    <form>
+        <div class="container">
+
+          <div class="row">
+            <div class="col">
+                <label for="input-mmr-from" class="mb-0">Текущий ММР</label>
+              <input type="number" class="form-control" id="input-mmr-from" name="mmr_from" placeholder="Текущий MMR" value="1">
+            </div>
+            <div class="col">
+              <div class="slidecontainer mt-4">
+                <span id="slider-label" class="slider-label mb-0">0</span>
+                <input type="range" min="25" max="6499" value="25" step="1" class="slider" id="slider">
+              </div>
+            </div>
+            <div class="col">
+                <label for="input-mmr-to" class="mb-0">Желаемый ММР</label>
+              <input type="number" class="form-control" id="input-mmr-to" name="mmr_to" placeholder="Желаемый MMR" value="26">
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col">
+                <label for="price" class="mb-0">Цена:</label>
+                <strong><div id="price"></div></strong>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary float-right">Заказать буст</button>
+            </div>
+          </div>
+
+        </div>
+    </form>
+</div>

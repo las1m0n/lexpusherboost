@@ -36,7 +36,7 @@ function changeFromMMR(e) {
     console.log(fromMMR.value);
   var v = +fromMMR.value;
 
-  if (v < 1)
+  if (v < 0)
     fromMMR.value = 1;
   if (v > 6475)
     fromMMR.value = 6475;
@@ -46,7 +46,7 @@ function changeFromMMR(e) {
   changeLabel();
   changePrice();
 
-  if (v < 1 || v > 6475)
+  if (v < 0 || v > 6475)
     return false;
 }
 
