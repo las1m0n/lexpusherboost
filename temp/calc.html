@@ -1,193 +1,223 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.slidecontainer {
-  width: 100%;
-}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-.slider {
-  -webkit-appearance: none;
-  height: 10px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border: 0;
-  background: url('icon-dota.png');
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
-  border: 0;
-  background: url('icon-dota.png');
-  cursor: pointer;
-}
-
-.slider-label {
-    position: relative;
-    transform-origin: center center;
-    display: block;
-    width: 70px;
-    background: transparent;
-    line-height: 30px;
-    text-align: center;
-    font-weight: bold;
-    box-sizing: border-box;
-    margin-left: -35px;
-    color: #000;
-    font-style: normal;
-    font-weight: normal;
-    line-height: normal;
-    font-size: 18px;
-
-}
-
-
-</style>
-</head>
-<body>
-
-<input type="number" id="input-mmr-from" name="mmr_from" placeholder="Текущий MMR" value="1">
-<div class="slidecontainer">
-    <span id="slider-label" class="slider-label">0</span>
-    <input type="range" min="25" max="6499" value="25" step="1" class="slider" id="slider">
-</div>
-<input type="number" id="input-mmr-to" name="mmr_to" placeholder="Желаемый MMR" value="26">
-
-<div id="price"></div>
-
-<script>
-var fromMMR = document.getElementById("input-mmr-from");
-var toMMR = document.getElementById("input-mmr-to");
-var rangeSlider = document.getElementById("slider");
-var rangeBullet = document.getElementById("slider-label");
-var priceDiv = document.getElementById("price");
-
-var PRICELIST = [
-    [1,     500,    1.50],
-    [501,   1000,   1.54],
-    [1001,  1500,   1.54],
-    [1501,  2500,   1.70],
-    [2501,  3500,   2.20],
-    [3501,  4000,   3.04],
-    [4001,  4500,   3.74],
-    [4501,  4900,   5.25],
-    [4901,  5000,   6.00],
-    [5001,  5100,   7.50],
-    [5101,  5200,   8.10],
-    [5201,  5300,   8.90],
-    [5301,  5400,   9.50],
-    [5401,  5500,   1.080],
-    [5501,  5600,   1.450],
-    [5601,  5700,   1.590],
-    [5701,  5800,   1.795],
-    [5801,  5900,   1.975],
-    [5901,  6000,   2.250],
-]
-
-fromMMR.oninput= changeFromMMR;
-toMMR.oninput = changeToMMR;
-rangeSlider.oninput = changeSlider;
-changeSlider()
-
-
-function changeFromMMR(e) {
-    console.log(fromMMR.value);
-  var v = +fromMMR.value;
-
-  if (v < 1)
-    fromMMR.value = 1;
-  if (v > 6475)
-    fromMMR.value = 6475;
-
-  rangeSlider.max = 6500 - v;
-  toMMR.value = +rangeSlider.value + v;
-  changeLabel();
-  changePrice();
-
-  if (v < 1 || v > 6475)
-    return false;
-}
-
-function changeToMMR(e) {
-  var v = +toMMR.value;
-
-  if (v < 1)
-    toMMR.value = 1;
-  if (v > 6500)
-    toMMR.value = 6500;
-
-  rangeSlider.value= v - fromMMR.value;
-  console.log(rangeSlider.value);
-  changeLabel();
-  changePrice();
-
-  if (v < 1 || v > 6500)
-    return false;
-
-}
-
-
-function changeLabel() {
-  var v = +rangeSlider.value;
-  rangeBullet.innerHTML = "+" + v;
-  rangeBullet.style.left = (v / (rangeSlider.max - rangeSlider.min) * rangeSlider.clientWidth) + "px";
-}
-
-function changeSlider() {
-  var v = +rangeSlider.value;
-  toMMR.value = +fromMMR.value + v;
-  changeLabel();
-  changePrice();
-}
-
-
-
-
-
-
-function changePrice() {
-    var from = +fromMMR.value;
-    var to = +toMMR.value;
-
-    var price = 0;
-    for (var i=from; i<=to; i++) {
-        for (var j of PRICELIST) {
-            if (i > j[0]) {
-                price += j[2]
-                break;
-            }
-        }
+      <style>
+    .slidecontainer {
+      width: 100%;
     }
 
-    // todo calc price
-    // todo calc days
+    .slider {
+      -webkit-appearance: none;
+      height: 10px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
 
-    priceDiv.innerHTML = price;
-}
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 0;
+      background: url('icon-dota.png');
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border: 0;
+      background: url('icon-dota.png');
+      cursor: pointer;
+    }
+
+    .slider-label {
+        position: relative;
+        transform-origin: center center;
+        display: block;
+        width: 70px;
+        background: transparent;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+        box-sizing: border-box;
+        margin-left: -35px;
+        color: #000;
+        font-style: normal;
+        font-weight: normal;
+        line-height: normal;
+        font-size: 18px;
+
+    }
+
+
+    </style>
+
+
+
+  </head>
+  <body>
+
+    <form>
+      <div class="row">
+        <div class="col">
+          <input type="number" class="form-control" id="input-mmr-from" name="mmr_from" placeholder="Текущий MMR" value="1">
+        </div>
+        <div class="col">
+          <div class="slidecontainer">
+            <span id="slider-label" class="slider-label">0</span>
+            <input type="range" min="25" max="6499" value="25" step="1" class="slider" id="slider">
+        </div>
+        </div>
+        <div class="col">
+          <input type="number" class="form-control" id="input-mmr-to" name="mmr_to" placeholder="Желаемый MMR" value="26">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div id="price"></div>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary mb-2">Заказать буст</button>
+        </div>
+      </div>
+
+
+
+    </form>
+
+    <script>
+    var fromMMR = document.getElementById("input-mmr-from");
+    var toMMR = document.getElementById("input-mmr-to");
+    var rangeSlider = document.getElementById("slider");
+    var rangeBullet = document.getElementById("slider-label");
+    var priceDiv = document.getElementById("price");
+
+    var PRICELIST = [
+        [1,     500,    1.50],
+        [501,   1000,   1.54],
+        [1001,  1500,   1.54],
+        [1501,  2500,   1.70],
+        [2501,  3500,   2.20],
+        [3501,  4000,   3.04],
+        [4001,  4500,   3.74],
+        [4501,  4900,   5.25],
+        [4901,  5000,   6.00],
+        [5001,  5100,   7.50],
+        [5101,  5200,   8.10],
+        [5201,  5300,   8.90],
+        [5301,  5400,   9.50],
+        [5401,  5500,   1.080],
+        [5501,  5600,   1.450],
+        [5601,  5700,   1.590],
+        [5701,  5800,   1.795],
+        [5801,  5900,   1.975],
+        [5901,  6000,   2.250],
+    ]
+
+    fromMMR.oninput= changeFromMMR;
+    toMMR.oninput = changeToMMR;
+    rangeSlider.oninput = changeSlider;
+    changeSlider()
+
+
+    function changeFromMMR(e) {
+        console.log(fromMMR.value);
+      var v = +fromMMR.value;
+
+      if (v < 1)
+        fromMMR.value = 1;
+      if (v > 6475)
+        fromMMR.value = 6475;
+
+      rangeSlider.max = 6500 - v;
+      toMMR.value = +rangeSlider.value + v;
+      changeLabel();
+      changePrice();
+
+      if (v < 1 || v > 6475)
+        return false;
+    }
+
+    function changeToMMR(e) {
+      var v = +toMMR.value;
+
+      if (v < 1)
+        toMMR.value = 1;
+      if (v > 6500)
+        toMMR.value = 6500;
+
+      rangeSlider.value= v - fromMMR.value;
+      console.log(rangeSlider.value);
+      changeLabel();
+      changePrice();
+
+      if (v < 1 || v > 6500)
+        return false;
+
+    }
+
+
+    function changeLabel() {
+      var v = +rangeSlider.value;
+      rangeBullet.innerHTML = "+" + v;
+      rangeBullet.style.left = (v / (rangeSlider.max - rangeSlider.min) * rangeSlider.clientWidth) + "px";
+    }
+
+    function changeSlider() {
+      var v = +rangeSlider.value;
+      toMMR.value = +fromMMR.value + v;
+      changeLabel();
+      changePrice();
+    }
 
 
 
 
 
-</script>
 
-</body>
+    function changePrice() {
+        var from = +fromMMR.value;
+        var to = +toMMR.value;
+
+        var price = 0;
+        for (var i=from; i<=to; i++) {
+            for (var j of PRICELIST) {
+                if (i > j[0]) {
+                    price += j[2]
+                    break;
+                }
+            }
+        }
+
+        // todo calc price
+        // todo calc days
+
+        priceDiv.innerHTML = price;
+    }
+
+
+
+
+
+    </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
 </html>
