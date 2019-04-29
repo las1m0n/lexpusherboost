@@ -1,0 +1,113 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+      <style>
+    .slidecontainer {
+      width: 100%;
+    }
+
+    .slider {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 10px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 0;
+      background: url('icon-dota.png');
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border: 0;
+      background: url('icon-dota.png');
+      cursor: pointer;
+    }
+
+    .slider-label {
+        position: relative;
+        transform-origin: center center;
+        display: block;
+        width: 70px;
+        background: transparent;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+        box-sizing: border-box;
+        margin-left: -35px;
+        color: #000;
+        font-style: normal;
+        font-weight: normal;
+        line-height: normal;
+        font-size: 18px;
+
+    }
+
+
+    </style>
+
+
+
+  </head>
+  <body>
+    <div class="jumbotron mt-3">
+        <form>
+            <div class="container">
+
+              <div class="row">
+                <div class="col">
+                    <label for="input-mmr-from" class="mb-0">Текущий ММР</label>
+                  <input type="number" class="form-control" id="input-mmr-from" name="mmr_from" placeholder="Текущий MMR" value="1">
+                </div>
+                <div class="col">
+                  <div class="slidecontainer mt-4">
+                    <span id="slider-label" class="slider-label mb-0">0</span>
+                    <input type="range" min="25" max="6499" value="25" step="1" class="slider" id="slider">
+                  </div>
+                </div>
+                <div class="col">
+                    <label for="input-mmr-to" class="mb-0">Желаемый ММР</label>
+                  <input type="number" class="form-control" id="input-mmr-to" name="mmr_to" placeholder="Желаемый MMR" value="26">
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col">
+                    <label for="price" class="mb-0">Цена:</label>
+                    <strong><div id="price"></div></strong>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary float-right">Заказать буст</button>
+                </div>
+              </div>
+
+            </div>
+        </form>
+    </div>
+
+    <script src="calc.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
