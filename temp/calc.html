@@ -174,7 +174,7 @@
     function changeLabel() {
       var v = +rangeSlider.value;
       rangeBullet.innerHTML = "+" + v;
-      rangeBullet.style.left = (v / (rangeSlider.max - rangeSlider.min) * rangeSlider.clientWidth) + "px";
+      rangeBullet.style.left = (v / (rangeSlider.max - rangeSlider.min) * 100) + "%";
     }
 
     function changeSlider() {
