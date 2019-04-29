@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Luckiest+Guy|Sigmar+One|Press+Start+2P|Russo+One');
+.main {
+  background: url("/static/img/1/head.jpg") fixed center no-repeat;
+  background-size: cover;
+}
+
+@font-face {
+  font-family: 'abc';
+  src: url('/static/fonts/16103.otf')  format("truetype"),
+       local('abc');
+}
+.navbar-brand {
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.navbar-nav {
+    font-family: 'abc', cursive;
+    font-size: medium;
+}
+
+.calc {
+  font-family: 'Press Start 2P', cursive;
+}
