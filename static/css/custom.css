@@ -1,0 +1,28 @@
+.block-items {
+    cursor: default;
+    background-color: #EEDDFF;
+}
+
+.inner-testimonial {
+    text-align: center;
+    background-color: #fff;
+}
+
+.inner-testimonial > img{
+    max-width: 128px;
+    margin:0 auto 15px;
+    opacity: 0;
+    -webkit-transition:all 1.3s linear;
+    transition:all 1.3s linear;
+}
+
+.owl-item.active .inner-testimonial > img{
+    -webkit-transition:all 1.3s linear;
+    transition:all 1.3s linear;
+}
+
+.owl-item.active .inner-testimonial > img.full-opacity {
+    opacity:1;
+    -webkit-transition:all 0.3s linear;
+    transition:all 0.3s linear;
+}
