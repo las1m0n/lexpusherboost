@@ -91,63 +91,34 @@
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="feedback">
       <div class="col-md-10 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Отзывы наших клиентов</h1>
-
-          <div class="container testimonial-group" style="overflow-x: auto;white-space: nowrap;">
-            <div class="row text-center flex-nowrap">
-                <div class="col-sm-4">
-                    <div class="card text-dark" style="width: 18rem;">
-                      <div class="card-body">
-                        <h5 class="card-title">Алексей</h5>
-                        <p class="card-text">Подняли с 2к до 3к)) красавцы)))</p>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card text-dark" style="width: 18rem;">
-                      <div class="card-body">
-                        <h5 class="card-title">Юрий</h5>
-                        <p class="card-text">Наебали на 20к, дизлайк отписка</p>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                     <div class="card text-dark" style="width: 18rem;">
-                      <div class="card-body">
-                        <h5 class="card-title">Влад</h5>
-                        <p class="card-text">Все четко))</p>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-sm-4">4</div>
-                <div class="col-sm-4">5</div>
-                <div class="col-sm-4">6</div>
-                <div class="col-sm-4">7</div>
-                <div class="col-sm-4">8</div>
-                <div class="col-sm-4">9</div>
-            </div>
-        </div>
+        <h1 class="display-4 font-weight-normal" style="padding-bottom: 100px;">Отзывы наших клиентов</h1>
+            {% include 'lex_pusher/comments.html' %}
       </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="society">
-      <div class="col-md-10 p-lg-5 mx-auto my-5">
+      <div class="col-md-10 p-lg-5 mx-auto my-5" style="padding-right: 30px;">
         <h1 class="display-4 font-weight-normal">Наши соц сети</h1>
 
-        <div class="container">
-          <div class="row p-5" style="font-size: 2em; ">
-            <div class="col-sm"><i class="fab fa-vk"></i></div>
-            <div class="col-sm"><i class="fab fa-instagram"></i></div>
-            <div class="col-sm"><i class="fab fa-facebook-f"></i></div>
-            <div class="col-sm"><i class="fab fa-telegram-plane"></i></div>
+        <div class="container" style="padding-right: 75px;">
+          <div class="row p-5" style="font-size: 2em;">
+            <div class="col-sm">
+                <a href="https://www.vk.com/"><button class="corner-button"><i class="fab fa-vk"></i></button></a>
+            </div>
+            <div class="col-sm">
+                <a href="https://www.instagram.com/"><button class="corner-button"><i class="fab fa-instagram"></i></button></a>
+            </div>
+            <div class="col-sm">
+                <a href="https://www.facebook.com/"><button class="corner-button"><i class="fab fa-facebook-f"></i></button></a>
+            </div>
+            <div class="col-sm">
+                <a href="https://www.telegram.com/"><button class="corner-button"><i class="fab fa-telegram-plane"></i></button></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     {% include "lex_pusher/footer.html" %}
-
-
-
 
 {% endblock %}
