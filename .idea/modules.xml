@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../lex_pusher_main/.idea/lex_push.iml" filepath="$PROJECT_DIR$/../lex_pusher_main/.idea/lex_push.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/lexlutor.iml" filepath="$PROJECT_DIR$/.idea/lexlutor.iml" />
     </modules>
   </component>
 </project>
