@@ -25,8 +25,6 @@ SECRET_KEY = 'i)2t424^okfd75p3v#@a(6zz!!!=le_$b98xjc@x=1@my--7xm'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'svinandcebek.tk',
-    '192.168.1.2'
 ]
 
 # Application definition
