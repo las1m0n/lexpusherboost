@@ -4,12 +4,12 @@
   height:64px;
   background: transparent;
   border: 0.5rem solid currentColor;
-  color: #fff;
+  color: #06c17f;
   position: absolute;
   transition: color 0.3s;
 }
 .corner-button:hover {
-  color: #06c17f;
+  color: black;
 }
 .corner-button:hover::before {
   width: 0;

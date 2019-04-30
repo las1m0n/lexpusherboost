@@ -25,20 +25,8 @@
 
 }
 
-
-
-@font-face {
-  font-family: 'abc';
-  src: url('/static/fonts/TrajanPro-Bold.otf')  format("truetype"),
-       local('abc');
-}
 .navbar-brand {
   font-family: 'Luckiest Guy', cursive;
-}
-
-.navbar-nav {
-    font-family: 'abc', cursive;
-    font-size: medium;
 }
 
 .calc {
