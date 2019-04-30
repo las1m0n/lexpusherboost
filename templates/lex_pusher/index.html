@@ -2,6 +2,17 @@
 
 {% block content %}
 
+    <style>
+    .icon {
+        width: 5em;
+        height: 5em;
+    }
+
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+
   <nav class="navbar navbar-expand-md navbar-dark ">
     <a class="navbar-brand" href="/">FLEX PUSHER</a>
     <div class="collapse navbar-collapse" id="navbarsExample04">
@@ -23,51 +34,120 @@
   </nav>
 
   <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <div class="col-md-10 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Качественный недорогой буст</h1>
-        <p class="lead font-weight-normal">кокооккокооккокооккокоок</p>
+        <p class="lead font-weight-normal">Листай ниже чтобы подняться на вершины. </p>
       </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <div class="col-md-10 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Купить аккаунт</h1>
-        <p class="lead font-weight-normal">кокооккокооккокооккокоок</p>
       </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Калькулятор</h1>
+      <div class="col-md-10 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 font-weight-normal">Калькулятор стоимости</h1>
         <p class="lead font-weight-normal">{% include "lex_pusher/calc.html" %}</p>
       </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="about">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <div class="col-md-10 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Почему мы этим занимаемся</h1>
-        <p class="lead font-weight-normal">кокооккокооккокооккокоок</p>
+        <p class="lead font-weight-normal">В нашей команде работают бустеры - профессионалы, у каждого на счету более сотни забущенных аккаутнтов. Мы знаем через какой путь проходите Вы, и наша задача помочь Вам избежать этих мучений. Мы сами теряли время и нервы на то, чтобы поднять свои первые аккаунты. Мы даем Вам возможность выбора, а полседнне слово - за Вами</p>
       </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="warranty">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <div class="col-md-10 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal"> Почему именно мы?</h1>
-        <p class="lead font-weight-normal">кокооккокооккокооккокоок</p>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-sm">
+                    <img src="/static/img/1/icon 1.png" class="icon">
+                    <h2>Нам важен каждый клиент</h2>
+                </div>
+                <div class="col-sm">
+                    <img src="/static/img/1/icon 2.png" class="icon">
+                    <h2>Скидки</h2>
+                </div>
+                <div class="col-sm">
+                    <img src="/static/img/1/icon 3.png" class="icon">
+                    <h2>Поддержка и оплата</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                    Мы думаем о каждом клиенте и стараемся выполнить заказы в кратчашие сроки. Мы не забудем о Вашем аккаунте даже, если у Вас ниже звание, а кого-то выше.
+                </div>
+                <div class="col-sm">
+                    На каждый второй заказ у нас действуют различные скидки, а для постоянных клиентов - приятные бонусы.
+                </div>
+                <div class="col-sm">
+                    На нашем сайте присутствует поддержка которая ответит на любой вопрос, а также бесплатно проконсультирует вас по связи. Оплачивайте свои заказы различными системами: webmoney/visa/qiwiы
+                </div>
+               </div>
+            </div>
+
       </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="feedback">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <div class="col-md-10 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Отзывы наших клиентов</h1>
-        <p class="lead font-weight-normal">кокооккокооккокооккокоок</p>
+
+          <div class="container testimonial-group" style="overflow-x: auto;white-space: nowrap;">
+            <div class="row text-center flex-nowrap">
+                <div class="col-sm-4">
+                    <div class="card text-dark" style="width: 18rem;">
+                      <div class="card-body">
+                        <h5 class="card-title">Алексей</h5>
+                        <p class="card-text">Подняли с 2к до 3к)) красавцы)))</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card text-dark" style="width: 18rem;">
+                      <div class="card-body">
+                        <h5 class="card-title">Юрий</h5>
+                        <p class="card-text">Наебали на 20к, дизлайк отписка</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                     <div class="card text-dark" style="width: 18rem;">
+                      <div class="card-body">
+                        <h5 class="card-title">Влад</h5>
+                        <p class="card-text">Все четко))</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">4</div>
+                <div class="col-sm-4">5</div>
+                <div class="col-sm-4">6</div>
+                <div class="col-sm-4">7</div>
+                <div class="col-sm-4">8</div>
+                <div class="col-sm-4">9</div>
+            </div>
+        </div>
       </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="society">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <div class="col-md-10 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Наши соц сети</h1>
-        <p class="lead font-weight-normal">кокооккокооккокооккокоок</p>
+
+        <div class="container">
+          <div class="row p-5" style="font-size: 2em; ">
+            <div class="col-sm"><i class="fab fa-vk"></i></div>
+            <div class="col-sm"><i class="fab fa-instagram"></i></div>
+            <div class="col-sm"><i class="fab fa-facebook-f"></i></div>
+            <div class="col-sm"><i class="fab fa-telegram-plane"></i></div>
+          </div>
+        </div>
       </div>
     </div>
 
