@@ -6,98 +6,101 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 
+<nav class="navbar fixed-top navbar-expand-md navbar-dark ">
+<a class="navbar-brand" href="/">FLEX PUSHER</a>
+<div class="collapse navbar-collapse" id="navbarsExample04">
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item">
+      <a class="nav-link" href="#about">О нас</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#feedback">Отзывы</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#warranty">Гарантии</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#society">Контакты</a>
+    </li>
+  </ul>
+</div>
+</nav>
 
-  <nav class="navbar navbar-expand-md navbar-dark ">
-    <a class="navbar-brand" href="/">FLEX PUSHER</a>
-    <div class="collapse navbar-collapse" id="navbarsExample04">
-      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-        <li class="nav-item">
-          <a class="nav-link" href="#about">О нас</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#feedback">Отзывы</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#warranty">Гарантии</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#society">Контакты</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
 
-  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-      <div class="col-md-10 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Качественный недорогой буст</h1>
-        <p class="lead font-weight-normal">Листай ниже чтобы подняться на вершины. </p>
+<div class="position-relative overflow-hidden p-3 p-md-5 text-center text-light dotabg bg-head">
+  <div class="col-md-12 p-lg-5 mx-auto my-5">
+    <h1 class="display-4 font-weight-normal">Качественный недорогой буст</h1>
+    <p class="lead font-weight-normal">Листай ниже чтобы подняться на вершины. </p>
+  </div>
+</div>
+
+<div class="">
+{#    <div class="row text-light">#}
+        <div class="col-2 dotabg bg-acc">
+            <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
+            <h1 class="display-4 font-weight-normal">Купить аккаунт</h1>
+          </div>
       </div>
-    </div>
 
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-      <div class="col-md-10 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Купить аккаунт</h1>
+      <div class="col-2 dotabg bg-boost">
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
+            <h1 class="display-4 font-weight-normal">Заказать буст</h1>
+        </div>
       </div>
-    </div>
+{#    </div>#}
+</div>
 
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-      <div class="col-md-10 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal">Калькулятор стоимости</h1>
-        <p class="lead font-weight-normal">{% include "lex_pusher/calc.html" %}</p>
-      </div>
-    </div>
+
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="about">
-      <div class="col-md-10 p-lg-5 mx-auto my-5">
+      <div class="col-md-12 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Почему мы этим занимаемся</h1>
         <p class="lead font-weight-normal">В нашей команде работают бустеры - профессионалы, у каждого на счету более сотни забущенных аккаутнтов. Мы знаем через какой путь проходите Вы, и наша задача помочь Вам избежать этих мучений. Мы сами теряли время и нервы на то, чтобы поднять свои первые аккаунты. Мы даем Вам возможность выбора, а полседнне слово - за Вами</p>
       </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="warranty">
-      <div class="col-md-10 p-lg-5 mx-auto my-5">
+      <div class="col-md-12 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal"> Почему именно мы?</h1>
-
-            <div class="container">
-              <div class="row">
-                <div class="col-sm">
-                    <img src={% static "img/icon_1.png" %} class="icon">
-                    <h2>Нам важен каждый клиент</h2>
-                </div>
-                <div class="col-sm">
-                    <img src={% static "img/icon_2.png" %} class="icon">
-                    <h2>Скидки</h2>
-                </div>
-                <div class="col-sm">
-                    <img src={% static "img/icon_3.png" %} class="icon">
-                    <h2>Поддержка и оплата</h2>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm">
-                    Мы думаем о каждом клиенте и стараемся выполнить заказы в кратчашие сроки. Мы не забудем о Вашем аккаунте даже, если у Вас ниже звание, а кого-то выше.
-                </div>
-                <div class="col-sm">
-                    На каждый второй заказ у нас действуют различные скидки, а для постоянных клиентов - приятные бонусы.
-                </div>
-                <div class="col-sm">
-                    На нашем сайте присутствует поддержка которая ответит на любой вопрос, а также бесплатно проконсультирует вас по связи. Оплачивайте свои заказы различными системами: webmoney/visa/qiwiы
-                </div>
-               </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+                <img src={% static "img/icon_1.png" %} class="icon">
+                <h2>Нам важен каждый клиент</h2>
             </div>
-
+            <div class="col-sm">
+                <img src={% static "img/icon_2.png" %} class="icon">
+                <h2>Скидки</h2>
+            </div>
+            <div class="col-sm">
+                <img src={% static "img/icon_3.png" %} class="icon">
+                <h2>Поддержка и оплата</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+                Мы думаем о каждом клиенте и стараемся выполнить заказы в кратчашие сроки. Мы не забудем о Вашем аккаунте даже, если у Вас ниже звание, а кого-то выше.
+            </div>
+            <div class="col-sm">
+                На каждый второй заказ у нас действуют различные скидки, а для постоянных клиентов - приятные бонусы.
+            </div>
+            <div class="col-sm">
+                На нашем сайте присутствует поддержка которая ответит на любой вопрос, а также бесплатно проконсультирует вас по связи. Оплачивайте свои заказы различными системами: webmoney/visa/qiwi
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="feedback">
-      <div class="col-md-10 p-lg-5 mx-auto my-5">
+      <div class="col-md-12 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal" style="padding-bottom: 100px;">Отзывы наших клиентов</h1>
-            {% include 'lex_pusher/comments.html' %}
+{#            {% include 'lex_pusher/comments.html' %}#}
       </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="society">
-      <div class="col-md-10 p-lg-5 mx-auto my-5" style="padding-right: 30px;">
+      <div class="col-md-12 p-lg-5 mx-auto my-5" style="padding-right: 30px;">
         <h1 class="display-4 font-weight-normal">Наши соц сети</h1>
 
         <div class="container" style="padding-right: 75px;">
