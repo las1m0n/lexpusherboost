@@ -1,9 +1,9 @@
 import smtplib
 
 
-FROM_ADDRESS = 'svinerus@gmail.com'
-LOGIN = 'svinerus'
-PASSWORD = 'S43r6rTVVV'
+FROM_ADDRESS = '@gmail.com'
+LOGIN = ''
+PASSWORD = ''
 SMTP_SERVER = 'smtp.gmail.com:587'
 
 
@@ -22,7 +22,3 @@ def send(to, subject, text):
     server.login(LOGIN, PASSWORD)
     server.sendmail(FROM_ADDRESS, to, msg)
     server.quit()
-
-
-
-send('vladyaavas@gmail.com', 'privet', 'poshol nahui')
