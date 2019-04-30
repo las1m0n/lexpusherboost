@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Luckiest+Guy|Sigmar+One|Press+Start+2P|Russo+One');
+
+.dotabg {
+    background-size: cover !important;
+}
+
+
+.dotabg:hover {
+    background: linear-gradient(to top, rgba(0,0,0, 0.2), rgba(0,0,0, 0.2))
+}
+
+
+.bg-head {
+    background: linear-gradient(to top, rgba(0,0,0, 0.5), rgba(0,0,0, 0.6)), url("/static/img/head.jpg") center no-repeat;
+
+}
+
+.bg-acc {
+    background: linear-gradient(to top, rgba(0,0,0, 0.5), rgba(0,0,0, 0.6)), url("/static/img/acc_buy.jpg") center no-repeat;
+
+}
+
+.bg-boost {
+    background: linear-gradient(to top, rgba(0,0,0, 0.5), rgba(0,0,0, 0.6)), url("/static/img/boost.jpg") center no-repeat;
+
+}
+
+
+
+@font-face {
+  font-family: 'abc';
+  src: url('/static/fonts/TrajanPro-Bold.otf')  format("truetype"),
+       local('abc');
+}
+.navbar-brand {
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.navbar-nav {
+    font-family: 'abc', cursive;
+    font-size: medium;
+}
+
+.calc {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.icon {
+    width: 5em;
+    height: 5em;
+}
+
+
+/*todo какой нахуй background*/
