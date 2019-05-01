@@ -28,5 +28,3 @@ class Account(models.Model):
     def __str__(self):
         return "{0} solo {1}, party {2}".format(self.title, self.solo_mmr, self.party_mmr)
 
-    def get_absolute_url(self):
-        return reverse('product_view', kwargs={'product_slug': self.slug})
