@@ -5,8 +5,7 @@
   background: transparent;
   border: 0.5rem solid currentColor;
   color: #06c17f;
-  position: absolute;
-  transition: color 0.3s;
+  position: relative;
 }
 .corner-button:hover {
   color: black;

@@ -14,3 +14,7 @@ def booster_view(request):
     return render(request, 'lex_pusher/lk_booster.html', {})
 
 
+def shop_view(request):
+    return render(request, 'lex_pusher/flex_shop.html', {})
+
+

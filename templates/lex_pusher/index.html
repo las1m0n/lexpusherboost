@@ -1,43 +1,42 @@
 {% extends 'lex_pusher/base.html' %}
 {% load static %}
 
+{% block navbar %}
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">FLEX PUSHER</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav ml-md-auto d-md-flex">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Лог клиента</a>
+            <div class="dropdown-menu p-4 text-muted" aria-labelledby="dropdown">
+              <h5>Укажите пин-код Вашего заказа</h5>
+                <p>для просмотра состояния и хода выполнения заказа</p>
+                <form>
+                    <input placeholder="Ваш пин-код">
+                </form>
+            </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">О нас</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#feedback">Отзывы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#warranty">Гарантии</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#society">Контакты</a>
+        </ul>
+      </div>
+    </nav>
+{% endblock %}
+
 {% block content %}
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">FLEX PUSHER</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbar">
-    <ul class="navbar-nav ml-md-auto d-md-flex">
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Лог клиента</a>
-        <div class="dropdown-menu p-4 text-muted" aria-labelledby="dropdown">
-          <h5>Укажите пин-код Вашего заказа</h5>
-            <p>для просмотра состояния и хода выполнения заказа</p>
-            <form>
-                <input placeholder="Ваш пин-код"></input>
-            </form>
-        </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#about">О нас</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#feedback">Отзывы</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#warranty">Гарантии</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#society">Контакты</a>
-    </ul>
-  </div>
-</nav>
-
 
 <div class="position-relative overflow-hidden p-3 p-md-5 text-center text-light dotabg bg-head">
   <div class="col-md-12 p-lg-5 mx-auto my-5">
@@ -47,10 +46,12 @@
 </div>
 
 <div class="row m-0 text-light">
+<a href="shop/" style="text-decoration: none; color: #fff">
     <div class="col py-5 dotabg bg-acc">
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
         <h1 class="display-4 font-weight-normal">Купить аккаунт</h1>
       </div>
+</a>
     </div>
 
     <div class="col py-5 dotabg bg-boost">
@@ -70,21 +71,29 @@
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="warranty">
       <div class="col-md-12 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal"> Почему именно мы?</h1>
+        <h1 class="display-4 font-weight-normal" style="padding-bottom: 45px;"> Почему именно мы?</h1>
         <div class="container">
           <div class="row">
-            <div class="col-sm">
-                <img src={% static "img/icon_1.png" %} class="icon">
-                <h2>Нам важен каждый клиент</h2>
+            <div class="col-sm icon">
+                <img src='{% static "img/icon_1.png" %}' alt="icon1">
             </div>
-            <div class="col-sm">
-                <img src={% static "img/icon_2.png" %} class="icon">
-                <h2>Скидки</h2>
+            <div class="col-sm icon">
+                <img src='{% static "img/icon_2.png" %}' alt="icon2">
             </div>
-            <div class="col-sm">
-                <img src={% static "img/icon_3.png" %} class="icon">
-                <h2>Поддержка и оплата</h2>
+            <div class="col-sm icon">
+                <img src='{% static "img/icon_3.png" %}' alt="icon3">
             </div>
+          </div>
+          <div class="row">
+              <div class="col-sm">
+                  <h2>Нам важен каждый клиент</h2>
+              </div>
+              <div class="col-sm">
+                  <h2>Скидки</h2>
+              </div>
+              <div class="col-sm">
+                  <h2>Поддержка и оплата</h2>
+              </div>
           </div>
           <div class="row">
             <div class="col-sm">
@@ -110,19 +119,18 @@
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="society">
       <div class="col-md-12 p-lg-5 mx-auto my-5" style="padding-right: 30px;">
         <h1 class="display-4 font-weight-normal">Наши соц сети</h1>
-
-        <div class="container" style="padding-right: 75px;">
+        <div class="container">
           <div class="row p-5" style="font-size: 2em;">
-            <div class="col-sm">
+            <div class="col-sm" style="padding-top: 15px;">
                 <a href="https://www.vk.com/"><button class="corner-button"><i class="fab fa-vk"></i></button></a>
             </div>
-            <div class="col-sm">
+            <div class="col-sm" style="padding-top: 15px;">
                 <a href="https://www.instagram.com/"><button class="corner-button"><i class="fab fa-instagram"></i></button></a>
             </div>
-            <div class="col-sm">
+            <div class="col-sm" style="padding-top: 15px;">
                 <a href="https://www.facebook.com/"><button class="corner-button"><i class="fab fa-facebook-f"></i></button></a>
             </div>
-            <div class="col-sm">
+            <div class="col-sm" style="padding-top: 15px;">
                 <a href="https://www.telegram.net/"><button class="corner-button"><i class="fab fa-telegram-plane"></i></button></a>
             </div>
           </div>
