@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
+from .models import Account
 
 
 def index_view(request):
@@ -15,6 +16,10 @@ def booster_view(request):
 
 
 def shop_view(request):
-    return render(request, 'lex_pusher/flex_shop.html', {})
+    account = Account.objects.all()
+    context = {
+        'accounts': account,
+    }
+    return render(request, 'lex_pusher/flex_shop.html', context)
 
 
