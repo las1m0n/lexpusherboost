@@ -7,8 +7,8 @@ from django.urls import reverse_lazy
 
 urlpatterns = [
     path('', views.index_view, name='base'),
-    path('client', views.client_view, name='client'),
-    path('booster', views.booster_view, name='booster'),
+    path('client/', views.client_view, name='client'),
+    path('booster/', views.booster_view, name='booster'),
     path('shop/', views.shop_view, name='shop'),
     path('cart/<account_slug>/', views.shop_cart_view, name='add_to_cart'),
     path('boost/', views.shop_boost, name='boost')
