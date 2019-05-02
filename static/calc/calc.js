@@ -82,11 +82,6 @@ function changeSlider() {
   changePrice();
 }
 
-
-
-
-
-
 function changePrice() {
     var from = +fromMMR.value;
     var to = +toMMR.value;

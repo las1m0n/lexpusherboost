@@ -38,3 +38,19 @@ class BuyAccount(models.Model):
     def __str__(self):
         return "Аккаунт {0} куплен с email-> {1}, skype-> {2}, phone-> {3}".\
             format(self.account_slug, self.email, self.skype, self.phone)
+
+
+class Boost(models.Model):
+    mmr_from = models.IntegerField()
+    mmr_to = models.IntegerField()
+    email = models.EmailField
+    login = models.CharField(max_length=120)
+    password = models.CharField(max_length=120)
+    more_info = models.BooleanField(blank=True, null=True)
+    vk = models.CharField(max_length=120)
+    skype = models.CharField(max_length=120)
+    phone = models.CharField(max_length=120)
+
+    def __str__(self):
+        return "Забустить c {0} mmr по {1} mmr, Логин '{2}' + пароль '{3}' ,куплен с email-> {4}".\
+            format(self.mmr_from, self.mmr_to, self.login, self.password, self.email)

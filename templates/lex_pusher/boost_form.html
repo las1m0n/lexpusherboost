@@ -1,0 +1,27 @@
+{% extends 'lex_pusher/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>
+        Корзина
+    </title>
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">FLEX PUSHER</a>
+    <div class="collapse navbar-collapse" id="navbarsExample04">
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<form action='' method='POST'>
+	{% csrf_token %}
+	{{ form|crispy }}
+	<input type='submit' class='btn btn-outline-danger btn-block' value="Перейти к оплате">
+</form>
+
+{% include "lex_pusher/footer.html" %}
+{% endblock %}

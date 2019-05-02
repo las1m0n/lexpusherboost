@@ -5,7 +5,6 @@
 <div class="jumbotron mt-3 text-dark">
     <form>
         <div class="container">
-
           <div class="row">
             <div class="col">
                 <label for="input-mmr-from" class="mb-0">Текущий ММР</label>
@@ -29,7 +28,9 @@
                 <strong><div id="price"></div></strong>
             </div>
             <div class="col">
-                <button type="submit" class="btn btn-primary float-right">Заказать буст</button>
+                <a href="{% url 'add_to_boost' mmr_from=fromMMR mmr_to=toMMR %}">
+                    <button type="submit" class="btn btn-primary float-right"> Заказать буст</button>
+                </a>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Account
-from .forms import ShopCartForm
+from .forms import ShopCartForm, BoostCartForm
 from django.urls import reverse
 
 
@@ -49,3 +49,32 @@ def shop_cart_view(request, account_slug):
 def shop_boost(request):
     context = {}
     return render(request, 'lex_pusher/flex_boost.html', context)
+
+
+def boost_cart_view(request, mmr_from, mmr_to):
+    form = ShopCartForm(request.POST or None)
+    if form.is_valid():
+        new_boost = form.save(commit=False)
+        email = form.cleaned_data['email']
+        login = form.cleaned_data['login']
+        password = form.cleaned_data['password']
+        vk = form.cleaned_data['vk']
+        skype = form.cleaned_data['skype']
+        phone = form.cleaned_data['phone']
+        new_boost.mmr_from = mmr_from
+        new_boost.mmr_to = mmr_to
+        new_boost.email = email
+        new_boost.login = login
+        new_boost.password = password
+        new_boost.skype = skype
+        new_boost.phone = phone
+        new_boost.vk = vk
+        new_boost.save()
+        return HttpResponseRedirect(reverse('base'))
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'lex_pusher/boost_form.html', context)
+
+
