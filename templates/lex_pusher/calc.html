@@ -1,7 +1,7 @@
+{% extends 'lex_pusher/base.html' %}
 {% load static %}
 
-<link rel="stylesheet" href={% static "/calc/calc.css" %}>
-
+{% block content %}
 <div class="jumbotron mt-3 text-dark">
     <form>
         <div class="container">
@@ -32,9 +32,8 @@
                 <button type="submit" class="btn btn-primary float-right">Заказать буст</button>
             </div>
           </div>
-
         </div>
     </form>
 </div>
 
-<script src={% static "/calc/calc.js" %}></script>
+{% endblock %}

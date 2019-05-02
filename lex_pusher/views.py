@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Account
+from .forms import ShopCartForm
+from django.urls import reverse
 
 
 def index_view(request):
@@ -23,3 +25,27 @@ def shop_view(request):
     return render(request, 'lex_pusher/flex_shop.html', context)
 
 
+def shop_cart_view(request, account_slug):
+    account = Account.objects.get(slug=account_slug)
+    form = ShopCartForm(request.POST or None)
+    if form.is_valid():
+        new_purchase_account = form.save(commit=False)
+        email = form.cleaned_data['email']
+        skype = form.cleaned_data['skype']
+        phone = form.cleaned_data['phone']
+        new_purchase_account.account_slug = account.slug
+        new_purchase_account.email = email
+        new_purchase_account.skype = skype
+        new_purchase_account.phone = phone
+        new_purchase_account.save()
+        return HttpResponseRedirect(reverse('base'))
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'lex_pusher/shop_cart.html', context)
+
+
+def shop_boost(request):
+    context = {}
+    return render(request, 'lex_pusher/flex_boost.html', context)

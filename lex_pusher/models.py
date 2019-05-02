@@ -28,3 +28,13 @@ class Account(models.Model):
     def __str__(self):
         return "{0} solo {1}, party {2}".format(self.title, self.solo_mmr, self.party_mmr)
 
+
+class BuyAccount(models.Model):
+    account_slug = models.SlugField(default="acc 322")
+    email = models.CharField(max_length=120)
+    skype = models.CharField(max_length=120)
+    phone = models.CharField(max_length=120)
+
+    def __str__(self):
+        return "Аккаунт {0} куплен с email-> {1}, skype-> {2}, phone-> {3}".\
+            format(self.account_slug, self.email, self.skype, self.phone)
