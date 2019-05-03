@@ -1,13 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
-from django.db.models.signals import pre_save
-from django.utils.text import slugify
-from transliterate import translit
 from django.urls import reverse
 from decimal import Decimal
-from django.conf import settings
-from django.contrib.auth.models import User
-from ckeditor.fields import RichTextField
 
 
 def image_folder(instance, filename):

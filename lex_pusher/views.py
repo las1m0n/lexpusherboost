@@ -52,7 +52,7 @@ def shop_boost(request):
 
 
 def boost_cart_view(request, mmr_from, mmr_to):
-    form = ShopCartForm(request.POST or None)
+    form = BoostCartForm(request.POST or None)
     if form.is_valid():
         new_boost = form.save(commit=False)
         email = form.cleaned_data['email']
