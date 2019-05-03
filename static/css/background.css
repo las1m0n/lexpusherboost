@@ -5,24 +5,18 @@
 }
 
 
-.dotabg:hover {
-    background: linear-gradient(to top, rgba(0,0,0, 0.2), rgba(0,0,0, 0.2))
-}
-
-
 .bg-head {
-    background: linear-gradient(to top, rgba(0,0,0, 0.5), rgba(0,0,0, 0.6)), url("/static/img/head.jpg") center no-repeat;
+    background: url("/static/img/head.jpg") center no-repeat;
 }
 
 .bg-acc {
-    background: linear-gradient(to top, rgba(0,0,0, 0.5), rgba(0,0,0, 0.6)), url("/static/img/acc_buy.jpg") center no-repeat;
-
+    background: url("/static/img/acc_buy.jpg") center no-repeat;
 }
 
 .bg-boost {
-    background: linear-gradient(to top, rgba(0,0,0, 0.5), rgba(0,0,0, 0.6)), url("/static/img/boost.jpg") center no-repeat;
-
+    background: url("/static/img/boost.jpg") center no-repeat;
 }
+
 
 .navbar-brand {
   font-family: 'Luckiest Guy', cursive;
