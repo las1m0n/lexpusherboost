@@ -7,8 +7,7 @@
 
 
 <div class="jumbotron mt-3 text-dark">
-    <form action="{% url 'add_to_boost' %}" method="POST">
-        {% csrf_token %}
+    <form action="{% url 'add_to_boost' %}" method="GET">
         <div class="container">
           <div class="row">
             <div class="col">

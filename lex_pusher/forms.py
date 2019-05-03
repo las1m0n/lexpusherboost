@@ -29,6 +29,8 @@ class ShopCartForm(forms.ModelForm):
 class BoostCartForm(forms.ModelForm):
     email = forms.CharField(widget=forms.EmailInput)
     password = forms.CharField(widget=forms.PasswordInput)
+    mmr_from = forms.IntegerField(disabled=True, required=False)
+    mmr_to = forms.IntegerField(disabled=True, required=False)
 
     class Meta:
         model = Boost

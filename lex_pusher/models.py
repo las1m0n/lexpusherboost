@@ -37,7 +37,7 @@ class BuyAccount(models.Model):
 class Boost(models.Model):
     mmr_from = models.IntegerField()
     mmr_to = models.IntegerField()
-    email = models.EmailField
+    email = models.EmailField(default="0@gmail.com")
     login = models.CharField(max_length=120)
     password = models.CharField(max_length=120)
     more_info = models.BooleanField(blank=True, null=True)
