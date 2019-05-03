@@ -3,7 +3,8 @@
 
 {% block content %}
 <div class="jumbotron mt-3 text-dark">
-    <form>
+    <form action="{% url 'add_to_boost' %}" method="POST">
+        {% csrf_token %}
         <div class="container">
           <div class="row">
             <div class="col">
@@ -28,9 +29,7 @@
                 <strong><div id="price"></div></strong>
             </div>
             <div class="col">
-                <a href="{% url 'add_to_boost' mmr_from=fromMMR mmr_to=toMMR %}">
-                    <button type="submit" class="btn btn-primary float-right"> Заказать буст</button>
-                </a>
+                <button type="submit" class="btn btn-primary float-right"> Заказать буст</button>
             </div>
           </div>
         </div>

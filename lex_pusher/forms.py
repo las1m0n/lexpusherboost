@@ -33,6 +33,8 @@ class BoostCartForm(forms.ModelForm):
     class Meta:
         model = Boost
         fields = {
+            'mmr_from',
+            'mmr_to',
             'email',
             'login',
             'password',

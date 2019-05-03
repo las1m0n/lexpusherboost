@@ -51,8 +51,11 @@ def shop_boost(request):
     return render(request, 'lex_pusher/flex_boost.html', context)
 
 
-def boost_cart_view(request, mmr_from, mmr_to):
+def boost_cart_view(request):
     form = BoostCartForm(request.POST or None)
+    mmr_from = request.POST.get("mmr_from", "")
+    print(mmr_from)
+    mmr_to = request.POST.get("mmr_to", "")
     if form.is_valid():
         new_boost = form.save(commit=False)
         email = form.cleaned_data['email']
