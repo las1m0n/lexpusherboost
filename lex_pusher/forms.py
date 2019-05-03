@@ -1,6 +1,6 @@
 from django import forms
 from django.utils import timezone
-from .models import BuyAccount, Boost
+from .models import BuyAccount, Client
 from django.contrib.auth.models import User
 
 
@@ -33,7 +33,7 @@ class BoostCartForm(forms.ModelForm):
     mmr_to = forms.IntegerField(disabled=True, required=False)
 
     class Meta:
-        model = Boost
+        model = Client
         fields = {
             'mmr_from',
             'mmr_to',

@@ -34,7 +34,7 @@ class BuyAccount(models.Model):
             format(self.account_slug, self.email, self.skype, self.phone)
 
 
-class Boost(models.Model):
+class Client(models.Model):
     mmr_from = models.IntegerField()
     mmr_to = models.IntegerField()
     email = models.EmailField(default="0@gmail.com")

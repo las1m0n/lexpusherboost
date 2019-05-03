@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Account, BuyAccount, Boost
+from .models import Account, BuyAccount, Client
 
 admin.site.register(Account)
 admin.site.register(BuyAccount)
-admin.site.register(Boost)
+admin.site.register(Client)
