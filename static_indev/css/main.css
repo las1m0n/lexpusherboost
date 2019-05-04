@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One|Luckiest+Guy|Sigmar+One|Press+Start+2P|Russo+One');
 
-body {
+html {
     position: relative;
+    min-height: 100%;
 }
 
 .navbar-brand {
