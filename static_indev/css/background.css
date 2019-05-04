@@ -1,20 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One|Luckiest+Guy|Sigmar+One|Press+Start+2P|Russo+One');
 
-.dotabg {
-    background-size: cover !important;
-}
-
 
 .bg-head {
     background: url("/static/img/head.jpg") center no-repeat;
+    background-size: cover !important;
 }
 
 .bg-acc {
     background: url("/static/img/acc_buy.jpg") center no-repeat;
+    background-size: cover !important;
 }
 
 .bg-boost {
     background: url("/static/img/boost.jpg") center no-repeat;
+    background-size: cover !important;
+}
+
+.darkmask {
+    box-shadow:0 0 0 100000px rgba(0, 0, 0, 0.33) inset;
+}
+
+.darkmask:hover {
+    box-shadow: none;
 }
 
 
@@ -35,7 +42,6 @@
 }
 
 .icon img {
-    width:135px;
  -moz-transition: all 1s ease-out;
  -o-transition: all 1s ease-out;
  -webkit-transition: all 1s ease-out;
