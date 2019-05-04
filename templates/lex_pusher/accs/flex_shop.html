@@ -27,7 +27,6 @@
     <div class="accounts-list">
         {% for account in accounts %}
         <article class="account-item">
-				<form action="">
 					<div class="item-thumbnail">
 						<a href="https://dotabooster.ru/wp-content/uploads/2019/04/Dota-2-Screenshot-2019.04.15-21.06.24.29.png" class="fancybox">
                             <img src="{{account.image.url}}" alt="#" style='width:230px;height:220px;'>
@@ -38,8 +37,16 @@
 					<div class="item-data">
 						<br>Solo MMR: {{ account.solo_mmr }}<br>Party MMR: {{ account.party_mmr }}
                     </div>
-					<div class="btn-wrap pt-3"><button type="submit" class="btn shadow"><span class="cart-icon"><i class="fas fa-shopping-cart"></i></span></button></div>
-				</form>
+					<div class="btn-wrap">
+                        <a href="{% url 'add_to_cart' account_slug=account.slug %}">
+                            <button class="btn shadow">
+                                <span class="cart-icon">
+                                <i class="fas fa-shopping-cart">
+                                </i>
+                                </span>
+                            </button>
+                        </a>
+                    </div>
         </article>
         {% endfor %}
     </div>
