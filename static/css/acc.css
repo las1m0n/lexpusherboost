@@ -100,7 +100,7 @@
 }
 
 .btn.shadow, .btn-inv.shadow {
-	box-shadow: 0 6px 15px 0px rgba(226, 65, 76, 0.6);
+	box-shadow: 15px 6px 15px 0px rgba(226, 65, 76, 0.6);
 }
 
 .btn-green.shadow {
@@ -721,7 +721,7 @@ ul.header-menu > li > a {
 
 .accounts-list {
     margin: 0 -15px;
-	padding: 50px 0 0;
+	padding: 50px 0 150px;
 }
 
 .accounts-list .account-item {
@@ -748,7 +748,7 @@ ul.header-menu > li > a {
 	position: relative;
     width: 230px;
     height: 220px;
-	margin: -20px 0 10px;
+	margin: 0 auto;
 }
 
 .accounts-list .account-item .item-thumbnail img {
@@ -877,5 +877,14 @@ ul.header-menu > li > a {
     float: left;
     width: 300px;
     text-align: center;
-    padding: 50px 0 0;
+    padding: 25px 0 25px;
+}
+
+span.cart-icon {
+	display: inline-block;
+	vertical-align: middle;
+	width: 20px;
+	height: 18px;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
