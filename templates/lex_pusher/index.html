@@ -2,10 +2,8 @@
 {% load static %}
 
 
-{% block title %}
-    <title>
-        Недорогой буст
-    </title>
+{% block head %}
+    <title>Недорогой буст</title>
 {% endblock %}
 
 
@@ -28,6 +26,8 @@
               <h5>Укажите пин-код Вашего заказа</h5>
                 <p>для просмотра состояния и хода выполнения заказа</p>
                 <form>
+{#                    todo#}
+                    {% csrf_token %}
                     <input placeholder="Ваш пин-код">
                 </form>
             </div>
