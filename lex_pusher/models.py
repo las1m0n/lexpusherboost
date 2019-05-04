@@ -41,9 +41,9 @@ class Client(models.Model):
     login = models.CharField(max_length=120)
     password = models.CharField(max_length=120)
     more_info = models.BooleanField(blank=True, null=True)
-    vk = models.CharField(max_length=120)
-    skype = models.CharField(max_length=120)
-    phone = models.CharField(max_length=120)
+    vk = models.CharField(max_length=120, default="VK", null=True, blank=True)
+    skype = models.CharField(max_length=120, default="Skype", blank=True, null=True)
+    phone = models.CharField(max_length=120, default="PHONE", null=True, blank=True)
 
     def __str__(self):
         return "Забустить c {0} mmr по {1} mmr, Логин '{2}' + пароль '{3}' ,куплен с email-> {4}".\

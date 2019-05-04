@@ -33,6 +33,8 @@ def shop_cart_view(request, account_slug):
         email = form.cleaned_data['email']
         skype = form.cleaned_data['skype']
         phone = form.cleaned_data['phone']
+        new_purchase_account.solo_mmr = account.solo_mmr
+        new_purchase_account.party_mmr = account.party_mmr
         new_purchase_account.account_slug = account.slug
         new_purchase_account.email = email
         new_purchase_account.skype = skype
@@ -42,6 +44,7 @@ def shop_cart_view(request, account_slug):
 
     context = {
         'form': form,
+        'account': account,
     }
     return render(request, 'lex_pusher/accs/shop_cart.html', context)
 
@@ -76,6 +79,8 @@ def bust_cart_view(request):
 
     context = {
         'form': form,
+        'mmr_from': mmr_from,
+        'mmr_to': mmr_to,
     }
     return render(request, 'lex_pusher/client/bust_form.html', context)
 

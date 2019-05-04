@@ -4,6 +4,7 @@
 {% load crispy_forms_tags %}
 
 {% block head %}
+    <link rel="stylesheet" href="{% static 'css/forms.css'%}">
     <title>Корзина</title>
 {% endblock %}
 
@@ -16,9 +17,27 @@
 {% endblock %}
 
 {% block content %}
+
+<div class="form-style-5">
 <form action='' method='POST' class="p-3">
 	{% csrf_token %}
-	{{ form|crispy }}
-	<input type='submit' class='btn btn-outline-danger btn-block' value="Перейти к оплате">
+	<legend>Контактные данные</legend>
+    <p>Текущий MMR: {{ mmr_from }}</p>
+    <p>Конечный MMR: {{ mmr_to }}</p>
+    <hr style="padding-bottom: 20px;">
+    <fieldset>
+<legend><span class="number">1</span> Контактные данные</legend>
+    {{ form.email|as_crispy_field }}
+    {{ form.login|as_crispy_field }}
+    {{ form.password|as_crispy_field }}
+</fieldset>
+<fieldset>
+    <legend><span class="number">2</span> Дополнительная информация</legend>
+    {{ form.vk|as_crispy_field }}
+    {{ form.skype|as_crispy_field }}
+    {{ form.phone|as_crispy_field }}
+</fieldset>
+	<input type='submit' value="Оплата">
 </form>
+</div>
 {% endblock %}
