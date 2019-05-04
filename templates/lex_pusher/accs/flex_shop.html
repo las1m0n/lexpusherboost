@@ -44,57 +44,8 @@
                   </div>
                 </div>
             </div>
-
-{#            <article class="account-item">#}
-{#                <div class="item-thumbnail">#}
-{#                    <a href="https://dotabooster.ru/wp-content/uploads/2019/04/Dota-2-Screenshot-2019.04.15-21.06.24.29.png" class="fancybox">#}
-{#                        <img src="{{account.image.url}}" alt="#" style='width:230px;height:220px;'>#}
-{#                    </a>#}
-{#                    <div class="price">#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="item-data">#}
-{#                    <br>Solo MMR: {{ account.solo_mmr }}<br>Party MMR: {{ account.party_mmr }}#}
-{#                </div>#}
-{#                <div class="btn-wrap">#}
-{#                    <a href="{% url 'add_to_cart' account_slug=account.slug %}">#}
-{#                        <button class="btn shadow">#}
-{#                            <span class="cart-icon">#}
-{#                            <i class="fas fa-shopping-cart">#}
-{#                            </i>#}
-{#                            </span>#}
-{#                        </button>#}
-{#                    </a>#}
-{#                </div>#}
-{#            </article>#}
         {% endfor %}
     </div>
 </div>
 
 {% endblock %}
-
-
-<div class="row">
-
-      {% for account in accounts %}
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100" style="padding:10px">
-          <img src={{account.image.url}} alt="" style='width:100%;height:250px;'>
-          <div class="card-body">
-            <h4 class="card-title">
-                <strong>
-                <a href="/">{{account.title}}</a>
-                </strong>
-            </h4>
-            <h5>{{account.price}} грн.</h5>
-            <p class="card-text">{{account.description}}</p>
-
-          </div>
-          <div class="card-footer">
-            <a href="{% url 'add_to_cart' account_slug=account.slug %}">
-              <button class="btn btn-outline-danger">Купить</button></a>
-          </div>
-        </div>
-      </div>
-        {% endfor %}
-</div>
