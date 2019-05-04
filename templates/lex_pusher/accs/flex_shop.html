@@ -53,3 +53,27 @@
 </div>
 
 {% endblock %}
+
+<div class="row">
+          {% for account in accounts %}
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100" style="padding:10px">
+              <img src={{account.image.url}} alt="" style='width:100%;height:250px;'>
+              <div class="card-body">
+                <h4 class="card-title">
+                    <strong>
+                    <a href="/">{{account.title}}</a>
+                    </strong>
+                </h4>
+                <h5>{{account.price}} грн.</h5>
+                <p class="card-text">{{account.description}}</p>
+
+              </div>
+              <div class="card-footer">
+                <a href="{% url 'add_to_cart' account_slug=account.slug %}">
+                  <button class="btn btn-outline-danger">Купить</button></a>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+</div>
