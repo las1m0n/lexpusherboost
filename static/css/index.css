@@ -10,8 +10,8 @@
     background-size: cover !important;
 }
 
-.bg-boost {
-    background: url("/static/img/boost.jpg") center no-repeat;
+.bg-bust {
+    background: url("/static/img/bust.jpg") center no-repeat;
     background-size: cover !important;
 }
 

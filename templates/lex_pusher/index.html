@@ -25,7 +25,7 @@
             <div class="dropdown-menu p-4 text-muted" aria-labelledby="dropdown">
               <h5>Укажите пин-код Вашего заказа</h5>
                 <p>для просмотра состояния и хода выполнения заказа</p>
-                <form>
+                <form method="POST" action="/client/">
 {#                    todo#}
                     {% csrf_token %}
                     <input placeholder="Ваш пин-код">
@@ -70,8 +70,8 @@
 
 
 
-    <div class="col py-5 darkmask bg-boost">
-        <a href="/boost/" style="text-decoration: none; color: #fff">
+    <div class="col py-5 darkmask bg-bust">
+        <a href="/bust/" style="text-decoration: none; color: #fff">
         <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
             <h1 class="display-4 font-weight-normal">Заказать буст</h1>
         </div>
@@ -116,25 +116,25 @@
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="feedback">
       <div class="col-md-12 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 font-weight-normal" style="padding-bottom: 100px;">Отзывы наших клиентов</h1>
+        <h1 class="display-4 font-weight-normal">Отзывы наших клиентов</h1>
       </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="society">
-      <div class="col-md-12 p-lg-5 mx-auto my-5" style="padding-right: 30px;">
+      <div class="col-md-12 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Наши соц сети</h1>
         <div class="container">
-          <div class="row p-5" style="font-size: 2em;">
-            <div class="col-sm" style="padding-top: 15px;">
+          <div class="row flex-row p-5" style="font-size: 2em;">
+            <div class="col-sm mt-2">
                 <a href="https://www.vk.com/"><button class="corner-button"><i class="fab fa-vk"></i></button></a>
             </div>
-            <div class="col-sm" style="padding-top: 15px;">
+            <div class="col-sm mt-2">
                 <a href="https://www.instagram.com/"><button class="corner-button"><i class="fab fa-instagram"></i></button></a>
             </div>
-            <div class="col-sm" style="padding-top: 15px;">
+            <div class="col-sm mt-2">
                 <a href="https://www.facebook.com/"><button class="corner-button"><i class="fab fa-facebook-f"></i></button></a>
             </div>
-            <div class="col-sm" style="padding-top: 15px;">
+            <div class="col-sm mt-2">
                 <a href="https://www.telegram.net/"><button class="corner-button"><i class="fab fa-telegram-plane"></i></button></a>
             </div>
           </div>

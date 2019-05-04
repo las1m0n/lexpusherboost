@@ -10,13 +10,13 @@
 {% block navbar %}
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="/">FLEX PUSHER</a>
-    <div class="collapse navbar-collapse" id="navbarsExample04">
+    <div class="collapse navbar-collapse" id="navbar">
     </div>
 </nav>
 {% endblock %}
 
 {% block content %}
-<form action='' method='POST'>
+<form action='' method='POST' class="p-3">
 	{% csrf_token %}
 	{{ form|crispy }}
 	<input type='submit' class='btn btn-outline-danger btn-block' value="Перейти к оплате">

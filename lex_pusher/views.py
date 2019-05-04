@@ -13,8 +13,8 @@ def client_view(request):
     return render(request, 'lex_pusher/client/lk_client.html', {})
 
 
-def booster_view(request):
-    return render(request, 'lex_pusher/booster/lk_booster.html', {})
+def buster_view(request):
+    return render(request, 'lex_pusher/buster/lk_buster.html', {})
 
 
 def shop_view(request):
@@ -46,12 +46,12 @@ def shop_cart_view(request, account_slug):
     return render(request, 'lex_pusher/accs/shop_cart.html', context)
 
 
-def shop_boost(request):
+def shop_bust(request):
     context = {}
-    return render(request, 'lex_pusher/client/flex_boost.html', context)
+    return render(request, 'lex_pusher/client/flex_bust.html', context)
 
 
-def boost_cart_view(request):
+def bust_cart_view(request):
     form = BoostCartForm(request.POST or None)
     mmr_from = request.GET.get("mmr_from", "")
     mmr_to = request.GET.get("mmr_to", "")
@@ -77,6 +77,6 @@ def boost_cart_view(request):
     context = {
         'form': form,
     }
-    return render(request, 'lex_pusher/client/boost_form.html', context)
+    return render(request, 'lex_pusher/client/bust_form.html', context)
 
 

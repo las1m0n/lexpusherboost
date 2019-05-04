@@ -5,6 +5,10 @@ html {
     min-height: 100%;
 }
 
+body {
+    margin-bottom: 3em !important;
+}
+
 .navbar-brand {
   font-family: 'Luckiest Guy', cursive;
 }

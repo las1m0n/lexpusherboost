@@ -7,11 +7,11 @@ from django.conf.urls import url
 urlpatterns = [
     path('', views.index_view, name='base'),
     path('client/', views.client_view, name='client'),
-    path('booster/', views.booster_view, name='booster'),
+    path('buster/', views.buster_view, name='buster'),
     path('shop/', views.shop_view, name='shop'),
     path('cart/<account_slug>/', views.shop_cart_view, name='add_to_cart'),
-    path('boost/', views.shop_boost, name='boost'),
-    url(r'^cart_boost$', views.boost_cart_view, name='add_to_boost'),
+    path('bust/', views.shop_bust, name='bust'),
+    url(r'^cart_bust$', views.bust_cart_view, name='add_to_bust'),
 ]
 
 # boost\/\?mmr_from\=[0-9]{1,4}\&mmr_to\=[0-9]{1,4}$
