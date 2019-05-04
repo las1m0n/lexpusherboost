@@ -10,11 +10,11 @@ def index_view(request):
 
 
 def client_view(request):
-    return render(request, 'lex_pusher/lk_client.html', {})
+    return render(request, 'lex_pusher/client/lk_client.html', {})
 
 
 def booster_view(request):
-    return render(request, 'lex_pusher/lk_booster.html', {})
+    return render(request, 'lex_pusher/booster/lk_booster.html', {})
 
 
 def shop_view(request):
@@ -22,7 +22,7 @@ def shop_view(request):
     context = {
         'accounts': account,
     }
-    return render(request, 'lex_pusher/flex_shop.html', context)
+    return render(request, 'lex_pusher/accs/flex_shop.html', context)
 
 
 def shop_cart_view(request, account_slug):
@@ -43,12 +43,12 @@ def shop_cart_view(request, account_slug):
     context = {
         'form': form,
     }
-    return render(request, 'lex_pusher/shop_cart.html', context)
+    return render(request, 'lex_pusher/accs/shop_cart.html', context)
 
 
 def shop_boost(request):
     context = {}
-    return render(request, 'lex_pusher/flex_boost.html', context)
+    return render(request, 'lex_pusher/client/flex_boost.html', context)
 
 
 def boost_cart_view(request):
@@ -77,6 +77,6 @@ def boost_cart_view(request):
     context = {
         'form': form,
     }
-    return render(request, 'lex_pusher/boost_form.html', context)
+    return render(request, 'lex_pusher/client/boost_form.html', context)
 
 
