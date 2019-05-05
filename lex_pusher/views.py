@@ -18,7 +18,7 @@ def buster_view(request):
 
 
 def shop_view(request):
-    account = Account.objects.all()
+    account = Account.objects.filter(available=True)
     context = {
         'accounts': account,
     }
