@@ -38,9 +38,11 @@
                         Solo MMR: {{ account.solo_mmr }} <br>
                         Party MMR: {{ account.party_mmr }}
                     </h6>
+                      <a href="{% url 'add_to_cart' account_slug=account.slug %}">
                     <button class="w-100 btn btn-outline-danger ">
                         <span class="cart-icon"><i class="fas fa-shopping-cart"></i></span>
                     </button>
+                      </a>
                   </div>
                 </div>
             </div>

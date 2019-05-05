@@ -25,13 +25,12 @@ SECRET_KEY = 'i)2t424^okfd75p3v#@a(6zz!!!=le_$b98xjc@x=1@my--7xm'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.1.2',
-    'svinandcebek.tk',
 ]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -126,3 +125,26 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'Django Suit',
+    'HEADER_DATE_FORMAT': 'l, j. F Y',
+    'HEADER_TIME_FORMAT': 'H:i',
+
+    'SHOW_REQUIRED_ASTERISK': True,
+    'CONFIRM_UNSAVED_CHANGES': True,
+    'SEARCH_URL': '/admin/auth/user/',
+    'MENU_ICONS': {
+       'sites': 'icon-leaf',
+       'auth': 'icon-lock',
+    },
+    'MENU_OPEN_FIRST_CHILD': True,
+    'MENU_EXCLUDE': ('auth.group',),
+    'MENU': (
+        'sites',
+        {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+        {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+        {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
+    ),
+    'LIST_PER_PAGE': 15
+}
