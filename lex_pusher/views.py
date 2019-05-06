@@ -10,6 +10,9 @@ def index_view(request):
 
 
 def client_view(request):
+    # if
+
+
     return render(request, 'lex_pusher/client/lk_client.html', {})
 
 
@@ -18,9 +21,9 @@ def buster_view(request):
 
 
 def shop_view(request):
-    account = Account.objects.filter(available=True)
+    accounts = Account.objects.filter(available=True)
     context = {
-        'accounts': account,
+        'accounts': accounts,
     }
     return render(request, 'lex_pusher/accs/flex_shop.html', context)
 

@@ -20,7 +20,7 @@ class Account(models.Model):
     available = models.BooleanField(default=True)
 
     def __str__(self):
-        return "{0} solo {1}, party {2}".format(self.title, self.solo_mmr, self.party_mmr)
+        return f"{self.title} solo {self.solo_mmr}, party {self.party_mmr}"
 
 
 class BuyAccount(models.Model):
@@ -30,21 +30,64 @@ class BuyAccount(models.Model):
     phone = models.CharField(max_length=120)
 
     def __str__(self):
-        return "Аккаунт {0} куплен с email-> {1}, skype-> {2}, phone-> {3}".\
-            format(self.account_slug, self.email, self.skype, self.phone)
+        return f"Аккаунт {self.account_slug} куплен с email-> {self.email}, skype-> {self.skype}, phone-> {self.phone}"
 
 
 class Client(models.Model):
-    mmr_from = models.IntegerField()
-    mmr_to = models.IntegerField()
+    client_id = models.IntegerField(primary_key=True)
+
     email = models.EmailField(default="0@gmail.com")
-    login = models.CharField(max_length=120)
     password = models.CharField(max_length=120)
-    more_info = models.BooleanField(blank=True, null=True)
+
     vk = models.CharField(max_length=120, default="VK", null=True, blank=True)
-    skype = models.CharField(max_length=120, default="Skype", blank=True, null=True)
+    skype = models.CharField(max_length=120, default="Skype", null=True, blank=True)
     phone = models.CharField(max_length=120, default="PHONE", null=True, blank=True)
 
+
+class Buster(models.Model):
+    buster_id = models.IntegerField(primary_key=True)
+
+    email = models.EmailField(default="0@gmail.com")
+    password = models.CharField(max_length=120)
+
+
+class Bust(models.Model):
+    bust_id = models.IntegerField(primary_key=True)
+
+    client_id = models.ForeignKey(Client, True)
+    buster_id = models.ForeignKey(Buster, True)
+
+    mmr_from = models.IntegerField()
+    mmr_to = models.IntegerField()
+
+    steam_login = models.CharField(max_length=120)
+    steam_password = models.CharField(max_length=120)
+
+    more_info = models.BooleanField(blank=True, null=True)
+
     def __str__(self):
-        return "Забустить c {0} mmr по {1} mmr, Логин '{2}' + пароль '{3}' ,куплен с email-> {4}".\
-            format(self.mmr_from, self.mmr_to, self.login, self.password, self.email)
+        return f"Забустить c {self.mmr_from} mmr по {self.mmr_to} mmr, " \
+                   f"Логин '{self.steam_login}' + пароль '{self.steam_password}'"
+
+
+class Stats(models.Model):
+    bust_id = models.ForeignKey(Bust, True)
+
+    match_id = models.IntegerField(primary_key=True)
+    mmr = models.FloatField()
+    is_win = models.BooleanField()
+    time = models.TimeField()
+
+
+
+
+
+
+
+
+
+
+
+
+
+

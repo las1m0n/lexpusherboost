@@ -1,0 +1,31 @@
+<div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" id="shop" style="padding-top: 100px;">
+  <div class="col-md-12 p-lg-7 mx-auto my-5">
+    <h1>Выбери кому бустить!</h1>
+    <p class="lead font-weight-normal">Кококо</p>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row flex-row">
+        {% for bust in busts %}
+            <div class="col-sm-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ bust.price }} ₽</h5>
+                    <hr>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        From MMR: {{ bust.solo_mmr }} <br>
+                        To MMR: {{ bust.party_mmr }}
+                    </h6>
+{#                      todo#}
+                      <a href="{% url 'add_to_cart' account_slug=account.slug %}">
+                    <button class="w-100 btn btn-outline-danger ">
+                        <span class="cart-icon"><i class="fas fa-shopping-cart"></i></span>
+                    </button>
+                      </a>
+                  </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
