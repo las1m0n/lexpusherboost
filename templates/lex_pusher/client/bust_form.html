@@ -27,15 +27,15 @@
     <hr style="padding-bottom: 20px;">
     <fieldset>
 <legend><span class="number">1</span> Контактные данные</legend>
-    {{ form.email|as_crispy_field }}
-    {{ form.login|as_crispy_field }}
-    {{ form.password|as_crispy_field }}
+    {{ form_acc.email|as_crispy_field }}
+    {{ form.steam_login|as_crispy_field }}
+    {{ form.steam_password|as_crispy_field }}
 </fieldset>
 <fieldset>
     <legend><span class="number">2</span> Дополнительная информация</legend>
-    {{ form.vk|as_crispy_field }}
-    {{ form.skype|as_crispy_field }}
-    {{ form.phone|as_crispy_field }}
+    {{ form_acc.vk|as_crispy_field }}
+    {{ form_acc.skype|as_crispy_field }}
+    {{ form_acc.phone|as_crispy_field }}
 </fieldset>
 	<input type='submit' value="Оплата">
 </form>

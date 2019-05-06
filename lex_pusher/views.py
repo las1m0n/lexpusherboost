@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Account
-from .forms import ShopCartForm, BoostCartForm
+from .forms import ShopCartForm, BoostCartForm, ClientForm
 from django.urls import reverse
 
 
@@ -59,29 +59,34 @@ def shop_bust(request):
 
 def bust_cart_view(request):
     form = BoostCartForm(request.POST or None)
+    form_acc = ClientForm(request.POST or None)
     mmr_from = request.GET.get("mmr_from", "")
     mmr_to = request.GET.get("mmr_to", "")
     if form.is_valid():
         new_boost = form.save(commit=False)
-        email = form.cleaned_data['email']
-        login = form.cleaned_data['login']
-        password = form.cleaned_data['password']
-        vk = form.cleaned_data['vk']
-        skype = form.cleaned_data['skype']
-        phone = form.cleaned_data['phone']
+        new_client = form_acc.save(commit=False)
+        email = form_acc.cleaned_data['email']
+        vk = form_acc.cleaned_data['vk']
+        skype = form_acc.cleaned_data['skype']
+        phone = form_acc.cleaned_data['phone']
+        steam_login = form.cleaned_data['steam_login']
+        steam_password = form.cleaned_data['steam_password']
         new_boost.mmr_from = mmr_from
         new_boost.mmr_to = mmr_to
-        new_boost.email = email
-        new_boost.login = login
-        new_boost.password = password
-        new_boost.skype = skype
-        new_boost.phone = phone
-        new_boost.vk = vk
+        new_boost.steam_login = steam_login
+        new_boost.steam_password = steam_password
+        new_client.email = email
+        new_client.skype = skype
+        new_client.phone = phone
+        new_client.vk = vk
+        new_client.password = "12345678"
         new_boost.save()
+        new_client.save()
         return HttpResponseRedirect(reverse('base'))
 
     context = {
         'form': form,
+        'form_acc': form_acc,
         'mmr_from': mmr_from,
         'mmr_to': mmr_to,
     }
