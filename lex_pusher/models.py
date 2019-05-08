@@ -63,14 +63,14 @@ pre_save.connect(pre_save_client_slug, sender=Client)
 
 
 class Buster(models.Model):
-    slug = models.SlugField(blank=True, default="cebek")
+    slug = models.SlugField(blank=True)
 
     password = models.CharField(max_length=120)
     email = models.EmailField(default="0@gmail.com")
 
 
 class Bust(models.Model):
-    slug = models.SlugField(blank=True, null=True, default="cebek")
+    slug = models.SlugField(blank=True, null=True)
 
     client_slug = models.ForeignKey(Client, True, null=True)
     buster_slug = models.ForeignKey(Buster, True, null=True)
@@ -98,24 +98,13 @@ def pre_save_bust_slug(sender, instance, *args, **kwargs):
 pre_save.connect(pre_save_bust_slug, sender=Bust)
 
 
-class Stats:
-    pass
-#     bust_id = models.ForeignKey(Bust, True)
-#
-#     match_id = models.IntegerField(primary_key=True)
-#     mmr = models.FloatField()
-#     is_win = models.BooleanField()
-#     time = models.TimeField()
+class Stat(models.Model):
+    bust_id = models.ForeignKey(Bust, True)
 
-
-
-
-
-
-
-
-
-
+    match_id = models.IntegerField(primary_key=True)
+    mmr = models.FloatField()
+    is_win = models.BooleanField()
+    time = models.TimeField()
 
 
 

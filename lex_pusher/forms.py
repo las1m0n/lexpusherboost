@@ -1,6 +1,6 @@
 from django import forms
 from django.utils import timezone
-from .models import BuyAccount, Client, Bust, Buster, Stats
+from .models import BuyAccount, Client, Bust, Buster, Stat
 from django.contrib.auth.models import User
 
 
