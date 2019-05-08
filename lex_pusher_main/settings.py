@@ -127,7 +127,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 SUIT_CONFIG = {
-    'ADMIN_NAME': 'Django Suit',
+    'ADMIN_NAME': 'Flex Pusher',
     'HEADER_DATE_FORMAT': 'l, j. F Y',
     'HEADER_TIME_FORMAT': 'H:i',
 
@@ -143,8 +143,6 @@ SUIT_CONFIG = {
     'MENU': (
         'sites',
         {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
-        {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
-        {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
     ),
     'LIST_PER_PAGE': 15
 }
