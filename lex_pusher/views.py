@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
-from .models import Account
+from .models import Account, Stats
 from .forms import ShopCartForm, BoostCartForm
 from django.urls import reverse
 
@@ -10,10 +10,32 @@ def index_view(request):
 
 
 def client_view(request):
-    # if
+    # if not auth:
+    #   return govno
 
+    client_id = 123  # todo
+    #stats = Stats.objects.filter(client_id=client_id)
 
-    return render(request, 'lex_pusher/client/lk_client.html', {})
+    class Stat:
+        from random import randint
+        time = randint(1, 100)
+        mmr = randint(1, 100)
+
+    stats = [Stat() for i in range(100)]
+
+    times = []
+    values = []
+
+    for stat in stats:
+        times.append(stat.time)
+        values.append(stat.mmr)
+
+    context = {
+        'stats_times': times,
+        'stats_values':  values,
+    }
+
+    return render(request, 'lex_pusher/client/lk_client.html', context)
 
 
 def buster_view(request):
