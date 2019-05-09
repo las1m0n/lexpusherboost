@@ -106,6 +106,3 @@ class Stat(models.Model):
     is_win = models.BooleanField()
     time = models.TimeField()
 
-
-
-
