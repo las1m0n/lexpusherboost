@@ -3,26 +3,54 @@ from django.http import HttpResponseRedirect, JsonResponse
 from .models import Account, Bust, Stat
 from .forms import ShopCartForm, BoostCartForm, ClientForm
 from django.urls import reverse
+from datetime import datetime
 
 
 def index_view(request):
     return render(request, 'lex_pusher/index.html', {})
 
 
-def client_view(request):
-    # if
 
+
+
+
+from modules import opendota
+
+
+def update_stat(bust):
+    ratings = opendota.ratings(bust.steam_id)
+    stats = Stat.objects.filter(bust_id=bust.id)
+    stats = [stat.match_id for stat in stats]
+
+    for r in ratings:
+        if r['match_id'] in stats:
+            continue
+        if not r['solo_competitive_rank']:
+            continue
+        if r['time'].date() < bust.start_date:
+            continue
+
+        stat = Stat(
+            bust_id=bust,
+            match_id=r['match_id'],
+            mmr=r['solo_competitive_rank'],
+            time=r['time']
+        )
+        stat.save()
+
+
+def client_view(request):
     client_id = 1
 
     bust = Bust.objects.get(client_id=client_id)
     stats = Stat.objects.filter(bust_id=bust.id)
 
+    update_stat(bust)
+
     context = {
-        'stats_times': [str(i.time) for i in stats],
+        'stats_times': [i.time.strftime("%m.%d, %H:%M") for i in stats],
         'stats_values': [i.mmr for i in stats],
     }
-
-    print(context)
 
     return render(request, 'lex_pusher/client/lk_client.html', context)
 

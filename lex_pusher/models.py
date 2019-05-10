@@ -4,6 +4,7 @@ import uuid
 from django.urls import reverse
 from decimal import Decimal
 from django.db.models.signals import pre_save
+from datetime import datetime
 
 
 def image_folder(instance, filename):
@@ -60,8 +61,11 @@ class Bust(models.Model):
     mmr_from = models.IntegerField()
     mmr_to = models.IntegerField()
 
+    steam_id = models.IntegerField(null=True)
     steam_login = models.CharField(max_length=120)
     steam_password = models.CharField(max_length=120)
+
+    start_date = models.DateField(default=datetime.now)
 
     def __str__(self):
         return f"{self.id} Забустить c {self.mmr_from} mmr по {self.mmr_to} mmr, " \
@@ -71,11 +75,7 @@ class Bust(models.Model):
 class Stat(models.Model):
     bust_id = models.ForeignKey(Bust, True)
 
-    match_id = models.IntegerField(primary_key=True)
+    match_id = models.IntegerField(null=True)
     mmr = models.FloatField()
-    is_win = models.BooleanField()
-    time = models.TimeField()
-
-
-
+    time = models.DateTimeField()
 
