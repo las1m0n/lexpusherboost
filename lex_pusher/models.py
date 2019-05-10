@@ -37,8 +37,6 @@ class BuyAccount(models.Model):
 
 
 class Client(models.Model):
-    slug = models.SlugField(blank=True, default="model")
-
     password = models.CharField(max_length=120, default="password")
 
     vk = models.CharField(max_length=120, default="VK", null=True, blank=True)
@@ -47,33 +45,17 @@ class Client(models.Model):
     email = models.EmailField(default="0@gmail.com")
 
     def __str__(self):
-        return f"Клиент {self.slug} с email-> {self.email}, skype-> {self.skype}, phone-> {self.phone}"
-
-    def slug_create(self):
-        return f"{self.email} + skype {self.skype} + phone {self.phone}"
-
-
-def pre_save_client_slug(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        slug = str(instance.slug_create())
-        instance.slug = slug
-
-
-pre_save.connect(pre_save_client_slug, sender=Client)
+        return f"Клиент {self.id} с email-> {self.email}, skype-> {self.skype}, phone-> {self.phone}"
 
 
 class Buster(models.Model):
-    slug = models.SlugField(blank=True)
-
     password = models.CharField(max_length=120)
     email = models.EmailField(default="0@gmail.com")
 
 
 class Bust(models.Model):
-    slug = models.SlugField(blank=True, null=True)
-
-    client_slug = models.ForeignKey(Client, True, null=True)
-    buster_slug = models.ForeignKey(Buster, True, null=True)
+    client_id = models.ForeignKey(Client, True, null=True)
+    buster_id = models.ForeignKey(Buster, True, null=True)
 
     mmr_from = models.IntegerField()
     mmr_to = models.IntegerField()
@@ -82,20 +64,8 @@ class Bust(models.Model):
     steam_password = models.CharField(max_length=120)
 
     def __str__(self):
-        return f"Забустить c {self.mmr_from} mmr по {self.mmr_to} mmr, " \
+        return f"{self.id} Забустить c {self.mmr_from} mmr по {self.mmr_to} mmr, " \
                    f"Логин '{self.steam_login}' + пароль '{self.steam_password}'"
-
-    def slug_create(self):
-        return f"Boost {self.mmr_from} -> {self.mmr_to} login {self.steam_login}"
-
-
-def pre_save_bust_slug(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        slug = str(instance.slug_create())
-        instance.slug = slug
-
-
-pre_save.connect(pre_save_bust_slug, sender=Bust)
 
 
 class Stat(models.Model):
