@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
-from .models import Account
+from .models import Account, Bust, Stat
 from .forms import ShopCartForm, BoostCartForm, ClientForm
 from django.urls import reverse
 
@@ -12,8 +12,19 @@ def index_view(request):
 def client_view(request):
     # if
 
+    client_id = 1
 
-    return render(request, 'lex_pusher/client/lk_client.html', {})
+    bust = Bust.objects.get(client_id=client_id)
+    stats = Stat.objects.filter(bust_id=bust.id)
+
+    context = {
+        'stats_times': [str(i.time) for i in stats],
+        'stats_values': [i.mmr for i in stats],
+    }
+
+    print(context)
+
+    return render(request, 'lex_pusher/client/lk_client.html', context)
 
 
 def buster_view(request):

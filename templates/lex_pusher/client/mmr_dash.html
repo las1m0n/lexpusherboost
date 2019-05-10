@@ -5,34 +5,14 @@
 <script>
 
 (function () {
-    {#todo #}
-
-
   var ctx = document.getElementById('myChart');
 
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-      ],
+      labels: {{ stats_times|safe }},
       datasets: [{
-        data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          23489,
-          24092,
-          12034
-        ],
-        lineTension: 0,
+        data: {{ stats_values }},
         backgroundColor: 'transparent',
         borderColor: '#007bff',
         borderWidth: 4,
