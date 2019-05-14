@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
+from django.conf import settings
+from users.models import CustomUser
 import uuid
 from django.urls import reverse
 from decimal import Decimal
@@ -36,25 +38,17 @@ class BuyAccount(models.Model):
             f"phone-> {self.phone}"
 
 
-class Client(models.Model):
-    password = models.CharField(max_length=120, default="password")
-
-    vk = models.CharField(max_length=120, default="VK", null=True, blank=True)
-    skype = models.CharField(max_length=120, default="Skype", null=True, blank=True)
-    phone = models.CharField(max_length=120, default="PHONE", null=True, blank=True)
-    email = models.EmailField(default="0@gmail.com")
-
-    def __str__(self):
-        return f"Клиент {self.id} с email-> {self.email}, skype-> {self.skype}, phone-> {self.phone}"
-
-
 class Buster(models.Model):
     password = models.CharField(max_length=120)
     email = models.EmailField(default="0@gmail.com")
 
+    def __str__(self):
+        return f"Клиент {self.id} с email-> {self.email} and password->{self.password}"
+
 
 class Bust(models.Model):
-    client_id = models.ForeignKey(Client, True, null=True)
+
+    client = models.ForeignKey(settings.AUTH_USER_MODEL, True)
     buster_id = models.ForeignKey(Buster, True, null=True)
 
     mmr_from = models.IntegerField()

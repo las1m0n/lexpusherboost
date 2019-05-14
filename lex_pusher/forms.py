@@ -1,7 +1,7 @@
 from django import forms
-from django.utils import timezone
-from .models import BuyAccount, Client, Bust, Buster, Stat
-from django.contrib.auth.models import User
+from .models import BuyAccount, Bust, Buster, Stat
+from users.models import CustomUser
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 
 class ShopCartForm(forms.ModelForm):
@@ -27,12 +27,10 @@ class BoostCartForm(forms.ModelForm):
     steam_password = forms.CharField(widget=forms.PasswordInput)
     mmr_from = forms.IntegerField(widget=forms.HiddenInput, disabled=True, required=False)
     mmr_to = forms.IntegerField(widget=forms.HiddenInput, disabled=True, required=False)
-    slug = forms.SlugField(widget=forms.HiddenInput, disabled=True, required=False)
 
     class Meta:
         model = Bust
         fields = {
-            'slug',
             'mmr_from',
             'mmr_to',
             'steam_login',
@@ -46,15 +44,21 @@ class BoostCartForm(forms.ModelForm):
         self.fields['steam_password'].label = "Пароль от Steam"
 
 
-class ClientForm(forms.ModelForm):
+class ClientForm(UserCreationForm):
     email = forms.CharField(widget=forms.EmailInput)
     skype = forms.CharField(required=False)
     vk = forms.CharField(required=False)
     phone = forms.CharField(required=False)
+    username = forms.CharField(required=False, widget=forms.HiddenInput)
+    password1 = forms.CharField(required=False, widget=forms.HiddenInput)
+    password2 = forms.CharField(required=False, widget=forms.HiddenInput)
 
     class Meta:
-        model = Client
+        model = CustomUser
         fields = {
+            'username',
+            'password1',
+            'password2',
             'email',
             'skype',
             'vk',
@@ -69,3 +73,30 @@ class ClientForm(forms.ModelForm):
         self.fields['vk'].label = "VK id"
         self.fields['phone'].label = "Phone"
 
+
+class CustomUserChangeForm(UserChangeForm):
+
+    class Meta:
+        model = CustomUser
+        fields = ('password', 'email', 'vk', 'skype', 'phone')
+
+
+class LoginForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = CustomUser
+        fields = {
+            'password',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+
+        self.fields['password'].label = 'PIN-CODE'
+
+    def clean(self):
+        password = self.cleaned_data['password']
+        user = CustomUser.objects.get(password=password)
+        if user and not user.check_password(password):
+            raise forms.ValidationError('Неверный пароль!')
