@@ -49,7 +49,7 @@ class Buster(models.Model):
 
 class Bust(models.Model):
 
-    client = models.ForeignKey(settings.AUTH_USER_MODEL, True)
+    client = models.ForeignKey(CustomUser, True, blank=True, null=True)
     buster_id = models.ForeignKey(Buster, True, null=True)
 
     mmr_from = models.IntegerField()

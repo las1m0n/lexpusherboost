@@ -2,6 +2,12 @@ from django import forms
 from .models import BuyAccount, Bust, Buster, Stat
 from users.models import CustomUser
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.contrib.auth import login, authenticate
+
+
+User = get_user_model()
 
 
 class ShopCartForm(forms.ModelForm):
@@ -74,15 +80,9 @@ class ClientForm(UserCreationForm):
         self.fields['phone'].label = "Phone"
 
 
-class CustomUserChangeForm(UserChangeForm):
-
-    class Meta:
-        model = CustomUser
-        fields = ('password', 'email', 'vk', 'skype', 'phone')
-
-
 class LoginForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
+    # email = forms.EmailField(widget=forms.HiddenInput, required=True)
 
     class Meta:
         model = CustomUser
@@ -97,6 +97,8 @@ class LoginForm(forms.ModelForm):
 
     def clean(self):
         password = self.cleaned_data['password']
-        user = CustomUser.objects.get(password=password)
-        if user and not user.check_password(password):
-            raise forms.ValidationError('Неверный пароль!')
+        if password:
+            user = authenticate(email="data@"+password, password=password)
+            if not user:
+                raise forms.ValidationError('Неверный пароль!')
+

@@ -4,7 +4,6 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
-from users.forms import CustomUserCreationForm
 from users.models import CustomUser
 
 admin.site.site_header = "FLEX PUSHER ADMIN PANEL"

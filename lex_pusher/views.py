@@ -4,8 +4,9 @@ from django.http import HttpResponseRedirect, JsonResponse
 from .models import Account, Bust, Stat, Buster
 from .forms import ShopCartForm, BoostCartForm, ClientForm, LoginForm
 from django.urls import reverse
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from users.models import CustomUser
+from modules import opendota
 from datetime import datetime
 
 
@@ -13,22 +14,17 @@ def index_view(request):
     form = LoginForm(request.POST or None)
     if form.is_valid():
         password = form.cleaned_data['password']
-        login_user = authenticate(password=password)
-        if login_user:
+        login_user = authenticate(request, email="data@"+password, password=password)
+        if login_user is not None:
             login(request, login_user)
+            return HttpResponseRedirect(reverse('client'))
+        else:
             return HttpResponseRedirect(reverse('base'))
 
     context = {
         'form': form
     }
     return render(request, 'lex_pusher/index.html', context)
-
-
-
-
-
-
-from modules import opendota
 
 
 def update_stat(bust):
@@ -124,21 +120,21 @@ def bust_cart_view(request):
         steam_login = form.cleaned_data['steam_login']
         steam_password = form.cleaned_data['steam_password']
         secret = secrets.token_hex(nbytes=8)
-        secret2 = secrets.token_hex(nbytes=16)
         Bust.objects.create(
-            client=request.user,
+            client=None,
             mmr_from=mmr_from,
             mmr_to=mmr_to,
+            steam_id=1111,
             steam_login=steam_login,
             steam_password=steam_password
         )
         CustomUser.objects.create_user(
-            email=email,
+            email="data@"+secret,
             skype=skype,
             phone=phone,
             vk=vk,
-            username=secret,
-            password=secret2,
+            username=email,
+            password=secret,
         )
         return HttpResponseRedirect(reverse('base'))
 
@@ -153,7 +149,6 @@ def bust_cart_view(request):
 
 def login_view(request):
     form = LoginForm(request.POST or None)
-    categories = Category.objects.all()
     if form.is_valid():
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
@@ -161,3 +156,8 @@ def login_view(request):
         if login_user:
             login(request, login_user)
             return HttpResponseRedirect(reverse('base'))
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('base'))

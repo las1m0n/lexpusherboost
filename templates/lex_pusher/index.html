@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="menu">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <a class="navbar-brand" href="#">FLEX PUSHER</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,21 +33,25 @@
             </div>
         </li>
         {% else %}
-        <li class="nav-item active">
-            <a class='nav-link active' href="{% url 'client' %}">Личный кабинет</a>
+        <li class="nav-item active ">
+            <a class='nav-link active' href="{% url 'client' %}"><i class="fas fa-user"></i> {{request.user.username}}</a>
+        </li>
+        <li class="nav-item active border-right">
+            <a class='nav-link active' href="{% url 'logout' %}">Выйти</a>
         </li>
         {% endif %}
         <li class="nav-item">
-          <a class="nav-link" href="#about">О нас</a>
+          <a class="nav-link scrollto" href="#about">О нас</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#feedback">Отзывы</a>
+          <a class="nav-link scrollto" href="#feedback">Отзывы</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#warranty">Гарантии</a>
+          <a class="nav-link scrollto" href="#warranty">Гарантии</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#society">Контакты</a>
+          <a class="nav-link scrollto" href="#society">Контакты</a>
+        </li>
         </ul>
       </div>
 
