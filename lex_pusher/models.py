@@ -1,9 +1,12 @@
 from __future__ import unicode_literals
 from django.db import models
+from django.conf import settings
+from users.models import CustomUser
 import uuid
 from django.urls import reverse
 from decimal import Decimal
 from django.db.models.signals import pre_save
+from datetime import datetime
 
 
 def image_folder(instance, filename):
@@ -36,76 +39,37 @@ class BuyAccount(models.Model):
             f"phone-> {self.phone}"
 
 
-class Client(models.Model):
-    slug = models.SlugField(blank=True, default="model")
-
-    password = models.CharField(max_length=120, default="password")
-
-    vk = models.CharField(max_length=120, default="VK", null=True, blank=True)
-    skype = models.CharField(max_length=120, default="Skype", null=True, blank=True)
-    phone = models.CharField(max_length=120, default="PHONE", null=True, blank=True)
-    email = models.EmailField(default="0@gmail.com")
-
-    def __str__(self):
-        return f"Клиент {self.slug} с email-> {self.email}, skype-> {self.skype}, phone-> {self.phone}"
-
-    def slug_create(self):
-        return f"{self.email} + skype {self.skype} + phone {self.phone}"
-
-
-def pre_save_client_slug(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        slug = str(instance.slug_create())
-        instance.slug = slug
-
-
-pre_save.connect(pre_save_client_slug, sender=Client)
-
-
 class Buster(models.Model):
-    slug = models.SlugField(blank=True)
-
     password = models.CharField(max_length=120)
     email = models.EmailField(default="0@gmail.com")
 
+    def __str__(self):
+        return f"Клиент {self.id} с email-> {self.email} and password->{self.password}"
+
 
 class Bust(models.Model):
-    slug = models.SlugField(blank=True, null=True)
 
-    client_slug = models.ForeignKey(Client, True, null=True)
-    buster_slug = models.ForeignKey(Buster, True, null=True)
+    client = models.ForeignKey(CustomUser, True, blank=True, null=True)
+    buster_id = models.ForeignKey(Buster, True, null=True)
 
     mmr_from = models.IntegerField()
     mmr_to = models.IntegerField()
 
+    steam_id = models.IntegerField(null=True)
     steam_login = models.CharField(max_length=120)
     steam_password = models.CharField(max_length=120)
 
+    start_date = models.DateField(default=datetime.now)
+
     def __str__(self):
-        return f"Забустить c {self.mmr_from} mmr по {self.mmr_to} mmr, " \
+        return f"{self.id} Забустить c {self.mmr_from} mmr по {self.mmr_to} mmr, " \
                    f"Логин '{self.steam_login}' + пароль '{self.steam_password}'"
-
-    def slug_create(self):
-        return f"Boost {self.mmr_from} -> {self.mmr_to} login {self.steam_login}"
-
-
-def pre_save_bust_slug(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        slug = str(instance.slug_create())
-        instance.slug = slug
-
-
-pre_save.connect(pre_save_bust_slug, sender=Bust)
 
 
 class Stat(models.Model):
     bust_id = models.ForeignKey(Bust, True)
 
-    match_id = models.IntegerField(primary_key=True)
+    match_id = models.IntegerField(null=True)
     mmr = models.FloatField()
-    is_win = models.BooleanField()
-    time = models.TimeField()
-
-
-
+    time = models.DateTimeField()
 
