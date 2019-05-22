@@ -29,7 +29,7 @@ class ShopCartForm(forms.ModelForm):
         self.fields['phone'].label = "Телефон"
 
 
-class BoostCartForm(forms.ModelForm):
+class BustCartForm(forms.ModelForm):
     steam_password = forms.CharField(widget=forms.PasswordInput)
     mmr_from = forms.IntegerField(widget=forms.HiddenInput, disabled=True, required=False)
     mmr_to = forms.IntegerField(widget=forms.HiddenInput, disabled=True, required=False)
@@ -44,7 +44,7 @@ class BoostCartForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        super(BoostCartForm, self).__init__(*args, **kwargs)
+        super(BustCartForm, self).__init__(*args, **kwargs)
 
         self.fields['steam_login'].label = "Логин от Steam"
         self.fields['steam_password'].label = "Пароль от Steam"

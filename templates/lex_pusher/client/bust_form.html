@@ -24,6 +24,8 @@
 	<legend>Контактные данные</legend>
     <p>Текущий MMR: {{ mmr_from }}</p>
     <p>Конечный MMR: {{ mmr_to }}</p>
+    {{ form.mmr_from|as_crispy_field }}
+    {{ form.mmr_to|as_crispy_field }}
     <hr style="padding-bottom: 20px;">
     <fieldset>
 <legend><span class="number">1</span> Контактные данные</legend>

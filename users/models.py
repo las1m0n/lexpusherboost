@@ -44,11 +44,9 @@ class MyUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(default="0@gmail.com", unique=True, null=True, verbose_name="Name User")
-    username = models.CharField(max_length=120, default="nothing", blank=True, null=True, verbose_name="Real Email")
-    first_name = models.CharField(default="nothing", max_length=30, blank=True, null=True)
-    last_name = models.CharField(default="nothing", max_length=150, blank=True, null=True)
-    date_joined = models.DateTimeField(default=timezone.now)
+    email = models.EmailField(verbose_name="Email")
+    username = models.CharField(max_length=120, verbose_name="username")
+    password = models.CharField(max_length=120, unique=True, verbose_name="Password")
     vk = models.CharField(max_length=120, default="VK", null=True, blank=True)
     skype = models.CharField(max_length=120, default="Skype", null=True, blank=True)
     phone = models.CharField(max_length=120, default="PHONE", null=True, blank=True)
@@ -66,7 +64,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             'Unselect this instead of deleting accounts.'
         ),
     )
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'password'
     EMAIL_FIELD = 'email'
     objects = MyUserManager()
 

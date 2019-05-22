@@ -23,7 +23,7 @@
         {% if not request.user.is_authenticated %}
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Лог клиента</a>
-            <div class="dropdown-menu p-4 text-muted" aria-labelledby="dropdown">
+            <div class="dropdown-menu p-4 text-muted dropdown-menu-lg-right" style="min-width: 20rem;" aria-labelledby="dropdown">
               <h5>Укажите пин-код Вашего заказа</h5>
                 <p>для просмотра состояния и хода выполнения заказа</p>
                 <form method="POST" action="">
@@ -34,9 +34,9 @@
         </li>
         {% else %}
         <li class="nav-item active ">
-            <a class='nav-link active' href="{% url 'client' %}"><i class="fas fa-user"></i> {{request.user.username}}</a>
+            <a class='nav-link active' href="{% url 'client' %}"><i class="fas fa-user"></i> Личный кабинет </a>
         </li>
-        <li class="nav-item active border-right">
+        <li class="nav-item active">
             <a class='nav-link active' href="{% url 'logout' %}">Выйти</a>
         </li>
         {% endif %}
