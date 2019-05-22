@@ -29,7 +29,7 @@ class Account(models.Model):
 
 
 class BuyAccount(models.Model):
-    account_slug = models.SlugField(default="acc 322")
+    account_slug = models.SlugField(primary_key=True)
     email = models.CharField(max_length=120)
     skype = models.CharField(max_length=120)
     phone = models.CharField(max_length=120)
@@ -55,7 +55,6 @@ class Bust(models.Model):
     mmr_from = models.IntegerField()
     mmr_to = models.IntegerField()
 
-    steam_id = models.IntegerField(null=True)
     steam_login = models.CharField(max_length=120)
     steam_password = models.CharField(max_length=120)
 
