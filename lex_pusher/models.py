@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.conf import settings
-from users.models import CustomUser
 import uuid
 from django.urls import reverse
 from decimal import Decimal
@@ -15,6 +14,10 @@ def image_folder(instance, filename):
 
 
 class Account(models.Model):
+    class Meta:
+        verbose_name = 'Буст'
+        verbose_name_plural = 'Аккаунты на продажу'
+
     title = models.CharField(max_length=120)
     solo_mmr = models.CharField(max_length=120)
     party_mmr = models.CharField(max_length=120)
@@ -29,6 +32,10 @@ class Account(models.Model):
 
 
 class BuyAccount(models.Model):
+    class Meta:
+        verbose_name = 'Аккаунт'
+        verbose_name_plural = 'Покупатели аккаунтов готовых'
+
     account_slug = models.SlugField(primary_key=True)
     email = models.CharField(max_length=120)
     skype = models.CharField(max_length=120)
@@ -40,16 +47,32 @@ class BuyAccount(models.Model):
 
 
 class Buster(models.Model):
-    password = models.CharField(max_length=120)
-    email = models.EmailField(default="0@gmail.com")
+
+    class Meta:
+        verbose_name = 'Заявка на бустера'
+        verbose_name_plural = 'Заявки на бустера'
+
+    booster_acc = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
+    name = models.CharField(max_length=120,blank=True, null=True)
+    phone = models.CharField(max_length=120, blank=True, null=True)
+    email = models.EmailField()
+    vk = models.CharField(max_length=120, blank=True, null=True)
+    skype = models.CharField(max_length=120, blank=True, null=True)
+    wmr = models.CharField(max_length=120, blank=True, null=True)
+    solo_mmr = models.IntegerField(default=1)
+    experience = models.TextField(default="Nothing")
 
     def __str__(self):
-        return f"Клиент {self.id} с email-> {self.email} and password->{self.password}"
+        return f"Заявка на бустера {self.id}, {self.name} и с email-> {self.email}"
 
 
 class Bust(models.Model):
 
-    client = models.ForeignKey(CustomUser, True, blank=True, null=True)
+    class Meta:
+        verbose_name = 'Буст'
+        verbose_name_plural = 'Бусты'
+
+    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     buster_id = models.ForeignKey(Buster, True, null=True)
 
     mmr_from = models.IntegerField()
@@ -66,8 +89,11 @@ class Bust(models.Model):
 
 
 class Stat(models.Model):
-    bust_id = models.ForeignKey(Bust, True)
+    class Meta:
+        verbose_name = 'Стат'
+        verbose_name_plural = 'Статы'
 
+    bust_id = models.ForeignKey(Bust, True)
     match_id = models.IntegerField(null=True)
     mmr = models.FloatField()
     time = models.DateTimeField()

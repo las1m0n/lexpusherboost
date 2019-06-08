@@ -29,17 +29,30 @@
                 <form method="POST" action="">
                     {% csrf_token %}
                     {{ form.password|as_crispy_field }}
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                                <strong>{{ error|escape }}</strong>
+                        {% endfor %}
+                    {% endif %}
                 </form>
             </div>
         </li>
         {% else %}
         <li class="nav-item active ">
-            <a class='nav-link active' href="{% url 'client' %}"><i class="fas fa-user"></i> Личный кабинет </a>
+            <a class='nav-link active' href="{% url 'client' %}"><i class="fas fa-user"></i> Кабинет </a>
         </li>
         <li class="nav-item active">
             <a class='nav-link active' href="{% url 'logout' %}">Выйти</a>
         </li>
         {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'buster' %}">Бустерам</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link scrollto" href="#about">О нас</a>
         </li>

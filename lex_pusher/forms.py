@@ -98,7 +98,33 @@ class LoginForm(forms.ModelForm):
     def clean(self):
         password = self.cleaned_data['password']
         if password:
-            user = authenticate(email="data@"+password, password=password)
+            user = authenticate(username=password, password=password)
             if not user:
                 raise forms.ValidationError('Неверный пароль!')
 
+
+class BusterApplicationForm(forms.ModelForm):
+
+    class Meta:
+        model = Buster
+        fields = {
+            'name',
+            'phone',
+            'email',
+            'skype',
+            'vk',
+            'wmr',
+            'solo_mmr',
+            'experience'
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(BusterApplicationForm, self).__init__(*args, **kwargs)
+
+        self.fields['name'].label = "Имя Фамилия"
+        self.fields['phone'].label = "Номер телефона"
+        self.fields['email'].label = "Email"
+        self.fields['skype'].label = "Skype"
+        self.fields['wmr'].label = "WMR кошелек"
+        self.fields['solo_mmr'].label = "Текущий соло ммр"
+        self.fields['experience'].label = "О своих навыках"

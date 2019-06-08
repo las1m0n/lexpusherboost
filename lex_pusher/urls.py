@@ -8,6 +8,8 @@ urlpatterns = [
     path('', views.index_view, name='base'),
     path('client/', views.client_view, name='client'),
     path('buster/', views.buster_view, name='buster'),
+    path('new_buster/', views.buster_form_view, name='new_booster'),
+    path('success_form/', views.success_form_view, name='end_buster'),
     path('shop/', views.shop_view, name='shop'),
     path('cart/<account_slug>/', views.shop_cart_view, name='add_to_cart'),
     path('bust/', views.shop_bust, name='bust'),
@@ -16,4 +18,3 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout')
 ]
 
-# boost\/\?mmr_from\=[0-9]{1,4}\&mmr_to\=[0-9]{1,4}$

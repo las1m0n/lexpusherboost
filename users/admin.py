@@ -4,7 +4,6 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
-from lex_pusher.forms import ClientForm
 from .models import CustomUser
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth import get_user_model
@@ -24,8 +23,8 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('email', 'password1', 'password2'),
         }),
     )
-    list_display = ('email', 'username', 'vk', 'skype', 'phone', 'is_staff')
-    search_fields = ('email', 'vk', 'skype', 'phone')
+    list_display = ('email', 'username', 'vk', 'phone', 'is_staff', 'is_booster', 'is_client')
+    search_fields = ('email', 'vk', 'phone', 'is_staff', 'is_booster', 'is_client')
     ordering = ('email',)
 
 
