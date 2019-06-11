@@ -2,10 +2,9 @@ import secrets
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Account, Bust, Stat, Buster
-from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm
+from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm
 from django.urls import reverse
 from django.contrib.auth import login, authenticate, logout
-from users.models import CustomUser
 from datetime import datetime
 
 
@@ -39,13 +38,28 @@ def client_view(request):
 
 
 def buster_view(request):
-    return render(request, 'lex_pusher/buster/lk_buster.html', {})
+    form = LoginBusterForm(request.POST or None)
+    if form.is_valid():
+        password = form.cleaned_data['password']
+        username = form.cleaned_data['username']
+        login_user = authenticate(request, username=username, password=password)
+        if login_user is not None:
+            login(request, login_user)
+            return HttpResponseRedirect(reverse('buster_cabinet'))
+        else:
+            return HttpResponseRedirect(reverse('base'))
+
+    context = {
+        'form': form
+    }
+    return render(request, 'lex_pusher/buster/lk_buster.html', context)
 
 
 def buster_form_view(request):
     form = BusterApplicationForm(request.POST or None)
     if form.is_valid():
         new_buster_application = form.save(commit=False)
+        new_buster_application.booster_acc = None
         new_buster_application.save()
         return HttpResponseRedirect(reverse('end_buster'))
 
@@ -53,6 +67,15 @@ def buster_form_view(request):
         'form': form,
     }
     return render(request, 'lex_pusher/buster/buster_form.html', context)
+
+
+def buster_client_view(request):
+    buster = Buster.objects.filter(booster_acc=request.user).first()
+    busts = Bust.objects.filter(buster_id=buster)
+    context = {
+        'busts': busts,
+    }
+    return render(request, 'lex_pusher/buster/choose_client.html', context)
 
 
 def shop_view(request):

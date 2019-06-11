@@ -42,14 +42,23 @@
                 </form>
             </div>
         </li>
-        {% else %}
+        {% endif %}
+        {% if request.user.is_booster %}
+        <li class="nav-item active ">
+            <a class='nav-link active' href="{% url 'buster_cabinet' %}"><i class="fas fa-user"></i> Кабинет бустера </a>
+        </li>
+        <li class="nav-item active">
+            <a class='nav-link active' href="{% url 'logout' %}">Выйти</a>
+        </li>
+        {% endif %}
+        {% if request.user.is_client %}
         <li class="nav-item active ">
             <a class='nav-link active' href="{% url 'client' %}"><i class="fas fa-user"></i> Кабинет </a>
         </li>
         <li class="nav-item active">
             <a class='nav-link active' href="{% url 'logout' %}">Выйти</a>
         </li>
-        {% endif %}
+         {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'buster' %}">Бустерам</a>
         </li>

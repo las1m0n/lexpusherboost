@@ -12,20 +12,19 @@ from django.utils.translation import gettext_lazy as _
 
 class UserAdmin(BaseUserAdmin):
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
-        (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
-                                       'groups', 'user_permissions')}),
+        (None, {'fields': ('username', 'password')}),
+        (_('Permissions'), {'fields': ('is_active', 'is_staff',
+                                       'is_booster', 'is_client')}),
         (_('Important dates'), {'fields': ('last_login', 'vk')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2'),
+            'fields': ('username', 'password1', 'password2', 'is_booster', 'is_client'),
         }),
     )
-    list_display = ('email', 'username', 'vk', 'phone', 'is_staff', 'is_booster', 'is_client')
-    search_fields = ('email', 'vk', 'phone', 'is_staff', 'is_booster', 'is_client')
-    ordering = ('email',)
+    list_display = ('username', 'email', 'phone', 'is_staff', 'is_booster', 'is_client')
+    search_fields = ('username', 'email', 'phone', 'is_staff', 'is_booster', 'is_client')
 
 
 admin.site.register(get_user_model(), UserAdmin)

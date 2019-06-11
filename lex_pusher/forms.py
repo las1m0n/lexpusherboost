@@ -82,7 +82,6 @@ class ClientForm(UserCreationForm):
 
 class LoginForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
-    # email = forms.EmailField(widget=forms.HiddenInput, required=True)
 
     class Meta:
         model = CustomUser
@@ -101,6 +100,31 @@ class LoginForm(forms.ModelForm):
             user = authenticate(username=password, password=password)
             if not user:
                 raise forms.ValidationError('Неверный пароль!')
+
+
+class LoginBusterForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(max_length=120)
+
+    class Meta:
+        model = CustomUser
+        fields = {
+            'username',
+            'password',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(LoginBusterForm, self).__init__(*args, **kwargs)
+        self.fields['password'].label = 'Пароль бустера'
+        self.fields['username'].label = 'Имя бустера'
+
+    def clean(self):
+        password = self.cleaned_data['password']
+        username = self.cleaned_data['username']
+        if password:
+            user = authenticate(username=username, password=password)
+            if not user:
+                raise forms.ValidationError('Неверный пароль или логин!')
 
 
 class BusterApplicationForm(forms.ModelForm):

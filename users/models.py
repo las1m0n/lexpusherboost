@@ -16,23 +16,23 @@ class MyUserManager(BaseUserManager):
     """
     use_in_migrations = True
 
-    def _create_user(self, password, **extra_fields):
+    def _create_user(self, username, password, **extra_fields):
         """
         Create and save a user with the given username, email, and password.
         """
-        user = self.model(**extra_fields)
+        user = self.model(username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_user(self, password=None, **extra_fields):
+    def create_user(self, username, password=None, **extra_fields):
         extra_fields.setdefault('is_client', True)
         extra_fields.setdefault('is_booster', False)
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
-        return self._create_user(password, **extra_fields)
+        return self._create_user(username, password, **extra_fields)
 
-    def create_superuser(self, password, **extra_fields):
+    def create_superuser(self, username, password, **extra_fields):
         extra_fields.setdefault('is_client', False)
         extra_fields.setdefault('is_booster', False)
         extra_fields.setdefault('is_staff', True)
@@ -41,12 +41,12 @@ class MyUserManager(BaseUserManager):
             raise ValueError('Superuser must have is_staff=True.')
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
-        return self._create_user(password, **extra_fields)
+        return self._create_user(username, password, **extra_fields)
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(verbose_name="Email")
     username = models.CharField(unique=True, max_length=120, verbose_name="Ключ")
+    email = models.EmailField(verbose_name="Email")
     vk = models.CharField(max_length=120, default="VK", null=True, blank=True)
     skype = models.CharField(max_length=120, default="Skype", null=True, blank=True)
     phone = models.CharField(max_length=120, default="PHONE", null=True, blank=True)
@@ -76,10 +76,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = MyUserManager()
 
     def __str__(self):
-        return self.email
+        return self.username
 
     def get_full_name(self):
-        return self.email
+        return self.username
 
     def get_short_name(self):
-        return self.email
+        return self.username

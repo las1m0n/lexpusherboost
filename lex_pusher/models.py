@@ -32,6 +32,7 @@ class Account(models.Model):
 
 
 class BuyAccount(models.Model):
+
     class Meta:
         verbose_name = 'Аккаунт'
         verbose_name_plural = 'Покупатели аккаунтов готовых'
@@ -51,7 +52,6 @@ class Buster(models.Model):
     class Meta:
         verbose_name = 'Заявка на бустера'
         verbose_name_plural = 'Заявки на бустера'
-
     booster_acc = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=120,blank=True, null=True)
     phone = models.CharField(max_length=120, blank=True, null=True)

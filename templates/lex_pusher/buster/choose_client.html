@@ -1,7 +1,25 @@
+{% extends 'lex_pusher/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/forms.css'%}">
+    <title>Кабинет бустера</title>
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">FLEX PUSHER</a>
+    <div class="collapse navbar-collapse" id="navbar">
+    </div>
+</nav>
+{% endblock %}
+{% block content %}
 <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" id="shop" style="padding-top: 100px;">
   <div class="col-md-12 p-lg-7 mx-auto my-5">
-    <h1>Выбери кому бустить!</h1>
-    <p class="lead font-weight-normal">Кококо</p>
+    <h1>Активные бусты</h1>
+    <p class="lead font-weight-normal">Ваши заказы</p>
   </div>
 </div>
 
@@ -11,14 +29,13 @@
             <div class="col-sm-4">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">{{ bust.price }} ₽</h5>
+                    <h5 class="card-title">{{ bust.steam_login }} ₽</h5>
                     <hr>
                     <h6 class="card-subtitle mb-2 text-muted">
-                        From MMR: {{ bust.solo_mmr }} <br>
-                        To MMR: {{ bust.party_mmr }}
+                        From MMR: {{ bust.mmr_from }} <br>
+                        To MMR: {{ bust.mmr_to }}
                     </h6>
-{#                      todo#}
-                      <a href="{% url 'add_to_cart' account_slug=account.slug %}">
+                      <a href="{% url 'base' %}">
                     <button class="w-100 btn btn-outline-danger ">
                         <span class="cart-icon"><i class="fas fa-shopping-cart"></i></span>
                     </button>
@@ -29,3 +46,4 @@
         {% endfor %}
     </div>
 </div>
+{% endblock %}

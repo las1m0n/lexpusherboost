@@ -1,12 +1,16 @@
 {% extends 'lex_pusher/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
 
-{% block title %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/forms.css'%}">
     <title>
         Кабинет бустера
     </title>
 {% endblock %}
 
 {% block navbar %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="/">FLEX PUSHER</a>
     <div class="collapse navbar-collapse" id="navbar">
@@ -55,7 +59,19 @@
 
 Кто не хочет проходить тест-буст — может перевести залог 1000 рублей в качестве гарантии своей благонадежности. Залог будет непременно выплачен через месяц активного буста.
       </p>
+      <h1>Вход для бустеров</h1>
+        <div class="form-style-5">
+        <form action='' method='POST' class="p-3">
+        {% csrf_token %}
+        <legend>Бустеры</legend>
+        <fieldset>
+        <legend><span class="number">*</span> Контактные данные</legend>
+        {{ form.username|as_crispy_field }}
+        {{ form.password|as_crispy_field }}
+        </fieldset>
+        <input type='submit' value="Войти">
+        </form>
+        </div>
       </div>
     </div>
-
 {% endblock %}
