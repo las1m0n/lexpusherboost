@@ -72,8 +72,11 @@ def buster_form_view(request):
 def buster_client_view(request):
     buster = Buster.objects.filter(booster_acc=request.user).first()
     busts = Bust.objects.filter(buster_id=buster)
+    inactive_busts = Bust.objects.filter(is_active=False)
     context = {
+        'inactive_busts': inactive_busts,
         'busts': busts,
+        'buster': buster
     }
     return render(request, 'lex_pusher/buster/choose_client.html', context)
 

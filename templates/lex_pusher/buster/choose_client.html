@@ -5,6 +5,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/forms.css'%}">
+    <link rel="stylesheet" href="{% static 'css/divs.css'%}">
     <title>Кабинет бустера</title>
 {% endblock %}
 
@@ -16,34 +17,129 @@
 </nav>
 {% endblock %}
 {% block content %}
-<div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" id="shop" style="padding-top: 100px;">
+{% if request.user.is_booster %}
+
+<div class="position-relative overflow-hidden p-md-1 m-md-1" style="padding-top: 100px;">
   <div class="col-md-12 p-lg-7 mx-auto my-5">
-    <h1>Активные бусты</h1>
-    <p class="lead font-weight-normal">Ваши заказы</p>
+    <h2>Привет {{buster.name}}</h2>
   </div>
 </div>
 
-<div class="container">
-    <div class="row flex-row">
-        {% for bust in busts %}
-            <div class="col-sm-4">
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ bust.steam_login }} ₽</h5>
-                    <hr>
-                    <h6 class="card-subtitle mb-2 text-muted">
-                        From MMR: {{ bust.mmr_from }} <br>
-                        To MMR: {{ bust.mmr_to }}
-                    </h6>
-                      <a href="{% url 'base' %}">
-                    <button class="w-100 btn btn-outline-danger ">
-                        <span class="cart-icon"><i class="fas fa-shopping-cart"></i></span>
-                    </button>
-                      </a>
-                  </div>
-                </div>
+<div class="tabs">
+    <input type="radio" name="inset" value="" id="tab_1" checked>
+    <label for="tab_1">Ваши заказы</label>
+
+    <input type="radio" name="inset" value="" id="tab_2">
+    <label for="tab_2">Консоль бустеров</label>
+
+    <input type="radio" name="inset" value="" id="tab_3">
+    <label for="tab_3">Штрафы</label>
+
+    <input type="radio" name="inset" value="" id="tab_4">
+    <label for="tab_4">Настройки</label>
+
+    <div id="txt_1">
+        <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
+          <div class="col-md-12 p-lg-7 mx-auto my-5">
+            <h2>Ваши заказы</h2>
+          </div>
+        </div>
+
+        <div class="container">
+            <div class="row flex-row">
+                {% for bust in busts %}
+                    <div class="col">
+                        <div class="card border-danger mb-3" style="max-width: 18rem;">
+                          <div class="card-header bg-transparent border-danger">Заказ #{{bust.id}}</div>
+                          <div class="card-body text-danger">
+                            <h5 class="card-title">Сейчас: {{bust.mmr_from}} </h5>
+                              <h5 class="card-title">Конечный: {{bust.mmr_to}}  </h5>
+                          </div>
+                              <div class="card-footer bg-transparent border-danger">
+                                <button type="button" class="btn w-100 btn-outline-dark" data-toggle="modal" data-target="#myModal-{{ bust.id }}">
+                                  Детали заказа
+                                </button>
+                              </div>
+                          </div>
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
+    </div>
+
+    <div id="txt_2">
+        <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
+            <div class="col-md-12 p-lg-7 mx-auto my-5">
+                 <h1>Заказы DotA 2</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row flex-row">
+                {% for bust in inactive_busts %}
+                    <div class="col">
+                        <div class="card border-danger mb-3" style="max-width: 18rem;">
+                          <div class="card-header bg-transparent border-danger">Заказ #{{bust.id}}</div>
+                          <div class="card-body text-danger">
+                            <h5 class="card-title">Было: {{bust.mmr_from}} MMR</h5>
+                          </div>
+                          <div class="card-footer bg-transparent border-danger">
+                              <a href="{% url 'base' %}">
+                                <button class="w-100 btn btn-outline-dark ">
+                                    <span class="cart-icon">Можно взять</span>
+                                </button>
+                              </a></div>
+                        </div>
+                        <hr>
+                        <h5 class="card-title">Этот заказ нужно выполнить максимально быстро, подробности внутри</h5>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div id="txt_3">
+        <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
+            <div class="col-md-12 p-lg-7 mx-auto my-5">
+                 <h1>Ваши штрафы</h1>
+            </div>
+        </div>
+    </div>
+    <div id="txt_4">
+        <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
+            <div class="col-md-12 p-lg-7 mx-auto my-5">
+                 <h1>Настройки аккаунта</h1>
+            </div>
+        </div>
     </div>
 </div>
+
+{% for bust in busts %}
+<div class="modal fade" id="myModal-{{ bust.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+	  <h3 class="modal-title" id="myModalLabel">Заказ № {{ bust.id }}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+      <h3>Буст</h3>
+        <table class='table'>
+                <tr>
+                    <td>{{ bust.mmr_from }} MMR </td>
+                    <td>{{ bust.mmr_to }} MMR </td>
+                    <td>Steam login {{ bust.steam_login }} </td>
+                    <td>Steam password {{ bust.steam_password }} </td>
+                </tr>
+        </table>
+   		<h3>Заказчик</h3>
+   		 <p>Имя: {{ bust.client.vk }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
 {% endblock %}

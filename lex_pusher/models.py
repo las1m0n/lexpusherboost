@@ -74,7 +74,7 @@ class Bust(models.Model):
 
     client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     buster_id = models.ForeignKey(Buster, True, null=True)
-
+    is_active = models.BooleanField(default=False)
     mmr_from = models.IntegerField()
     mmr_to = models.IntegerField()
 
