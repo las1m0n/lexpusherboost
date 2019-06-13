@@ -1,10 +1,9 @@
 import smtplib
 
 
-FROM_ADDRESS = '@gmail.com'
-LOGIN = ''
-PASSWORD = ''
-SMTP_SERVER = 'smtp.gmail.com:587'
+FROM_ADDRESS = 'bondarenkonikita295@gmail.com'
+LOGIN = "bondarenkonikita295@gmail.com"
+PASSWORD = "7325462896nk"
 
 
 def send(to, subject, text):
@@ -16,9 +15,12 @@ def send(to, subject, text):
         text
     ])
 
-    server = smtplib.SMTP(SMTP_SERVER)
+    server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
     server.login(LOGIN, PASSWORD)
     server.sendmail(FROM_ADDRESS, to, msg)
     server.quit()
+
+
+

@@ -1,10 +1,14 @@
 import secrets
+import sys
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import Account, Bust, Stat, Buster
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm
 from django.urls import reverse
 from django.contrib.auth import login, authenticate, logout
+from django.core.mail import send_mail
+from users.models import CustomUser
+from .mail_send import send
 from datetime import datetime
 
 
@@ -146,6 +150,9 @@ def bust_cart_view(request):
             steam_login=steam_login,
             steam_password=steam_password
         )
+        mess = f"Your user log is: {secret_key}"
+        mess = mess.encode('ascii', 'ignore').decode('ascii')
+        send(email, 'Flex Pusher Authentification', mess)
         return HttpResponseRedirect(reverse('client'))
 
     context = {
