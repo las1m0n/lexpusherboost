@@ -150,6 +150,7 @@ def bust_cart_view(request):
             steam_login=steam_login,
             steam_password=steam_password
         )
+
         mess = f"Your user log is: {secret_key}"
         mess = mess.encode('ascii', 'ignore').decode('ascii')
         send(email, 'Flex Pusher Authentification', mess)

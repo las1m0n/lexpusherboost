@@ -52,8 +52,10 @@ class Buster(models.Model):
     class Meta:
         verbose_name = 'Заявка на бустера'
         verbose_name_plural = 'Заявки на бустера'
+
     booster_acc = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
-    name = models.CharField(max_length=120,blank=True, null=True)
+    balance = models.PositiveIntegerField(default=0)
+    name = models.CharField(max_length=120, blank=True, null=True)
     phone = models.CharField(max_length=120, blank=True, null=True)
     email = models.EmailField()
     vk = models.CharField(max_length=120, blank=True, null=True)
@@ -64,6 +66,12 @@ class Buster(models.Model):
 
     def __str__(self):
         return f"Заявка на бустера {self.id}, {self.name} и с email-> {self.email}"
+
+
+class Punish(models.Model):
+    buster_ident = models.ForeignKey(Buster, on_delete=models.CASCADE, blank=True, null=True)
+    cost = models.IntegerField(default=0)
+    reason = models.TextField(default="Бан по причине")
 
 
 class Bust(models.Model):
@@ -97,4 +105,3 @@ class Stat(models.Model):
     match_id = models.IntegerField(null=True)
     mmr = models.FloatField()
     time = models.DateTimeField()
-

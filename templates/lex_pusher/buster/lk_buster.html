@@ -4,6 +4,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/forms.css'%}">
+    <link rel="icon" type="image/png" href="/static/img/dota-2.png">
     <title>
         Кабинет бустера
     </title>
@@ -11,7 +12,7 @@
 
 {% block navbar %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="/">FLEX PUSHER</a>
     <div class="collapse navbar-collapse" id="navbar">
     </div>
@@ -32,6 +33,19 @@
           <a href="{% url 'new_booster' %}">Оставить заявку</a>
            </p>
           <hr>
+         <h1>Вход для бустеров</h1>
+        <div class="form-style-5">
+        <form action='' method='POST' class="p-3">
+        {% csrf_token %}
+        <legend>Бустеры</legend>
+        <fieldset>
+        <legend><span class="number">*</span> Контактные данные</legend>
+        {{ form.username|as_crispy_field }}
+        {{ form.password|as_crispy_field }}
+        </fieldset>
+        <input type='submit' value="Войти">
+        </form>
+        </div>
       <p class="lead font-weight-normal">
 Условия работы:
 1. Бустить только прежний заказ. После каждой игры нужно указать сколько выиграли / проиграли MMR. В системе ведется автоматизированный учет каждого балла рейтинга MMR
@@ -59,19 +73,6 @@
 
 Кто не хочет проходить тест-буст — может перевести залог 1000 рублей в качестве гарантии своей благонадежности. Залог будет непременно выплачен через месяц активного буста.
       </p>
-      <h1>Вход для бустеров</h1>
-        <div class="form-style-5">
-        <form action='' method='POST' class="p-3">
-        {% csrf_token %}
-        <legend>Бустеры</legend>
-        <fieldset>
-        <legend><span class="number">*</span> Контактные данные</legend>
-        {{ form.username|as_crispy_field }}
-        {{ form.password|as_crispy_field }}
-        </fieldset>
-        <input type='submit' value="Войти">
-        </form>
-        </div>
       </div>
     </div>
 {% endblock %}

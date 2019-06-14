@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9500081d-9f5b-4402-8c6c-a9f1043f14f1" name="Default Changelist" comment="forms">
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/autocomplete.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/changelists.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/fonts.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/responsive.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/responsive_rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/vendor/select2/LICENSE-SELECT2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/vendor/select2/select2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/vendor/select2/select2.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/css/widgets.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/fonts/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/fonts/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/fonts/Roboto-Bold-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/fonts/Roboto-Light-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/fonts/Roboto-Regular-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/calendar-icons.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/gis/move_vertex_off.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/gis/move_vertex_on.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/icon-addlink.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/icon-alert.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/icon-calendar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/icon-changelink.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/icon-clock.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/icon-deletelink.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/icon-no.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/icon-unknown-alt.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/icon-unknown.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/icon-viewlink.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/icon-yes.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/inline-delete.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/search.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/selector-icons.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/sorting-icons.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/tooltag-add.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/img/tooltag-arrowright.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/SelectBox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/SelectFilter2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/actions.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/admin/DateTimeShortcuts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/admin/RelatedObjectLookups.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/autocomplete.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/calendar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/cancel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/change_form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/collapse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/collapse.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/core.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/inlines.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/inlines.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/jquery.init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/popup_response.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/prepopulate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/prepopulate.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/prepopulate_init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/timeparse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/urlify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/jquery/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/jquery/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/ar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/az.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/bg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/ca.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/cs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/da.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/de.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/el.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/en.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/es.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/et.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/eu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/fa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/fi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/fr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/gl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/he.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/hi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/hr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/hu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/id.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/is.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/it.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/ja.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/km.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/ko.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/lt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/lv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/mk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/ms.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/nb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/nl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/pl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/pt-BR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/pt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/ro.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/ru.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/sk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/sr-Cyrl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/sr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/sv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/th.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/tr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/uk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/vi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/zh-CN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/i18n/zh-TW.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/select2.full.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/select2/select2.full.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/xregexp/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/xregexp/xregexp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin/js/vendor/xregexp/xregexp.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/calc/calc.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/calc/calc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/calc/icon-dota.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/cms/css/pages.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/animate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/buttons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/fonts/16103.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/fonts/16225.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/fonts/TrajanPro-Bold.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/1539156734173866711.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/acc buy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/acc_buy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/bust.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/cart-icon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/cart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/e3CuhK4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/head.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/icon_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/icon_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/icon_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/icon_top.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/icon_top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/img/tGwZhHw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/base.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/bootstrap/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/bootstrap/img/glyphicons-halflings-white-shadow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/bootstrap/img/glyphicons-halflings-white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/bootstrap/img/glyphicons-halflings.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/bootstrap/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/css/djangocms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/css/filer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/css/suit.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/img/ajax-loader.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/img/bg_left_white.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/img/bg_pattern.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/img/cc_active_nav.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/img/drag-handle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/img/glyphicons-halflings-white-nav.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/img/glyphicons-halflings-white-shadow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/js/djangocms.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/js/jquery-1.8.3.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/js/jquery-2.2.4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/js/jquery.autosize-min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/js/sortables.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/js/suit-form-confirm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/js/suit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/djangocms.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/djangocms/list.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/filer.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/footer.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/header.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/left-column.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/mixins.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/print.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/sticky-footer.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/suit.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/actionlist.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/box.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/breadcrumb.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/calendar.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/datepicker.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/form.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/left-nav.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/list.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/login.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/pagination.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/table.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/ui/tabs.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/suit/less/variables.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/acc.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/acc.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lex_pusher/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/lex_pusher/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lex_pusher/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lex_pusher/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lex_pusher/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/lex_pusher/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lex_pusher/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lex_pusher/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lex_pusher/client/calc.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lex_pusher/client/calc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lex_pusher/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lex_pusher/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/0002_auto_20190522_1315.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="true" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lex_pusher/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1343">
+              <caret line="87" column="24" selection-start-line="87" selection-start-column="24" selection-end-line="87" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lex_pusher/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="49" column="25" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/users/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="63" column="18" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/lex_pusher/client/calc.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="66" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>data-merge</find>
+      <find>andBack</find>
+      <find>Back</find>
+      <find>andSelf</find>
+      <find>addBack</find>
+      <find>container</find>
+      <find>footer</find>
+      <find>mods</find>
+      <find>item-th</find>
+      <find>thumbnai</find>
+      <find>price</find>
+      <find>item-thum</find>
+      <find>accounts-</find>
+      <find>shadow</find>
+      <find>btn-wrap</find>
+      <find>a</find>
+      <find>account-</find>
+      <find>account-item</find>
+      <find>base_site.html</find>
+      <find>check</find>
+      <find>Does</find>
+      <find>Exist</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/lexlutor/static/css/custom.css" />
+        <option value="$PROJECT_DIR$/lexlutor/templates/lex_pusher/comments.html" />
+        <option value="$PROJECT_DIR$/lexlutor/static/buttons.css" />
+        <option value="$PROJECT_DIR$/lexlutor/static_in_dev/css/custom.css" />
+        <option value="$PROJECT_DIR$/lexlutor/static_in_dev/js/strelka.js" />
+        <option value="$PROJECT_DIR$/lexlutor/static/css/strelka.css" />
+        <option value="$PROJECT_DIR$/lexlutor/static/css/buttons.css" />
+        <option value="$PROJECT_DIR$/lexlutor/static/css/background.css" />
+        <option value="$PROJECT_DIR$/lexlutor/lex_pusher_main/settings.py" />
+        <option value="$PROJECT_DIR$/lexlutor/static_in_dev/css/strelka.css" />
+        <option value="$PROJECT_DIR$/lexlutor/lex_pusher/urls.py" />
+        <option value="$PROJECT_DIR$/lexlutor/static_in_dev/css/buttons.css" />
+        <option value="$PROJECT_DIR$/lexlutor/templates/lex_pusher/base.html" />
+        <option value="$PROJECT_DIR$/lexlutor/static_in_dev/css/background.css" />
+        <option value="$PROJECT_DIR$/lexlutor/templates/lex_pusher/index.html" />
+        <option value="$PROJECT_DIR$/lexlutor/lex_pusher/models.py" />
+        <option value="$PROJECT_DIR$/lexlutor/lex_pusher/forms.py" />
+        <option value="$PROJECT_DIR$/lexlutor/lex_pusher/admin.py" />
+        <option value="$PROJECT_DIR$/lexlutor/lex_pusher/views.py" />
+        <option value="$PROJECT_DIR$/lexlutor/templates/lex_pusher/flex_shop.html" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/shop_cart.html" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/flex_shop.html" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/flex_boost.html" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/lk_booster.html" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/lk_client.html" />
+        <option value="$PROJECT_DIR$/static/calc/calc.js" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/calc.html" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/boost_form.html" />
+        <option value="$PROJECT_DIR$/assets/css/forms.css" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/accs/shop_cart.html" />
+        <option value="$PROJECT_DIR$/static/css/forms.css" />
+        <option value="$PROJECT_DIR$/static/js/main.js" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/base.html" />
+        <option value="$PROJECT_DIR$/static/css/acc.css" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/accs/flex_shop.html" />
+        <option value="$PROJECT_DIR$/req.txt" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/client/bust_form.html" />
+        <option value="$PROJECT_DIR$/lex_pusher_main/settings.py" />
+        <option value="$PROJECT_DIR$/static/css/index.css" />
+        <option value="$PROJECT_DIR$/users/forms.py" />
+        <option value="$PROJECT_DIR$/lex_pusher/admin.py" />
+        <option value="$PROJECT_DIR$/static/js/base.js" />
+        <option value="$PROJECT_DIR$/static/css/base.css" />
+        <option value="$PROJECT_DIR$/lex_pusher/models.py" />
+        <option value="$PROJECT_DIR$/users/admin.py" />
+        <option value="$PROJECT_DIR$/lex_pusher/forms.py" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/index.html" />
+        <option value="$PROJECT_DIR$/lex_pusher/urls.py" />
+        <option value="$PROJECT_DIR$/templates/lex_pusher/client/calc.html" />
+        <option value="$PROJECT_DIR$/lex_pusher/views.py" />
+        <option value="$PROJECT_DIR$/users/models.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+        <option value="$PROJECT_DIR$/.idea/dataSources.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="440" />
+    <option name="y" value="160" />
+    <option name="width" value="1400" />
+    <option name="height" value="835" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="lexlutor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lexlutor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lexlutor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lexlutor" type="462c0819:PsiDirectoryNode" />
+              <item name="lex_pusher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lexlutor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lexlutor" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/js" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bonda\Desktop\pyth_django\lux\lexlutor\static\css" />
+      <recent name="C:\Users\bonda\Desktop\pyth_django\lux\lexlutor\static_in_dev\css" />
+      <recent name="C:\Users\bonda\Desktop\pyth_django\lux\lexlutor\static_in_dev\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bonda\Desktop\pyth_django\lux\lexlutor\static\js" />
+      <recent name="C:\Users\bonda\Desktop\pyth_django\lux\lexlutor\static\css" />
+      <recent name="C:\Users\bonda\Desktop\pyth_django\lux\lexlutor\static_in_dev" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="lux" type="Python.DjangoServer" factoryName="Django server">
+      <module name="lux" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\bonda\AppData\Local\Programs\Python\Python36-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="http://127.0.0.1:8000/" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9500081d-9f5b-4402-8c6c-a9f1043f14f1" name="Default Changelist" comment="" />
+      <created>1556610679559</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1556610679559</updated>
+      <workItem from="1556610682201" duration="130000" />
+      <workItem from="1556611012558" duration="27596000" />
+      <workItem from="1556713239026" duration="1613000" />
+      <workItem from="1556727551576" duration="7367000" />
+      <workItem from="1556748739524" duration="2293000" />
+      <workItem from="1556751153969" duration="37000" />
+      <workItem from="1556751246972" duration="1084000" />
+      <workItem from="1556797623863" duration="13659000" />
+      <workItem from="1556826100341" duration="9039000" />
+      <workItem from="1556870338591" duration="12532000" />
+      <workItem from="1556923101057" duration="1872000" />
+      <workItem from="1556962306197" duration="16119000" />
+      <workItem from="1556996118873" duration="7637000" />
+      <workItem from="1557077570449" duration="4180000" />
+      <workItem from="1557129787602" duration="5478000" />
+      <workItem from="1557146609597" duration="4085000" />
+      <workItem from="1557214965785" duration="1184000" />
+      <workItem from="1557296800063" duration="2072000" />
+      <workItem from="1557426103281" duration="7880000" />
+      <workItem from="1557436239833" duration="231000" />
+      <workItem from="1557494186894" duration="2914000" />
+      <workItem from="1557503165395" duration="11112000" />
+      <workItem from="1557586943389" duration="24313000" />
+      <workItem from="1557686158698" duration="1793000" />
+      <workItem from="1557819479545" duration="4042000" />
+      <workItem from="1557901948210" duration="1259000" />
+      <workItem from="1558031752632" duration="709000" />
+      <workItem from="1558113049963" duration="99000" />
+      <workItem from="1558113194590" duration="1219000" />
+      <workItem from="1558124495537" duration="35000" />
+      <workItem from="1558167295350" duration="1532000" />
+      <workItem from="1558209381371" duration="4213000" />
+      <workItem from="1558257882591" duration="8462000" />
+      <workItem from="1558273236538" duration="13419000" />
+      <workItem from="1558293644456" duration="6271000" />
+      <workItem from="1558466110526" duration="20000" />
+      <workItem from="1558687651175" duration="247000" />
+      <workItem from="1558701911596" duration="1104000" />
+      <workItem from="1558709459439" duration="13589000" />
+      <workItem from="1558777450844" duration="3127000" />
+      <workItem from="1558991753052" duration="596000" />
+      <workItem from="1559062001960" duration="675000" />
+      <workItem from="1559198232289" duration="865000" />
+    </task>
+    <task id="LOCAL-00001" summary="сделал соц и отзывы">
+      <created>1556638166900</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1556638166901</updated>
+    </task>
+    <task id="LOCAL-00002" summary="стрелка">
+      <created>1556643850292</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1556643850292</updated>
+    </task>
+    <task id="LOCAL-00003" summary="стрелка">
+      <created>1556644663114</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1556644663115</updated>
+    </task>
+    <task id="LOCAL-00004" summary="стрелка">
+      <created>1556647275105</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556647275106</updated>
+    </task>
+    <task id="LOCAL-00005" summary="стрелка">
+      <created>1556734296468</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1556734296468</updated>
+    </task>
+    <task id="LOCAL-00006" summary="формЫ">
+      <created>1556750994657</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1556750994657</updated>
+    </task>
+    <task id="LOCAL-00007" summary="формЫ">
+      <created>1556752293009</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1556752293009</updated>
+    </task>
+    <task id="LOCAL-00008" summary="магазин акков">
+      <created>1556820065327</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1556820065329</updated>
+    </task>
+    <task id="LOCAL-00009" summary="магазин акков">
+      <created>1556826793524</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1556826793524</updated>
+    </task>
+    <task id="LOCAL-00010" summary="заказ буста( недоделал урл, доделаю завтра)">
+      <created>1556837906685</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1556837906686</updated>
+    </task>
+    <task id="LOCAL-00011" summary="заказ буста( недоделал урл, доделаю завтра)">
+      <created>1556870732528</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1556870732528</updated>
+    </task>
+    <task id="LOCAL-00012" summary="сделал буст">
+      <created>1556877473513</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1556877473514</updated>
+    </task>
+    <task id="LOCAL-00013" summary="сделал буст(da)">
+      <created>1556915882635</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1556915882635</updated>
+    </task>
+    <task id="LOCAL-00014" summary="forms">
+      <created>1556973065544</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1556973065544</updated>
+    </task>
+    <task id="LOCAL-00015" summary="forms">
+      <created>1556989878435</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1556989878437</updated>
+    </task>
+    <task id="LOCAL-00016" summary="forms">
+      <created>1556999661350</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1556999661350</updated>
+    </task>
+    <task id="LOCAL-00017" summary="forms">
+      <created>1557000943832</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1557000943832</updated>
+    </task>
+    <task id="LOCAL-00018" summary="forms">
+      <created>1557081152023</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1557081152023</updated>
+    </task>
+    <task id="LOCAL-00019" summary="сука блять">
+      <created>1557090744659</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1557090744659</updated>
+    </task>
+    <task id="LOCAL-00020" summary="forms">
+      <created>1557150715097</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1557150715098</updated>
+    </task>
+    <task id="LOCAL-00021" summary="forms">
+      <created>1557300854901</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1557300854901</updated>
+    </task>
+    <task id="LOCAL-00022" summary="10100">
+      <created>1557838246401</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1557838246402</updated>
+    </task>
+    <task id="LOCAL-00023" summary="сука">
+      <created>1558300429382</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1558300429382</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="227711000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31367293" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32956153" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32956153" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39886847" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49932975" weight="0.32956153" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.2446959" />
+      <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32956153" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" weight="0.32956153" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49932975" visible="true" weight="0.26308346" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32956153" />
+      <window_info anchor="bottom" id="Messages" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.3297587" />
+      <window_info anchor="right" id="Database" order="4" weight="0.3297587" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24664879" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32956153" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32956153" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39886847" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49932975" weight="0.32956153" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.2446959" />
+      <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32956153" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" weight="0.32956153" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49932975" visible="true" weight="0.281471" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32956153" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.3297587" />
+      <window_info anchor="right" id="Database" order="4" weight="0.3297587" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="сделал соц и отзывы" />
+    <MESSAGE value="стрелка" />
+    <MESSAGE value="формЫ" />
+    <MESSAGE value="магазин акков" />
+    <MESSAGE value="заказ буста( недоделал урл, доделаю завтра)" />
+    <MESSAGE value="сделал буст" />
+    <MESSAGE value="сделал буст(da)" />
+    <MESSAGE value="сука блять" />
+    <MESSAGE value="forms" />
+    <MESSAGE value="10100" />
+    <MESSAGE value="сука" />
+    <option name="LAST_COMMIT_MESSAGE" value="сука" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/static_in_dev/js/custom.js" />
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/flex_boost.html" />
+    <entry file="file://$PROJECT_DIR$/static/calc/calc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="54" selection-start-column="38" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/boost_form.html" />
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/calc.html" />
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/flex_shop.html" />
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/shop_cart.html" />
+    <entry file="file://$PROJECT_DIR$/assets/css/forms.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/forms.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="83" column="19" lean-forward="true" selection-start-line="83" selection-start-column="19" selection-end-line="83" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/style.css" />
+    <entry file="file://$PROJECT_DIR$/static/js/main.js" />
+    <entry file="file://$PROJECT_DIR$/assets/css/acc.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/acc.css" />
+    <entry file="file://$PROJECT_DIR$/lex_pusher_main/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/req.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lex_pusher/migrations/0024_auto_20190506_1604.py" />
+    <entry file="file://$PROJECT_DIR$/lex_pusher/migrations/0025_auto_20190506_1607.py" />
+    <entry file="file://$PROJECT_DIR$/lex_pusher/migrations/0009_auto_20190506_1202.py" />
+    <entry file="file://$PROJECT_DIR$/lex_pusher/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/django/contrib/auth/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="96" column="36" selection-start-line="96" selection-start-column="36" selection-end-line="96" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/accs/flex_shop.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b588a856-52f3-4f82-b0a2-763fda47c522/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/accs/shop_cart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/migrations/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/lex_pusher/migrations/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/static/css/buttons.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="44" column="1" lean-forward="true" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/animate.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="50" column="7" lean-forward="true" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/index.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lex_pusher/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/views.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lex_pusher_main/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/django/db/backends/sqlite3/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="297" selection-start-line="297" selection-end-line="297" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/django/contrib/auth/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-704">
+          <caret line="287" column="6" selection-start-line="287" selection-start-column="6" selection-end-line="287" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="42" column="32" lean-forward="true" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/forms.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lex_pusher/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="101" column="24" lean-forward="true" selection-start-line="101" selection-start-column="24" selection-end-line="101" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/client/mmr_dash.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="30" column="42" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/client/flex_bust.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/client/lk_client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="43" lean-forward="true" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/client/bust_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lex_pusher/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/django/contrib/auth/base_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#110#128#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lex_pusher/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="87" column="24" selection-start-line="87" selection-start-column="24" selection-end-line="87" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lex_pusher/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="49" column="25" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/lex_pusher/client/calc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="66" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="63" column="18" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
