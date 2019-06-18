@@ -1,15 +1,15 @@
 import secrets
-import sys
-from django.shortcuts import render
-from django.http import HttpResponseRedirect, JsonResponse
-from .models import Account, Bust, Stat, Buster
-from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm
-from django.urls import reverse
+
 from django.contrib.auth import login, authenticate, logout
-from django.core.mail import send_mail
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse
+
 from users.models import CustomUser
+from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm
 from .mail_send import send
-from datetime import datetime
+from .models import Account, Bust, Stat, Buster
 
 
 def index_view(request):
@@ -74,6 +74,9 @@ def buster_form_view(request):
 
 
 def buster_client_view(request):
+    if not request.user.is_booster:
+        return HttpResponse('Unauthorized', status=401)
+
     buster = Buster.objects.filter(booster_acc=request.user).first()
     busts = Bust.objects.filter(buster_id=buster)
     inactive_busts = Bust.objects.filter(is_active=False)
