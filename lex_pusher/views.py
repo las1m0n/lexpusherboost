@@ -56,7 +56,7 @@ def buster_view(request):
     context = {
         'form': form
     }
-    return render(request, 'lex_pusher/buster/lk_buster.html', context)
+    return render(request, 'lex_pusher/buster/buster_register.html', context)
 
 
 def buster_form_view(request):
@@ -70,7 +70,7 @@ def buster_form_view(request):
     context = {
         'form': form,
     }
-    return render(request, 'lex_pusher/buster/buster_form.html', context)
+    return render(request, 'lex_pusher/buster/buster_login.html', context)
 
 
 def buster_client_view(request):
@@ -82,13 +82,15 @@ def buster_client_view(request):
     punishments = Punish.objects.filter(buster_ident=buster)
     inactive_busts = Bust.objects.filter(is_active=False)
 
+    print(buster)
+
     context = {
         'inactive_busts': inactive_busts,
         'punishments': punishments,
         'busts': busts,
         'buster': buster
     }
-    return render(request, 'lex_pusher/buster/choose_client.html', context)
+    return render(request, 'lex_pusher/buster/buster_index.html', context)
 
 
 def shop_view(request):
@@ -116,7 +118,7 @@ def shop_cart_view(request, account_slug):
 
 
 def success_form_view(request):
-    return render(request, 'lex_pusher/buster/end_buster.html')
+    return render(request, 'lex_pusher/buster/buster_register_end.html')
 
 
 def shop_bust(request):
