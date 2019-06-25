@@ -4,205 +4,227 @@
 {% load crispy_forms_tags %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/forms.css'%}">
-    <link rel="stylesheet" href="{% static 'css/divs.css'%}">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/divs.css' %}">
     <title>Кабинет бустера</title>
 {% endblock %}
 
 {% block navbar %}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">FLEX PUSHER</a>
-    <div class="collapse navbar-collapse" id="navbar">
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">FLEX PUSHER</a>
+        <div class="collapse navbar-collapse" id="navbar">
+        </div>
+    </nav>
 {% endblock %}
 {% block content %}
 
-<div class="position-relative overflow-hidden p-md-1 m-md-1" style="padding-top: 100px;">
-  <div class="col-md-12 p-lg-7 mx-auto my-5">
-      <h2>Привет, {{buster.name}}</h2>
-  </div>
-  <div class="col-md-12 p-lg-7 mx-auto my-5">
-      <h2>Ваш баланс: {{buster.balance}} р.</h2>
-      <button type="button" class="btn w-20 btn-success">Выплатить</button>
-  </div>
-</div>
+    <div class="position-relative overflow-hidden p-md-1 m-md-1" style="padding-top: 100px;">
+        <div class="col-md-12 p-lg-7 mx-auto my-5">
+            <h2>Привет, {{ buster.name }}</h2>
+        </div>
+        <div class="col-md-12 p-lg-7 mx-auto my-5">
+            <h2>Ваш баланс: {{ buster.balance }} р.</h2>
+            <button type="button" class="btn w-20 btn-success">Выплатить</button>
+        </div>
+    </div>
 
-<div class="tabs">
-    <input type="radio" name="inset" value="" id="tab_1" checked>
-    <label for="tab_1">Выполняемый заказ</label>
+    <div class="tabs">
+        <input type="radio" name="inset" value="" id="tab_1" checked>
+        <label for="tab_1">Выполняемый заказ</label>
 
-    <input type="radio" name="inset" value="" id="tab_2">
-    <label for="tab_2">Доступные заказы</label>
+        <input type="radio" name="inset" value="" id="tab_2">
+        <label for="tab_2">Доступные заказы</label>
 
-    <input type="radio" name="inset" value="" id="tab_3">
-    <label for="tab_3">Штрафы</label>
+        <input type="radio" name="inset" value="" id="tab_3">
+        <label for="tab_3">Штрафы</label>
 
-    <input type="radio" name="inset" value="" id="tab_4">
-    <label for="tab_4">Настройки</label>
-
-
+        <input type="radio" name="inset" value="" id="tab_4">
+        <label for="tab_4">Настройки</label>
 
 
+        <div id="txt_1">
+            <div class="position-relative overflow-hidden text-center">
+                <div class="col-md-12 mx-auto my-5">
+
+                    {% if active_bust %}
+                        <h2>Ваш заказ</h2>
+                    {% else %}
+                        У вас пока нету активного заказа. Возьмите их во вкладке доступные заказы
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if active_bust %}
+                <div class="container">
+                    <div class="row flex-row">
+                        <div class="col text-center">
+                            Начальный MMR
+                            <h3>{{ active_bust.mmr_from }}</h3>
+                        </div>
+                        <div class="col text-center">
+                            Конечный MMR
+                            <h3>{{ active_bust.mmr_to }}</h3>
+                        </div>
+                        <div class="col text-center">
+                            Сейчас MMR
+                            <h3>{{ active_bust.mmr_сurrent }}хз</h3>
+                        </div>
+                        <div class="col text-center">
+                            Осталось MMR
+                            а чо нельзя отнимать числа в шаблоне??
+                            <h3>хз</h3>
+                        </div>
+                    </div>
+                </div>
 
 
-    <div id="txt_1">
-        <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
-          <div class="col-md-12 p-lg-7 mx-auto my-5">
+{#                todo#}
 
-              {% if active_bust %}
-                <h2>Ваш заказ</h2>
-              {% else %}
-                У вас пока нету активного заказа. Возьмите их во вкладке доступные заказы
-              {% endif %}
-          </div>
+                <h3 class="mt-5">Сообщить результат (каждую игру)</h3>
+                <div class="container">
+                    <form>
+                        <div class="form-group row">
+                            <label for="mmr" class="col-sm-2 col-form-label">MMR</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="mmr">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="screen" class="col-sm-2 col-form-label">Скрин</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="screen">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm">
+                                <button type="submit" class="btn btn-success w-100">Отправить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <h3 class="mt-5">История</h3>
+                <div class="container">
+
+                {% for stat in bust_stats %}
+                    <div class="card text-white bg-{% if stat.is_win %}success{% else %}danger{% endif %} mb-3"
+                         style="max-width: 18rem;">
+                        <div class="card-header">{% if stat.is_win %}Победа{% else %}Поражение{% endif %}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ stat.mmr }} MMR</h5>
+                            <p class="card-text">{{ stat.time }}</p>
+                        </div>
+                    </div>
+
+                {% endfor %}
+                 </div>
+
+
+            {% endif %}
+
         </div>
 
-      {% if active_bust %}
-        <div class="container">
-            <div class="row flex-row">
-                <div class="col-sm">
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title">Заказ #{{active_bust.id}}</h5>
-                        <hr>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            Сейчас: {{active_bust.mmr_from}} <br>
-                            Конечный: {{active_bust.mmr_to}}
-                        </h6>
-                        <button class="w-100 btn btn-outline-danger " data-toggle="modal" data-target="#myModal-{{ active_bust.id }}">
-                            Детали заказа
-                        </button>
-                      </div>
+
+        <div id="txt_2">
+            <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
+                <div class="col-md-12 p-lg-7 mx-auto my-5">
+                    <h1>Заказы DotA 2</h1>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row flex-row">
+                    {% for bust in inactive_busts %}
+                        <div class="col-sm-3">
+                            <div class="card border-danger mb-3" style="max-width: 18rem;">
+                                <div class="card-header bg-transparent border-danger">Заказ #{{ bust.id }}</div>
+                                <div class="card-body text-danger">
+                                    Сейчас: {{ bust.mmr_from }} <br>
+                                    Конечный: {{ bust.mmr_to }}
+                                </div>
+                                <div class="card-footer bg-transparent border-danger">
+
+                                    <a href="{% url 'base' %}">
+                                        <button class="w-100 btn btn-outline-dark"
+                                                {% if active_bust %}disabled{% endif %}>
+                                            <span class="cart-icon">Можно взять</span>
+                                        </button>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+        <div id="txt_3">
+
+            <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
+                <div class="col-md-12 p-lg-7 mx-auto my-5">
+                    <h1>Ваши штрафы</h1>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row flex-row">
+                    {% for punish in punishments %}
+                        <div class="col">
+                        <div class="card border-danger mb-3" style="max-width: 18rem;">
+                            <div class="card-header bg-transparent border-danger">Заказ #{{ punish.id }}</div>
+                            <div class="card-body text-danger">
+                                <h5 class="card-title">Штраф: {{ punish.cost }} руб.</h5>
+                            </div>
+                            <div class="card-footer bg-transparent border-danger">
+                                <h5 class="card-title">Причина: {{ punish.reason }}</h5>
+                            </div>
+                            <hr>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="txt_4">
+                <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
+                    <div class="col-md-12 p-lg-7 mx-auto my-5">
+                        <h1>Настройки аккаунта</h1>
                     </div>
                 </div>
             </div>
         </div>
-      {% endif %}
 
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-    <div id="txt_2">
-        <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
-            <div class="col-md-12 p-lg-7 mx-auto my-5">
-                 <h1>Заказы DotA 2</h1>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row flex-row">
-                {% for bust in inactive_busts %}
-                    <div class="col-sm-3">
-                        <div class="card border-danger mb-3" style="max-width: 18rem;">
-                          <div class="card-header bg-transparent border-danger">Заказ #{{bust.id}}</div>
-                          <div class="card-body text-danger">
-                                Сейчас: {{bust.mmr_from}} <br>
-                                Конечный: {{bust.mmr_to}}
-                          </div>
-                          <div class="card-footer bg-transparent border-danger">
-                              <a href="{% url 'base' %}">
-                                <button class="w-100 btn btn-outline-dark ">
-                                    <span class="cart-icon">Можно взять</span>
-                                </button>
-                              </a></div>
+        {% for bust in busts %}
+            <div class="modal fade" id="myModal-{{ bust.id }}" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="myModalLabel">Заказ № {{ bust.id }}</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3>Буст</h3>
+                            <table class='table'>
+                                <tr>
+                                    <td>{{ bust.mmr_from }} MMR</td>
+                                    <td>{{ bust.mmr_to }} MMR</td>
+                                    <td>Steam login {{ bust.steam_login }} </td>
+                                    <td>Steam password {{ bust.steam_password }} </td>
+                                </tr>
+                            </table>
+                            <h3>Заказчик</h3>
+                            <p>Имя: {{ bust.client.vk }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
                         </div>
                     </div>
-
-
-
-
-
-                {% endfor %}
+                </div>
             </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-    <div id="txt_3">
-
-        <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
-            <div class="col-md-12 p-lg-7 mx-auto my-5">
-                 <h1>Ваши штрафы</h1>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row flex-row">
-                {% for punish in punishments %}
-                    <div class="col">
-                        <div class="card border-danger mb-3" style="max-width: 18rem;">
-                          <div class="card-header bg-transparent border-danger">Заказ #{{ punish.id }}</div>
-                          <div class="card-body text-danger">
-                            <h5 class="card-title">Штраф: {{punish.cost}} руб.</h5>
-                          </div>
-                          <div class="card-footer bg-transparent border-danger">
-                              <h5 class="card-title">Причина: {{punish.reason}}</h5>
-                        </div>
-                        <hr>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-    <div id="txt_4">
-        <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
-            <div class="col-md-12 p-lg-7 mx-auto my-5">
-                 <h1>Настройки аккаунта</h1>
-            </div>
-        </div>
-    </div>
-</div>
-
-{% for bust in busts %}
-<div class="modal fade" id="myModal-{{ bust.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-	  <h3 class="modal-title" id="myModalLabel">Заказ № {{ bust.id }}</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body">
-      <h3>Буст</h3>
-        <table class='table'>
-                <tr>
-                    <td>{{ bust.mmr_from }} MMR </td>
-                    <td>{{ bust.mmr_to }} MMR </td>
-                    <td>Steam login {{ bust.steam_login }} </td>
-                    <td>Steam password {{ bust.steam_password }} </td>
-                </tr>
-        </table>
-   		<h3>Заказчик</h3>
-   		 <p>Имя: {{ bust.client.vk }}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-{% endfor %}
+        {% endfor %}
 {% endblock %}

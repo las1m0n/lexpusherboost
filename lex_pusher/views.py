@@ -79,12 +79,14 @@ def buster_client_view(request):
 
     buster = Buster.objects.filter(booster_acc=request.user).first()
     active_bust = Bust.objects.filter(buster_id=buster).first()
-
     punishments = Punish.objects.filter(buster_ident=buster)
     inactive_busts = Bust.get_inactive()
 
+    active_bust_stats = Stat.objects.filter(bust_id=active_bust.id) if active_bust else None
+
     context = {
         'inactive_busts': inactive_busts,
+        'bust_stats': active_bust_stats,
         'punishments': punishments,
         'active_bust': active_bust,
         'buster': buster

@@ -110,3 +110,7 @@ class Stat(models.Model):
     match_id = models.IntegerField(null=True)
     mmr = models.FloatField()
     time = models.DateTimeField()
+
+    @property
+    def is_win(self):
+        return self.mmr > 0
