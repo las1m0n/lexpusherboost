@@ -1,6 +1,5 @@
 import smtplib
 
-
 FROM_ADDRESS = 'bondarenkonikita295@gmail.com'
 LOGIN = "bondarenkonikita295@gmail.com"
 PASSWORD = "7325462896nk"
@@ -21,6 +20,3 @@ def send(to, subject, text):
     server.login(LOGIN, PASSWORD)
     server.sendmail(FROM_ADDRESS, to, msg)
     server.quit()
-
-
-

@@ -1,8 +1,9 @@
 from __future__ import unicode_literals
-from django.db import models
-from django.conf import settings
-from django.db.models.signals import pre_save
+
 from datetime import datetime
+
+from django.conf import settings
+from django.db import models
 
 
 def image_folder(instance, filename):
@@ -29,7 +30,6 @@ class Account(models.Model):
 
 
 class BuyAccount(models.Model):
-
     class Meta:
         verbose_name = 'Аккаунт'
         verbose_name_plural = 'Покупатели аккаунтов готовых'
@@ -45,7 +45,6 @@ class BuyAccount(models.Model):
 
 
 class Buster(models.Model):
-
     class Meta:
         verbose_name = 'Заявка на бустера'
         verbose_name_plural = 'Заявки на бустера'
@@ -66,7 +65,6 @@ class Buster(models.Model):
 
 
 class Punish(models.Model):
-
     class Meta:
         verbose_name = 'Штраф'
         verbose_name_plural = 'Штрафы'
@@ -77,7 +75,6 @@ class Punish(models.Model):
 
 
 class Bust(models.Model):
-
     class Meta:
         verbose_name = 'Буст'
         verbose_name_plural = 'Бусты'
@@ -98,7 +95,7 @@ class Bust(models.Model):
 
     def __str__(self):
         return f"{self.id} Забустить c {self.mmr_from} mmr по {self.mmr_to} mmr, " \
-                   f"Логин '{self.steam_login}' + пароль '{self.steam_password}'"
+            f"Логин '{self.steam_login}' + пароль '{self.steam_password}'"
 
 
 class Stat(models.Model):

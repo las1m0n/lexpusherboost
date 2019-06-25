@@ -1,11 +1,10 @@
 from django import forms
-from .models import BuyAccount, Bust, Buster, Stat
-from users.models import CustomUser
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.conf import settings
+from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
-from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 
+from users.models import CustomUser
+from .models import BuyAccount, Bust, Buster
 
 User = get_user_model()
 
@@ -128,7 +127,6 @@ class LoginBusterForm(forms.ModelForm):
 
 
 class BusterApplicationForm(forms.ModelForm):
-
     class Meta:
         model = Buster
         fields = {

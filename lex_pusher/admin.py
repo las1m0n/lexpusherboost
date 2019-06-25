@@ -1,9 +1,8 @@
-from django.contrib import admin
 from .models import Account, BuyAccount, Buster, Bust, Stat, Punish
 from django.contrib import admin
-from django.db.models import Count, F, Value
-from django.contrib.auth import get_user_model
-from django.contrib.auth.admin import UserAdmin
+from django.db.models import F
+
+from .models import Account, BuyAccount, Buster, Bust, Stat, Punish
 
 admin.site.site_header = "FLEX PUSHER ADMIN PANEL"
 
@@ -19,7 +18,7 @@ def make_published(modeladmin, request, queryset):
         buster = Buster.objects.filter(id=q.buster_ident.id)
         for item in buster:
             if item.balance >= q.cost:
-                buster.update(balance=F('balance')-q.cost)
+                buster.update(balance=F('balance') - q.cost)
 
 
 make_published.short_description = "Применить штраф"
