@@ -105,18 +105,20 @@
 
                 <h3 class="mt-5">История</h3>
                 <div class="container">
-
-                    {% for stat in bust_stats %}
-                        <div class="card text-white bg-{% if stat.is_win %}success{% else %}danger{% endif %} mb-3"
-                             style="max-width: 18rem;">
-                            <div class="card-header">{% if stat.is_win %}Победа{% else %}Поражение{% endif %}</div>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ stat.mmr }} MMR</h5>
-                                <p class="card-text">{{ stat.time }}</p>
+                    <div class="row flex-row">
+                        {% for stat in bust_stats %}
+                            <div class="col-3">
+                                <div class="card text-white bg-{% if stat.is_win %}success{% else %}danger{% endif %} mb-3"
+                                     style="max-width: 18rem;">
+                                    <div class="card-header">{% if stat.is_win %}Победа{% else %}Поражение{% endif %}</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ stat.mmr }} MMR</h5>
+                                        <p class="card-text">{{ stat.time }}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
 
 
@@ -191,7 +193,8 @@
 {% endblock %}
 
 
-{##}
+{#   а шо ето  #}
+
 {#% for bust in busts %}#}
 {#            <div class="modal fade" id="myModal-{{ bust.id }}" tabindex="-1" role="dialog"#}
 {#                 aria-labelledby="myModalLabel">#}
