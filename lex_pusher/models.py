@@ -1,9 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.conf import settings
-import uuid
-from django.urls import reverse
-from decimal import Decimal
 from django.db.models.signals import pre_save
 from datetime import datetime
 
@@ -69,6 +66,11 @@ class Buster(models.Model):
 
 
 class Punish(models.Model):
+
+    class Meta:
+        verbose_name = 'Штраф'
+        verbose_name_plural = 'Штрафы'
+
     buster_ident = models.ForeignKey(Buster, on_delete=models.CASCADE, blank=True, null=True)
     cost = models.IntegerField(default=0)
     reason = models.TextField(default="Бан по причине")

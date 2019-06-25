@@ -4,7 +4,6 @@
 {% load crispy_forms_tags %}
 
 {% block head %}
-    <link rel="icon" type="image/png" href="static/img/dota-2.png">
     <link rel="stylesheet" href="{% static 'css/forms.css'%}">
     <link rel="stylesheet" href="{% static 'css/divs.css'%}">
     <title>Кабинет бустера</title>
@@ -21,7 +20,10 @@
 
 <div class="position-relative overflow-hidden p-md-1 m-md-1" style="padding-top: 100px;">
   <div class="col-md-12 p-lg-7 mx-auto my-5">
-    <h2>Привет {{buster.name}}</h2>
+      <h2>Привет {{buster.name}}</h2>
+  </div>
+  <div class="col-md-12 p-lg-7 mx-auto my-5">
+      <h2>Ваш баланс: {{buster.balance}} р.</h2>
   </div>
 </div>
 
@@ -103,7 +105,25 @@
                  <h1>Ваши штрафы</h1>
             </div>
         </div>
+        <div class="container">
+            <div class="row flex-row">
+                {% for punish in punishments %}
+                    <div class="col">
+                        <div class="card border-danger mb-3" style="max-width: 18rem;">
+                          <div class="card-header bg-transparent border-danger">Заказ #{{ punish.id }}</div>
+                          <div class="card-body text-danger">
+                            <h5 class="card-title">Штраф: {{punish.cost}} руб.</h5>
+                          </div>
+                          <div class="card-footer bg-transparent border-danger">
+                              <h5 class="card-title">Причина: {{punish.reason}}</h5>
+                        </div>
+                        <hr>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
+
     <div id="txt_4">
         <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
             <div class="col-md-12 p-lg-7 mx-auto my-5">

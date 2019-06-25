@@ -9,7 +9,7 @@ from django.urls import reverse
 from users.models import CustomUser
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm
 from .mail_send import send
-from .models import Account, Bust, Stat, Buster
+from .models import Account, Bust, Stat, Buster, Punish
 
 
 def index_view(request):
@@ -79,9 +79,12 @@ def buster_client_view(request):
 
     buster = Buster.objects.filter(booster_acc=request.user).first()
     busts = Bust.objects.filter(buster_id=buster)
+    punishments = Punish.objects.filter(buster_ident=buster)
     inactive_busts = Bust.objects.filter(is_active=False)
+
     context = {
         'inactive_busts': inactive_busts,
+        'punishments': punishments,
         'busts': busts,
         'buster': buster
     }
