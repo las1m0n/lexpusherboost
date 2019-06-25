@@ -5,42 +5,42 @@
 
 {% block head %}
     <link rel="icon" type="image/png" href="/static/img/dota-2.png">
-    <link rel="stylesheet" href="{% static 'css/forms.css'%}">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
     <title>Корзина</title>
 {% endblock %}
 
 {% block navbar %}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">FLEX PUSHER</a>
-    <div class="collapse navbar-collapse" id="navbar">
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">FLEX PUSHER</a>
+        <div class="collapse navbar-collapse" id="navbar">
+        </div>
+    </nav>
 {% endblock %}
 
 {% block content %}
 
-<div class="form-style-5">
-<form action='' method='POST' class="p-3">
-	{% csrf_token %}
-	<legend>Контактные данные</legend>
-    <p>Текущий MMR: {{ mmr_from }}</p>
-    <p>Конечный MMR: {{ mmr_to }}</p>
-    {{ form.mmr_from|as_crispy_field }}
-    {{ form.mmr_to|as_crispy_field }}
-    <hr style="padding-bottom: 20px;">
-    <fieldset>
-<legend><span class="number">1</span> Контактные данные</legend>
-    {{ form_acc.email|as_crispy_field }}
-    {{ form.steam_login|as_crispy_field }}
-    {{ form.steam_password|as_crispy_field }}
-</fieldset>
-<fieldset>
-    <legend><span class="number">2</span> Дополнительная информация</legend>
-    {{ form_acc.vk|as_crispy_field }}
-    {{ form_acc.skype|as_crispy_field }}
-    {{ form_acc.phone|as_crispy_field }}
-</fieldset>
-	<input type='submit' value="Оплата">
-</form>
-</div>
+    <div class="form-style-5">
+        <form action='' method='POST' class="p-3">
+            {% csrf_token %}
+            <legend>Контактные данные</legend>
+            <p>Текущий MMR: {{ mmr_from }}</p>
+            <p>Конечный MMR: {{ mmr_to }}</p>
+            {{ form.mmr_from|as_crispy_field }}
+            {{ form.mmr_to|as_crispy_field }}
+            <hr style="padding-bottom: 20px;">
+            <fieldset>
+                <legend><span class="number">1</span> Контактные данные</legend>
+                {{ form_acc.email|as_crispy_field }}
+                {{ form.steam_login|as_crispy_field }}
+                {{ form.steam_password|as_crispy_field }}
+            </fieldset>
+            <fieldset>
+                <legend><span class="number">2</span> Дополнительная информация</legend>
+                {{ form_acc.vk|as_crispy_field }}
+                {{ form_acc.skype|as_crispy_field }}
+                {{ form_acc.phone|as_crispy_field }}
+            </fieldset>
+            <input type='submit' value="Оплата">
+        </form>
+    </div>
 {% endblock %}

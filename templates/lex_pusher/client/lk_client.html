@@ -7,23 +7,23 @@
 
 
 {% block navbar %}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">FLEX PUSHER</a>
-    <div class="collapse navbar-collapse" id="navbar">
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">FLEX PUSHER</a>
+        <div class="collapse navbar-collapse" id="navbar">
+        </div>
+    </nav>
 {% endblock %}
 
 
 
 {% block content %}
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-      <div class="col-md-5 p-lg-5 mx-auto">
-        <h1>Ваш заказ</h1>
-        <p class="lead font-weight-normal">
-            Буст с <b>{{ bust.mmr_from }}</b> ммр до <b>{{ bust.mmr_to }}</b> ммр
-        </p>
-      </div>
+        <div class="col-md-5 p-lg-5 mx-auto">
+            <h1>Ваш заказ</h1>
+            <p class="lead font-weight-normal">
+                Буст с <b>{{ bust.mmr_from }}</b> ммр до <b>{{ bust.mmr_to }}</b> ммр
+            </p>
+        </div>
     </div>
     {% include 'lex_pusher/client/mmr_dash.html' %}
 {% endblock %}

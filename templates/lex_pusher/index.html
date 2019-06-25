@@ -14,69 +14,76 @@
 
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">FLEX PUSHER</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <a class="navbar-brand" href="#">FLEX PUSHER</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbar">
-        <ul class="navbar-nav ml-md-auto d-md-flex">
-        {% if not request.user.is_authenticated %}
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Лог клиента</a>
-            <div class="dropdown-menu p-4 text-muted dropdown-menu-lg-right" style="min-width: 20rem;" aria-labelledby="dropdown">
-              <h5>Укажите пин-код Вашего заказа</h5>
-                <p>для просмотра состояния и хода выполнения заказа</p>
-                <form method="POST" action="">
-                    {% csrf_token %}
-                    {{ form.password|as_crispy_field }}
-                    {% if form.errors %}
-                        {% for field in form %}
-                            {% for error in field.errors %}
-                                    <strong>{{ error|escape }}</strong>
-                            {% endfor %}
-                        {% endfor %}
-                        {% for error in form.non_field_errors %}
-                                <strong>{{ error|escape }}</strong>
-                        {% endfor %}
-                    {% endif %}
-                </form>
-            </div>
-        </li>
-        {% endif %}
-        {% if request.user.is_booster %}
-        <li class="nav-item active ">
-            <a class='nav-link active' href="{% url 'buster_cabinet' %}"><i class="fas fa-user"></i> Кабинет бустера </a>
-        </li>
-        <li class="nav-item active">
-            <a class='nav-link active' href="{% url 'logout' %}">Выйти</a>
-        </li>
-        {% endif %}
-        {% if request.user.is_client %}
-        <li class="nav-item active ">
-            <a class='nav-link active' href="{% url 'client' %}"><i class="fas fa-user"></i> Кабинет </a>
-        </li>
-        <li class="nav-item active">
-            <a class='nav-link active' href="{% url 'logout' %}">Выйти</a>
-        </li>
-         {% endif %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'buster' %}">Бустерам</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link scrollto" href="#about">О нас</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link scrollto" href="#feedback">Отзывы</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link scrollto" href="#warranty">Гарантии</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link scrollto" href="#society">Контакты</a>
-        </li>
-        </ul>
-      </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav ml-md-auto d-md-flex">
+                {% if not request.user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="dropdown" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Лог клиента</a>
+                        <div class="dropdown-menu p-4 text-muted dropdown-menu-lg-right" style="min-width: 20rem;"
+                             aria-labelledby="dropdown">
+                            <h5>Укажите пин-код Вашего заказа</h5>
+                            <p>для просмотра состояния и хода выполнения заказа</p>
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                {{ form.password|as_crispy_field }}
+                                {% if form.errors %}
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <strong>{{ error|escape }}</strong>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    {% for error in form.non_field_errors %}
+                                        <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                {% endif %}
+                            </form>
+                        </div>
+                    </li>
+                {% endif %}
+
+                {% if request.user.is_booster %}
+                    <li class="nav-item active ">
+                        <a class='nav-link active' href="{% url 'buster_cabinet' %}"><i class="fas fa-user"></i> Кабинет
+                            бустера </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class='nav-link active' href="{% url 'logout' %}">Выйти</a>
+                    </li>
+                {% endif %}
+
+                {% if request.user.is_client %}
+                    <li class="nav-item active ">
+                        <a class='nav-link active' href="{% url 'client' %}"><i class="fas fa-user"></i> Кабинет </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class='nav-link active' href="{% url 'logout' %}">Выйти</a>
+                    </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'buster' %}">Бустерам</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto" href="#about">О нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto" href="#feedback">Отзывы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto" href="#warranty">Гарантии</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto" href="#society">Контакты</a>
+                </li>
+            </ul>
+        </div>
 
     </nav>
 {% endblock %}
@@ -84,118 +91,120 @@
 
 {% block content %}
 
-<div class="position-relative overflow-hidden p-3 p-md-5 text-center text-light bg-head">
-  <div class="col-md-12 p-lg-5 mx-auto my-5">
-    <h1>Качественный недорогой буст</h1>
-    <p class="lead font-weight-normal">Листай ниже чтобы подняться на вершины. </p>
-  </div>
-</div>
-
-<div class="row m-0 text-light">
-
-    <div class="col py-5 darkmask bg-acc">
-        <a href="/shop/" style="text-decoration: none; color: #fff">
-        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-            <h1>Купить аккаунт</h1>
+    <div class="position-relative overflow-hidden p-3 p-md-5 text-center text-light bg-head">
+        <div class="col-md-12 p-lg-5 mx-auto my-5">
+            <h1>Качественный недорогой буст</h1>
+            <p class="lead font-weight-normal">Листай ниже чтобы подняться на вершины. </p>
         </div>
-        </a>
     </div>
 
+    <div class="row m-0 text-light">
 
-
-    <div class="col py-5 darkmask bg-bust">
-        <a href="/bust/" style="text-decoration: none; color: #fff">
-        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-            <h1>Заказать буст</h1>
+        <div class="col py-5 darkmask bg-acc">
+            <a href="/shop/" style="text-decoration: none; color: #fff">
+                <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
+                    <h1>Купить аккаунт</h1>
+                </div>
+            </a>
         </div>
-        </a>
+
+        <div class="col py-5 darkmask bg-bust">
+            <a href="/bust/" style="text-decoration: none; color: #fff">
+                <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
+                    <h1>Заказать буст</h1>
+                </div>
+            </a>
+        </div>
+
     </div>
-
-
-</div>
 
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="about">
-      <div class="col-md-12 p-lg-5 mx-auto my-5">
-        <h1>Почему мы этим занимаемся</h1>
-        <p class="lead font-weight-normal">В нашей команде работают бустеры - профессионалы, у каждого на счету более сотни забущенных аккаутнтов. Мы знаем через какой путь проходите Вы, и наша задача помочь Вам избежать этих мучений. Мы сами теряли время и нервы на то, чтобы поднять свои первые аккаунты. Мы даем Вам возможность выбора, а полседнне слово - за Вами</p>
-      </div>
+        <div class="col-md-12 p-lg-5 mx-auto my-5">
+            <h1>Почему мы этим занимаемся</h1>
+            <p class="lead font-weight-normal">В нашей команде работают бустеры - профессионалы, у каждого на счету
+                более сотни забущенных аккаутнтов. Мы знаем через какой путь проходите Вы, и наша задача помочь Вам
+                избежать этих мучений. Мы сами теряли время и нервы на то, чтобы поднять свои первые аккаунты. Мы даем
+                Вам возможность выбора, а полседнне слово - за Вами</p>
+        </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="warranty">
-      <div class="col-md-12 p-lg-5 mx-auto my-5">
-        <h1> Почему именно мы?</h1>
-        <div class="container">
-          <div class="row pt-5 mt-5">
+        <div class="col-md-12 p-lg-5 mx-auto my-5">
+            <h1> Почему именно мы?</h1>
+            <div class="container">
+                <div class="row pt-5 mt-5">
 
-            <div class="col-sm-4 order-sm-1">
-                <img src='{% static "img/icon_1.png" %}' class="icon" alt="icon1">
-                <h2>Нам важен каждый клиент</h2>
+                    <div class="col-sm-4 order-sm-1">
+                        <img src='{% static "img/icon_1.png" %}' class="icon" alt="icon1">
+                        <h2>Нам важен каждый клиент</h2>
+                    </div>
+                    <div class="col-sm-4 order-sm-4">
+                        <span>Мы думаем о каждом клиенте и стараемся выполнить заказы в кратчашие сроки. Мы не забудем о Вашем аккаунте даже, если у Вас ниже звание, а кого-то выше.</span>
+                    </div>
+
+                    <div class="col-sm-4 order-sm-2">
+                        <img src='{% static "img/icon_2.png" %}' class="icon" alt="icon2">
+                        <h2>Скидки</h2>
+                    </div>
+                    <div class="col-sm-4 order-sm-5">
+                        <span>На каждый второй заказ у нас действуют различные скидки, а для постоянных клиентов - приятные бонусы.</span>
+                    </div>
+
+                    <div class="col-sm-4 order-sm-3">
+                        <img src='{% static "img/icon_3.png" %}' class="icon" alt="icon3">
+                        <h2>Поддержка и оплата</h2>
+                    </div>
+                    <div class="col-sm-4 order-sm-6">
+                        <span>На нашем сайте присутствует поддержка которая ответит на любой вопрос, а также бесплатно проконсультирует вас по связи. Оплачивайте свои заказы различными системами: webmoney/visa/qiwi</span>
+                    </div>
+
+                </div>
             </div>
-              <div class="col-sm-4 order-sm-4">
-                  <span>Мы думаем о каждом клиенте и стараемся выполнить заказы в кратчашие сроки. Мы не забудем о Вашем аккаунте даже, если у Вас ниже звание, а кого-то выше.</span>
-              </div>
-
-              <div class="col-sm-4 order-sm-2">
-                  <img src='{% static "img/icon_2.png" %}' class="icon" alt="icon2">
-                  <h2>Скидки</h2>
-              </div>
-              <div class="col-sm-4 order-sm-5">
-                  <span>На каждый второй заказ у нас действуют различные скидки, а для постоянных клиентов - приятные бонусы.</span>
-              </div>
-
-              <div class="col-sm-4 order-sm-3">
-                  <img src='{% static "img/icon_3.png" %}' class="icon" alt="icon3">
-                  <h2>Поддержка и оплата</h2>
-              </div>
-
-              <div class="col-sm-4 order-sm-6">
-                  <span>На нашем сайте присутствует поддержка которая ответит на любой вопрос, а также бесплатно проконсультирует вас по связи. Оплачивайте свои заказы различными системами: webmoney/visa/qiwi</span>
-              </div>
-
-          </div>
         </div>
-      </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="feedback">
-      <div class="col-md-12 p-lg-5 mx-auto my-5">
-        <h1>Отзывы наших клиентов</h1>
-          <!-- Put this script tag to the <head> of your page -->
-<script type="text/javascript" src="https://vk.com/js/api/openapi.js?161"></script>
+        <div class="col-md-12 p-lg-5 mx-auto my-5">
+            <h1>Отзывы наших клиентов</h1>
+            <script type="text/javascript" src="https://vk.com/js/api/openapi.js?161"></script>
+            <script type="text/javascript">VK.init({apiId: 6966912, onlyWidgets: true});</script>
 
-<script type="text/javascript">
-  VK.init({apiId: 6966912, onlyWidgets: true});
-</script>
-
-<!-- Put this div tag to the place, where the Comments block will be -->
-<div id="vk_comments"></div>
-<script type="text/javascript">
-VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});
-</script>
-      </div>
+            <div id="vk_comments"></div>
+            <script type="text/javascript">VK.Widgets.Comments("vk_comments", {limit: 10, attach: "*"});</script>
+        </div>
     </div>
 
+
+
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="society">
-      <div class="col-md-12 p-lg-5 mx-auto my-5">
-        <h1>Наши соц сети</h1>
-        <div class="container">
-          <div class="row flex-row py-5 mt-5" style="font-size: 2em;">
-            <div class="col mt-2">
-                <a href="https://www.vk.com/"><button class="corner-button"><i class="fab fa-vk"></i></button></a>
+        <div class="col-md-12 p-lg-5 mx-auto my-5">
+            <h1>Наши соц сети</h1>
+            <div class="container">
+                <div class="row flex-row" style="font-size: 2em;">
+                    <div class="col mt-2">
+                        <a href="https://www.vk.com/">
+                            <button class="corner-button"><i class="fab fa-vk"></i></button>
+                        </a>
+                    </div>
+                    <div class="col mt-2">
+                        <a href="https://www.instagram.com/">
+                            <button class="corner-button"><i class="fab fa-instagram"></i></button>
+                        </a>
+                    </div>
+                    <div class="col mt-2">
+                        <a href="https://www.facebook.com/">
+                            <button class="corner-button"><i class="fab fa-facebook-f"></i></button>
+                        </a>
+                    </div>
+                    <div class="col mt-2">
+                        <a href="https://www.telegram.net/">
+                            <button class="corner-button"><i class="fab fa-telegram-plane"></i></button>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="col mt-2">
-                <a href="https://www.instagram.com/"><button class="corner-button"><i class="fab fa-instagram"></i></button></a>
-            </div>
-            <div class="col mt-2">
-                <a href="https://www.facebook.com/"><button class="corner-button"><i class="fab fa-facebook-f"></i></button></a>
-            </div>
-            <div class="col mt-2">
-                <a href="https://www.telegram.net/"><button class="corner-button"><i class="fab fa-telegram-plane"></i></button></a>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
 
 {% endblock %}

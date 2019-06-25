@@ -3,33 +3,33 @@
 {% load crispy_forms_tags %}
 
 {% block navbar %}
-<link rel="stylesheet" href="{% static 'css/forms.css'%}">
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">FLEX PUSHER</a>
-    <div class="collapse navbar-collapse" id="navbar">
-    </div>
-</nav>
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">FLEX PUSHER</a>
+        <div class="collapse navbar-collapse" id="navbar">
+        </div>
+    </nav>
 {% endblock %}
 
 
 {% block content %}
-<div style="padding-bottom: 50px;">
-</div>
-<div class="form-style-5">
-<form action="" method="POST">
-    {% csrf_token %}
-<legend>Контактные данные</legend>
-    <p>Solo MMR: {{ account.solo_mmr }}</p>
-    <p>Party MMR: {{ account.party_mmr }}</p>
-    <hr style="padding-bottom: 20px;">
-<fieldset>
-<legend><span class="number">1</span> Контактные данные</legend>
-    {{ form.email|as_crispy_field }}
-    {{ form.skype|as_crispy_field }}
-    {{ form.phone|as_crispy_field }}
-</fieldset>
-<input type="submit" value="Далее" />
-</form>
-</div>
+    <div style="padding-bottom: 50px;">
+    </div>
+    <div class="form-style-5">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <legend>Контактные данные</legend>
+            <p>Solo MMR: {{ account.solo_mmr }}</p>
+            <p>Party MMR: {{ account.party_mmr }}</p>
+            <hr style="padding-bottom: 20px;">
+            <fieldset>
+                <legend><span class="number">1</span> Контактные данные</legend>
+                {{ form.email|as_crispy_field }}
+                {{ form.skype|as_crispy_field }}
+                {{ form.phone|as_crispy_field }}
+            </fieldset>
+            <input type="submit" value="Далее"/>
+        </form>
+    </div>
 
 {% endblock %}

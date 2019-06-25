@@ -24,12 +24,12 @@ var PRICELIST = [
     [5701,  5800,   1.795],
     [5801,  5900,   1.975],
     [5901,  6000,   2.250],
-]
+];
 
 fromMMR.oninput= changeFromMMR;
 toMMR.oninput = changeToMMR;
 rangeSlider.oninput = changeSlider;
-changeSlider()
+changeSlider();
 
 
 function changeFromMMR(e) {
@@ -90,7 +90,7 @@ function changePrice() {
     for (var i=from; i<=to; i++) {
         for (var j of PRICELIST) {
             if (i > j[0]) {
-                price += j[2]
+                price += j[2];
                 break;
             }
         }

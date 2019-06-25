@@ -25,19 +25,23 @@
 
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item"><a class="nav-link active" href="#active_bust" id="active_bust-tab" data-toggle="tab" role="tab"
+        <li class="nav-item"><a class="nav-link active" href="#active_bust" id="active_bust-tab" data-toggle="tab"
+                                role="tab"
                                 aria-controls="active_bust" aria-selected="true">
             Выполняемый заказ
         </a></li>
-        <li class="nav-item"><a class="nav-link" href="#inactive_busts" id="inactive_busts-tab" data-toggle="tab" role="tab"
+        <li class="nav-item"><a class="nav-link" href="#inactive_busts" id="inactive_busts-tab" data-toggle="tab"
+                                role="tab"
                                 aria-controls="inactive_busts" aria-selected="false">
             Доступные заказы
         </a></li>
-        <li class="nav-item"><a class="nav-link" href="#punish" id="punish-tab" data-toggle="tab" role="tab" aria-controls="punish"
+        <li class="nav-item"><a class="nav-link" href="#punish" id="punish-tab" data-toggle="tab" role="tab"
+                                aria-controls="punish"
                                 aria-selected="false">
             Штрафы
         </a></li>
-        <li class="nav-item"><a class="nav-link" href="#settings" id="settings-tab" data-toggle="tab" role="tab" aria-controls="settings"
+        <li class="nav-item"><a class="nav-link" href="#settings" id="settings-tab" data-toggle="tab" role="tab"
+                                aria-controls="settings"
                                 aria-selected="false">
             Настройки
         </a></li>
@@ -110,7 +114,8 @@
                             <div class="col-3">
                                 <div class="card text-white bg-{% if stat.is_win %}success{% else %}danger{% endif %} mb-3"
                                      style="max-width: 18rem;">
-                                    <div class="card-header">{% if stat.is_win %}Победа{% else %}Поражение{% endif %}</div>
+                                    <div class="card-header">{% if stat.is_win %}Победа{% else %}
+                                        Поражение{% endif %}</div>
                                     <div class="card-body">
                                         <h5 class="card-title">{{ stat.mmr }} MMR</h5>
                                         <p class="card-text">{{ stat.time }}</p>
@@ -184,9 +189,9 @@
         </div>
 
         <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-                <div class="position-relative overflow-hidden p-5 text-center">
-                    <h1>Настройки аккаунта</h1>
-                </div>
+            <div class="position-relative overflow-hidden p-5 text-center">
+                <h1>Настройки аккаунта</h1>
+            </div>
         </div>
 
     </div>

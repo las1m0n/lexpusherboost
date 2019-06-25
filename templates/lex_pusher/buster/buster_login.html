@@ -4,39 +4,39 @@
 {% load crispy_forms_tags %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/forms.css'%}">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
     <title>Корзина</title>
 {% endblock %}
 
 {% block navbar %}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">FLEX PUSHER</a>
-    <div class="collapse navbar-collapse" id="navbar">
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">FLEX PUSHER</a>
+        <div class="collapse navbar-collapse" id="navbar">
+        </div>
+    </nav>
 {% endblock %}
 
 {% block content %}
 
-<div class="form-style-5">
-<form action='' method='POST' class="p-3">
-	{% csrf_token %}
-	<legend>Убедительная просьба, перед заполенением заявки прочесть правила буста.</legend>
-<fieldset>
-<legend><span class="number">1</span> Контактные данные</legend>
-    {{ form.name|as_crispy_field }}
-    {{ form.phone|as_crispy_field }}
-    {{ form.email|as_crispy_field }}
-    {{ form.vk|as_crispy_field }}
-    {{ form.skype|as_crispy_field }}
-</fieldset>
-<fieldset>
-    <legend><span class="number">2</span> Дополнительная информация</legend>
-    {{ form.wmr|as_crispy_field }}
-    {{ form.solo_mmr|as_crispy_field }}
-    {{ form.experience|as_crispy_field }}
-</fieldset>
-	<input type='submit' value="Отправить заявку">
-</form>
-</div>
+    <div class="form-style-5">
+        <form action='' method='POST' class="p-3">
+            {% csrf_token %}
+            <legend>Убедительная просьба, перед заполенением заявки прочесть правила буста.</legend>
+            <fieldset>
+                <legend><span class="number">1</span> Контактные данные</legend>
+                {{ form.name|as_crispy_field }}
+                {{ form.phone|as_crispy_field }}
+                {{ form.email|as_crispy_field }}
+                {{ form.vk|as_crispy_field }}
+                {{ form.skype|as_crispy_field }}
+            </fieldset>
+            <fieldset>
+                <legend><span class="number">2</span> Дополнительная информация</legend>
+                {{ form.wmr|as_crispy_field }}
+                {{ form.solo_mmr|as_crispy_field }}
+                {{ form.experience|as_crispy_field }}
+            </fieldset>
+            <input type='submit' value="Отправить заявку">
+        </form>
+    </div>
 {% endblock %}

@@ -1,36 +1,36 @@
-
-<canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="602" height="254" style="display: block; width: 602px; height: 254px;"></canvas>
+<canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="602" height="254"
+        style="display: block; width: 602px; height: 254px;"></canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script>
 
-(function () {
+    (function () {
 
-  var ctx = document.getElementById('myChart');
+        var ctx = document.getElementById('myChart');
 
-  var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: {{ stats_times }},
-      datasets: [{
-        data: {{ stats_values }},
-        borderColor: '#007bff',
-        borderWidth: 4,
-        pointBackgroundColor: '#007bff'
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: false
-          }
-        }]
-      },
-      legend: {
-        display: false
-      }
-    }
-  })
-}())
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ stats_times }},
+                datasets: [{
+                    data: {{ stats_values }},
+                    borderColor: '#007bff',
+                    borderWidth: 4,
+                    pointBackgroundColor: '#007bff'
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                }
+            }
+        })
+    }())
 </script>
