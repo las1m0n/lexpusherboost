@@ -24,17 +24,16 @@
   </div>
   <div class="col-md-12 p-lg-7 mx-auto my-5">
       <h2>Ваш баланс: {{buster.balance}} р.</h2>
-      <button type="button" class="btn w-20 btn-outline-dark" data-toggle="modal" data-target="#myModal-{{ bust.id }}">
-                                  Выплатить</button>
+      <button type="button" class="btn w-20 btn-success">Выплатить</button>
   </div>
 </div>
 
 <div class="tabs">
     <input type="radio" name="inset" value="" id="tab_1" checked>
-    <label for="tab_1">Ваш заказ</label>
+    <label for="tab_1">Выполняемый заказ</label>
 
     <input type="radio" name="inset" value="" id="tab_2">
-    <label for="tab_2">Консоль бустеров</label>
+    <label for="tab_2">Доступные заказы</label>
 
     <input type="radio" name="inset" value="" id="tab_3">
     <label for="tab_3">Штрафы</label>
@@ -42,34 +41,58 @@
     <input type="radio" name="inset" value="" id="tab_4">
     <label for="tab_4">Настройки</label>
 
+
+
+
+
+
     <div id="txt_1">
         <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
           <div class="col-md-12 p-lg-7 mx-auto my-5">
-            <h2>Ваш заказ</h2>
+
+              {% if active_bust %}
+                <h2>Ваш заказ</h2>
+              {% else %}
+                У вас пока нету активного заказа. Возьмите их во вкладке доступные заказы
+              {% endif %}
           </div>
         </div>
 
+      {% if active_bust %}
         <div class="container">
             <div class="row flex-row">
-                {% for bust in busts %}
-                    <div class="col">
-                        <div class="card border-danger mb-3" style="max-width: 18rem;">
-                          <div class="card-header bg-transparent border-danger">Заказ #{{bust.id}}</div>
-                          <div class="card-body text-danger">
-                            <h5 class="card-title">Сейчас: {{bust.mmr_from}} </h5>
-                              <h5 class="card-title">Конечный: {{bust.mmr_to}}  </h5>
-                          </div>
-                              <div class="card-footer bg-transparent border-danger">
-                                <button type="button" class="btn w-100 btn-outline-dark" data-toggle="modal" data-target="#myModal-{{ bust.id }}">
-                                  Детали заказа
-                                </button>
-                              </div>
-                          </div>
+                <div class="col-sm">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Заказ #{{active_bust.id}}</h5>
+                        <hr>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            Сейчас: {{active_bust.mmr_from}} <br>
+                            Конечный: {{active_bust.mmr_to}}
+                        </h6>
+                        <button class="w-100 btn btn-outline-danger " data-toggle="modal" data-target="#myModal-{{ active_bust.id }}">
+                            Детали заказа
+                        </button>
+                      </div>
                     </div>
-                {% endfor %}
+                </div>
             </div>
         </div>
+      {% endif %}
+
+
     </div>
+
+
+
+
+
+
+
+
+
+
+
 
     <div id="txt_2">
         <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
@@ -81,11 +104,12 @@
         <div class="container">
             <div class="row flex-row">
                 {% for bust in inactive_busts %}
-                    <div class="col">
+                    <div class="col-sm-3">
                         <div class="card border-danger mb-3" style="max-width: 18rem;">
                           <div class="card-header bg-transparent border-danger">Заказ #{{bust.id}}</div>
                           <div class="card-body text-danger">
-                            <h5 class="card-title">Было: {{bust.mmr_from}} MMR</h5>
+                                Сейчас: {{bust.mmr_from}} <br>
+                                Конечный: {{bust.mmr_to}}
                           </div>
                           <div class="card-footer bg-transparent border-danger">
                               <a href="{% url 'base' %}">
@@ -94,14 +118,25 @@
                                 </button>
                               </a></div>
                         </div>
-                        <hr>
-                        <h5 class="card-title">Этот заказ нужно выполнить максимально быстро, подробности внутри</h5>
                     </div>
+
+
+
+
+
                 {% endfor %}
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
     <div id="txt_3">
+
         <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">
             <div class="col-md-12 p-lg-7 mx-auto my-5">
                  <h1>Ваши штрафы</h1>
@@ -125,6 +160,13 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
 
     <div id="txt_4">
         <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" style="padding-top: 100px;">

@@ -84,7 +84,6 @@ class Bust(models.Model):
 
     client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     buster_id = models.ForeignKey(Buster, True, null=True)
-    is_active = models.BooleanField(default=False)
     mmr_from = models.IntegerField()
     mmr_to = models.IntegerField()
 
@@ -92,6 +91,10 @@ class Bust(models.Model):
     steam_password = models.CharField(max_length=120)
 
     start_date = models.DateField(default=datetime.now)
+
+    @classmethod
+    def get_inactive(cls):
+        return cls.objects.filter(buster_id=None)
 
     def __str__(self):
         return f"{self.id} Забустить c {self.mmr_from} mmr по {self.mmr_to} mmr, " \

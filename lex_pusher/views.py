@@ -78,16 +78,15 @@ def buster_client_view(request):
         return HttpResponse('Unauthorized', status=401)
 
     buster = Buster.objects.filter(booster_acc=request.user).first()
-    busts = Bust.objects.filter(buster_id=buster)[0:1]
-    punishments = Punish.objects.filter(buster_ident=buster)
-    inactive_busts = Bust.objects.filter(is_active=False)
+    active_bust = Bust.objects.filter(buster_id=buster).first()
 
-    print(buster)
+    punishments = Punish.objects.filter(buster_ident=buster)
+    inactive_busts = Bust.get_inactive()
 
     context = {
         'inactive_busts': inactive_busts,
         'punishments': punishments,
-        'busts': busts,
+        'active_bust': active_bust,
         'buster': buster
     }
     return render(request, 'lex_pusher/buster/buster_index.html', context)
