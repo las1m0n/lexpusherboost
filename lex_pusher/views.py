@@ -78,7 +78,7 @@ def buster_client_view(request):
         return HttpResponse('Unauthorized', status=401)
 
     buster = Buster.objects.filter(booster_acc=request.user).first()
-    busts = Bust.objects.filter(buster_id=buster)
+    busts = Bust.objects.filter(buster_id=buster)[0:1]
     punishments = Punish.objects.filter(buster_ident=buster)
     inactive_busts = Bust.objects.filter(is_active=False)
 
