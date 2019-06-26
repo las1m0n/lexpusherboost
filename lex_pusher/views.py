@@ -6,11 +6,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from users.models import CustomUser
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm
 from .mail_send import send
 from .models import Account, Bust, Stat, Buster, Punish
-
 
 def index_view(request):
     form = LoginForm(request.POST or None)
@@ -83,7 +81,7 @@ def buster_client_view(request):
     inactive_busts = Bust.get_inactive()
 
     active_bust_stats = Stat.objects.filter(bust_id=active_bust.id) if active_bust else None
-
+    active_bust.mmr_current = active_bust.mmr_from
     context = {
         'inactive_busts': inactive_busts,
         'bust_stats': active_bust_stats,

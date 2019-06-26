@@ -25,8 +25,6 @@ SECRET_KEY = 'i)2t424^okfd75p3v#@a(6zz!!!=le_$b98xjc@x=1@my--7xm'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.1.2',
-    'svinandcebek.tk'
 ]
 
 # Application definition
@@ -41,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-CUSTOM_APPS = ['lex_pusher', 'crispy_forms', 'users.apps.UsersConfig']
+CUSTOM_APPS = ['lex_pusher', 'crispy_forms', 'users.apps.UsersConfig', 'mathfilters']
 
 INSTALLED_APPS += CUSTOM_APPS
 

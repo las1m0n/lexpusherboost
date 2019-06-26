@@ -73,6 +73,9 @@ class Punish(models.Model):
     cost = models.IntegerField(default=0)
     reason = models.TextField(default="Бан по причине")
 
+    def __str__(self):
+        return f"{self.id} Штраф {self.buster_ident} на {self.cost} рублей"
+
 
 class Bust(models.Model):
     class Meta:
@@ -83,6 +86,7 @@ class Bust(models.Model):
     buster_id = models.ForeignKey(Buster, True, null=True)
     mmr_from = models.IntegerField()
     mmr_to = models.IntegerField()
+    mmr_current = models.IntegerField()
 
     steam_login = models.CharField(max_length=120)
     steam_password = models.CharField(max_length=120)
