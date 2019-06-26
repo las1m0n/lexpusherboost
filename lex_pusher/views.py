@@ -10,6 +10,7 @@ from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterAppl
 from .mail_send import send
 from .models import Account, Bust, Stat, Buster, Punish
 
+
 def index_view(request):
     form = LoginForm(request.POST or None)
     if form.is_valid():
@@ -82,6 +83,7 @@ def buster_client_view(request):
 
     active_bust_stats = Stat.objects.filter(bust_id=active_bust.id) if active_bust else None
     active_bust.mmr_current = active_bust.mmr_from
+
     context = {
         'inactive_busts': inactive_busts,
         'bust_stats': active_bust_stats,
@@ -186,3 +188,17 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('base'))
+
+
+def new_stat_view(request):
+    mmr = request.POST.get("mmr", "")
+    screen = request.POST.get("screen", "")
+    buster = Buster.objects.filter(booster_acc=request.user).first()
+    active_bust = Bust.objects.filter(buster_id=buster).first()
+    Stat.objects.create(
+        bust_id=active_bust,
+        match_id=228,
+        mmr=mmr,
+        screen=screen
+    )
+    return HttpResponseRedirect(reverse('buster_cabinet'))

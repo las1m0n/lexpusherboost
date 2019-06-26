@@ -12,6 +12,7 @@ urlpatterns = [
     path('success_form/', views.success_form_view, name='end_buster'),
     path('shop/', views.shop_view, name='shop'),
     path('cart/<account_slug>/', views.shop_cart_view, name='add_to_cart'),
+    path('buster_cabinet/new_stat/', views.new_stat_view, name='new_stat'),
     path('bust/', views.shop_bust, name='bust'),
     url(r'^cart_bust$', views.bust_cart_view, name='add_to_bust'),
     path('login/', views.login_view, name="login"),

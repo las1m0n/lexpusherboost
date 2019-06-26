@@ -109,8 +109,9 @@ class Stat(models.Model):
 
     bust_id = models.ForeignKey(Bust, True)
     match_id = models.IntegerField(null=True)
+    screen = models.CharField(max_length=255)
     mmr = models.FloatField()
-    time = models.DateTimeField()
+    time = models.DateTimeField(default=datetime.now)
 
     @property
     def is_win(self):

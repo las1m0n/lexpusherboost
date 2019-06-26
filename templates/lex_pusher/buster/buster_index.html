@@ -84,23 +84,24 @@
                 {#                todo#}
 
                 <h3 class="mt-5">Сообщить результат (каждую игру)</h3>
-                <div class="container">
-                    <form>
+                <div class="container py-5">
+                    <form action="{% url 'new_stat' %}" method="POST">
+                        {% csrf_token %}
                         <div class="form-group row">
                             <label for="mmr" class="col-sm-2 col-form-label">MMR</label>
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="mmr">
+                            <div class="col-sm-5">
+                                <input type="number" class="form-control" id="mmr" name="mmr">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="screen" class="col-sm-2 col-form-label">Скрин</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="screen">
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="screen" name="screen">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm">
-                                <button type="submit" class="btn btn-success w-100">Отправить</button>
+                                <button type="submit" class="btn btn-success w-20">Отправить</button>
                             </div>
                         </div>
                     </form>
@@ -119,6 +120,10 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{ stat.mmr }} MMR</h5>
                                         <p class="card-text">{{ stat.time }}</p>
+                                            <a href="http://{{ stat.screen }}/"><button class="w-20 btn btn-outline-dark">
+                                                <span class="cart-icon">Скриншот</span>
+                                                </button>
+                                            </a>
                                     </div>
                                 </div>
                             </div>
