@@ -11,6 +11,11 @@ def image_folder(instance, filename):
     return "{0}/{1}".format(instance.slug, filename)
 
 
+def image_buster_folder(instance, filename):
+    filename = instance.name + "." + filename.split('.')[1]
+    return "{0}/{1}".format(instance.name, filename)
+
+
 class Account(models.Model):
     class Meta:
         verbose_name = 'Буст'
@@ -54,6 +59,7 @@ class Buster(models.Model):
     name = models.CharField(max_length=120, blank=True, null=True)
     phone = models.CharField(max_length=120, blank=True, null=True)
     email = models.EmailField()
+    avatar = models.ImageField(upload_to='', default='media/ссс/ccc.png', blank=True, null=True)
     vk = models.CharField(max_length=120, blank=True, null=True)
     skype = models.CharField(max_length=120, blank=True, null=True)
     wmr = models.CharField(max_length=120, blank=True, null=True)
@@ -108,7 +114,7 @@ class Stat(models.Model):
         verbose_name_plural = 'Статы'
 
     bust_id = models.ForeignKey(Bust, True)
-    match_id = models.IntegerField(null=True)
+    # match_id = models.IntegerField(null=True)
     screen = models.CharField(max_length=255)
     mmr = models.FloatField()
     time = models.DateTimeField(default=datetime.now)

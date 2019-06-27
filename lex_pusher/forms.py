@@ -150,3 +150,12 @@ class BusterApplicationForm(forms.ModelForm):
         self.fields['wmr'].label = "WMR кошелек"
         self.fields['solo_mmr'].label = "Текущий соло ммр"
         self.fields['experience'].label = "О своих навыках"
+
+
+class UploadFileForm(forms.Form):
+    file = forms.FileField(required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(UploadFileForm, self).__init__(*args, **kwargs)
+
+        self.fields['file'].label = "Аватар"

@@ -6,7 +6,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.db.models import F
-from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm
+from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm, \
+    UploadFileForm
 from .mail_send import send
 from .models import Account, Bust, Stat, Buster, Punish
 
@@ -82,6 +83,7 @@ def buster_client_view(request):
     inactive_busts = Bust.get_inactive()
 
     active_bust_stats = Stat.objects.filter(bust_id=active_bust.id) if active_bust else None
+    form = UploadFileForm(request.POST, request.FILES)
     # active_bust.mmr_current = active_bust.mmr_from
 
     context = {
@@ -89,7 +91,8 @@ def buster_client_view(request):
         'bust_stats': active_bust_stats,
         'punishments': punishments,
         'active_bust': active_bust,
-        'buster': buster
+        'buster': buster,
+        'form': form
     }
     return render(request, 'lex_pusher/buster/buster_index.html', context)
 
@@ -205,4 +208,26 @@ def new_stat_view(request):
         mmr=mmr,
         screen=screen
     )
+    return HttpResponseRedirect(reverse('buster_cabinet'))
+
+
+def buster_info_change_view(request):
+    about_info = request.POST.get("about_yourself", None)
+    mmr = request.POST.get("mmr_main", None)
+    buster = Buster.objects.filter(booster_acc=request.user)
+
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = Buster(avatar=request.FILES['file'])
+            instance.save()
+            buster.update(avatar=request.FILES['file'])
+
+    if mmr is not None:
+        buster.update(solo_mmr=mmr)
+        buster.save()
+
+    if about_info is not None:
+        buster.update(experience=about_info)
+        buster.save()
     return HttpResponseRedirect(reverse('buster_cabinet'))
