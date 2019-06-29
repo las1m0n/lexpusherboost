@@ -84,7 +84,8 @@ def buster_client_view(request):
 
     active_bust_stats = Stat.objects.filter(bust_id=active_bust.id) if active_bust else None
     form = UploadFileForm(request.POST, request.FILES)
-    # active_bust.mmr_current = active_bust.mmr_from
+    if active_bust.mmr_current == 0:
+        active_bust.mmr_current = active_bust.mmr_from
 
     context = {
         'inactive_busts': inactive_busts,
@@ -219,9 +220,10 @@ def buster_info_change_view(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            instance = Buster(avatar=request.FILES['file'])
+            avatar = form.clean_avatar()
+            instance = Buster(avatar=avatar)
             instance.save()
-            buster.update(avatar=request.FILES['file'])
+            buster.update(avatar=avatar)
 
     if mmr is not None:
         buster.update(solo_mmr=mmr)
@@ -231,3 +233,23 @@ def buster_info_change_view(request):
         buster.update(experience=about_info)
         buster.save()
     return HttpResponseRedirect(reverse('buster_cabinet'))
+
+
+def bust_info_view(request, bust_id):
+    buster = Buster.objects.filter(booster_acc=request.user).first()
+    found_busts = Bust.objects.filter(id=bust_id).first()
+    found_bust_stats = Stat.objects.filter(bust_id=found_busts.id)
+    len_pass = len(found_busts.steam_password)*'*'
+    len_login = len(found_busts.steam_login)*'*'
+    if found_busts.mmr_current == 0:
+        found_busts.mmr_current = found_busts.mmr_from
+
+    context = {
+        'found_bust': found_busts,
+        'len_pass': len_pass,
+        'len_login': len_login,
+        'found_bust_stats': found_bust_stats
+    }
+    return render(request, 'lex_pusher/buster/bust_info.html', context)
+
+

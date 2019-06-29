@@ -146,20 +146,28 @@
                     {% for bust in inactive_busts %}
                         <div class="col-sm-3">
                             <div class="card border-danger mb-3" style="max-width: 18rem;">
-                                <div class="card-header bg-transparent border-danger">Заказ #{{ bust.id }}</div>
+                                <div class="card-header bg-transparent border-danger">
+                                    Заказ #{{ bust.id }}
+                                    {% if active_bust %}
+                                        <button class="w-100 btn btn-outline-dark disabled">
+                                            <span class="cart-icon">Вы уже выполняете заказ</span>
+                                        </button>
+                                    {% else %}
+                                        <button class="w-100 btn btn-outline-success">
+                                            <span class="cart-icon">Можно взять</span>
+                                        </button>
+                                    {% endif %}
+                                </div>
                                 <div class="card-body text-danger">
                                     Сейчас: {{ bust.mmr_from }} <br>
                                     Конечный: {{ bust.mmr_to }}
                                 </div>
                                 <div class="card-footer bg-transparent border-danger">
-
-                                    <a href="{% url 'base' %}">
-                                        <button class="w-100 btn btn-outline-dark"
-                                                {% if active_bust %}disabled{% endif %}>
-                                            <span class="cart-icon">Можно взять</span>
+                                    <a href="{% url 'bust_info' bust_id=bust.id %}">
+                                        <button class="w-100 btn btn-success">
+                                            <span class="cart-icon">ОТКРЫТЬ</span>
                                         </button>
                                     </a>
-
                                 </div>
                             </div>
                         </div>
@@ -188,6 +196,10 @@
                                 <hr>
                             </div>
                         </div>
+                    {% empty %}
+                    <div class="position-relative overflow-hidden p-5 text-center">
+                        <h3>У Вас нет штрафов!</h3>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
