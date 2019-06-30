@@ -59,7 +59,7 @@ class Buster(models.Model):
     name = models.CharField(max_length=120, blank=True, null=True)
     phone = models.CharField(max_length=120, blank=True, null=True)
     email = models.EmailField()
-    avatar = models.ImageField(upload_to='', default='media/ссс/ccc.png', blank=True, null=True)
+    avatar = models.ImageField(upload_to='', default='ссс/ccc.png', blank=True, null=True)
     vk = models.CharField(max_length=120, blank=True, null=True)
     skype = models.CharField(max_length=120, blank=True, null=True)
     wmr = models.CharField(max_length=120, blank=True, null=True)

@@ -20,6 +20,10 @@
 {% block content %}
 <div class="tab-content" id="myTabContent">
     <div class="position-relative overflow-hidden py-5 m-md-1">
+        <h5><a href="{% url 'base' %}">Главная</a> <
+            <a href="{% url 'buster_cabinet' %}">Кабинет</a> <
+            Заказ #{{found_bust.id}}
+        </h5>
         <h2>Заказ номер #{{found_bust.id}}</h2>
     </div>
     <hr>
@@ -61,6 +65,18 @@
                     PASSWORD: {{len_pass}}
                 </div>
             </div>
+            {% if active_bust %}
+            {% else %}
+            <div class="row flex-row">
+                <div class="col text-center">
+                    <a href="{% url 'bust_take' bust_id=found_bust.id %}">
+                        <button class="w-20 btn btn-success">
+                            <span class="cart-icon">ВЗЯТЬ</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
     <hr>

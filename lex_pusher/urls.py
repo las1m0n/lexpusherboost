@@ -18,5 +18,6 @@ urlpatterns = [
     path('login/', views.login_view, name="login"),
     path('logout/', views.logout_view, name='logout'),
     path('buster_cabinet/change_info/', views.buster_info_change_view, name='change_info_account'),
-    path('buster_cabinet/info/<bust_id>/', views.bust_info_view, name='bust_info')
+    path('buster_cabinet/info/<bust_id>/', views.bust_info_view, name='bust_info'),
+    path('buster_cabinet/info/take/<bust_id>/', views.take_bust_view, name='bust_take')
 ]
