@@ -30,7 +30,9 @@
             {% for account in accounts %}
                 <div class="col-sm-4">
                     <div class="card">
-                        <img src="{{ account.image.url }}" class="card-img-top">
+                        {% if account.image %}
+                            <img src="{{ account.image.url }}">
+                        {%endif%}
                         <div class="card-body">
                             <h5 class="card-title">{{ account.price }} ₽</h5>
                             <hr>
