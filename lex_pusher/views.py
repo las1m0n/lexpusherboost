@@ -1,13 +1,14 @@
 import secrets
 
 from django.contrib.auth import login, authenticate, logout
-from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.db.models import F
+
+from users.models import CustomUser
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm, \
     UploadFileForm
+from .mail_send import send_email
 from .models import Account, Bust, Stat, Buster, Punish
 
 
@@ -164,7 +165,7 @@ def bust_cart_view(request):
 
         mess = f"Your user log is: {secret_key}"
         mess = mess.encode('ascii', 'ignore').decode('ascii')
-        send(email, 'Flex Pusher Authentification', mess)
+        send_email(email, 'Flex Pusher Authentification', mess)
         return HttpResponseRedirect(reverse('client'))
 
     context = {
@@ -238,8 +239,8 @@ def bust_info_view(request, bust_id):
     found_busts = Bust.objects.filter(id=bust_id).first()
     active_bust = Bust.objects.filter(buster_id=buster).first()
     found_bust_stats = Stat.objects.filter(bust_id=found_busts.id)
-    len_pass = len(found_busts.steam_password)*'*'
-    len_login = len(found_busts.steam_login)*'*'
+    len_pass = len(found_busts.steam_password) * '*'
+    len_login = len(found_busts.steam_login) * '*'
     try:
         if found_busts.mmr_current == 0 or found_busts.mmr_current is None:
             found_busts.mmr_current = found_busts.mmr_from

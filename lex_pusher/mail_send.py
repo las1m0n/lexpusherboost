@@ -2,11 +2,11 @@ from django.core.mail import send_mail
 from django.conf.global_settings import EMAIL_HOST_USER
 
 
-def send_email():
+def send_email(to, subject, text):
     send_mail(
-        'Subject here',
-        'Here is the message.',
+        subject,
+        text,
         EMAIL_HOST_USER,
-        ['svinerus@gmail.com'],
+        [to],
         fail_silently=False,
     )
