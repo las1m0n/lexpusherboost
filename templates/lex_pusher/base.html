@@ -38,6 +38,23 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
-
+<script>
+    window.LiqPayCheckoutCallback = function() {
+        LiqPayCheckout.init({
+            data: "{{ data }}",
+            signature: "{{ signature }}",
+            embedTo: "#liqpay_checkout",
+            mode: "embed" // embed || popup,
+        }).on("liqpay.callback", function(data){
+            console.log(data.status);
+            console.log(data);
+        }).on("liqpay.ready", function(data){
+            // ready
+        }).on("liqpay.close", function(data){
+            // close
+        });
+    };
+</script>
+<script src="//static.liqpay.ua/libjs/checkout.js" async></script>
 </body>
 </html>

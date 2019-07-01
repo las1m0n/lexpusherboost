@@ -20,8 +20,8 @@
 {% block content %}
 <div class="tab-content" id="myTabContent">
     <div class="position-relative overflow-hidden py-5 m-md-1">
-        <h5><a href="{% url 'base' %}">Главная</a> <
-            <a href="{% url 'buster_cabinet' %}">Кабинет</a> <
+        <h5><a href="{% url 'index' %}">Главная</a> <
+            <a href="{% url 'buster' %}">Кабинет</a> <
             Заказ #{{found_bust.id}}
         </h5>
         <h2>Заказ номер #{{found_bust.id}}</h2>

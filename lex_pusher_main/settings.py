@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-CUSTOM_APPS = ['lex_pusher', 'crispy_forms', 'users.apps.UsersConfig']
+CUSTOM_APPS = ['lex_pusher', 'crispy_forms', 'users.apps.UsersConfig', 'mathfilters']
 
 INSTALLED_APPS += CUSTOM_APPS
 
@@ -159,3 +159,7 @@ EMAIL_HOST_USER = 'bondarenkonikita295@gmail.com'
 EMAIL_HOST_PASSWORD = "7325462896nk"
 
 EMAIL_USE_SSL = False
+
+
+LIQPAY_PUBLIC_KEY = 'i48678063084'
+LIQPAY_PRIVATE_KEY = 'UAerczznquTL5d6yFDB3VOAG9kMMp1EHPULAa3TV'

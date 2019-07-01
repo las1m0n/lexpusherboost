@@ -23,7 +23,9 @@
         {% endif %}
         <h2>Привет, {{ buster.name }}</h2>
         <h2>Ваш баланс: {{ buster.balance }} р.</h2>
-        <button type="button" class="btn w-20 btn-success">Выплатить</button>
+        <a href="{% url 'buster_payout' %}">
+            <button type="button" class="btn w-20 btn-success">Выплатить</button>
+        </a>
     </div>
 
 
@@ -176,12 +178,12 @@
                                 <div class="card-footer bg-transparent border-danger">
                                     {% if active_bust %}
                                         <button class="w-100 btn btn-outline-dark" disabled>
-                                            <span class="cart-icon">Можно взять</span>
+                                            <span class="cart-icon">Открыть</span>
                                         </button>
                                     {% else %}
                                         <a href="{% url 'bust_info' bust_id=bust.id %}">
                                             <button class="w-100 btn btn-outline-dark">
-                                                <span class="cart-icon">Можно взять</span>
+                                                <span class="cart-icon">Открыть</span>
                                             </button>
                                         </a>
                                     {% endif %}
