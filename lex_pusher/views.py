@@ -7,7 +7,7 @@ from django.urls import reverse
 
 from users.models import CustomUser
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm
-from .mail_send import send
+from .mail_send import send_email
 from .models import Account, Bust, Stat, Buster, Punish
 
 
@@ -182,3 +182,9 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+
+
+
+def test(req):
+    send_email()

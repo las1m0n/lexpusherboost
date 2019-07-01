@@ -150,3 +150,14 @@ SUIT_CONFIG = {
     ),
     'LIST_PER_PAGE': 15
 }
+
+
+# django-email  https://docs.djangoproject.com/en/2.2/topics/email/
+
+EMAIL_HOST = 'smtp.gmail.com'
+ENAIL_PORT = 587
+
+EMAIL_HOST_USER = 'bondarenkonikita295@gmail.com'
+EMAIL_HOST_PASSWORD = "7325462896nk"
+
+EMAIL_USE_SSL = False

@@ -1,22 +1,12 @@
-import smtplib
-
-FROM_ADDRESS = 'bondarenkonikita295@gmail.com'
-LOGIN = "bondarenkonikita295@gmail.com"
-PASSWORD = "7325462896nk"
+from django.core.mail import send_mail
+from django.conf.global_settings import EMAIL_HOST_USER
 
 
-def send(to, subject, text):
-    msg = "\r\n".join([
-        f"From: {FROM_ADDRESS}",
-        f"To: {to}",
-        f"Subject: {subject}",
-        "",
-        text
-    ])
-
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.ehlo()
-    server.starttls()
-    server.login(LOGIN, PASSWORD)
-    server.sendmail(FROM_ADDRESS, to, msg)
-    server.quit()
+def send_email():
+    send_mail(
+        'Subject here',
+        'Here is the message.',
+        EMAIL_HOST_USER,
+        ['svinerus@gmail.com'],
+        fail_silently=False,
+    )
