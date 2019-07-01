@@ -56,7 +56,7 @@
         <div class="tab-pane fade show active container" id="active_bust" role="tabpanel" aria-labelledby="active_bust-tab">
             <div class="position-relative overflow-hidden p-5 text-center">
                 {% if active_bust %}
-                    <h1>Ваш заказ</h1>
+                    <h1>Выполняемый заказ</h1>
                 {% else %}
                     У вас пока нету активного заказа. Возьмите их во вкладке доступные заказы
                 {% endif %}
@@ -174,12 +174,19 @@
                                     Конечный: {{ bust.mmr_to }}
                                 </div>
                                 <div class="card-footer bg-transparent border-danger">
-                                    <a href="{% url 'bust_info' bust_id=bust.id %}">
-                                        <button class="w-100 btn btn-outline-dark"
-                                                {% if active_bust %}disabled{% endif %}>
+                                    {% if active_bust %}
+                                        <button class="w-100 btn btn-outline-dark" disabled>
                                             <span class="cart-icon">Можно взять</span>
                                         </button>
-                                    </a>
+                                    {% else %}
+                                        <a href="{% url 'bust_info' bust_id=bust.id %}">
+                                            <button class="w-100 btn btn-outline-dark">
+                                                <span class="cart-icon">Можно взять</span>
+                                            </button>
+                                        </a>
+                                    {% endif %}
+
+{#                                todo возможно сделать https://bootstrap-4.ru/docs/4.3.1/components/popovers/#}
                                 </div>
                             </div>
                         </div>

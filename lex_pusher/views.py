@@ -32,7 +32,8 @@ def index_view(request):
 
 def client_view(request):
     bust = Bust.objects.filter(client=request.user).first()
-    stats = Stat.objects.filter(bust_id=bust.id)
+    stats = Stat.objects.filter(bust=bust)
+
     context = {
         'stats_times': [i.time.strftime("%m.%d, %H:%M") for i in stats],
         'stats_values': [i.mmr for i in stats],
@@ -190,7 +191,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse('base'))
+    return HttpResponseRedirect(reverse('index'))
 
 
 def new_stat_view(request):

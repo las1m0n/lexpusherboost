@@ -11,7 +11,7 @@
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: {{ stats_times }},
+                labels: {{ stats_times|safe }},
                 datasets: [{
                     data: {{ stats_values }},
                     borderColor: '#007bff',

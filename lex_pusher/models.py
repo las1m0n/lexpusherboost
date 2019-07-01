@@ -117,7 +117,7 @@ class Stat(models.Model):
         verbose_name = 'Стат'
         verbose_name_plural = 'Статы'
 
-    bust_id = models.ForeignKey(Bust, True)
+    bust = models.ForeignKey(Bust, True)
     # match_id = models.IntegerField(null=True)
     screen = models.CharField(max_length=255)
     mmr = models.FloatField()
@@ -126,3 +126,6 @@ class Stat(models.Model):
     @property
     def is_win(self):
         return self.mmr > 0
+
+    def __str__(self):
+        return f"буст ид: {self.bust.id}  ммр: {self.mmr}"
