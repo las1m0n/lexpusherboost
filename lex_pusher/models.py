@@ -103,6 +103,10 @@ class Bust(models.Model):
     def get_inactive(cls):
         return cls.objects.filter(buster_id=None)
 
+    @property
+    def mmr_left(self):
+        return self.mmr_to - self.mmr_current
+
     def __str__(self):
         return f"{self.id} Забустить c {self.mmr_from} mmr по {self.mmr_to} mmr, " \
             f"Логин '{self.steam_login}' + пароль '{self.steam_password}'"
