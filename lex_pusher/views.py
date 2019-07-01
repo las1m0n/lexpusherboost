@@ -8,7 +8,6 @@ from django.urls import reverse
 from django.db.models import F
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm, \
     UploadFileForm
-from .mail_send import send
 from .models import Account, Bust, Stat, Buster, Punish
 
 
@@ -53,12 +52,20 @@ def buster_view(request):
 
     active_bust_stats = Stat.objects.filter(bust_id=active_bust.id) if active_bust else None
 
+    form = UploadFileForm(request.POST, request.FILES)
+    try:
+        if active_bust.mmr_current == 0:
+            active_bust.mmr_current = active_bust.mmr_from
+    except AttributeError:
+        print("Nothing")
+
     context = {
         'inactive_busts': inactive_busts,
         'bust_stats': active_bust_stats,
         'punishments': punishments,
         'active_bust': active_bust,
-        'buster': buster
+        'buster': buster,
+        'form': form
     }
     return render(request, 'lex_pusher/buster/buster_index.html', context)
 
