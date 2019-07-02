@@ -140,8 +140,10 @@ def shop_bust(request):
 def bust_cart_view(request):
     form_bust = BustCartForm(request.POST or None)
     form_acc = ClientForm(request.POST or None)
-    mmr_from = request.GET.get("mmr_from", "")
-    mmr_to = request.GET.get("mmr_to", "")
+    mmr_from = request.GET.get("mmr_from", None)
+    mmr_to = request.GET.get("mmr_to", None)
+    price = request.GET.get("price", None)
+    print(price)
     if form_bust.is_valid() and form_acc.is_valid():
         email = form_acc.cleaned_data['email']
         vk = form_acc.cleaned_data['vk']
@@ -282,7 +284,7 @@ class PayView(TemplateView):
             'amount': '100',
             'currency': 'USD',
             'description': 'Payment for clothes',
-            'order_id': 'order_id_1',
+            'order_id': 'order_id_2',
             'version': '3',
             'sandbox': 0,
             'server_url': 'https://test.com/billing/pay-callback/',

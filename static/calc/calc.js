@@ -96,7 +96,7 @@ function changePrice() {
         }
     }
 
-    priceDiv.innerHTML = price + " ₽";
+    priceDiv.innerText = price + " ₽";
 }
 
 
