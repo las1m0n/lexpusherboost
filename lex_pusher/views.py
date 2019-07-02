@@ -40,11 +40,19 @@ def index_view(request):
 def client_view(request):
     bust = Bust.objects.filter(client=request.user).first()
     stats = Stat.objects.filter(bust=bust)
+    bust_stats = Stat.objects.filter(bust_id=bust.id)
+
+    try:
+        if bust.mmr_current == 0 or bust.mmr_current is None:
+            bust.mmr_current = bust.mmr_from
+    except AttributeError:
+        print("Nothing")
 
     context = {
         'stats_times': [i.time.strftime("%m.%d, %H:%M") for i in stats],
         'stats_values': [i.mmr for i in stats],
-        'bust': bust
+        'bust': bust,
+        'bust_stats': bust_stats
     }
 
     return render(request, 'lex_pusher/client/client_index.html', context)

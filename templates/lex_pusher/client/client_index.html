@@ -19,11 +19,61 @@
 {% block content %}
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
         <div class="col-md-5 p-lg-5 mx-auto">
-            <h1>Ваш заказ</h1>
-            <p class="lead font-weight-normal">
-                Буст с <b>{{ bust.mmr_from }}</b> ммр до <b>{{ bust.mmr_to }}</b> ммр
-            </p>
+            <h1>Заказ #{{bust.id}}</h1>
         </div>
     </div>
-    {% include 'lex_pusher/client/client_mmr_dash.html' %}
+    <div class="container">
+        <div class="row">
+            <div class="col" >
+                <strong>График буста</strong>
+                {% include 'lex_pusher/client/client_mmr_dash.html' %}
+            </div>
+            <div class="col">
+                <div class="container">
+                    <div class="row flex-row">
+                        <div class="col text-center">
+                            Начальный MMR
+                            <h3>{{ bust.mmr_from }}</h3>
+                        </div>
+                        <div class="col text-center">
+                            Конечный MMR
+                            <h3>{{ bust.mmr_to }}</h3>
+                        </div>
+                        <div class="col text-center">
+                            Текущий MMR
+                            <h3>{{ bust.mmr_current }}</h3>
+                        </div>
+                        <div class="col text-center">
+                            Осталось MMR
+                            <h3>{{ bust.mmr_left }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col center mt-3">
+                <strong>История буста</strong>
+                <div class="container pt-5">
+                    <div class="row flex-row">
+                        {% for stat in bust_stats %}
+                            <div class="col-3">
+                                <div class="card text-white bg-{% if stat.is_win %}success{% else %}danger{% endif %} mb-3"
+                                     style="max-width: 18rem;">
+                                    <div class="card-header">{% if stat.is_win %}Победа{% else %}
+                                        Поражение{% endif %} {{ stat.mmr }} MMR
+                                        <p class="card-text">{{ stat.time }}</p></div>
+                                    <div class="card-body">
+                                            <a href="http://{{ stat.screen }}/"><button class="w-20 btn btn-outline-dark">
+                                                <span class="cart-icon">Скриншот</span>
+                                                </button>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
