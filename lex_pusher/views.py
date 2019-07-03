@@ -1,22 +1,20 @@
 import secrets
 
+from django.conf import settings
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.conf import settings
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import TemplateView, View
 
 from users.models import CustomUser
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm, \
     UploadFileForm
 from .mail_send import send_email
+from . import utils
 from .models import Account, Bust, Stat, Buster, Punish
-from django.utils.decorators import method_decorator
-# from liqpay.liqpay import LiqPay
-
-from django.views.generic import TemplateView, View
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 
 
 def index_view(request):
@@ -151,7 +149,7 @@ def bust_cart_view(request):
     mmr_from = request.GET.get("mmr_from", None)
     mmr_to = request.GET.get("mmr_to", None)
     price = request.GET.get("price", None)
-    print(price)
+
     if form_bust.is_valid() and form_acc.is_valid():
         email = form_acc.cleaned_data['email']
         vk = form_acc.cleaned_data['vk']
@@ -160,6 +158,7 @@ def bust_cart_view(request):
         steam_login = form_bust.cleaned_data['steam_login']
         steam_password = form_bust.cleaned_data['steam_password']
         secret_key = secrets.token_hex(nbytes=8)
+
         CustomUser.objects.create_user(
             email=email,
             skype=skype,
@@ -173,7 +172,7 @@ def bust_cart_view(request):
         if login_user:
             login(request, login_user)
 
-        Bust.objects.create(
+        bust = Bust.objects.create(
             client=request.user,
             mmr_from=mmr_from,
             mmr_to=mmr_to,
@@ -182,10 +181,8 @@ def bust_cart_view(request):
             steam_password=steam_password
         )
 
-        mess = f"Your user log is: {secret_key}"
-        mess = mess.encode('ascii', 'ignore').decode('ascii')
-        send_email(email, 'Flex Pusher Authentification', mess)
-        return HttpResponseRedirect(reverse('client'))
+        fk_url = utils.fk_url(price, bust.id)
+        return HttpResponseRedirect(fk_url)
 
     context = {
         'form': form_bust,
@@ -194,6 +191,34 @@ def bust_cart_view(request):
         'mmr_to': mmr_to,
     }
     return render(request, 'lex_pusher/client/bust_shop_form.html', context)
+
+
+def pay_success(request):
+    # todo
+    # bust = ...
+    # client = ....
+    # ........
+
+    # mess = f"Your user log is: {secret_key}"
+    # mess = mess.encode('ascii', 'ignore').decode('ascii')
+    # send_email(email, 'Flex Pusher Authentification', mess)
+
+    return render(request, '')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def login_view(request):
