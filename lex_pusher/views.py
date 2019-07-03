@@ -181,7 +181,8 @@ def bust_cart_view(request):
             steam_password=steam_password
         )
 
-        fk_url = utils.fk_url(price, bust.id)
+        description = 'bust|' + str(bust.id)
+        fk_url = utils.fk_url(price, description)
         return HttpResponseRedirect(fk_url)
 
     context = {
