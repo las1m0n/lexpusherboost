@@ -177,6 +177,7 @@ def bust_cart_view(request):
             client=request.user,
             mmr_from=mmr_from,
             mmr_to=mmr_to,
+            mmr_current=mmr_from,
             steam_login=steam_login,
             steam_password=steam_password
         )
