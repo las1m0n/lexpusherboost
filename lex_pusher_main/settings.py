@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'lex_pusher_main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# DATABASES = {  # todo prod
+# DATABASES = {  # todo продакш запустим на машине постгрес
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': 'flex_pusher',

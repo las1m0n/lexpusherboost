@@ -9,12 +9,14 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, View
 
-from users.models import CustomUser
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm, \
     UploadFileForm
 from .mail_send import send_email
 from . import utils
 from .models import Account, Bust, Stat, Buster, Punish
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 def index_view(request):
@@ -38,11 +40,12 @@ def index_view(request):
 def client_view(request):
     bust = Bust.objects.filter(client=request.user).first()
     stats = Stat.objects.filter(bust=bust)
-    bust_stats = Stat.objects.filter(bust_id=bust.id)
+    bust_stats = Stat.objects.filter(bust=bust)
 
     context = {
         'stats_times': [i.time.strftime("%m.%d, %H:%M") for i in stats],
         'stats_values': [i.mmr for i in stats],
+        'stats_current_values': [i.mmr_current for i in stats],
         'bust': bust,
         'bust_stats': bust_stats
     }
@@ -148,7 +151,7 @@ def bust_shop_cart_view(request):
         steam_password = form_bust.cleaned_data['steam_password']
         secret_key = secrets.token_hex(nbytes=8)
 
-        CustomUser.objects.create_user(
+        User.objects.create_user(
             email=email,
             skype=skype,
             phone=phone,
@@ -216,23 +219,6 @@ def pay_success(request):
         pass
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def login_view(request):
     form = LoginForm(request.POST or None)
     if form.is_valid():
@@ -261,6 +247,7 @@ def new_stat_view(request):
     Stat.objects.create(
         bust_id=active_bust,
         mmr=mmr,
+        mmr_current=current + int(mmr),
         screen=screen
     )
     return HttpResponseRedirect(reverse('buster_cabinet'))
@@ -317,19 +304,6 @@ def take_bust_view(request, bust_id):
     taken_bust = Bust.objects.filter(id=bust_id)
     taken_bust.update(buster=buster)
     return HttpResponseRedirect(reverse('buster_cabinet'))
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 class PayView(TemplateView):

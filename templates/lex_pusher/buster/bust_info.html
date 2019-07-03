@@ -2,7 +2,6 @@
 
 {% load static %}
 {% load crispy_forms_tags %}
-{% load mathfilters %}
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/forms.css' %}">
@@ -44,7 +43,7 @@
                 </div>
                 <div class="col text-center">
                     Осталось MMR
-                    <h3>{{ found_bust.mmr_to|sub:found_bust.mmr_current}}</h3>
+                    <h3>{{ found_bust.mmr_left}}</h3>
                 </div>
             </div>
         </div>

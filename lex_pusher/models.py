@@ -103,7 +103,7 @@ class Bust(models.Model):
 
     @classmethod
     def get_free(cls):
-        return cls.objects.filter(buster_id=None, is_paid=True)
+        return cls.objects.filter(buster=None, is_paid=True)
 
     @property
     def mmr_left(self):
@@ -121,7 +121,8 @@ class Stat(models.Model):
 
     bust = models.ForeignKey(Bust, True)
     screen = models.CharField(max_length=255)
-    mmr = models.FloatField()
+    mmr = models.IntegerField()
+    mmr_current = models.IntegerField(default=0)
     time = models.DateTimeField(default=datetime.now)
 
     @property

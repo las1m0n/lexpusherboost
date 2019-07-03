@@ -11,12 +11,12 @@
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: {{ stats_times|safe }},
+                labels: {{ stats_values|safe }},
                 datasets: [{
-                    data: {{ stats_values }},
-                    borderColor: '#007bff',
+                    data: {{ stats_current_values }},
+                    borderColor: '#ff291a',
                     borderWidth: 4,
-                    pointBackgroundColor: '#007bff'
+                    pointBackgroundColor: '#ff3a3f'
                 }]
             },
             options: {
