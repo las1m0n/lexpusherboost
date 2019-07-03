@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-CUSTOM_APPS = ['lex_pusher', 'crispy_forms', 'users.apps.UsersConfig', 'mathfilters']
+CUSTOM_APPS = ['lex_pusher', 'crispy_forms', 'users.apps.UsersConfig']
 
 INSTALLED_APPS += CUSTOM_APPS
 
@@ -79,14 +79,22 @@ WSGI_APPLICATION = 'lex_pusher_main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# DATABASES = {  # todo prod
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'flex_pusher',
+#         'USER': 'postgres',
+#         'PASSWORD': '12345678',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'flex_pusher',
-        'USER': 'postgres',
-        'PASSWORD': '12345678',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -157,7 +165,7 @@ SUIT_CONFIG = {
 # django-email  https://docs.djangoproject.com/en/2.2/topics/email/
 
 EMAIL_HOST = 'smtp.gmail.com'
-ENAIL_PORT = 587
+EMAIL_PORT = 587
 
 EMAIL_HOST_USER = 'bondarenkonikita295@gmail.com'
 EMAIL_HOST_PASSWORD = "7325462896nk"
