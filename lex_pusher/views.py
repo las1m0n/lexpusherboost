@@ -2,7 +2,7 @@ import secrets
 
 from django.conf import settings
 from django.contrib.auth import login, authenticate, logout
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.utils.decorators import method_decorator
@@ -40,12 +40,6 @@ def client_view(request):
     stats = Stat.objects.filter(bust=bust)
     bust_stats = Stat.objects.filter(bust_id=bust.id)
 
-    try:
-        if bust.mmr_current == 0 or bust.mmr_current is None:
-            bust.mmr_current = bust.mmr_from
-    except AttributeError:
-        print("Nothing")
-
     context = {
         'stats_times': [i.time.strftime("%m.%d, %H:%M") for i in stats],
         'stats_values': [i.mmr for i in stats],
@@ -61,18 +55,13 @@ def buster_view(request):
         return HttpResponseRedirect(reverse('to_busters'))
 
     buster = Buster.objects.filter(booster_acc=request.user).first()
-    active_bust = Bust.objects.filter(buster_id=buster).first()
+    active_bust = Bust.objects.filter(buster=buster).first()
     punishments = Punish.objects.filter(buster_ident=buster)
-    inactive_busts = Bust.get_inactive()
+    inactive_busts = Bust.get_free()
 
     active_bust_stats = Stat.objects.filter(bust_id=active_bust.id) if active_bust else None
 
     form = UploadFileForm(request.POST, request.FILES)
-    try:
-        if active_bust.mmr_current == 0:
-            active_bust.mmr_current = active_bust.mmr_from
-    except AttributeError:
-        print("Nothing")
 
     context = {
         'inactive_busts': inactive_busts,
@@ -115,7 +104,7 @@ def buster_register_view(request):
     return render(request, 'lex_pusher/buster/buster_register.html', context)
 
 
-def shop_view(request):
+def accs_shop_view(request):
     accounts = Account.objects.filter(available=True)
     context = {
         'accounts': accounts,
@@ -123,7 +112,11 @@ def shop_view(request):
     return render(request, 'lex_pusher/accs/shop_index.html', context)
 
 
-def shop_cart_view(request, account_slug):
+def bust_shop_view(request):
+    return render(request, 'lex_pusher/client/bust_shop_start.html')
+
+
+def accs_shop_cart_view(request, account_slug):
     account = Account.objects.get(slug=account_slug)
     form = ShopCartForm(request.POST or None)
     if form.is_valid():
@@ -139,11 +132,7 @@ def shop_cart_view(request, account_slug):
     return render(request, 'lex_pusher/accs/shop_cart.html', context)
 
 
-def shop_bust(request):
-    return render(request, 'lex_pusher/client/bust_shop_start.html')
-
-
-def bust_cart_view(request):
+def bust_shop_cart_view(request):
     form_bust = BustCartForm(request.POST or None)
     form_acc = ClientForm(request.POST or None)
     mmr_from = request.GET.get("mmr_from", None)
@@ -195,16 +184,38 @@ def bust_cart_view(request):
 
 
 def pay_success(request):
-    # todo
-    # bust = ...
-    # client = ....
-    # ........
+    price = request.POST['AMOUNT']
+    description = request.POST['MERCHANT_ORDER_ID']
+    sign = request.POST['SIGN']
 
-    # mess = f"Your user log is: {secret_key}"
-    # mess = mess.encode('ascii', 'ignore').decode('ascii')
-    # send_email(email, 'Flex Pusher Authentification', mess)
+    hash = utils.fk_hash(price, description, True)
+    if sign != hash:
+        return HttpResponse("ты че наебать нас вздумал?")
 
-    return render(request, '')
+    pay_for, data = description.split("|")
+
+    if pay_for == 'bust':
+
+        bust = Bust.objects.get(id=int(data))
+        client = bust.client
+        bust.update(is_paid=True)
+
+        secret_key = client.username
+
+        mess = f"Your user log is: {secret_key}"
+        mess = mess.encode('ascii', 'ignore').decode('ascii')
+        send_email(client.email, 'Flex Pusher Authentification', mess)
+
+        login_user = authenticate(username=secret_key, password=secret_key)
+        if login_user:
+            login(request, login_user)
+
+        return HttpResponseRedirect(reverse('client'))
+
+    if pay_for == 'acc':
+        pass
+
+
 
 
 
@@ -242,14 +253,13 @@ def new_stat_view(request):
     mmr = request.POST.get("mmr", "")
     screen = request.POST.get("screen", "")
     buster = Buster.objects.filter(booster_acc=request.user).first()
-    active_bust = Bust.objects.filter(buster_id=buster).first()
+    active_bust = Bust.objects.filter(buster=buster).first()
 
     current = active_bust.mmr_current
-    Bust.objects.filter(buster_id=buster).update(mmr_current=current + int(mmr))
+    Bust.objects.filter(buster=buster).update(mmr_current=current + int(mmr))
 
     Stat.objects.create(
         bust_id=active_bust,
-        match_id=228,
         mmr=mmr,
         screen=screen
     )
@@ -282,7 +292,7 @@ def buster_info_change_view(request):
 def bust_info_view(request, bust_id):
     buster = Buster.objects.filter(booster_acc=request.user).first()
     found_busts = Bust.objects.filter(id=bust_id).first()
-    active_bust = Bust.objects.filter(buster_id=buster).first()
+    active_bust = Bust.objects.filter(buster=buster).first()
     found_bust_stats = Stat.objects.filter(bust_id=found_busts.id)
     len_pass = len(found_busts.steam_password) * '*'
     len_login = len(found_busts.steam_login) * '*'
@@ -305,8 +315,21 @@ def bust_info_view(request, bust_id):
 def take_bust_view(request, bust_id):
     buster = Buster.objects.filter(booster_acc=request.user).first()
     taken_bust = Bust.objects.filter(id=bust_id)
-    taken_bust.update(buster_id=buster)
+    taken_bust.update(buster=buster)
     return HttpResponseRedirect(reverse('buster_cabinet'))
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class PayView(TemplateView):

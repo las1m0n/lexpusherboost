@@ -89,7 +89,8 @@ class Bust(models.Model):
         verbose_name_plural = 'Бусты'
 
     client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
-    buster_id = models.ForeignKey(Buster, True, null=True)
+    buster = models.ForeignKey(Buster, True, null=True)
+
     mmr_from = models.IntegerField()
     mmr_to = models.IntegerField()
     mmr_current = models.IntegerField()
@@ -97,11 +98,12 @@ class Bust(models.Model):
     steam_login = models.CharField(max_length=120)
     steam_password = models.CharField(max_length=120)
 
+    is_paid = models.BooleanField(default=False)
     start_date = models.DateField(default=datetime.now)
 
     @classmethod
-    def get_inactive(cls):
-        return cls.objects.filter(buster_id=None)
+    def get_free(cls):
+        return cls.objects.filter(buster_id=None, is_paid=True)
 
     @property
     def mmr_left(self):
@@ -118,7 +120,6 @@ class Stat(models.Model):
         verbose_name_plural = 'Статы'
 
     bust = models.ForeignKey(Bust, True)
-    # match_id = models.IntegerField(null=True)
     screen = models.CharField(max_length=255)
     mmr = models.FloatField()
     time = models.DateTimeField(default=datetime.now)

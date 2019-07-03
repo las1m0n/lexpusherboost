@@ -9,14 +9,14 @@ urlpatterns = [
     path('client/', views.client_view, name='client'),
     path('buster/', views.buster_view, name='buster'),
 
-    path('bust/', views.shop_bust, name='bust'),
-    path('shop/', views.shop_view, name='shop'),
+    path('bust/', views.bust_shop_view, name='bust'),
+    path('shop/', views.accs_shop_view, name='shop'),
 
     path('to_busters/', views.buster_login_view, name='to_busters'),
     path('new_buster/', views.buster_register_view, name='new_booster'),
 
-    path('cart/<account_slug>/', views.shop_cart_view, name='cart_account'),
-    path('cart_bust/', views.bust_cart_view, name='cart_bust'),
+    path('cart/<account_slug>/', views.accs_shop_cart_view, name='cart_account'),
+    path('cart_bust/', views.bust_shop_cart_view, name='cart_bust'),
 
     path('login/', views.login_view, name="login"),
     path('logout/', views.logout_view, name='logout'),
