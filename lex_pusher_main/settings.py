@@ -167,10 +167,12 @@ SUIT_CONFIG = {
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 
-EMAIL_HOST_USER = 'bondarenkonikita295@gmail.com'
-EMAIL_HOST_PASSWORD = "7325462896nk"
+EMAIL_HOST_USER = 'qwerty@gmail.com'
+EMAIL_HOST_PASSWORD = "qwerty"
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
 
 
 LIQPAY_PUBLIC_KEY = 'i48678063084'
