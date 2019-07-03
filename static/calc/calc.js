@@ -3,6 +3,8 @@ var toMMR = document.getElementById("input-mmr-to");
 var rangeSlider = document.getElementById("slider");
 var rangeBullet = document.getElementById("slider-label");
 var priceDiv = document.getElementById("price");
+var priceHidden =  document.getElementById("price_hidden");
+
 
 var PRICELIST = [
     [1,     500,    1.50],
@@ -97,6 +99,7 @@ function changePrice() {
     }
 
     priceDiv.innerText = price + " ₽";
+    priceHidden.value = price;
 }
 
 
