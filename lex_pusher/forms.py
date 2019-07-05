@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 
-from users.models import CustomUser
 from .models import BuyAccount, Bust, Buster
 from django.core.files.images import get_image_dimensions
 User = get_user_model()
@@ -59,7 +58,7 @@ class ClientForm(UserCreationForm):
     password2 = forms.CharField(required=False, widget=forms.HiddenInput)
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = {
             'username',
             'password1',
@@ -80,10 +79,11 @@ class ClientForm(UserCreationForm):
 
 
 class LoginForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(min_length=6, max_length=32,
+                               widget=forms.PasswordInput(attrs={'humanReadable': 'Пароль'}), label='Пароль')
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = {
             'password',
         }
@@ -94,11 +94,18 @@ class LoginForm(forms.ModelForm):
         self.fields['password'].label = 'PIN-CODE'
 
     def clean(self):
-        password = self.cleaned_data['password']
-        if password:
-            user = authenticate(username=password, password=password)
-            if not user:
-                raise forms.ValidationError('Неверный пароль!')
+        if not self._errors:
+            cleaned_data = super(LoginForm, self).clean()
+            password = cleaned_data.get('password')
+            try:
+                user = User.objects.get(username=password)
+                if not user.check_password(password):
+                    raise forms.ValidationError(u'Неверный пароль')
+                elif not user.is_active:
+                    raise forms.ValidationError(u'Пользователь с таким паролем заблокирован.')
+            except User.DoesNotExist:
+                raise forms.ValidationError(u'Такого буста не существует.')
+            return cleaned_data
 
 
 class LoginBusterForm(forms.ModelForm):
@@ -106,7 +113,7 @@ class LoginBusterForm(forms.ModelForm):
     username = forms.CharField(max_length=120)
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = {
             'username',
             'password',

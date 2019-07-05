@@ -52,11 +52,16 @@
                     <div class="form-style-5">
                         <form action='' method='POST' class="p-3">
                             {% csrf_token %}
-                            <legend>Бустеры</legend>
+                            <legend></legend>
                             <fieldset>
-                                <legend><span class="number">*</span> Контактные данные</legend>
+                                <legend><span class="number">*</span> Данные</legend>
                                 {{ form.username|as_crispy_field }}
                                 {{ form.password|as_crispy_field }}
+                                <div class="client-log-error">
+                                    {% if form.errors %}
+                                        <strong>Неверный логин или пароль</strong>
+                                    {% endif %}
+                                </div>
                             </fieldset>
                             <input type='submit' value="Войти">
                         </form>

@@ -8,13 +8,15 @@ from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, View
-
+from django.views.generic.edit import CreateView
+from django.http import JsonResponse
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm, \
     UploadFileForm
-from .mail_send import send_email
+from .mail_send import send
 from . import utils
 from .models import Account, Bust, Stat, Buster, Punish
 from django.contrib.auth import get_user_model
+import json
 
 User = get_user_model()
 
@@ -205,9 +207,7 @@ def pay_success(request):
 
         secret_key = client.username
 
-        mess = f"Your user log is: {secret_key}"
-        mess = mess.encode('ascii', 'ignore').decode('ascii')
-        send_email(client.email, 'Flex Pusher Authentification', mess)
+        send(client.email, secret_key)
 
         login_user = authenticate(username=secret_key, password=secret_key)
         if login_user:
@@ -330,12 +330,34 @@ class PayView(TemplateView):
 class PayCallbackView(View):
     def post(self, request, *args, **kwargs):
         pass
-        # liqpay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
-        # data = request.POST.get('data')
-        # signature = request.POST.get('signature')
-        # sign = liqpay.str_to_sign(settings.LIQPAY_PRIVATE_KEY + data + settings.LIQPAY_PRIVATE_KEY)
-        # if sign == signature:
-        #     print('callback is valid')
-        # response = liqpay.decode_data_from_str(data)
-        # print('callback data', response)
-        # return HttpResponse()
+
+
+class AjaxableResponseMixin:
+    """
+    Mixin to add AJAX support to a form.
+    Must be used with an object-based FormView (e.g. CreateView)
+    """
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        if self.request.is_ajax():
+            return JsonResponse(form.errors, status=400)
+        else:
+            return response
+
+    def form_valid(self, form):
+        # We make sure to call the parent's form_valid() method because
+        # it might do some processing (in the case of CreateView, it will
+        # call form.save() for example).
+        response = super().form_valid(form)
+        if self.request.is_ajax():
+            data = {
+                'pk': self.object.pk,
+            }
+            return JsonResponse(data)
+        else:
+            return response
+
+
+class AuthorCreate(AjaxableResponseMixin, CreateView):
+    model = User
+    fields = ['username', 'password']

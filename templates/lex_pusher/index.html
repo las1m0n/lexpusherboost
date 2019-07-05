@@ -14,7 +14,7 @@
 
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">FLEX PUSHER</a>
+        <a class="navbar-brand" href="/">FLEX PUSHER</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,8 @@
                              aria-labelledby="dropdown">
                             <h5>Укажите пин-код Вашего заказа</h5>
                             <p>для просмотра состояния и хода выполнения заказа</p>
-                            <form method="POST" action="">
+                            <form method='post' action=''>
+                                <div class='validation_info'></div>
                                 {% csrf_token %}
                                 {{ form.password|as_crispy_field }}
                                 {% if form.errors %}
@@ -42,6 +43,7 @@
                                     {% for error in form.non_field_errors %}
                                         <strong>{{ error|escape }}</strong>
                                     {% endfor %}
+                                    <br>
                                 {% endif %}
                                 тест: b72fcfd9e82c1898
                             </form>
@@ -94,7 +96,7 @@
 
     <div class="position-relative overflow-hidden p-3 p-md-5 text-center text-light bg-head" style="box-shadow: 0 0 0 100000px rgba(0, 0, 0, 0.33) inset;">
         <div class="col-md-12 p-lg-5 mx-auto my-5" >
-            <h1>Качественный недорогой буст</h1>
+            <h1 class="index-text">Качественный недорогой буст</h1>
             <p class="lead font-weight-normal">Листай ниже чтобы подняться на вершины. </p>
         </div>
     </div>
@@ -104,7 +106,7 @@
         <div class="col py-5 darkmask bg-acc">
             <a href="/shop/" style="text-decoration: none; color: #fff">
                 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-                    <h1>Купить аккаунт</h1>
+                    <h1 class="index-text">Купить аккаунт</h1>
                 </div>
             </a>
         </div>
@@ -112,7 +114,7 @@
         <div class="col py-5 darkmask bg-bust">
             <a href="/bust/" style="text-decoration: none; color: #fff">
                 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
-                    <h1>Заказать буст</h1>
+                    <h1 class="index-text">Заказать буст</h1>
                 </div>
             </a>
         </div>
