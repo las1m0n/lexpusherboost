@@ -18,10 +18,11 @@
 {% block content %}
 
     <div class="position-relative overflow-hidden py-5 m-md-1">
-        {% if buster.avatar %}
-            <img src="{{ buster.avatar.url }}" class="card-img-top" style="width: 64px; height: 64px;" alt="avatar">
-        {% endif %}
-        <h2>Привет, {{ buster.name }}</h2>
+        <h2>Привет, {{ buster.name }}
+            {% if buster.avatar %}
+                <img src="{{ buster.avatar.url }}" class="card-img-top" style="width: 64px; height: 64px;" alt="avatar">
+            {% endif %}
+        </h2>
         <h2>Ваш баланс: {{ buster.balance }} р.</h2>
         <a href="{% url 'buster_payout' %}">
             <button type="button" class="btn w-20 btn-success">Выплатить</button>
@@ -150,6 +151,11 @@
         </div>
 
         <div class="tab-pane fade" id="inactive_busts" role="tabpanel" aria-labelledby="inactive_busts-tab">
+            {% if active_bust %}
+            <div class="position-relative overflow-hidden p-5 text-center">
+                <h2>Вы уже выполняете заказ</h2>
+            </div>
+            {% else %}
             <div class="position-relative overflow-hidden p-5 text-center">
                 <h1>Заказы DotA 2</h1>
             </div>
@@ -195,6 +201,7 @@
                     {% endfor %}
                 </div>
             </div>
+            {% endif %}
         </div>
 
         <div class="tab-pane fade" id="punish" role="tabpanel" aria-labelledby="punish-tab">

@@ -7,15 +7,15 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import TemplateView, View
-from django.views.generic.edit import CreateView
-from django.http import JsonResponse
+from django.views.generic import TemplateView, View, DetailView
+from django.views.generic.edit import CreateView, SingleObjectMixin
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm, \
     UploadFileForm
 from .mail_send import send
 from . import utils
 from .models import Account, Bust, Stat, Buster, Punish
 from django.contrib.auth import get_user_model
+from meta.views import Meta, MetadataMixin
 import json
 
 User = get_user_model()
@@ -245,12 +245,12 @@ def new_stat_view(request):
     Bust.objects.filter(buster=buster).update(mmr_current=current + int(mmr))
 
     Stat.objects.create(
-        bust_id=active_bust,
+        bust=active_bust,
         mmr=mmr,
         mmr_current=current + int(mmr),
         screen=screen
     )
-    return HttpResponseRedirect(reverse('buster_cabinet'))
+    return HttpResponseRedirect(reverse('buster'))
 
 
 def buster_info_change_view(request):
@@ -332,32 +332,24 @@ class PayCallbackView(View):
         pass
 
 
-class AjaxableResponseMixin:
+class MyView(DetailView):
     """
-    Mixin to add AJAX support to a form.
-    Must be used with an object-based FormView (e.g. CreateView)
+    Не трошь, это для seo
     """
-    def form_invalid(self, form):
-        response = super().form_invalid(form)
-        if self.request.is_ajax():
-            return JsonResponse(form.errors, status=400)
-        else:
-            return response
 
-    def form_valid(self, form):
-        # We make sure to call the parent's form_valid() method because
-        # it might do some processing (in the case of CreateView, it will
-        # call form.save() for example).
-        response = super().form_valid(form)
-        if self.request.is_ajax():
-            data = {
-                'pk': self.object.pk,
-            }
-            return JsonResponse(data)
-        else:
-            return response
+    def get_context_data(self, **kwargs):
+        context = super(MyView, self).get_context_data(self, **kwargs)
+        context['meta'] = self.get_object().as_meta(self.request)
+        return context
+
+    def post(self, request, account_slug):
+        template = 'lex_pusher/accs/shop_index.html'
+        post = Account.objects.get(slug=account_slug)
+
+        context = {'post': post, 'meta': post.as_meta()}
+        return render(request, template, context)
 
 
-class AuthorCreate(AjaxableResponseMixin, CreateView):
-    model = User
-    fields = ['username', 'password']
+
+
+

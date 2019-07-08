@@ -1,7 +1,8 @@
 <!doctype html>
 {% load static %}
-<html lang="en">
-<head>
+{% load meta %}
+<html lang="en" {% meta_namespaces_gplus %}>
+<head {% meta_namespaces %}>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
     <link rel="icon" type="image/png" href="/static/img/dota-2.png">
+    {% include "meta/meta.html" %}
     {% block head %}
     {% endblock %}
 </head>

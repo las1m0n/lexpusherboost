@@ -25,7 +25,6 @@ urlpatterns = [
     path('buster/change_info/', views.buster_info_change_view, name='change_info_account'),
     path('buster/info/<bust_id>/', views.bust_info_view, name='bust_info'),
     path('buster/info/take/<bust_id>/', views.take_bust_view, name='bust_take'),
-    # path('buster/payout/', views.buster_payout_view, name='buster_payout'),
 
     url(r'^pay/$', PayView.as_view(), name='buster_payout'),
     url(r'^pay-callback/$', PayCallbackView.as_view(), name='pay_callback'),

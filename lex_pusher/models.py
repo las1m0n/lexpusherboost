@@ -4,6 +4,7 @@ from datetime import datetime
 
 from django.conf import settings
 from django.db import models
+from meta.models import ModelMeta
 
 
 def image_folder(instance, filename):
@@ -16,7 +17,7 @@ def image_buster_folder(instance, filename):
     return "{0}/{1}".format(instance.name, filename)
 
 
-class Account(models.Model):
+class Account(ModelMeta, models.Model):
     class Meta:
         verbose_name = 'Буст'
         verbose_name_plural = 'Аккаунты на продажу'
@@ -30,8 +31,18 @@ class Account(models.Model):
     price = models.DecimalField(max_digits=9, decimal_places=2)
     available = models.BooleanField(default=True)
 
+    _metadata = {
+        'title': 'title',
+        'description': 'description',
+        'image': 'get_meta_image',
+    }
+
     def __str__(self):
         return f"{self.title} solo {self.solo_mmr}, party {self.party_mmr}"
+
+    def get_meta_image(self):
+        if self.image:
+            return self.image.url
 
 
 class BuyAccount(models.Model):

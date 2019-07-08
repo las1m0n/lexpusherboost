@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-CUSTOM_APPS = ['lex_pusher', 'crispy_forms', 'users.apps.UsersConfig']
+CUSTOM_APPS = ['lex_pusher', 'crispy_forms', 'users.apps.UsersConfig', 'meta']
 
 INSTALLED_APPS += CUSTOM_APPS
 
