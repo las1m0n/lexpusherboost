@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
     <link rel="icon" type="image/png" href="/static/img/dota-2.png">
+    <link rel="stylesheet" href="https://cdn.saas-support.com/widget/cbk.css">
     {% include "meta/meta.html" %}
     {% block head %}
     {% endblock %}
@@ -23,7 +24,7 @@
 
 {% block content %}
 {% endblock %}
-
+<a href="#showchat" data-message="Хочу сделать заказ">Напишите нам</a>
 <a href="/" class="scrollup .d-sm-none .d-md-block">Наверх</a>
 {% include "lex_pusher/footer.html" %}
 
@@ -41,6 +42,7 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/form.js' %}"></script>
+<script type="text/javascript" src="https://cdn.saas-support.com/widget/cbk.js?wcb_code=9ae81e66f20e3214ca5bb25a4a5d80db" charset="UTF-8" async nomaps></script>
 <script>
     window.LiqPayCheckoutCallback = function() {
         LiqPayCheckout.init({

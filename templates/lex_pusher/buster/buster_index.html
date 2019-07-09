@@ -226,7 +226,7 @@
                         </div>
                     {% empty %}
                     <div class="position-relative overflow-hidden p-5 text-center">
-                        <h3>У Вас нет штрафов!</h3>
+                        <h5>У Вас нет штрафов!</h5>
                     </div>
                     {% endfor %}
                 </div>
@@ -237,8 +237,8 @@
             <div class="position-relative overflow-hidden p-5 text-center">
                 <h1>Настройки аккаунта</h1>
             </div>
-            <div class="container py-5">
-                <div class="card-header bg-transparent border-danger">Аватар</div>
+            <div class="container">
+                <div class="card-header bg-transparent border-danger"></div>
                 <hr>
                     <form action="{% url 'change_info_account' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -263,7 +263,7 @@
                             <h5 class="card-title">Skype: {{ buster.skype }}</h5>
                         </div>
                 {% endfor %}
-                <div class="card-header bg-transparent border-danger">ММР на мейне(Сейчас {{buster.solo_mmr}})</div>
+                <div class="card-header bg-transparent border-danger"></div>
                 <hr>
                     <form action="{% url 'change_info_account' %}" method="POST">
                         {% csrf_token %}
@@ -279,7 +279,7 @@
                             </div>
                         </div>
                     </form>
-                    <div class="card-header bg-transparent border-danger">О себе</div>
+                    <div class="card-header bg-transparent border-danger"></div>
                     <hr>
                     <form action="{% url 'change_info_account' %}" method="POST">
                         {% csrf_token %}
