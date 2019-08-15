@@ -121,6 +121,10 @@ def bust_shop_view(request):
     return render(request, 'lex_pusher/client/bust_shop_start.html')
 
 
+def calibration_view(request):
+    return render(request, 'lex_pusher/client/calibration_shop.html', {})
+
+
 def accs_shop_cart_view(request, account_slug):
     account = Account.objects.get(slug=account_slug)
     form = ShopCartForm(request.POST or None)
@@ -143,6 +147,9 @@ def bust_shop_cart_view(request):
     mmr_from = request.GET.get("mmr_from", None)
     mmr_to = request.GET.get("mmr_to", None)
     price = request.GET.get("price", None)
+
+    if not isinstance(mmr_to, int) and mmr_to < 0:
+        return HttpResponseRedirect(reverse('index'))
 
     if form_bust.is_valid() and form_acc.is_valid():
         email = form_acc.cleaned_data['email']
@@ -186,6 +193,14 @@ def bust_shop_cart_view(request):
         'mmr_to': mmr_to,
     }
     return render(request, 'lex_pusher/client/bust_shop_form.html', context)
+
+
+def accs_id_view(request, account_id):
+    account = Account.objects.filter(id=account_id)
+    context = {
+        'account': account
+    }
+    return render(request, 'lex_pusher/accs/shop_account.html', context)
 
 
 def pay_success(request):

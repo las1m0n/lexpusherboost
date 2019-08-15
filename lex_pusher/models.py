@@ -23,12 +23,12 @@ class Account(ModelMeta, models.Model):
         verbose_name_plural = 'Аккаунты на продажу'
 
     title = models.CharField(max_length=120)
-    solo_mmr = models.CharField(max_length=120)
-    party_mmr = models.CharField(max_length=120)
+    core_mmr = models.CharField(max_length=120)
+    support_mmr = models.CharField(max_length=120)
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField(upload_to=image_folder)
-    price = models.DecimalField(max_digits=9, decimal_places=2)
+    price = models.PositiveIntegerField(default=10)
     available = models.BooleanField(default=True)
 
     _metadata = {
@@ -38,7 +38,7 @@ class Account(ModelMeta, models.Model):
     }
 
     def __str__(self):
-        return f"{self.title} solo {self.solo_mmr}, party {self.party_mmr}"
+        return f"{self.title} core {self.core_mmr}, core {self.support_mmr}"
 
     def get_meta_image(self):
         if self.image:

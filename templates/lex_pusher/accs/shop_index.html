@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block head %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     {% include "meta/meta.html" %}
     <title>
         Покупка аккаунтов
@@ -10,11 +11,7 @@
 
 
 {% block navbar %}
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">FLEX PUSHER</a>
-        <div class="collapse navbar-collapse" id="navbar">
-        </div>
-    </nav>
+    {% include 'lex_pusher/navbar.html' %}
 {% endblock %}
 
 
@@ -29,26 +26,31 @@
     <div class="container">
         <div class="row flex-row">
             {% for account in accounts %}
-                <div class="col-sm-4">
-                    <div class="card">
-                        {% if account.image %}
-                            <img src="{{ account.image.url }}" class="card-img-top" >
-                        {%endif%}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ account.price }} ₽</h5>
-                            <hr>
-                            <h6 class="card-subtitle mb-2 text-muted">
-                                Solo MMR: {{ account.solo_mmr }} <br>
-                                Party MMR: {{ account.party_mmr }}
-                            </h6>
-                            <a href="{% url 'cart_account' account_slug=account.slug %}">
-                                <button class="w-100 btn btn-outline-danger ">
-                                    <span class="cart-icon"><i class="fas fa-shopping-cart"></i></span>
-                                </button>
-                            </a>
+                    <div class="product-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                      <a href="{% url 'account_info' account_id=account.id %}" class="product-item-link">
+                        <figure class="product-thumbnail" style="min-height:187px !important;">
+                          <img src="{{ account.image.url }}" alt="account image" class="thumbnail"/>
+                        </figure>
+                        <div class="product-info" style="min-height:45px !important;">
+                          <h3 class="product-name">
+                            <span>CORE MMR: <span class="solo_mmr">{{account.core_mmr}}</span></span><br>
+                            <span>SUPPORT MMR:
+                            <span class="party_mmr">{{account.support_mmr}}</span></span><br>
+                          </h3>
                         </div>
+                        <footer class="product-footer">
+                          <div class="price">
+                            <ins>
+                                <span class="amount">
+                                    <i class="fa fa-ruble"></i>
+                                    <span class="price_r">{{account.price}}</span>
+                                </span>
+                            </ins><br>
+                           </div>
+                            <span class="buy">КУПИТЬ</span>
+                        </footer>
+                      </a>
                     </div>
-                </div>
             {% endfor %}
         </div>
     </div>

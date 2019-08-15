@@ -1,0 +1,80 @@
+{% extends 'lex_pusher/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    {% include "meta/meta.html" %}
+    <title>
+        {% for acc in account %}
+        Аккаунт №{{acc.id}}
+        {% endfor %}
+    </title>
+{% endblock %}
+
+
+{% block navbar %}
+    {% include 'lex_pusher/navbar.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="page-wrapper">
+    <div class="content-wrapper">
+        <section class="page-section page-section__no-bottom-padding">
+            <div class="container">
+                <div class="row">
+                    {% for acc in account %}
+                    <div class="col-md-7 text-center">
+                        <a href="https://i.paste.pics/6DQM2.png" title="Аккаунт Dota 2" class="product-popup magnific-popup-link">
+                            <img src="https://i.paste.pics/6DQM2.png" class="img-responsive" style="max-height: 350px; min-height: 150px;"/></a>
+                                    <div class="col-md-12 text-center" style="padding:0">
+                                    <div class="col-md-6 text-center" style="padding: 5px 5px 0 0">
+                                    </div>
+                            </div>
+                    </div>
+                    <div class="col-md-5">
+                        <header class="product-heading">
+                            <div class="product-buy clearfix">
+                                <div class="amount">
+                                    <i class="fa fa-ruble"></i>                                                                            {{acc.price}}                                                                                                        </div>
+                                <a data-toggle="modal" data-target="#insert_email" data-id="94427" data-href="" class="act_show_modal btn btn-buy btn-success btn-block">Купить сейчас !</a>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-md-6">
+                                    <h1>
+                                                                                                                            {{acc.core_mmr}}                                                                            </h1>
+                                    <h5>
+                                        Core ММР                                    </h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h1>
+                                                                                                                            {{acc.support_mmr}}                                                                            </h1>
+                                    <h5>
+                                        Support ММР                                    </h5>
+                                </div>
+                            </div>
+                        </header>
+                        <div class="product-info" style="padding-bottom:0">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="https://www.dotabuff.com/players/32536525" rel="nofollow" target="_blank" class="btn btn-lg btn-default has-icon btn-block">
+
+                                        DOTABUFF
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="https://steamcommunity.com/profiles/76561197992802253" rel="nofollow" target="_blank" class="btn btn-lg btn-default btn-block">
+                                        <i class="fa fa-steam"></i>
+                                        PROFILE
+                                    </a>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+        </div>
+    </section>
+</div>
+</div>
+{% endblock %}

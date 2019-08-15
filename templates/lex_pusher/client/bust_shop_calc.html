@@ -1,6 +1,6 @@
 {% load static %}
 
-<link rel="stylesheet" href={% static 'calc/calc.css' %}>
+<link rel="stylesheet" href="{% static 'calc/calc.css' %}">
 
 <div class="jumbotron mt-3 text-dark">
     <form action="{% url 'cart_bust' %}" method="GET">
@@ -14,13 +14,12 @@
                 <div class="col">
                     <div class="slidecontainer mt-4">
                         <span id="slider-label" class="slider-label mb-0">0</span>
-                        <input type="range" min="25" max="6499" value="25" step="1" class="slider" id="slider">
+                        <input type="range" min="25" max="5499" value="25" step="1" class="slider" id="slider">
                     </div>
                 </div>
                 <div class="col">
                     <label for="input-mmr-to" class="mb-0">Желаемый ММР</label>
-                    <input type="number" class="form-control" id="input-mmr-to" name="mmr_to" placeholder="Желаемый MMR"
-                           value="26">
+                    <input type="number" class="form-control" id="input-mmr-to" name="mmr_to" placeholder="Желаемый MMR" value="26">
                 </div>
             </div>
 
@@ -32,7 +31,21 @@
                     </strong>
                 </div>
                 <div class="col">
-                    <button type="submit" class="btn btn-outline-danger float-right"> Заказать буст</button>
+                    <button type="submit" class="btn btn-outline-primary float-right"> Заказать буст</button>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="center-2">
+                        <p>Буст Core рейтинга</p>
+                    </div>
+                    <div class="center">
+                      <input type="checkbox" id="cbx" checked style="display:none"/>
+                      <label for="cbx" class="toggle"><span></span></label>
+                    </div>
+                    <div class="center-3">
+                        <p>Буст Support рейтинга <strong style="color: rgba(15,23,78,1);">+25%</strong></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,4 +53,4 @@
     </form>
 </div>
 
-<script src={% static 'calc/calc.js' %}></script>
+<script src="{% static 'calc/calc.js' %}"></script>

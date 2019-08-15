@@ -22,10 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'i)2t424^okfd75p3v#@a(6zz!!!=le_$b98xjc@x=1@my--7xm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [
-]
+ALLOWED_HOSTS = ['54.88.91.204',
+                 '54.88.91.204:8000',
+                 'www.lexpusher.com',
+                 'lexpusher.com',
+                 ]
 
 # Application definition
 
@@ -79,22 +82,14 @@ WSGI_APPLICATION = 'lex_pusher_main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# DATABASES = {  # todo продакш запустим на машине постгрес
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'flex_pusher',
-#         'USER': 'postgres',
-#         'PASSWORD': '12345678',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'flex_pusher',
+        'USER': 'flex_pusher',
+        'PASSWORD': '12345678',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -133,10 +128,10 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "assets")
+STATIC_ROOT = '/home/ubuntu/myproj/lexlutor/static'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+MEDIA_ROOT = '/home/ubuntu/myproj/lexlutor/media'
+STATICFILES_DIRS = ['/home/ubuntu/myproj/lexlutor/assets', ]
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
@@ -149,18 +144,17 @@ SUIT_CONFIG = {
     'CONFIRM_UNSAVED_CHANGES': True,
     'SEARCH_URL': '/admin/auth/user/',
     'MENU_ICONS': {
-       'sites': 'icon-leaf',
-       'auth': 'icon-lock',
+        'sites': 'icon-leaf',
+        'auth': 'icon-lock',
     },
     'MENU_OPEN_FIRST_CHILD': True,
     'MENU_EXCLUDE': ('auth.group',),
     'MENU': (
         'sites',
-        {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+        {'app': 'auth', 'icon': 'icon-lock', 'models': ('user', 'group')},
     ),
     'LIST_PER_PAGE': 15
 }
-
 
 # django-email  https://docs.djangoproject.com/en/2.2/topics/email/
 
@@ -173,7 +167,6 @@ EMAIL_HOST_PASSWORD = ""
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_SSL = False
 EMAIL_USE_TLS = True
-
 
 # free kassa
 

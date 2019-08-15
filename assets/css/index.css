@@ -1,0 +1,49 @@
+.bg-head {
+    background: url("/static/img/head.jpg") center no-repeat;
+    background-size: cover !important;
+}
+
+.bg-acc {
+    background: url("/static/img/acc_buy.jpg") center no-repeat;
+    background-size: cover !important;
+}
+
+.bg-bust {
+    background: url("/static/img/bust.jpg") center no-repeat;
+    background-size: cover !important;
+}
+
+.bg-acc:hover {
+  box-shadow: inset 0 0 0 1px transparent;
+}
+
+.bg-bust:hover {
+  box-shadow: inset 0 0 0 1px transparent;
+}
+
+.darkmask {
+    box-shadow:0 0 0 100000px rgba(0, 0, 0, 0.33) inset;
+}
+
+.darkmask:hover {
+    box-shadow: none;
+}
+
+.icon {
+    width: 5em;
+    height: 5em;
+ -moz-transition: all 1s ease-out;
+ -o-transition: all 1s ease-out;
+ -webkit-transition: all 1s ease-out;
+ }
+
+.icon:hover{
+ -webkit-transform: scale(1.1);
+ -moz-transform: scale(1.1);
+ -o-transform: scale(1.1);
+ }
+
+.image img {
+    width: 32px;
+    height: 32px;
+}

@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One|Luckiest+Guy|Sigmar+One|Press+Start+2P|Russo+One');
+
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 3em !important;
+}
+
+.navbar-brand {
+  font-family: 'Luckiest Guy', cursive;
+}
+
+.calc {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    font-family: 'Luckiest Guy';
+}
+
+.index-text {
+      font-family: 'Avantgarde', sans-serif;
+}
+
+.scrollup{
+    width:40px;
+    height:40px;
+    opacity:0.3;
+    position:fixed;
+    bottom:50px;
+    right:50px;
+    left: 50px;
+    display: none;
+    text-indent:-9999px;
+    background: url("/static/img/icon_top.jpg") no-repeat;
+}
+
+.border-right {
+    border-right: 1px solid #ddd;
+}
+.borders {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    margin: -1px;
+}
+.border-left {
+    border-left: 1px solid #ddd;
+}
+
+.container_text {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.container_text a{
+  display: block;
+  margin: auto;
+  padding: 1rem 150px;
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #020202;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  z-index: 1;
+}
+
+.container_text a:after{
+  content: '';
+  display: block;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  right: 1.25rem;
+  left: 1.25rem;
+  background-color: #ff0003;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  transform-origin: bottom center;
+  z-index: -1;
+}
+
+.container_text a:hover {
+  color: #000000;
+}
+.container_text a:hover:after {
+  right: 0;
+  left: 0;
+  height: 100%;
+}
+
+.image img {
+    width: 32px;
+    height: 32px;
+}

@@ -1,0 +1,43 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'calc/calc.css' %}">
+
+<div class="jumbotron mt-3 text-dark">
+    <form action="{% url 'cart_bust' %}" method="GET">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                        <span class="step"><small></small>
+                               Выберите рейтинг
+                        </span>
+                </div>
+                <div class="col">
+                    <div class="slidecontainer mt-4">
+                        <img src="{% static 'img/unranked.png' %}" id="img-rank"><br>
+                        <label for="input-mmr-from" class="mb-0">Ранг калибровки</label>
+                        <input type="number" class="form-control" id="input-mmr-from" name="mmr_from"
+                               placeholder="MMR" value="1">
+                        <span id="slider-label" class="slider-label mb-0"></span>
+                        <input type="range" min="1" max="5500" value="1" step="1" class="slider" id="slider">
+                    </div>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <label for="price" class="mt-5 pt-3"><strong>Цена</strong>:</label>
+                    <strong>
+                        <div id="price"></div>
+                    </strong>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-outline-dark mt-5" style="margin-top: 10px;"> Оформить заказ</button>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="price_hidden" name="price">
+    </form>
+</div>
+
+<script src="{% static 'calc/calibration.js' %}"></script>

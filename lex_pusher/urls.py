@@ -8,9 +8,11 @@ urlpatterns = [
     path('', views.index_view, name='index'),
     path('client/', views.client_view, name='client'),
     path('buster/', views.buster_view, name='buster'),
+    path('calibration/', views.calibration_view, name='calibration'),
 
     path('bust/', views.bust_shop_view, name='bust'),
     path('shop/', views.accs_shop_view, name='shop'),
+    path('shop/account/<account_id>/', views.accs_id_view, name='account_info'),
 
     path('to_busters/', views.buster_login_view, name='to_busters'),
     path('new_buster/', views.buster_register_view, name='new_booster'),
