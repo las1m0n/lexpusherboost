@@ -3,6 +3,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     {% include "meta/meta.html" %}
     <title>
         {% for acc in account %}
@@ -25,8 +26,8 @@
                 <div class="row">
                     {% for acc in account %}
                     <div class="col-md-7 text-center">
-                        <a href="https://i.paste.pics/6DQM2.png" title="Аккаунт Dota 2" class="product-popup magnific-popup-link">
-                            <img src="https://i.paste.pics/6DQM2.png" class="img-responsive" style="max-height: 350px; min-height: 150px;"/></a>
+                        <a href="{{acc.image_main.url}}" title="Аккаунт Dota 2" data-fancybox="gallery" data-caption="{{acc.description}}">
+                            <img src="{{acc.image_main.url}}" class="img-responsive" style="max-height: 350px; min-height: 150px;" alt="Acc"/></a>
                                     <div class="col-md-12 text-center" style="padding:0">
                                     <div class="col-md-6 text-center" style="padding: 5px 5px 0 0">
                                     </div>
@@ -37,7 +38,7 @@
                             <div class="product-buy clearfix">
                                 <div class="amount">
                                     <i class="fa fa-ruble"></i>                                                                            {{acc.price}}                                                                                                        </div>
-                                <a data-toggle="modal" data-target="#insert_email" data-id="94427" data-href="" class="act_show_modal btn btn-buy btn-success btn-block">Купить сейчас !</a>
+                                <a href="{% url 'cart_account' account_slug=acc.slug %}" class="act_show_modal btn btn-buy btn-success btn-block">Купить сейчас</a>
                             </div>
                             <div class="row text-center">
                                 <div class="col-md-6">
@@ -57,13 +58,13 @@
                         <div class="product-info" style="padding-bottom:0">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <a href="https://www.dotabuff.com/players/32536525" rel="nofollow" target="_blank" class="btn btn-lg btn-default has-icon btn-block">
+                                    <a href="{{acc.dotabuff}}" rel="nofollow" target="_blank" class="btn btn-lg btn-default has-icon btn-block">
 
                                         DOTABUFF
                                     </a>
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="https://steamcommunity.com/profiles/76561197992802253" rel="nofollow" target="_blank" class="btn btn-lg btn-default btn-block">
+                                    <a href="{{acc.steam_acc}}" rel="nofollow" target="_blank" class="btn btn-lg btn-default btn-block">
                                         <i class="fa fa-steam"></i>
                                         PROFILE
                                     </a>

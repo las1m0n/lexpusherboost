@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/buster_form.css' %}">
     <link rel="icon" type="image/png" href="/static/img/dota-2.png">
     <title>
         Кабинет бустера
@@ -11,46 +11,26 @@
 {% endblock %}
 
 {% block navbar %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
     {% include 'lex_pusher/navbar.html' %}
 {% endblock %}
 
 {% block content %}
-
     <div class="position-relative overflow-hidden text-center mt-5">
         <h1>Бустерам</h1>
-            <div class="row mt-3">
-            <div class="col-sm"></div>
-            <div class="col-5">
-                В проект принимаются бустеры. Отличительная особенность сервиса в том,
-                    что аккаунт клиента не закрепляется за отдельным бустером. Бустер авторизуется на сайте и берет
-                    свободный заказ в работу.
-            </div>
-            <div class="col-sm"></div>
-        </div>
     </div>
         <div class="container mt-5">
+            <div class="post-content">
+                <h5><strong>О работе сервиса</strong></h5>
+                <p><span style="font-weight: 400;">В проект принимаются бустеры. Отличительная особенность сервиса в том, что аккаунт клиента не закрепляется за отдельным бустером. Бустер авторизуется на сайте и берет </span><a href="/"><span style="font-weight: 400;">свободный заказ</span></a><span style="font-weight: 400;"> в работу.</span></p>
             <hr>
               <div class="row">
-                <div class="col border-right">
-                    <div class="container_text">
-                        <p class="text-center">
-                            <strong>
-                                <a href="{% url 'new_booster' %}">
-                                Оставить заявку</a>
-                            </strong>
-                        </p>
-                    </div>
-                </div>
                 <div class="col">
-                    <h3 class="text-center">Вход для бустеров</h3>
                     <div class="form-style-5">
                         <form action='' method='POST' class="p-3">
                             {% csrf_token %}
                             <legend></legend>
                             <fieldset>
-                                <legend><span class="number">*</span> Данные</legend>
+                                <legend><span class="number"></span>Вход</legend>
                                 {{ form.username|as_crispy_field }}
                                 {{ form.password|as_crispy_field }}
                                 <div class="client-log-error">
@@ -59,14 +39,22 @@
                                     {% endif %}
                                 </div>
                             </fieldset>
-                            <input type='submit' value="Войти">
+                            <input type='submit' class="btn btn-buy btn-success btn-block" value="Войти">
                         </form>
                     </div>
                 </div>
-                  <div class="post-content">
-                      <hr>
-					<p><span style="font-weight: 400;">В проект принимаются бустеры. Отличительная особенность сервиса в том, что аккаунт клиента не закрепляется за отдельным бустером. Бустер авторизуется на сайте и берет </span><a href="http://joxi.ru/L4Ak64T11q42qe?d=1"><span style="font-weight: 400;">свободный заказ</span></a><span style="font-weight: 400;"> в работу.</span></p>
-                      <p><strong>Условия работы:</strong></p>
+                <div class="col">
+                    <div class="finger">
+                        <p class="text-center">
+                            <strong>
+                                <a href="{% url 'new_booster' %}">
+                                Оставить заявку</a>
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+                  <div class="post-content"><hr>
+                    <p><strong>Условия работы:</strong></p>
                     <p>1. Бустить только прежний заказ. После каждой игры нужно указать сколько выиграли / проиграли MMR. В системе ведется автоматизированный учет каждого балла рейтинга MMR<br>
                     2. Бустеры получают от 50 (на начальном этапе) до 70% от общей стоимости заказа, т. е. если клиент заказ на 1000 р. с этой суммы бустер зарабатывает от 500 до 700 р.<br>
                     3. Выплаты производятся: <b>от 900</b> рублей (вне зависимости от набранного MMR). По запросу бустера. В любое время и не более двух раз в месяц</p>
@@ -85,4 +73,11 @@
 				</div>
             </div>
         </div>
+        </div>
+{% endblock %}
+
+{% block footer %}
+    <footer class='footer' style="color: white">
+    LexPusher &copy; 2019
+    </footer>
 {% endblock %}

@@ -1,0 +1,7 @@
+User-agent: *
+Disallow:
+
+User-agent: GoogleBot
+Disallow:
+Host: https://lexpusher.com
+Sitemap: https://lexpusher.com/sitemap.xml

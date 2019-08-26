@@ -5,7 +5,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/forms.css' %}">
-    <title>Корзина</title>
+    <title>Заявка бустера</title>
 {% endblock %}
 
 {% block navbar %}
@@ -13,11 +13,11 @@
 {% endblock %}
 
 {% block content %}
-
     <div class="form-style-5">
         <form action='' method='POST' class="p-3">
             {% csrf_token %}
-            <legend>Убедительная просьба, перед заполенением заявки прочесть правила буста.</legend>
+            <legend></legend>
+            <p><strong>Убедительная просьба, перед заполенением заявки прочесть правила буста.</strong></p>
             <fieldset>
                 <legend><span class="number">1</span> Контактные данные</legend>
                 {{ form.name|as_crispy_field }}
@@ -32,7 +32,7 @@
                 {{ form.solo_mmr|as_crispy_field }}
                 {{ form.experience|as_crispy_field }}
             </fieldset>
-            <input type='submit' value="Отправить заявку">
+            <input type='submit' class="btn btn-buy btn-success btn-block" value="Отправить заявку">
         </form>
     </div>
 {% endblock %}

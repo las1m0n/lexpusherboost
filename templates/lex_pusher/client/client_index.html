@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="row py-5">
+        <div class="row pb-5">
             <div class="col">
                 <h3>Текущий бустер: {{bust.buster.name}}</h3>
             </div>
@@ -61,9 +61,9 @@
                                 <div class="card text-white bg-{% if stat.is_win %}success{% else %}danger{% endif %} mb-3"
                                      style="max-width: 18rem;">
                                     <div class="card-header">{% if stat.is_win %}Победа{% else %}
-                                        Поражение{% endif %} {{ stat.mmr }} MMR
+                                        Поражение{% endif %} {% if stat.is_win %} +{{ stat.mmr }} MMR {% else %} {{ stat.mmr }} MMR{% endif %}
                                         <p class="card-text">{{ stat.time }}</p></div>
-                                    <div class="card-body">
+                                    <div class="card-body" style="padding: 0.25rem">
                                             <a href="http://{{ stat.screen }}/"><button class="w-20 btn btn-outline-dark">
                                                 <span class="cart-icon">Скриншот</span>
                                                 </button>

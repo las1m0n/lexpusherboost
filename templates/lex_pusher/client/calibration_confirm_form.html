@@ -1,0 +1,35 @@
+{% extends 'lex_pusher/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block navbar %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    {% include 'lex_pusher/navbar.html' %}
+{% endblock %}
+
+
+{% block content %}
+    <div style="padding-bottom: 50px;">
+    </div>
+    <div class="form-style-5">
+        <form action="{% url 'cal_end' %}" method="POST">
+            {% csrf_token %}
+            <legend>Калибровка аккаунта</legend>
+            <p>MMR: {{ mmr }}</p>
+            <p>Цена: {{ price }} рублей</p>
+            <hr style="padding-bottom: 20px;">
+            <fieldset>
+                <legend><span class="number">1</span> Контактные данные</legend>
+                {{ form.email|as_crispy_field }}
+                {{ form.steam_login|as_crispy_field }}
+                {{ form.steam_password|as_crispy_field }}
+            </fieldset>
+            <input type="hidden" name="mmr" value="{{mmr}}">
+            <input type="hidden" name="price" value="{{price}}">
+            <input type="submit" class="btn btn-buy btn-success btn-block" value="Перейти к оплате"/>
+        </form>
+    </div>
+
+{% endblock %}
+
+

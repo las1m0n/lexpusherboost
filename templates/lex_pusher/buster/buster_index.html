@@ -12,17 +12,27 @@
     {% include 'lex_pusher/navbar.html' %}
 {% endblock %}
 {% block content %}
-
-    <div class="position-relative overflow-hidden py-5 m-md-1">
-        <h2>Привет, {{ buster.name }}
+{% if request.user.is_booster %}
+    <div class="position-relative overflow-hidden pt-5 text-center">
+        <h1>Личный кабинет</h1>
+    </div>
+    <div class="position-relative overflow-hidden pb-3 m-md-1">
+        <h2>
             {% if buster.avatar %}
-                <img src="{{ buster.avatar.url }}" class="card-img-top" style="width: 64px; height: 64px;" alt="avatar">
+                <img src="{{ buster.avatar.url }}" class="card-img-top round" style="width: 64px; height: 64px;" alt="avatar">
             {% endif %}
+            {{ buster.name }}
         </h2>
-        <h2>Ваш баланс: {{ buster.balance }} р.</h2>
-        <a href="{% url 'buster_payout' %}">
+        <h2>Ваш баланс: {{ buster.balance }} ₽</h2>
+        {% if buster.balance > 500 %}
+        <a href="{% url 'payout' id=buster.id %}">
             <button type="button" class="btn w-20 btn-success">Выплатить</button>
         </a>
+        {% else %}
+        <a href="/">
+            <button type="button" class="btn w-20 btn-success disabled" disabled>Выплатить</button>
+        </a>
+        {% endif %}
     </div>
 
 
@@ -50,75 +60,70 @@
     </ul>
 
     <div class="tab-content" id="myTabContent">
-
-
         <div class="tab-pane fade show active container" id="active_bust" role="tabpanel" aria-labelledby="active_bust-tab">
             <div class="position-relative overflow-hidden p-5 text-center">
                 {% if active_bust %}
                     <h1>Выполняемый заказ</h1>
                 {% else %}
-                    У вас пока нету активного заказа. Возьмите их во вкладке доступные заказы
+                    У вас пока нету активного заказа. Возьмите его во вкладке "Доступные заказы"
                 {% endif %}
             </div>
 
             {% if active_bust %}
                 <div class="container">
-                    <div class="row flex-row">
-                        <div class="col text-center">
-                            Начальный MMR
-                            <h3>{{ active_bust.mmr_from }}</h3>
+                    <div class="row">
+                        <div class="col">
+                            <h3>Сообщить результат (каждую игру)</h3>
+                            <div class="container py-5">
+                                {% include 'lex_pusher/buster/new_stat.html' %}
+                            </div>
                         </div>
-                        <div class="col text-center">
-                            Конечный MMR
-                            <h3>{{ active_bust.mmr_to }}</h3>
-                        </div>
-                        <div class="col text-center">
-                            Сейчас MMR
-                            <h3>{{ active_bust.mmr_current }}</h3>
-                        </div>
-                        <div class="col text-center">
-                            Осталось MMR
-                            <h3>{{ active_bust.mmr_left }}</h3>
-                        </div>
-                    </div>
-                    <div class="row flex-row">
-                        <div class="col text-center">
-                            Стим логин:
-                            <h3>{{ active_bust.steam_login}}</h3>
-                        </div>
-                        <div class="col text-center">
-                            Стим пароль:
-                            <h3>{{ active_bust.steam_password }}</h3>
+                        <div class="col">
+                            <div class="row flex-row">
+                                <div class="col text-center">
+                                    Начальный MMR
+                                    <h3>{{ active_bust.mmr_from }}</h3>
+                                </div>
+                                <div class="col text-center">
+                                    Конечный MMR
+                                    <h3>{{ active_bust.mmr_to }}</h3>
+                                </div>
+                                <div class="col text-center">
+                                    Сейчас <br>MMR
+                                    <h3>{{ active_bust.mmr_current }}</h3>
+                                </div>
+                                <div class="col text-center">
+                                    Осталось MMR
+                                    {% if active_bust.mmr_left < 5 %}
+                                    <h3>Буст окончен</h3>
+                                    {% else %}
+                                    <h3>{{ active_bust.mmr_left }}</h3>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row flex-row">
+                            <div class="col text-center">
+                                Стим логин:
+                                <h3>{{ active_bust.steam_login}}</h3>
+                            </div>
+                            <div class="col text-center">
+                                Стим пароль:
+                                <h3>{{ active_bust.steam_password }}</h3>
+                            </div>
+                            </div>
+                            <div class="row flex-row text-center">
+                                <div class="col pt-5">
+                                    <a href="{% url 'logout_buster' %}">
+                                        <button type="submit" class="btn btn-danger w-20">Выйти из аккаунта</button>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <h3 class="mt-5">Сообщить результат (каждую игру)</h3>
-                <div class="container py-5">
-                    <form action="{% url 'new_stat' %}" method="POST">
-                        {% csrf_token %}
-                        <div class="form-group row">
-                            <label for="mmr" class="col-sm-2 col-form-label">MMR</label>
-                            <div class="col-sm-5">
-                                <input type="number" class="form-control" id="mmr" name="mmr">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="screen" class="col-sm-2 col-form-label">Скрин</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="screen" name="screen">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm">
-                                <button type="submit" class="btn btn-success w-20">Отправить</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-
-                <h3 class="mt-5">История</h3>
+                <h3 class="my-5">История</h3>
                 <div class="container">
                     <div class="row flex-row">
                         {% for stat in bust_stats %}
@@ -130,7 +135,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{ stat.mmr }} MMR</h5>
                                         <p class="card-text">{{ stat.time }}</p>
-                                            <a href="http://{{ stat.screen }}/"><button class="w-20 btn btn-outline-dark">
+                                            <a href="{{ stat.screen }}" target="_blank"><button class="w-20 btn btn-outline-dark">
                                                 <span class="cart-icon">Скриншот</span>
                                                 </button>
                                             </a>
@@ -140,18 +145,10 @@
                         {% endfor %}
                     </div>
                 </div>
-
-
             {% endif %}
-
         </div>
 
         <div class="tab-pane fade" id="inactive_busts" role="tabpanel" aria-labelledby="inactive_busts-tab">
-            {% if active_bust %}
-            <div class="position-relative overflow-hidden p-5 text-center">
-                <h2>Вы уже выполняете заказ</h2>
-            </div>
-            {% else %}
             <div class="position-relative overflow-hidden p-5 text-center">
                 <h1>Заказы DotA 2</h1>
             </div>
@@ -160,46 +157,50 @@
                 <div class="row flex-row">
                     {% for bust in inactive_busts %}
                         <div class="col-sm-3">
-                            <div class="card border-danger mb-3" style="max-width: 18rem;">
-                                <div class="card-header bg-transparent border-danger">
-                                    Заказ #{{ bust.id }}
-                                    {% if active_bust %}
-                                        <button class="w-100 btn btn-outline-dark disabled">
-                                            <span class="cart-icon">Вы уже выполняете заказ</span>
-                                        </button>
+                            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header bg-transparent border-dark">
+                                    {% if bust.mmr_current < 840 %}
+                                    <img src="/static/img/season-ranks/140px-SeasonalRank1-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% elif bust.mmr_current < 1680 %}
+                                    <img src="/static/img/season-ranks/SeasonalRank2-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% elif bust.mmr_current < 2520 %}
+                                    <img src="/static/img/season-ranks/SeasonalRank3-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% elif bust.mmr_current < 3360 %}
+                                    <img src="/static/img/season-ranks/SeasonalRank4-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% elif bust.mmr_current < 4200 %}
+                                    <img src="/static/img/season-ranks/SeasonalRank5-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% elif bust.mmr_current < 5880 %}
+                                    <img src="/static/img/season-ranks/SeasonalRank6-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
                                     {% else %}
-                                        <button class="w-100 btn btn-outline-success">
-                                            <span class="cart-icon">Можно взять</span>
-                                        </button>
+                                    <img src="/static/img/season-ranks/SeasonalRankTop0.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
                                     {% endif %}
+                                    Заказ #{{ bust.id }}
+                                    <a href="{% url 'bust_take' bust_id=bust.id %}">
+                                        <button class="w-100 btn btn-outline-success">
+                                            <span class="cart-icon">Взять</span>
+                                        </button>
+                                    </a>
                                 </div>
-                                <div class="card-body text-danger">
-                                    Сейчас: {{ bust.mmr_from }} <br>
-                                    Конечный: {{ bust.mmr_to }}
+                                <div class="card-body text-dark">
+                                    Буст <b>{{bust.mmr_type}}</b> рейтинга<br>
+                                    Сейчас: {{ bust.mmr_current }} MMR<br>
+                                    Конечный: {{ bust.mmr_to }} MMR
                                 </div>
-                                <div class="card-footer bg-transparent border-danger">
-                                    {% if active_bust %}
-                                        <button class="w-100 btn btn-outline-dark" disabled>
+                                <div class="card-footer bg-transparent border-dark">
+                                    <a href="{% url 'bust_info' bust_id=bust.id %}">
+                                        <button class="w-100 btn btn-outline-dark">
                                             <span class="cart-icon">Открыть</span>
                                         </button>
-                                    {% else %}
-                                        <a href="{% url 'bust_info' bust_id=bust.id %}">
-                                            <button class="w-100 btn btn-outline-dark">
-                                                <span class="cart-icon">Открыть</span>
-                                            </button>
-                                        </a>
-                                    {% endif %}
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
                 </div>
             </div>
-            {% endif %}
         </div>
 
         <div class="tab-pane fade" id="punish" role="tabpanel" aria-labelledby="punish-tab">
-
             <div class="position-relative overflow-hidden p-5 text-center">
                 <h1>Ваши штрафы</h1>
             </div>
@@ -207,20 +208,18 @@
                 <div class="row flex-row">
                     {% for punish in punishments %}
                         <div class="col">
-                            <div class="card border-danger mb-3" style="max-width: 18rem;">
-                                <div class="card-header bg-transparent border-danger">Заказ #{{ punish.id }}</div>
-                                <div class="card-body text-danger">
+                            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header bg-transparent border-dark">Заказ #{{ punish.id }}</div>
+                                <div class="card-body text-danger" style="padding: .75rem;">
                                     <h5 class="card-title">Штраф: {{ punish.cost }} руб.</h5>
-                                </div>
-                                <div class="card-footer bg-transparent border-danger">
                                     <h5 class="card-title">Причина: {{ punish.reason }}</h5>
                                 </div>
                                 <hr>
                             </div>
                         </div>
                     {% empty %}
-                    <div class="position-relative overflow-hidden p-5 text-center">
-                        <h5>У Вас нет штрафов!</h5>
+                    <div class="position-relative overflow-hidden p-5 text-right">
+                        <h1>У Вас нет штрафов!</h1>
                     </div>
                     {% endfor %}
                 </div>
@@ -228,17 +227,23 @@
         </div>
 
         <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-            <div class="position-relative overflow-hidden p-5 text-center">
+            <div class="position-relative overflow-hidden pt-5 text-center">
                 <h1>Настройки аккаунта</h1>
             </div>
             <div class="container">
-                <div class="card-header bg-transparent border-danger"></div>
                 <hr>
                     <form action="{% url 'change_info_account' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group row">
                             <div class="col-sm-5">
                                 {{ form.file|as_crispy_field }}
+                                {% if form.errors %}
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <strong>{{ error|escape }}</strong>
+                                        {% endfor %}
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                         </div>
                         <div class="form-group row">
@@ -248,17 +253,13 @@
                         </div>
                     </form>
                 <hr>
-                {% for punish in punishments %}
-                        <div class="card-header bg-transparent border-danger">Личные данные</div>
-                        <div class="card-footer bg-transparent border-danger">
-                            <h5 class="card-title">Имя: {{ buster.name }}</h5>
-                            <h5 class="card-title">Email: {{ buster.email }}</h5>
-                            <h5 class="card-title">Телефон: {{ buster.phone }}</h5>
-                            <h5 class="card-title">Skype: {{ buster.skype }}</h5>
-                        </div>
-                {% endfor %}
-                <div class="card-header bg-transparent border-danger"></div>
-                <hr>
+                <form action="/" method="GET">
+                        <div><h6><strong>Имя: </strong>{{buster.name}}</h6></div>
+                        <div><h6><strong>Email: </strong>{{buster.email}}</h6></div>
+                        <div><h6><strong>Телефон: </strong>{{buster.phone}}</h6></div>
+                        <div><h6><strong>Skype: </strong> {{buster.skype}}</h6></div>
+                </form>
+                    <hr>
                     <form action="{% url 'change_info_account' %}" method="POST">
                         {% csrf_token %}
                         <div class="form-group row">
@@ -273,7 +274,6 @@
                             </div>
                         </div>
                     </form>
-                    <div class="card-header bg-transparent border-danger"></div>
                     <hr>
                     <form action="{% url 'change_info_account' %}" method="POST">
                         {% csrf_token %}
@@ -291,40 +291,6 @@
                     </form>
                 </div>
         </div>
-
     </div>
+{% endif %}
 {% endblock %}
-
-
-{#   а шо ето  ответ -> это подробности заказа #}
-
-{#% for bust in busts %}#}
-{#            <div class="modal fade" id="myModal-{{ bust.id }}" tabindex="-1" role="dialog"#}
-{#                 aria-labelledby="myModalLabel">#}
-{#                <div class="modal-dialog" role="document">#}
-{#                    <div class="modal-content">#}
-{#                        <div class="modal-header">#}
-{#                            <h3 class="modal-title" id="myModalLabel">Заказ № {{ bust.id }}</h3>#}
-{#                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span#}
-{#                                    aria-hidden="true">&times;</span></button>#}
-{#                        </div>#}
-{#                        <div class="modal-body">#}
-{#                            <h3>Буст</h3>#}
-{#                            <table class='table'>#}
-{#                                <tr>#}
-{#                                    <td>{{ bust.mmr_from }} MMR</td>#}
-{#                                    <td>{{ bust.mmr_to }} MMR</td>#}
-{#                                    <td>Steam login {{ bust.steam_login }} </td>#}
-{#                                    <td>Steam password {{ bust.steam_password }} </td>#}
-{#                                </tr>#}
-{#                            </table>#}
-{#                            <h3>Заказчик</h3>#}
-{#                            <p>Имя: {{ bust.client.vk }}</p>#}
-{#                        </div>#}
-{#                        <div class="modal-footer">#}
-{#                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        {% endfor %}#}

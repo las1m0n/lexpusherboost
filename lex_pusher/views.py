@@ -1,5 +1,8 @@
-import secrets
-
+# -*- coding: utf-8 -*-
+# coding: utf-8
+from __future__ import unicode_literals
+from . import utils
+import json
 from django.conf import settings
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -10,13 +13,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, View, DetailView
 from django.views.generic.edit import CreateView, SingleObjectMixin
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm, \
-    UploadFileForm
-from .mail_send import send
-from . import utils
-from .models import Account, Bust, Stat, Buster, Punish
+    UploadFileForm, CalibrationCartForm
+from .models import Account, Bust, Stat, Buster, Punish, Calibration
 from django.contrib.auth import get_user_model
 from meta.views import Meta, MetadataMixin
-import json
+from mailer import Mailer, Message
+from .mail_send import send, send_payout, send_data_account
+from django.utils.crypto import get_random_string
 
 User = get_user_model()
 
@@ -46,8 +49,8 @@ def client_view(request):
 
     context = {
         'stats_times': [i.time.strftime("%m.%d, %H:%M") for i in stats],
-        'stats_values': [i.mmr for i in stats],
-        'stats_current_values': [i.mmr_current for i in stats],
+        'stats_values': [i.mmr for i in stats[::-1]],
+        'stats_current_values': [i.mmr_current for i in stats[::-1]],
         'bust': bust,
         'bust_stats': bust_stats
     }
@@ -127,12 +130,7 @@ def calibration_view(request):
 
 def accs_shop_cart_view(request, account_slug):
     account = Account.objects.get(slug=account_slug)
-    form = ShopCartForm(request.POST or None)
-    if form.is_valid():
-        new_purchase_account = form.save(commit=False)
-        new_purchase_account.account_slug = account.slug
-        new_purchase_account.save()
-        return HttpResponseRedirect(reverse('index'))
+    form = ShopCartForm()
 
     context = {
         'form': form,
@@ -141,15 +139,58 @@ def accs_shop_cart_view(request, account_slug):
     return render(request, 'lex_pusher/accs/shop_cart.html', context)
 
 
+def acc_shop_end_view(request):
+    account_slug = request.POST.get("account_slug", None)
+    account = Account.objects.get(slug=account_slug)
+    form = ShopCartForm(request.POST or None)
+    if form.is_valid():
+        new_purchase_account = form.save(commit=False)
+        new_purchase_account.account_slug = account.slug
+        new_purchase_account.save()
+        description = f'Account|{account.slug},{new_purchase_account.email}'
+        fk_url = utils.fk_url(account.price, description)
+        return HttpResponseRedirect(fk_url)
+    else:
+        return HttpResponseRedirect(reverse("cart_account"))
+
+
 def bust_shop_cart_view(request):
+    form_bust = BustCartForm()
+    form_acc = ClientForm()
+    mmr_from = request.POST.get("mmr_from", None)
+    mmr_to = request.POST.get("mmr_to", None)
+    price = request.POST.get("price", None)
+    type_boost = request.POST.get("type_boost", None)
+    if type_boost == "on":
+        type_boost = "Support"
+    else:
+        type_boost = "Core"
+
+    context = {
+        'form': form_bust,
+        'form_acc': form_acc,
+        'mmr_from': mmr_from,
+        'mmr_to': mmr_to,
+        'type_boost': type_boost,
+        'price': price
+    }
+    return render(request, 'lex_pusher/client/bust_shop_form.html', context)
+
+
+def bust_confirm_view(request):
     form_bust = BustCartForm(request.POST or None)
     form_acc = ClientForm(request.POST or None)
-    mmr_from = request.GET.get("mmr_from", None)
-    mmr_to = request.GET.get("mmr_to", None)
-    price = request.GET.get("price", None)
+    mmr_from = request.POST.get("mmr_from", None)
+    mmr_to = request.POST.get("mmr_to", None)
+    price = request.POST.get("price", None)
+    type_boost = request.POST.get("type_boost", None)
 
-    if not isinstance(mmr_to, int) and mmr_to < 0:
-        return HttpResponseRedirect(reverse('index'))
+    if type_boost == "on":
+        type_boost = "Support"
+    else:
+        type_boost = "Core"
+
+    # Вот здесь на оплату, а после уже парсер и аутентификация если функция bust_confirm_view return True
 
     if form_bust.is_valid() and form_acc.is_valid():
         email = form_acc.cleaned_data['email']
@@ -158,7 +199,7 @@ def bust_shop_cart_view(request):
         phone = form_acc.cleaned_data['phone']
         steam_login = form_bust.cleaned_data['steam_login']
         steam_password = form_bust.cleaned_data['steam_password']
-        secret_key = secrets.token_hex(nbytes=8)
+        secret_key = get_random_string(length=10)
 
         User.objects.create_user(
             email=email,
@@ -178,21 +219,15 @@ def bust_shop_cart_view(request):
             mmr_from=mmr_from,
             mmr_to=mmr_to,
             mmr_current=mmr_from,
+            mmr_type=type_boost,
             steam_login=steam_login,
             steam_password=steam_password
         )
 
-        description = 'bust|' + str(bust.id)
+        logout(request)
+        description = f'Boost|{str(bust.id)}'
         fk_url = utils.fk_url(price, description)
         return HttpResponseRedirect(fk_url)
-
-    context = {
-        'form': form_bust,
-        'form_acc': form_acc,
-        'mmr_from': mmr_from,
-        'mmr_to': mmr_to,
-    }
-    return render(request, 'lex_pusher/client/bust_shop_form.html', context)
 
 
 def accs_id_view(request, account_id):
@@ -204,34 +239,44 @@ def accs_id_view(request, account_id):
 
 
 def pay_success(request):
-    price = request.POST['AMOUNT']
-    description = request.POST['MERCHANT_ORDER_ID']
-    sign = request.POST['SIGN']
+    price = request.GET.get('AMOUNT' or None)
+    description = request.GET.get('MERCHANT_ORDER_ID' or None)
+    sign = request.GET.get('SIGN' or None)
 
-    hash = utils.fk_hash(price, description, True)
-    if sign != hash:
-        return HttpResponse("ты че наебать нас вздумал?")
+    hashes = utils.fk_hash(price, description, True)
+    if sign != hashes:
+        return HttpResponse("Error")
 
     pay_for, data = description.split("|")
 
-    if pay_for == 'bust':
-
+    if pay_for == 'Boost':
         bust = Bust.objects.get(id=int(data))
         client = bust.client
-        bust.update(is_paid=True)
 
         secret_key = client.username
-
+        bust.is_paid = True
+        bust.save()
         send(client.email, secret_key)
 
         login_user = authenticate(username=secret_key, password=secret_key)
         if login_user:
             login(request, login_user)
 
-        return HttpResponseRedirect(reverse('client'))
+        return HttpResponseRedirect(reverse('index'))
 
-    if pay_for == 'acc':
-        pass
+    if pay_for == 'Account':
+        slug, email = data.split(",")
+        account = Account.objects.get(slug=slug)
+
+        account.available = False
+        account.save()
+        buyer = BuyAccount.objects.get(account_slug=slug)
+        send_data_account(buyer.email, account.steam_login, account.steam_password,
+                          account.email_login. account.email_password)
+        return HttpResponseRedirect(reverse('index'))
+
+    if pay_for == "Calibration":
+        return render(request, 'lex_pusher/buster/success.html', {})
 
 
 def login_view(request):
@@ -276,19 +321,21 @@ def buster_info_change_view(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            avatar = form.clean_avatar()
-            instance = Buster(avatar=avatar)
-            instance.save()
-            buster.update(avatar=avatar)
+            try:
+                avatar = form.clean_avatar()
+            except:
+                pass
+            else:
+                instance = Buster(avatar=avatar)
+                instance.save()
+                buster.update(avatar=avatar)
 
     if mmr is not None:
         buster.update(solo_mmr=mmr)
-        buster.save()
 
     if about_info is not None:
         buster.update(experience=about_info)
-        buster.save()
-    return HttpResponseRedirect(reverse('buster_cabinet'))
+    return HttpResponseRedirect(reverse('buster'))
 
 
 def bust_info_view(request, bust_id):
@@ -296,8 +343,8 @@ def bust_info_view(request, bust_id):
     found_busts = Bust.objects.filter(id=bust_id).first()
     active_bust = Bust.objects.filter(buster=buster).first()
     found_bust_stats = Stat.objects.filter(bust_id=found_busts.id)
-    len_pass = len(found_busts.steam_password) * '*'
-    len_login = len(found_busts.steam_login) * '*'
+    len_pass = 7 * '*'
+    len_login = 7 * '*'
     try:
         if found_busts.mmr_current == 0 or found_busts.mmr_current is None:
             found_busts.mmr_current = found_busts.mmr_from
@@ -306,6 +353,7 @@ def bust_info_view(request, bust_id):
 
     context = {
         'found_bust': found_busts,
+        'buster': buster,
         'len_pass': len_pass,
         'len_login': len_login,
         'found_bust_stats': found_bust_stats,
@@ -318,40 +366,38 @@ def take_bust_view(request, bust_id):
     buster = Buster.objects.filter(booster_acc=request.user).first()
     taken_bust = Bust.objects.filter(id=bust_id)
     taken_bust.update(buster=buster)
-    return HttpResponseRedirect(reverse('buster_cabinet'))
+    return HttpResponseRedirect(reverse('buster'))
 
 
-class PayView(TemplateView):
-    template_name = 'lex_pusher/buster/buster_payout.html'
-
-    def get(self, request, *args, **kwargs):
-        liqpay = LiqPay(settings.LIQPAY_PUBLIC_KEY, settings.LIQPAY_PRIVATE_KEY)
-        params = {
-            'action': 'pay',
-            'amount': '100',
-            'currency': 'USD',
-            'description': 'Payment for clothes',
-            'order_id': 'order_id_2',
-            'version': '3',
-            'sandbox': 0,
-            'server_url': 'https://test.com/billing/pay-callback/',
-        }
-        signature = liqpay.cnb_signature(params)
-        data = liqpay.cnb_data(params)
-        return render(request, self.template_name, {'signature': signature, 'data': data})
+def calibration_cart_view(request):
+    mmr = request.POST.get("mmr", None)
+    price = request.POST.get("price", None)
+    form = CalibrationCartForm()
+    context = {
+        'form': form,
+        'mmr': mmr,
+        'price': price
+    }
+    return render(request, 'lex_pusher/client/calibration_confirm_form.html', context)
 
 
-@method_decorator(csrf_exempt, name='dispatch')
-class PayCallbackView(View):
-    def post(self, request, *args, **kwargs):
-        pass
+def calibration_cart_end_view(request):
+    mmr = request.POST.get("mmr", None)
+    price = request.POST.get("price", None)
+    form = CalibrationCartForm(request.POST or None)
+    if form.is_valid():
+        new_calibration = form.save(commit=False)
+        new_calibration.mmr = mmr
+        new_calibration.price = price
+        new_calibration.save()
+        description = f'Calibration|LexPusher'
+        fk_url = utils.fk_url(price, description)
+        return HttpResponseRedirect(fk_url)
+    else:
+        return HttpResponseRedirect('calibration_cart')
 
 
-class MyView(DetailView):
-    """
-    Не трошь, это для seo
-    """
-
+class CeoView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(MyView, self).get_context_data(self, **kwargs)
         context['meta'] = self.get_object().as_meta(self.request)
@@ -365,6 +411,19 @@ class MyView(DetailView):
         return render(request, template, context)
 
 
+def payout_view(request, id):
+    buster = Buster.objects.get(id=id)
+    context = {}
+    if buster.balance > 500:
+        context = {'name': buster.name}
+        send_payout('bndr.nkt.99@gmail.com', buster.name, id)
+    return render(request, 'lex_pusher/buster/payout.html', context)
 
 
+def buster_logout(request):
+    buster_account = Buster.objects.filter(booster_acc=request.user).first()
+    bust = Bust.objects.get(buster=buster_account)
+    bust.buster = None
+    bust.save()
+    return HttpResponseRedirect(reverse("buster"))
 

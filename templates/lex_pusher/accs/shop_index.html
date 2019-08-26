@@ -29,7 +29,7 @@
                     <div class="product-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
                       <a href="{% url 'account_info' account_id=account.id %}" class="product-item-link">
                         <figure class="product-thumbnail" style="min-height:187px !important;">
-                          <img src="{{ account.image.url }}" alt="account image" class="thumbnail"/>
+                          <img src="{{ account.image_avatar.url }}" alt="account image" class="thumbnail"/>
                         </figure>
                         <div class="product-info" style="min-height:45px !important;">
                           <h3 class="product-name">

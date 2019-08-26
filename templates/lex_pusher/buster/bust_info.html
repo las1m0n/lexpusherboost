@@ -13,13 +13,14 @@
 {% endblock %}
 
 {% block content %}
+{% if request.user.is_booster %}
 <div class="tab-content" id="myTabContent">
     <div class="position-relative overflow-hidden py-5 m-md-1">
         <h5><a href="{% url 'index' %}">Главная</a> <
             <a href="{% url 'buster' %}">Кабинет</a> <
             Заказ #{{found_bust.id}}
         </h5>
-        <h2>Заказ номер #{{found_bust.id}}</h2>
+        <h2>Заказ номер {{found_bust.id}}</h2>
     </div>
     <hr>
     <div class="tab-pane fade show active" id="stats" role="tabpanel" aria-labelledby="stat-info-tab">
@@ -42,6 +43,7 @@
                     <h3>{{ found_bust.mmr_left}}</h3>
                 </div>
             </div>
+
         </div>
     </div>
     <hr>
@@ -88,9 +90,14 @@
                         <div class="card-header">{% if stat.is_win %}Победа{% else %}
                             Поражение{% endif %}</div>
                         <div class="card-body">
+                            <h5 class="card-title">
+                                {% if buster.avatar %}
+                                <img src="{{ stat.buster.avatar.url }}" class="card-img-top round" style="width: 32px; height: 32px;" alt="avatar">
+                                {% endif %}
+                                {{stat.buster.name}}</h5>
                             <h5 class="card-title">{{ stat.mmr }} MMR</h5>
                             <p class="card-text">{{ stat.time }}</p>
-                                <a href="http://{{ stat.screen }}/"><button class="w-20 btn btn-outline-dark">
+                                <a href="{{ stat.screen }}" target="_blank"><button class="w-20 btn btn-outline-dark">
                                     <span class="cart-icon">Скриншот</span>
                                     </button>
                                 </a>
@@ -134,4 +141,5 @@
     </div>
     <hr>
 </div>
+{% endif %}
 {% endblock %}

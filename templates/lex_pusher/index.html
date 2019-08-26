@@ -33,7 +33,7 @@
                              aria-labelledby="dropdown">
                             <h5>Укажите пин-код Вашего заказа</h5>
                             <p>для просмотра состояния и хода выполнения заказа</p>
-                            <form method='post' action=''>
+                            <form method='POST' action=''>
                                 <div class='validation_info'></div>
                                 {% csrf_token %}
                                 {{ form.password|as_crispy_field }}
@@ -54,21 +54,20 @@
                 {% endif %}
 
                 {% if request.user.is_booster %}
-                    <li class="nav-item active ">
-                        <a class='nav-link active' href="{% url 'buster' %}"><i class="fas fa-user"></i> Кабинет
-                            бустера </a>
+                    <li class="nav-item">
+                        <a class='nav-link effect-3' href="{% url 'buster' %}"><i class="fas fa-user"></i> Кабинет</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class='nav-link active' href="{% url 'logout' %}">Выйти</a>
+                    <li class="nav-item">
+                        <a class='nav-link effect-3' href="{% url 'logout' %}">Выйти</a>
                     </li>
                 {% endif %}
 
                 {% if request.user.is_client %}
-                    <li class="nav-item active ">
-                        <a class='nav-link active' href="{% url 'client' %}"><i class="fas fa-user"></i> Кабинет </a>
+                    <li class="nav-item">
+                        <a class='nav-link effect-3' href="{% url 'client' %}"><i class="fas fa-user"></i> Кабинет </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class='nav-link active' href="{% url 'logout' %}">Выйти</a>
+                    <li class="nav-item">
+                        <a class='nav-link effect-3' href="{% url 'logout' %}">Выйти</a>
                     </li>
                 {% endif %}
 
@@ -215,8 +214,6 @@
                     общительные и сильные бустеры.</p>
                 </div>
             </div>
-            <p>Ни одного случая бана клиентского аккаунта, кражи вещей или аккаунта за
-            всю историю BoostMMR. </p>
         </div>
     </section>
 
@@ -295,8 +292,6 @@
             <div class="container">
                 <div class="row pt-3 mt-5" style="font-size: 2em;">
                     <div class="col">
-                    </div>
-                    <div class="col">
                         <a href="https://vk.com/lexpusher" target="_blank">
                             <button class="corner-button"><i class="fab fa-vk"></i></button>
                         </a>
@@ -315,8 +310,6 @@
                         <a href="https://t.me/lexpusher" target="_blank">
                             <button class="corner-button"><i class="fab fa-telegram-plane"></i></button>
                         </a>
-                    </div>
-                    <div class="col">
                     </div>
                 </div>
             </div>

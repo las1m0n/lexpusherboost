@@ -16,14 +16,15 @@
 {% block content %}
 
     <div class="form-style-5">
-        <form action='' method='POST' class="p-3">
+        <form action="{% url 'bust_confirm' %}" method='POST' class="p-3">
             {% csrf_token %}
-            <legend><b>Ваши данные</b></legend>
+            <legend><b>Буст {{ type_boost }} рейтинга</b></legend>
             <p>Текущий MMR: {{ mmr_from }}</p>
             <p>Конечный MMR: {{ mmr_to }}</p>
+            <p><b>Цена:</b> {{ price }} р.</p>
             <p><strong>Не забудьте включить семейный просмотр</strong></p>
-            {{ form.mmr_from|as_crispy_field }}
-            {{ form.mmr_to|as_crispy_field }}
+                {{ form.mmr_from|as_crispy_field }}
+                {{ form.mmr_to|as_crispy_field }}
             <hr style="padding-bottom: 20px;">
             <fieldset>
                 <legend><span class="number">1</span> Контактные данные</legend>
@@ -37,7 +38,11 @@
                 {{ form_acc.skype|as_crispy_field }}
                 {{ form_acc.phone|as_crispy_field }}
             </fieldset>
-            <input type='submit' value="Оплата">
+            <input type='submit' class="btn btn-buy btn-success btn-block" value="Перейти к оплате">
+            <input type='hidden' name="type_boost" value="{{type_boost}}">
+            <input type='hidden' name="mmr_from" value="{{mmr_from}}">
+            <input type='hidden' name="mmr_to" value="{{mmr_to}}">
+            <input type='hidden' name="price" value="{{price}}">
         </form>
     </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One|Luckiest+Guy|Sigmar+One|Press+Start+2P|Russo+One');
-
+@import url('https://fonts.googleapis.com/css?family=Exo+2&display=swap');
 html {
     position: relative;
     min-height: 100%;
@@ -8,6 +8,7 @@ html {
 body {
     margin-bottom: 3em !important;
     background-color: #f1f2f4;
+    font-family: 'Exo 2', sans-serif;
 }
 
 .navbar-brand {
@@ -53,11 +54,6 @@ body {
     border-left: 1px solid #ddd;
 }
 
-.container_text {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
 
 .container_text a{
   display: block;
@@ -86,11 +82,69 @@ body {
   z-index: -1;
 }
 
-.container_text a:hover {
-  color: #000000;
+
+div.quickbox{
+    font-family: "Arial", cursive;
+    display:none;text-align:center
 }
-.container_text a:hover:after {
-  right: 0;
-  left: 0;
-  height: 100%;
+div.quickbox .qb-close {
+    top:0;
+    z-index:1503;
+    position:absolute;
+    color:#737373;
+    font-size:39px;
+    cursor:pointer
 }
+div.quickbox .qb-close:hover
+{color:#f2f2f2}
+div.quickbox .qb-navigate{
+    position:absolute;
+    color:#fff;
+    font-size:26px;
+    width:39px;
+    height:39px;
+    z-index:1502;
+    cursor:pointer;
+    color:#737373
+}
+div.quickbox .qb-navigate.qb-left
+{left:0;
+    text-align:right
+}
+div.quickbox .qb-navigate.qb-right{
+     right:0;text-align:left}
+
+div.quickbox .qb-navigate:hover{
+    color:#f2f2f2}div.quickbox .qb-inside{
+                      -webkit-border-radius:7px;
+                      -moz-border-radius:7px;
+                      -ms-border-radius:7px;
+                      border-radius:7px;
+                      position:absolute;
+                      background:#fff;
+                      top:0;
+                      left:0;
+                      z-index:1502;
+                      width:650px;
+                      height:300px
+                  }
+div.quickbox .qb-inside .qb-txt{
+    height:39px;overflow:hidden;
+    font-size:14.3px;color:#333;
+    padding:9.1px 0 0;
+    width:100%;
+    z-index:1505;
+    position:absolute;bottom:0}
+
+div.quickbox .qb-inside .qb-img{
+    overflow:hidden;z-index:1505;position:absolute}
+
+div.quickbox .qb-inside .qb-img img{
+    cursor:pointer}
+
+div.quickbox .qb-inside .qb-loading{
+    margin:0 auto;color:#000;z-index:1504;
+    position:absolute;width:100%;height:100%;background:url(loader.gif) center center no-repeat
+}
+div.quickbox .qb-bg{
+     opacity:.8;-webkit-opacity:.8;-khtml-opacity:.8;-moz-opacity:.8;filter:alpha(opacity=80);-ms-filter:"alpha(opacity=$p)";background:#000;z-index:1501;position:absolute;width:100%;height:100%;top:0;left:0}

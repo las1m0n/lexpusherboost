@@ -93,6 +93,13 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+        'LOCATION': '/tmp/memcached.sock',
+    }
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -170,6 +177,11 @@ EMAIL_USE_TLS = True
 
 # free kassa
 
-FK_ID = 'test'
-FK_SECRET_1 = 'test'
-FK_SECRET_2 = 'test'
+FK_ID = '159076'
+FK_SECRET_1 = 'c6vaq2yo'
+FK_SECRET_2 = 'c6vaq2yo'
+
+
+META_SITE_PROTOCOL = "https"
+META_SITE_DOMAIN = "lexpusher.com"
+META_SITE_NAME = "Lex Pusher"
