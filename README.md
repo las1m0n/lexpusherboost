@@ -1,21 +1,12 @@
 # Flex - Pusher - Boost
 
-
-
+L
+A
 S
-V
-I
+1
+M
+0
 N
-E
-R
-U
-S
-
-C
-E
-B
-E
-K
 
 
 # ЛК КЛИЕНТА (ПО КОДУ)
