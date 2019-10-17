@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 
-from .models import Account, Bust, Calibration
+from .models import Account, Bust
 
 
 class AccountSitemap(Sitemap):

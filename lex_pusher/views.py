@@ -13,8 +13,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, View, DetailView
 from django.views.generic.edit import CreateView, SingleObjectMixin
 from .forms import ShopCartForm, BustCartForm, ClientForm, LoginForm, BusterApplicationForm, LoginBusterForm, \
-    UploadFileForm, CalibrationCartForm
-from .models import Account, Bust, Stat, Buster, Punish, Calibration
+    UploadFileForm
+from .models import Account, Bust, Stat, Buster, Punish
 from django.contrib.auth import get_user_model
 from meta.views import Meta, MetadataMixin
 from mailer import Mailer, Message
@@ -66,18 +66,29 @@ def buster_view(request):
     active_bust = Bust.objects.filter(buster=buster).first()
     punishments = Punish.objects.filter(buster_ident=buster)
     inactive_busts = Bust.get_free()
-
+    all_stat_buster = Stat.objects.filter(buster=buster).count()
+    win_stat_buster = Stat.objects.filter(buster=buster)
+    n = 0
+    for i in win_stat_buster:
+        if i.mmr > 0:
+            n += 1
+    if all_stat_buster > 0:
+        winrate = round((n / all_stat_buster)*100)
+    else:
+        winrate = 0
     active_bust_stats = Stat.objects.filter(bust_id=active_bust.id) if active_bust else None
-
     form = UploadFileForm(request.POST, request.FILES)
 
     context = {
+        'all_stat': all_stat_buster,
+        'win_stat': n,
+        'winrate': winrate,
         'inactive_busts': inactive_busts,
         'bust_stats': active_bust_stats,
         'punishments': punishments,
         'active_bust': active_bust,
         'buster': buster,
-        'form': form
+        'form': form,
     }
     return render(request, 'lex_pusher/buster/buster_index.html', context)
 
@@ -190,8 +201,6 @@ def bust_confirm_view(request):
     else:
         type_boost = "Core"
 
-    # Вот здесь на оплату, а после уже парсер и аутентификация если функция bust_confirm_view return True
-
     if form_bust.is_valid() and form_acc.is_valid():
         email = form_acc.cleaned_data['email']
         vk = form_acc.cleaned_data['vk']
@@ -276,7 +285,17 @@ def pay_success(request):
         return HttpResponseRedirect(reverse('index'))
 
     if pay_for == "Calibration":
-        return render(request, 'lex_pusher/buster/success.html', {})
+        bust = Bust.objects.get(id=int(data))
+        client = bust.client
+
+        secret_key = client.username
+        bust.is_paid = True
+        bust.save()
+        send(client.email, secret_key)
+
+        login_user = authenticate(username=secret_key, password=secret_key)
+        if login_user:
+            login(request, login_user)
 
 
 def login_view(request):
@@ -306,6 +325,7 @@ def new_stat_view(request):
 
     Stat.objects.create(
         bust=active_bust,
+        buster=buster,
         mmr=mmr,
         mmr_current=current + int(mmr),
         screen=screen
@@ -372,9 +392,12 @@ def take_bust_view(request, bust_id):
 def calibration_cart_view(request):
     mmr = request.POST.get("mmr", None)
     price = request.POST.get("price", None)
-    form = CalibrationCartForm()
+    form_bust = BustCartForm()
+    form_acc = ClientForm()
+
     context = {
-        'form': form,
+        'form_bust': form_bust,
+        'form_acc': form_acc,
         'mmr': mmr,
         'price': price
     }
@@ -384,13 +407,44 @@ def calibration_cart_view(request):
 def calibration_cart_end_view(request):
     mmr = request.POST.get("mmr", None)
     price = request.POST.get("price", None)
-    form = CalibrationCartForm(request.POST or None)
-    if form.is_valid():
-        new_calibration = form.save(commit=False)
-        new_calibration.mmr = mmr
-        new_calibration.price = price
-        new_calibration.save()
-        description = f'Calibration|LexPusher'
+    form_bust = BustCartForm(request.POST or None)
+    form_acc = ClientForm(request.POST or None)
+
+    if form_bust.is_valid() and form_acc.is_valid():
+        email = form_acc.cleaned_data['email']
+        vk = form_acc.cleaned_data['vk']
+        skype = form_acc.cleaned_data['skype']
+        phone = form_acc.cleaned_data['phone']
+        steam_login = form_bust.cleaned_data['steam_login']
+        steam_password = form_bust.cleaned_data['steam_password']
+        secret_key = get_random_string(length=10)
+        type_boost = "Калибровка"
+
+        User.objects.create_user(
+            email=email,
+            skype=skype,
+            phone=phone,
+            vk=vk,
+            username=secret_key,
+            password=secret_key,
+        )
+
+        login_user = authenticate(username=secret_key, password=secret_key)
+        if login_user:
+            login(request, login_user)
+
+        bust = Bust.objects.create(
+            client=request.user,
+            mmr_from=mmr,
+            mmr_to=mmr,
+            mmr_current=mmr,
+            mmr_type=type_boost,
+            steam_login=steam_login,
+            steam_password=steam_password
+        )
+
+        logout(request)
+        description = f'Calibration|{str(bust.id)}'
         fk_url = utils.fk_url(price, description)
         return HttpResponseRedirect(fk_url)
     else:

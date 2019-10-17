@@ -11,12 +11,15 @@
 {% block navbar %}
     {% include 'lex_pusher/navbar.html' %}
 {% endblock %}
+
 {% block content %}
 {% if request.user.is_booster %}
     <div class="position-relative overflow-hidden pt-5 text-center">
         <h1>Личный кабинет</h1>
     </div>
     <div class="position-relative overflow-hidden pb-3 m-md-1">
+        <div class="row flex-row">
+        <div class="col ml-3">
         <h2>
             {% if buster.avatar %}
                 <img src="{{ buster.avatar.url }}" class="card-img-top round" style="width: 64px; height: 64px;" alt="avatar">
@@ -33,6 +36,29 @@
             <button type="button" class="btn w-20 btn-success disabled" disabled>Выплатить</button>
         </a>
         {% endif %}
+            </div>
+            <div class="col">
+                <div class="row flex-row mt-3">
+                    <div class="col text-center">
+                    </div>
+                    <div class="col text-center">
+                        Всего матчей
+                        <h3 class="round mt-2">{{ all_stat }}</h3>
+                    </div>
+                    <div class="col text-center">
+                        Побед
+                        <br>
+                        <h3 class="round mt-2">{{ win_stat }}</h3>
+                    </div>
+                    <div class="col text-center">
+                        Winrate <br>
+                        <h3 class="round mt-2">{{ winrate }}%</h3>
+                    </div>
+                    <div class="col text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -70,6 +96,7 @@
             </div>
 
             {% if active_bust %}
+            {% if active_bust.mmr_type != "Калибровка" %}
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -145,8 +172,69 @@
                         {% endfor %}
                     </div>
                 </div>
+            {% else %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Сообщить результат <br>(после окончания калибровки)</h3>
+                            <div class="container py-5">
+                                {% include 'lex_pusher/buster/new_stat.html' %}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row flex-row">
+                                <div class="col text-center">
+                                 Steam логин:
+                                <h3>{{ active_bust.steam_login}}</h3>
+                                </div>
+                                <div class="col text-center">
+                                 Steam пароль:
+                                <h3>{{ active_bust.steam_password}}</h3>
+                                   <br>
+                                    <br>
+                                    <br>
+                                   <a href="{% url 'logout_buster' %}">
+                                        <button type="submit" class="btn btn-danger w-20 text-center">Выйти из аккаунта</button>
+                                   </a>
+                                </div>
+                                <div class="col text-center">
+                                    MMR <br>предыдущего сезона
+                                    <h3>{{ active_bust.mmr_current }}</h3>
+                                 </div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="my-5">История</h3>
+                <div class="container">
+                    <div class="row flex-row">
+                        {% for stat in bust_stats %}
+                            <div class="col-3">
+                                <div class="card text-white bg-{% if stat.is_win %}success{% else %}danger{% endif %} mb-3"
+                                     style="max-width: 18rem;">
+                                    <div class="card-header">{% if stat.is_win %}Победа{% else %}
+                                        Поражение{% endif %}</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ stat.mmr }} MMR</h5>
+                                        <p class="card-text">{{ stat.time }}</p>
+                                            <a href="{{ stat.screen }}" target="_blank"><button class="w-20 btn btn-outline-dark">
+                                                <span class="cart-icon">Скриншот</span>
+                                                </button>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% empty %}
+                        <p><b>Отсутствует</b></p>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
             {% endif %}
-        </div>
+            </div>
+
 
         <div class="tab-pane fade" id="inactive_busts" role="tabpanel" aria-labelledby="inactive_busts-tab">
             <div class="position-relative overflow-hidden p-5 text-center">
@@ -156,6 +244,7 @@
             <div class="container">
                 <div class="row flex-row">
                     {% for bust in inactive_busts %}
+                        {% if bust.mmr_type != "Калибровка" %}
                         <div class="col-sm-3">
                             <div class="card border-dark mb-3" style="max-width: 18rem;">
                                 <div class="card-header bg-transparent border-dark">
@@ -195,6 +284,47 @@
                                 </div>
                             </div>
                         </div>
+                        {% else %}
+                        <div class="col-sm-3">
+                            <div class="card border-dark mb-3" style="max-width: 18rem;">
+                                <div class="card-header bg-transparent border-dark">
+                                    {% if bust.mmr_current < 840 %}
+                                    <img src="/static/img/season-ranks/140px-SeasonalRank1-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% elif bust.mmr_current < 1680 %}
+                                    <img src="/static/img/season-ranks/SeasonalRank2-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% elif bust.mmr_current < 2520 %}
+                                    <img src="/static/img/season-ranks/SeasonalRank3-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% elif bust.mmr_current < 3360 %}
+                                    <img src="/static/img/season-ranks/SeasonalRank4-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% elif bust.mmr_current < 4200 %}
+                                    <img src="/static/img/season-ranks/SeasonalRank5-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% elif bust.mmr_current < 5880 %}
+                                    <img src="/static/img/season-ranks/SeasonalRank6-1.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% else %}
+                                    <img src="/static/img/season-ranks/SeasonalRankTop0.png" class="card-img-top" style="width: 64px; height: 64px;" alt="rank">
+                                    {% endif %}
+                                    Заказ #{{ bust.id }}
+                                    <a href="{% url 'bust_take' bust_id=bust.id %}">
+                                        <button class="w-100 btn btn-outline-success">
+                                            <span class="cart-icon">Взять</span>
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="card-body text-dark">
+                                    <b>{{bust.mmr_type}}</b><br>
+                                    <b>MMR</b> сезона: {{ bust.mmr_current }} MMR<br>
+                                    <br>
+                                </div>
+                                <div class="card-footer bg-transparent border-dark">
+                                    <a href="{% url 'bust_info' bust_id=bust.id %}">
+                                        <button class="w-100 btn btn-outline-dark">
+                                            <span class="cart-icon">Открыть</span>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

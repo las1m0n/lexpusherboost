@@ -1,0 +1,255 @@
+/* contacts */
+.contacts {
+    position: absolute;
+    width: 785px;
+    height: 154px;
+    left: 328px;
+    top: 2411px;
+}
+
+
+/* Наши контакты */
+.contacts .view {
+    position: absolute;
+    width: 228px;
+    height: 36px;
+    left: 606px;
+    top: 2411px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #0D1C53;
+}
+
+
+/* Если у Вас остались какие-либо вопросы, напишите нам и мы на них ответим */
+.contacts .questions {
+    position: absolute;
+    width: 785px;
+    height: 18px;
+    left: 328px;
+    top: 2458px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+
+    color: #0D1C53;
+
+}
+
+/* Rectangle */
+.contacts .rectangle {
+    position: absolute;
+    width: 375px;
+    height: 66px;
+    left: 532px;
+    top: 2499px;
+
+    background: #2A3D84;
+    /* shadow */
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
+    border-radius: 13px;
+}
+
+/* Group 2 */
+.group2 {
+    position: absolute;
+    width: 307px;
+    height: 40px;
+    left: 566px;
+    top: 2512px;
+}
+
+
+/* Group */
+.group {
+    position: absolute;
+    width: 307px;
+    height: 34px;
+    left: 566px;
+    top: 2515px;
+}
+
+
+/* vk */
+.vk {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    left: 566px;
+    top: 2515px;
+}
+
+
+/* Group */
+.vk .group {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 20.84%;
+    bottom: 20.84%;
+}
+
+
+/* Group */
+.vk .group2 {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 20.84%;
+    bottom: 20.84%;
+}
+
+
+/* Vector */
+.vk .vector {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 20.84%;
+    bottom: 20.84%;
+
+    background: #FFFFFF;
+}
+
+/* facebook-logo */
+.facebook {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    left: 657px;
+    top: 2515px;
+}
+
+
+/* Group */
+.facebook .group {
+    position: absolute;
+    left: 22.97%;
+    right: 22.97%;
+    top: 0%;
+    bottom: 0%;
+}
+
+/* Vector */
+.facebook .vector {
+    position: absolute;
+    left: 22.97%;
+    right: 22.97%;
+    top: 0%;
+    bottom: 0%;
+
+    border: 1.5px solid #FFFFFF;
+    box-sizing: border-box;
+}
+
+/* instagram */
+.instagram {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    left: 748px;
+    top: 2515px;
+}
+
+
+/* Vector */
+.instagram .vector {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    background: #FEFEFE;
+}
+
+/* Vector */
+.instagram .vector2 {
+    position: absolute;
+    left: 22.66%;
+    right: 22.66%;
+    top: 22.66%;
+    bottom: 22.66%;
+
+    background: #FEFEFE;
+}
+
+/* Vector */
+.instagram .vector3 {
+    position: absolute;
+    left: 69.92%;
+    right: 13.92%;
+    top: 12.95%;
+    bottom: 70.89%;
+
+    background: #FEFEFE;
+
+}
+/* telegram */
+.telegram {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    left: 839px;
+    top: 2515px;
+}
+
+
+/* Vector */
+.telegram .vector {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 7.62%;
+    bottom: 7.78%;
+
+    background: #FFFFFF;
+}
+
+/* Line */
+.telegram .line {
+    position: absolute;
+    width: 40px;
+    height: 0px;
+    left: 630px;
+    top: 2512px;
+
+    border: 1px solid #FFFFFF;
+    transform: rotate(90deg);
+
+}
+/* Line */
+.telegram .line2 {
+    position: absolute;
+    width: 40px;
+    height: 0px;
+    left: 717px;
+    top: 2512px;
+
+    border: 1px solid #FFFFFF;
+    transform: rotate(90deg);
+}
+
+/* Line */
+.telegram .line3 {
+position: absolute;
+width: 40px;
+height: 0px;
+left: 813px;
+top: 2512px;
+
+border: 1px solid #FFFFFF;
+transform: rotate(90deg);
+}

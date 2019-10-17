@@ -1,0 +1,59 @@
+/* up btn */
+.btn-up {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    left: 156px;
+    top: 2519px;
+}
+
+
+/* Ellipse */
+.btn-up .ellipse {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    left: 156px;
+    top: 2519px;
+
+    /* main */
+    border: 1px solid #0D1C53;
+    box-sizing: border-box;
+}
+
+/* down-arrow */
+.btn-up .down-arrow {
+    position: absolute;
+    width: 13.06px;
+    height: 13.06px;
+    left: 184.19px;
+    top: 2547.19px;
+
+    transform: rotate(-180deg);
+}
+
+/* Group */
+.btn-up .group {
+    position: absolute;
+    left: 95.04%;
+    right: -85.03%;
+    top: 74.11%;
+    bottom: -22.25%;
+
+    transform: rotate(
+    -180deg);
+}
+
+/* Vector */
+.btn-up .vector {
+    position: absolute;
+    left: 95.04%;
+    right: -85.03%;
+    top: 74.11%;
+    bottom: -22.25%;
+
+    /* main */
+    background: #0D1C53;
+    transform: rotate(
+    -180deg);
+}

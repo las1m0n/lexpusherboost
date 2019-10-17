@@ -1,0 +1,789 @@
+/* our services */
+.our-services {
+    position: absolute;
+    width: 895px;
+    height: 438px;
+    left: 272px;
+    top: 661px;
+}
+
+
+/* Наши услуги */
+.our-services .rus {
+    position: absolute;
+    width: 186px;
+    height: 36px;
+    left: 626px;
+    top: 661px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #0D1C53;
+}
+
+
+/* Хочешь откалибровать аккаунт, поднять рейтинг и выйти на новый уровень? Наш сервис поможет тебе в этом! Низкие цены и качественная работа! */
+.our-services .account {
+    position: absolute;
+    width: 547px;
+    height: 36px;
+    left: 446px;
+    top: 703px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+
+    color: #0D1C53;
+}
+
+
+/* card */
+.our-services .card {
+    position: absolute;
+    width: 265px;
+    height: 304px;
+    left: 272px;
+    top: 782px;
+
+    /* shadow */
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
+}
+
+/* Rectangle */
+.our-services .rectangle {
+    position: absolute;
+    width: 265px;
+    height: 288px;
+    left: 272px;
+    top: 798px;
+
+    background: #FFFFFF;
+    border-radius: 13px;
+}
+
+/* магазин */
+.our-services .shop {
+    position: absolute;
+    width: 91px;
+    height: 27px;
+    left: 359px;
+    top: 918px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #0D1C53;
+}
+
+
+/* Магазин уже готовых аккаунтов от 1 до 5500 ММР По самым выгодным ценам */
+.our-services .shop-account {
+    position: absolute;
+    width: 194px;
+    height: 60px;
+    left: 307px;
+    top: 950px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 110.5%;
+    /* or 15px */
+    text-align: center;
+
+    color: #0D1C53;
+}
+
+
+/* btn */
+.btn {
+    position: absolute;
+    width: 95px;
+    height: 24px;
+    left: 357px;
+    top: 1023px;
+}
+
+
+/* Rectangle 2 */
+.our-services .rectangle2 {
+    position: absolute;
+    width: 95px;
+    height: 24px;
+    left: 0px;
+    top: 1px;
+
+    background: #2A3D83;
+    border-radius: 5px;
+
+}
+/* заказать */
+.our-services .order {
+    position: absolute;
+    width: 54px;
+    height: 13px;
+    left: 20px;
+    top: 5px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 110.5%;
+    /* or 13px */
+    text-align: center;
+    text-transform: capitalize;
+
+    color: #FFFFFF;
+}
+
+
+/* shopping bag */
+.our-services .shopping-bag {
+    position: absolute;
+    left: 26.8%;
+    right: 70.55%;
+    top: 30.04%;
+    bottom: 68.08%;
+}
+
+
+/* Vector */
+.our-services .vector {
+    position: absolute;
+    left: 27.49%;
+    right: 71.24%;
+    top: 30.04%;
+    bottom: 69.32%;
+
+    background: #0D1C53;
+
+}
+/* Vector */
+.our-services .vector2 {
+    position: absolute;
+    left: 26.8%;
+    right: 70.55%;
+    top: 30.51%;
+    bottom: 68.08%;
+
+    background: #0D1C53;
+}
+
+/* Ellipse */
+.our-services .ellipse {
+    position: absolute;
+    width: 116px;
+    height: 116px;
+    left: 346px;
+    top: 782px;
+
+    border: 2px solid #0D1C53;
+    box-sizing: border-box;
+}
+
+/* card */
+.our-services .card {
+    position: absolute;
+    width: 287.66px;
+    height: 330px;
+    left: 575.67px;
+    top: 769px;
+
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
+}
+
+/* Rectangle */
+.our-services .rectangle2 {
+    position: absolute;
+    width: 287.66px;
+    height: 312.63px;
+    left: 575.67px;
+    top: 786.37px;
+
+    background: linear-gradient(180deg, #0D1C53 0%, #2A3D84 59.87%), #0D1C53;
+    border-radius: 13px;
+}
+
+/* БУСТ */
+.our-services .bust {
+    position: absolute;
+    width: 98.78px;
+    height: 29.31px;
+    left: 670.11px;
+    top: 916.63px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+}
+
+
+/* Забустим вам Core или Support MMR с максимальным результатом за самый короткий срок */
+.our-services .mmr-rating {
+    position: absolute;
+    width: 218px;
+    height: 58px;
+    left: 610px;
+    top: 950px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 110.5%;
+    /* or 15px */
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+
+/* btn */
+.our-services .btn {
+    position: absolute;
+    width: 103.12px;
+    height: 26.05px;
+    left: 667.94px;
+    top: 1030.61px;
+}
+
+
+/* Rectangle 2 */
+.our-services .rect2 {
+    position: absolute;
+    width: 95px;
+    height: 24px;
+    left: 0px;
+    top: 1px;
+
+    background: #FFFFFF;
+    border-radius: 5px;
+}
+
+/* заказать */
+.our-services .order2 {
+    position: absolute;
+    width: 54px;
+    height: 13px;
+    left: 20px;
+    top: 5px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 110.5%;
+    /* or 13px */
+    text-align: center;
+    text-transform: capitalize;
+
+    color: #0D1C53;
+}
+
+
+/* Ellipse */
+.our-services .ellipse {
+    position: absolute;
+    width: 125.92px;
+    height: 125.92px;
+    left: 656px;
+    top: 769px;
+
+    border: 2px solid #E5E5E5;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
+
+
+    /* boost */
+
+    position: absolute;
+    left: 48.26%;
+    right: 48.55%;
+    top: 29.82%;
+    bottom: 68.3%;
+
+    background: #FFFFFF;
+}
+
+/* card */
+.our-services .card {
+    position: absolute;
+    width: 265px;
+    height: 304px;
+    left: 902px;
+    top: 782px;
+
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
+}
+
+/* Rectangle */
+.our-services .rect3 {
+    position: absolute;
+    width: 265px;
+    height: 288px;
+    left: 902px;
+    top: 798px;
+
+    background: #FFFFFF;
+    border-radius: 13px;
+}
+
+/* Калибровка */
+.our-services .calibration {
+    position: absolute;
+    width: 128px;
+    height: 27px;
+    left: 970px;
+    top: 918px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #0D1C53;
+
+}
+
+/* Всего за 1 день мы откалибруем вам Core или Support MMR с максимальным результатом */
+.our-services .calibration-core-or-support {
+    position: absolute;
+    width: 211px;
+    height: 60px;
+    left: 929px;
+    top: 950px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 110.5%;
+    /* or 15px */
+    text-align: center;
+
+    color: #0D1C53;
+}
+
+
+/* btn */
+.our-services .btn2 {
+    position: absolute;
+    width: 95px;
+    height: 24px;
+    left: 987px;
+    top: 1023px;
+}
+
+
+/* Rectangle 2 */
+.our-services .rectangle2 {
+    position: absolute;
+    width: 95px;
+    height: 24px;
+    left: 0px;
+    top: 1px;
+
+    background: #2A3D83;
+    border-radius: 5px;
+}
+
+/* заказать */
+.our-services .order2 {
+    position: absolute;
+    width: 54px;
+    height: 13px;
+    left: 20px;
+    top: 5px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 110.5%;
+    /* or 13px */
+    text-align: center;
+    text-transform: capitalize;
+
+    color: #FFFFFF;
+}
+
+
+/* Group */
+.our-services .group {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: 1010px;
+    top: 816px;
+}
+
+
+/* server */
+.our-services .server {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: 1010px;
+    top: 816px;
+}
+
+
+/* Vector */
+.our-services .vector3 {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector4 {
+    position: absolute;
+    left: 29.03%;
+    right: 67.74%;
+    top: 6.45%;
+    bottom: 90.32%;
+
+    background: #0D1C53;
+
+}
+/* Vector */
+.our-services .vector5 {
+    position: absolute;
+    left: 35.48%;
+    right: 61.29%;
+    top: 6.45%;
+    bottom: 90.32%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector6 {
+    position: absolute;
+    left: 67.74%;
+    right: 29.03%;
+    top: 6.45%;
+    bottom: 87.1%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector7 {
+    position: absolute;
+    left: 61.29%;
+    right: 35.48%;
+    top: 6.45%;
+    bottom: 87.1%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector8 {
+    position: absolute;
+    left: 54.84%;
+    right: 41.94%;
+    top: 6.45%;
+    bottom: 87.1%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector9 {
+    position: absolute;
+    left: 29.03%;
+    right: 67.74%;
+    top: 22.58%;
+    bottom: 74.19%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector10 {
+    position: absolute;
+    left: 35.48%;
+    right: 61.29%;
+    top: 22.58%;
+    bottom: 74.19%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector11 {
+    position: absolute;
+    left: 67.74%;
+    right: 29.03%;
+    top: 22.58%;
+    bottom: 70.97%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector12 {
+    position: absolute;
+    left: 61.29%;
+    right: 35.48%;
+    top: 22.58%;
+    bottom: 70.97%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector13 {
+    position: absolute;
+    left: 54.84%;
+    right: 41.94%;
+    top: 22.58%;
+    bottom: 70.97%;
+
+    background: #0D1C53;
+
+}
+/* Vector */
+.our-services .vector14 {
+    position: absolute;
+    left: 29.03%;
+    right: 67.74%;
+    top: 38.71%;
+    bottom: 58.06%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector15 {
+    position: absolute;
+    left: 35.48%;
+    right: 61.29%;
+    top: 38.71%;
+    bottom: 58.06%;
+
+    background: #0D1C53;
+
+}
+/* Vector */
+.our-services .vector16 {
+    position: absolute;
+    left: 67.74%;
+    right: 29.03%;
+    top: 38.71%;
+    bottom: 54.84%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector17 {
+    position: absolute;
+    left: 61.29%;
+    right: 35.48%;
+    top: 38.71%;
+    bottom: 54.84%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector18 {
+    position: absolute;
+    left: 54.84%;
+    right: 41.94%;
+    top: 38.71%;
+    bottom: 54.84%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector19 {
+    position: absolute;
+    left: 90.32%;
+    right: 6.45%;
+    top: 16.13%;
+    bottom: 80.65%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector20 {
+    position: absolute;
+    left: 83.87%;
+    right: 12.9%;
+    top: 16.13%;
+    bottom: 80.65%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector21 {
+    position: absolute;
+    left: 90.32%;
+    right: 6.45%;
+    top: 29.03%;
+    bottom: 67.74%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector22 {
+    position: absolute;
+    left: 83.87%;
+    right: 12.9%;
+    top: 29.03%;
+    bottom: 67.74%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector23 {
+    position: absolute;
+    left: 90.32%;
+    right: 6.45%;
+    top: 41.94%;
+    bottom: 54.84%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector24 {
+    position: absolute;
+    left: 83.87%;
+    right: 12.9%;
+    top: 41.94%;
+    bottom: 54.84%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector25 {
+    position: absolute;
+    left: 12.9%;
+    right: 83.87%;
+    top: 16.13%;
+    bottom: 80.65%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector26 {
+    position: absolute;
+    left: 6.45%;
+    right: 90.32%;
+    top: 16.13%;
+    bottom: 80.65%;
+
+    background: #0D1C53;
+
+}
+/* Vector */
+.our-services .vector27 {
+    position: absolute;
+    left: 12.9%;
+    right: 83.87%;
+    top: 29.03%;
+    bottom: 67.74%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector28 {
+    position: absolute;
+    left: 6.45%;
+    right: 90.32%;
+    top: 29.03%;
+    bottom: 67.74%;
+
+    background: #0D1C53;
+
+}
+/* Vector */
+.our-services .vector29 {
+    position: absolute;
+    left: 12.9%;
+    right: 83.87%;
+    top: 41.94%;
+    bottom: 54.84%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector30 {
+    position: absolute;
+    left: 6.45%;
+    right: 90.32%;
+    top: 41.94%;
+    bottom: 54.84%;
+
+    background: #0D1C53;
+}
+
+/* Vector */
+.our-services .vector31 {
+    position: absolute;
+    left: 41.94%;
+    right: 41.94%;
+    top: 74.19%;
+    bottom: 9.68%;
+
+    background: #0D1C53;
+}
+
+/* Ellipse */
+.our-services .ellipse {
+    position: absolute;
+    width: 116px;
+    height: 116px;
+    left: 976px;
+    top: 782px;
+
+    border: 2px solid #0D1C53;
+    box-sizing: border-box;
+}

@@ -1,8 +1,7 @@
-from .models import Account, BuyAccount, Buster, Bust, Stat, Punish
 from django.contrib import admin
 from django.db.models import F
 
-from .models import Account, BuyAccount, Buster, Bust, Stat, Punish, Calibration
+from .models import Account, BuyAccount, Buster, Bust, Stat, Punish
 
 admin.site.site_header = "FLEX PUSHER ADMIN PANEL"
 
@@ -11,7 +10,6 @@ admin.site.register(BuyAccount)
 admin.site.register(Buster)
 admin.site.register(Bust)
 admin.site.register(Stat)
-admin.site.register(Calibration)
 
 
 def make_published(modeladmin, request, queryset):

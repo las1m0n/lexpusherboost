@@ -20,9 +20,9 @@
             <hr style="padding-bottom: 20px;">
             <fieldset>
                 <legend><span class="number">1</span> Контактные данные</legend>
-                {{ form.email|as_crispy_field }}
-                {{ form.steam_login|as_crispy_field }}
-                {{ form.steam_password|as_crispy_field }}
+                {{ form_acc.email|as_crispy_field }}
+                {{ form_bust.steam_login|as_crispy_field }}
+                {{ form_bust.steam_password|as_crispy_field }}
             </fieldset>
             <input type="hidden" name="mmr" value="{{mmr}}">
             <input type="hidden" name="price" value="{{price}}">

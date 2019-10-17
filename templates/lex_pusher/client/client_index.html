@@ -29,6 +29,7 @@
                 <strong>График буста</strong>
                 {% include 'lex_pusher/client/client_mmr_dash.html' %}
             </div>
+            {% if bust.mmr_type != "Калибровка" %}
             <div class="col">
                 <div class="container">
                     <div class="row flex-row">
@@ -51,6 +52,22 @@
                     </div>
                 </div>
             </div>
+            {% else %}
+            <div class="col">
+                <div class="container">
+                    <div class="row flex-row">
+                        <div class="col text-center">
+                        </div>
+                        <div class="col text-center">
+                            <b>MMR</b> <br>текущего сезона
+                            <h3>{{ bust.mmr_to }}</h3>
+                        </div>
+                        <div class="col text-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
             <div class="w-100"></div>
             <div class="col center mt-3">
                 <strong>История буста</strong>

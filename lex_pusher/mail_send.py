@@ -7,12 +7,12 @@ from mailer import Message
 
 
 def send(to, key):
-    message = Message(From="bondarenkonikita295@gmail.com",
+    message = Message(From="lexpusher77@gmail.com",
                       To=to, charset="utf-8")
     message.Subject = "Lex Pusher Authentication"
     message.Html = f"""<div><div class="adM">
                         </div><p>Здравствуйте!</p>
-                                <p>В системе FlexPusher только что был создан личный кабинет клиента для Вашего 
+                                <p>В системе LexPusher только что был создан личный кабинет клиента для Вашего 
                                 буста и в качестве адреса электронной почты был указан этот адрес электронной 
                                 почты.<br> 
                                 Если Вы не уверены, что это были Вы, то просто проигнорируйте это письмо.
@@ -27,12 +27,12 @@ def send(to, key):
                                 <div class="yj6qo"></div><div class="adL">
                                  </div></div>"""
 
-    sender = Mailer('smtp.gmail.com', pwd="Q7325462896nk", usr="bondarenkonikita295@gmail.com", use_tls=True)
+    sender = Mailer('smtp.gmail.com', pwd="5525458565", usr="lexpusher77@gmail.com", use_tls=True)
     sender.send(message)
 
 
 def send_payout(to, nickname, id):
-    message = Message(From="bondarenkonikita295@gmail.com",
+    message = Message(From="lexpusher77@gmail.com",
                       To=to, charset="utf-8")
     message.Subject = "Lex Pusher"
     message.Html = f"""<div><div class="adM">
@@ -45,12 +45,12 @@ def send_payout(to, nickname, id):
                                 <div class="yj6qo"></div><div class="adL">
                                  </div></div>"""
 
-    sender = Mailer('smtp.gmail.com', pwd="Q7325462896nk", usr="bondarenkonikita295@gmail.com", use_tls=True)
+    sender = Mailer('smtp.gmail.com', pwd="5525458565", usr="lexpusher77@gmail.com", use_tls=True)
     sender.send(message)
 
 
 def send_data_account(to, st_login, st_pass, em_login, em_pass):
-    message = Message(From="bondarenkonikita295@gmail.com",
+    message = Message(From="lexpusher77@gmail.com",
                       To=to, charset="utf-8")
     message.Subject = "Lex Pusher"
     message.Html = f"""<div><div class="adM">
@@ -71,5 +71,5 @@ def send_data_account(to, st_login, st_pass, em_login, em_pass):
                                 <div class="yj6qo"></div><div class="adL">
                                  </div></div>"""
 
-    sender = Mailer('smtp.gmail.com', pwd="Q7325462896nk", usr="bondarenkonikita295@gmail.com", use_tls=True)
+    sender = Mailer('smtp.gmail.com', pwd="5525458565", usr="lexpusher77@gmail.com", use_tls=True)
     sender.send(message)

@@ -5,6 +5,7 @@ var rangeBullet = document.getElementById("slider-label");
 var priceDiv = document.getElementById("price");
 var priceHidden =  document.getElementById("price_hidden");
 var is_core =  document.getElementById("cbx");
+var is_quick =  document.getElementById("cdx");
 
 
 var PRICELIST = [
@@ -22,12 +23,19 @@ var PRICELIST = [
     [5201,  5300,   8.90],
     [5301,  5400,   9.50],
     [5401,  5500,   10.90],
+    [5501,  5600,   14.44],
+    [5601,  5700,   16.36],
+    [5701,  5800,   17.98],
+    [5801,  5900,   20.20],
+    [5901,  6000,   25.04],
 ];
 
 fromMMR.oninput= changeFromMMR;
 toMMR.oninput = changeToMMR;
 rangeSlider.oninput = changeSlider;
 is_core.oninput = changeTypeBoost;
+is_quick.oninput = changeQuick;
+is_quick.value = "off";
 changeSlider();
 
 
@@ -40,25 +48,35 @@ function changeTypeBoost(e) {
         is_core.value = "on";
         changePrice();
     }
-    console.log(is_core.value);
+}
+
+function changeQuick(e) {
+    if (is_quick.checked != true) {
+        is_quick.value = "off";
+        changePrice();
+    }
+    else {
+        is_quick.value = "on";
+        changePrice();
+    }
+    console.log(is_quick.value);
 }
 
 function changeFromMMR(e) {
-  console.log(fromMMR.value);
   var v = +fromMMR.value;
 
   if (v < 0)
     fromMMR.value = 1;
-  if (v > 5475)
-    fromMMR.value = 5475;
+  if (v > 5975)
+    fromMMR.value = 5975;
 
-  rangeSlider.max = 5500 - v;
+  rangeSlider.max = 6000 - v;
   toMMR.value = +rangeSlider.value + v;
   changeLabel();
   changeTypeBoost();
   changePrice();
 
-  if (v < 0 || v > 5475)
+  if (v < 0 || v > 5975)
     return false;
 }
 
@@ -66,12 +84,11 @@ function changeToMMR(e) {
   var v = +toMMR.value;
 
   rangeSlider.value= v - fromMMR.value;
-  console.log(rangeSlider.value);
   changeLabel();
   changeTypeBoost();
   changePrice();
 
-  if (v < 1 || v > 5500)
+  if (v < 1 || v > 6000)
     return false;
 }
 
@@ -90,20 +107,29 @@ function changeSlider() {
   changePrice();
 }
 
+
 function changePrice() {
-    var from = +fromMMR.value;
+   var from = +fromMMR.value;
     var to = +toMMR.value;
 
     var price = 0;
     for (var i=from; i<=to; i++) {
         for (var j of PRICELIST) {
             if (i > j[0] && i < j[1]) {
-                if (is_core.value == "off") {
-                    price += j[2];
+                if (is_quick.value == "on" & is_core.value == "on") {
+                    price += (j[2]*1.25*1.2);
                     break;
                 }
-                else{
-                    price += (j[2] * 1.25);
+                else if (is_quick.value == "off" & is_core.value == "on"){
+                    price += (j[2]*1.25);
+                    break;
+                }
+                else if (is_quick.value == "on" & is_core.value == "off"){
+                    price += (j[2]*1.20);
+                    break;
+                }
+                else if(is_quick.value == "off" & is_core.value == "off"){
+                    price += (j[2]);
                     break;
                 }
             }

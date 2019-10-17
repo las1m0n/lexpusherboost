@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Exo+2&display=swap');
+/* header */
+.header {
+    position: absolute;
+    height: 37.44px;
+    left: 39px;
+    right: 40px;
+    top: 41px;
+}
+
+
+/* header */
+.header2 {
+    position: absolute;
+    width: 1361px;
+    height: 37.44px;
+    left: 0px;
+    top: 0px;
+}
+
+
+/* logo */
+.header .logo {
+    position: absolute;
+    left: 0%;
+    right: 93.09%;
+    top: 0%;
+    bottom: 0%;
+}
+
+
+/* Слой 10 */
+.header .sloi10 {
+    position: absolute;
+    left: 0%;
+    right: 93.09%;
+    top: 0%;
+    bottom: 0%;
+}
+
+
+/* Vector */
+.header .vector {
+    position: absolute;
+    left: 0%;
+    right: 97.26%;
+    top: 0%;
+    bottom: 0.39%;
+
+    background: #203273;
+}
+
+/* Vector */
+.header .vector2 {
+    position: absolute;
+    left: 3.28%;
+    right: 96.72%;
+    top: 14.31%;
+    bottom: 0%;
+
+    border: 2px solid #203273;
+}
+
+/* Vector */
+.header .vector3 {
+    position: absolute;
+    left: 3.05%;
+    right: 96.48%;
+    top: 0.5%;
+    bottom: 79.19%;
+
+    background: #203273;
+}
+
+/* Vector */
+.header .vector4 {
+    position: absolute;
+    left: 4.12%;
+    right: 95.2%;
+    top: 14.81%;
+    bottom: 44.05%;
+
+    background: #203273;
+
+}
+/* Vector */
+.header .vector5 {
+    position: absolute;
+    left: 4.9%;
+    right: 94.42%;
+    top: 14.81%;
+    bottom: 44.05%;
+
+    background: #203273;
+
+}
+/* Vector */
+.header .vector6 {
+    position: absolute;
+    left: 5.68%;
+    right: 93.4%;
+    top: 14.87%;
+    bottom: 43.97%;
+
+    background: #203273;
+
+}
+/* Vector */
+.header .vector7 {
+    position: absolute;
+    left: 4.1%;
+    right: 95.48%;
+    top: 67.94%;
+    bottom: 9.75%;
+
+    background: #203273;
+
+}
+/* Vector */
+.header .vector8 {
+    position: absolute;
+    left: 4.61%;
+    right: 94.97%;
+    top: 68.16%;
+    bottom: 16.46%;
+
+    background: #203273;
+
+}
+/* Vector */
+.header .vector9 {
+    position: absolute;
+    left: 5.14%;
+    right: 94.59%;
+    top: 68.32%;
+    bottom: 16.47%;
+
+    background: #203273;
+
+}
+/* Vector */
+.header .vector10 {
+    position: absolute;
+    left: 5.48%;
+    right: 94.1%;
+    top: 61.32%;
+    bottom: 16.46%;
+
+    background: #203273;
+}
+
+/* Vector */
+.header .vector11 {
+    position: absolute;
+    left: 5.98%;
+    right: 93.6%;
+    top: 68.27%;
+    bottom: 16.41%;
+
+    background: #203273;
+}
+
+/* Vector */
+.header .vector12 {
+    position: absolute;
+    left: 6.49%;
+    right: 93.09%;
+    top: 68.16%;
+    bottom: 16.46%;
+
+    background: #203273;
+
+}
+/* menu */
+.header .menu {
+    position: absolute;
+    width: 508px;
+    height: 21px;
+    left: 853px;
+    top: 8px;
+}
+
+
+/* Бустерам */
+.buster {
+    font-family: 'Exo 2', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+    margin-right: 10px;
+    color: #0D1C53;
+
+}
+
+/* О нас */
+.about {
+    font-family: 'Exo 2', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+    margin-right: 10px;
+    color: #0D1C53;
+
+}
+
+/* Отзывы */
+.otzivi {
+    font-family: 'Exo 2', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+    margin-right: 10px;
+    color: #0D1C53;
+}
+
+
+/* Гарантии */
+.garantees {
+    font-family: 'Exo 2', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+    margin-right: 10px;
+    color: #0D1C53;
+}
+
+
+/* Контакты */
+.contacts {
+    margin-right: 10px;
+    font-family: 'Exo 2', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+
+    color: #0D1C53;
+
+}
+
+/* Войти */
+.login {
+    font-family: 'Exo 2', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+
+    /* complimentary */
+    color: #FCB40C;
+
+}
+
+.login:hover{
+    color: #FCB40C;
+}
+/* Vector */
+.header .contacts .vector {
+    position: absolute;
+    width: 10.5px;
+    height: 15.5px;
+    right: 0px;
+    top: 12.5px;
+
+    border: 1px solid #FCB40C;
+    border-radius: 1px;
+}
+
+/* Vector */
+.header .contacts .vector2 {
+    position: absolute;
+    width: 3px;
+    height: 6px;
+    right: 4px;
+    top: 17px;
+
+    border: 1px solid #FCB40C;
+    border-radius: 1px;
+}
+
+/* Group 2 */
+.group-2 {
+    position: absolute;
+    width: 286px;
+    height: 176px;
+    left: 0px;
+    top: 0px;
+}
+
+
+/* login */
+.group-2 .login {
+    position: absolute;
+    width: 286px;
+    height: 176px;
+    left: 0px;
+    top: 0px;
+
+    /* shadow */
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
+}
+
+/* Rectangle */
+.group-2 .rectangle {
+    position: absolute;
+    width: 286px;
+    height: 176px;
+    left: 0px;
+    top: 0px;
+
+    background: #FFFFFF;
+    border-radius: 13px;
+}
+
+/* btn */
+.btn {
+    position: absolute;
+    width: 95px;
+    height: 24px;
+    left: 96px;
+    top: 128px;
+}
+
+
+/* Rectangle 2 */
+.group-2 .rectangle2 {
+    position: absolute;
+    width: 95px;
+    height: 24px;
+    left: 0px;
+    top: 1px;
+
+    background: #2A3D83;
+    border-radius: 5px;
+
+}
+/* заказать */
+.group-2 .order {
+    position: absolute;
+    width: 54px;
+    height: 13px;
+    left: 20px;
+    top: 5px;
+
+    font-family: 'M PLUS 1p', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 110.5%;
+    /* or 13px */
+    text-align: center;
+    text-transform: capitalize;
+
+    color: #FFFFFF;
+}
+
+
+/* Укажите пин-код Вашего заказа */
+.pin {
+    font-family: 'M PLUS 1p', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height */
+    text-align: center;
+    color: #0D1C53;
+}
+
+
+/* для просмотра состояния и хода выполнения заказа */
+.stans {
+    font-family: 'M PLUS 1p', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+
+    color: #0D1C53;
+}
+
+
+/* Group */
+.group-1 {
+    position: absolute;
+    width: 198px;
+    height: 24px;
+    left: 44px;
+    top: 88px;
+
+}
+
+/* Rectangle */
+.group-1 .rect {
+    position: absolute;
+    width: 127px;
+    height: 24px;
+    left: 115px;
+    top: 88px;
+
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+/* Pin-code */
+.group-1 .pin {
+    position: absolute;
+    width: 59px;
+    height: 14px;
+    left: 44px;
+    top: 93px;
+
+    font-family: 'M PLUS 1p', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 119%;
+    /* or 14px */
+    text-align: center;
+    text-transform: uppercase;
+
+    /* main */
+    background: #0D1C53;
+}
+
+.frame{
+    position: absolute;
+    width: 286px;
+    height: 146px;
+    right: 30px;
+    top: 38px;
+}
+

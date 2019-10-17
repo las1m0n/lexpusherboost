@@ -6,87 +6,74 @@
     <link rel="icon" type="image/png" href="static/img/dota-2.png">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/comm.css' %}">
+    <link rel="stylesheet" href="{% static 'css/figma/header.css' %}">
     <title>Недорогой буст</title>
 {% endblock %}
 
 {% block navbar %}
     <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand " href="/">
-            <div class="image">
-                <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik01MTIsMGgtNjMuNTQxTDQyMiwxMy4yMjlMMzk1LjU0MSwwSDI3MWwtMzAsMTVoLTgyLjkxOGwtMzAtMTVIMHYyNDFsMTUsMzB2ODIuOTE4bC0xNSwzMFY1MTJoMjU2bDI2LjQ1OS0xMy4yMjkgICAgTDMwOC45MTgsNTEySDUxMlYzMDguOTE4bC0xMy4yMjktMjYuNDU5TDUxMiwyNTZWMHogTTEzNSw0MjJsLTQ1LTQ1di05MGwxMzUsMTM1SDEzNXogTTQwNyw0MjJoLTYwbC0zOC44ODUtNDUuNjk0bC04LjAxOS0zMi41NjggICAgbC0zMC44NjYtMTMuMTI2TDI1NiwzMTUuMDY2TDkwLDEyMGwzMC0zMGwxMzYsMTAyLjIyNUw0MjIsMzE3TDQwNyw0MjJ6IE00MjIsMjI1TDI4Nyw5MGg5MGw0NSw0NVYyMjV6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" alt="logo-dota"/>
-                LEX PUSHER
-            </div>
+        <a class="logo" href="/">
+            <span class="logo">
+                <span class="sloi10">
+                        <img src="{% static 'img/sloi10.png' %}" alt="logo-dota"/>
+                    </span>
+            </span>
         </a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav ml-md-auto d-md-flex">
+                <li class="nav-item">
+                    <a class="nav-link buster" href="{% url 'to_busters' %}">Бустерам</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto about" href="#about">О нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto otzivi" href="#feedback">Отзывы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto garantees" href="#warranty">Гарантии</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scrollto contacts" href="#society">Контакты</a>
+                </li>
                 {% if not request.user.is_authenticated %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle effect-3" href="" id="dropdown" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">Лог клиента</a>
-                        <div class="dropdown-menu p-4 text-muted dropdown-menu-lg-right" style="min-width: 20rem;"
+                        <a class="nav-link dropdown-toggle login" href="" id="dropdown" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Войти
+                            <img src="{% static 'img/Group3.png' %}" alt="jora"/>
+                        </a>
+                        <div class="dropdown-menu p-4 text-muted dropdown-menu-lg-right frame" style="min-width: 20rem;"
                              aria-labelledby="dropdown">
-                            <h5>Укажите пин-код Вашего заказа</h5>
-                            <p>для просмотра состояния и хода выполнения заказа</p>
+                            <h5 class="pin">Укажите пин-код Вашего заказа</h5>
+                            <p class="stans">для просмотра состояния и хода выполнения заказа</p>
                             <form method='POST' action=''>
-                                <div class='validation_info'></div>
                                 {% csrf_token %}
-                                {{ form.password|as_crispy_field }}
-                                {% if form.errors %}
-                                    {% for field in form %}
-                                        {% for error in field.errors %}
-                                            <strong>{{ error|escape }}</strong>
-                                        {% endfor %}
-                                    {% endfor %}
-                                    {% for error in form.non_field_errors %}
-                                        <strong>{{ error|escape }}</strong>
-                                    {% endfor %}
-                                    <br>
-                                {% endif %}
+                                <h6 style="font-family: 'M PLUS 1p', sans-serif;">
+                                    PIN CODE {{ form.password }}</h6>
                             </form>
                         </div>
                     </li>
                 {% endif %}
-
                 {% if request.user.is_booster %}
                     <li class="nav-item">
-                        <a class='nav-link effect-3' href="{% url 'buster' %}"><i class="fas fa-user"></i> Кабинет</a>
+                        <a class='nav-link login' href="{% url 'buster' %}"><i class="fas fa-user"></i> Личный кабинет</a>
                     </li>
                     <li class="nav-item">
-                        <a class='nav-link effect-3' href="{% url 'logout' %}">Выйти</a>
+                        <a class='nav-link login' href="{% url 'logout' %}">Выйти</a>
                     </li>
                 {% endif %}
 
                 {% if request.user.is_client %}
                     <li class="nav-item">
-                        <a class='nav-link effect-3' href="{% url 'client' %}"><i class="fas fa-user"></i> Кабинет </a>
+                        <a class='nav-link login' href="{% url 'client' %}"><i class="fas fa-user"></i> Личный кабинет </a>
                     </li>
                     <li class="nav-item">
-                        <a class='nav-link effect-3' href="{% url 'logout' %}">Выйти</a>
+                        <a class='nav-link login' href="{% url 'logout' %}">Выйти</a>
                     </li>
                 {% endif %}
-
-                <li class="nav-item">
-                    <a class="nav-link effect-3" href="{% url 'to_busters' %}">Бустерам</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link scrollto effect-3" href="#about">О нас</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link scrollto effect-3" href="#feedback">Отзывы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link scrollto effect-3" href="#warranty">Гарантии</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link scrollto effect-3" href="#society">Контакты</a>
-                </li>
             </ul>
+
         </div>
 
     </nav>
@@ -97,15 +84,15 @@
 
     <div class="position-relative overflow-hidden p-3 p-md-5 text-center text-light bg-head" style="box-shadow: 0 0 0 100000px rgba(0, 0, 0, 0.33) inset;">
         <div class="col-md-12 p-lg-5 mx-auto my-5" >
-            <h1 class="index-text">Качественный недорогой буст</h1>
-            <p class="lead font-weight-normal">Листай ниже чтобы подняться на вершины. </p>
+            <p class="leads">Качественный недорогой буст</p>
+            <p class="bust-text">Листай ниже чтобы подняться на вершины. </p>
         </div>
     </div>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="services">
         <div class="col-md-12 p-lg mx-auto">
 	        <h2>Наши услуги</h2>
-	        <h5 class="py-3 mb-3">Хочешь откалибровать аккаунт, отмыть ЛП или научиться побеждать?<br>Наш сервис поможет тебе в этом!
+	        <h5 class="py-3 mb-3">Хочешь откалибровать аккаунт, поднять рейтинг и выйти на новый уровень?<br>Наш сервис поможет тебе в этом!
                 <b>Низкие</b> цены и <b>качественная</b> работа!
             </h5>
             <div class="packs">

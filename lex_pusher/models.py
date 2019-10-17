@@ -19,7 +19,7 @@ def image_buster_folder(instance, filename):
 
 class Account(ModelMeta, models.Model):
     class Meta:
-        verbose_name = 'Буст'
+        verbose_name = 'Аккаунт'
         verbose_name_plural = 'Аккаунты на продажу'
 
     title = models.CharField(max_length=120)
@@ -80,7 +80,8 @@ class Buster(models.Model):
     avatar = models.ImageField(upload_to='', default='dota-2.png', blank=True, null=True)
     vk = models.CharField(max_length=120, blank=True, null=True)
     skype = models.CharField(max_length=120, blank=True, null=True)
-    wmr = models.CharField(max_length=120, blank=True, null=True)
+    card = models.CharField(max_length=120, blank=True, null=True)
+    qiwi = models.CharField(max_length=120, blank=True, null=True)
     solo_mmr = models.IntegerField(default=1)
     experience = models.TextField(default="Nothing")
 
@@ -107,7 +108,7 @@ class Bust(models.Model):
         verbose_name_plural = 'Бусты'
 
     client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
-    buster = models.ForeignKey(Buster, True, null=True)
+    buster = models.ForeignKey(Buster, on_delete=models.CASCADE, null=True)
 
     mmr_from = models.IntegerField()
     mmr_to = models.IntegerField()
@@ -116,6 +117,7 @@ class Bust(models.Model):
 
     steam_login = models.CharField(max_length=120)
     steam_password = models.CharField(max_length=120)
+    price = models.PositiveIntegerField(default=0)
 
     is_paid = models.BooleanField(default=False)
     start_date = models.DateField(default=datetime.now)
@@ -138,8 +140,8 @@ class Stat(models.Model):
         verbose_name = 'Стат'
         verbose_name_plural = 'Статы'
 
-    bust = models.ForeignKey(Bust, True)
-    buster = models.ForeignKey(Buster, True)
+    bust = models.ForeignKey(Bust, on_delete=models.CASCADE)
+    buster = models.ForeignKey(Buster, on_delete=models.CASCADE)
     screen = models.CharField(max_length=255)
     mmr = models.IntegerField()
     mmr_current = models.IntegerField(default=0)
@@ -150,20 +152,5 @@ class Stat(models.Model):
         return self.mmr > 0
 
     def __str__(self):
-        return f"буст ид: {self.bust.id}  ммр: {self.mmr}"
+        return f"Buster: {self.buster.name} MMR: {self.mmr_current}"
 
-
-class Calibration(models.Model):
-    class Meta:
-        verbose_name = 'Калибровка'
-        verbose_name_plural = 'Калибровки'
-
-    email = models.EmailField(max_length=120)
-    steam_password = models.CharField(max_length=120)
-    steam_login = models.CharField(max_length=120)
-    price = models.PositiveIntegerField(default=0)
-    mmr = models.PositiveIntegerField(default=0)
-
-    def __str__(self):
-        return f"Калибровка куплена с email-> {self.email}, mmr-> {self.mmr}, " \
-            f"за  {self.price}"

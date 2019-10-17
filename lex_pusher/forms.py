@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import BuyAccount, Bust, Buster, Calibration
+from .models import BuyAccount, Bust, Buster
 from django.core.files.images import get_image_dimensions
 from django.core.validators import FileExtensionValidator
 User = get_user_model()
@@ -28,29 +28,6 @@ class ShopCartForm(forms.ModelForm):
         self.fields['email'].label = "Ваш E-Mail"
         self.fields['skype'].label = "Skype"
         self.fields['phone'].label = "Телефон"
-
-
-class CalibrationCartForm(forms.ModelForm):
-    email = forms.CharField(widget=forms.EmailInput)
-    mmr = forms.CharField(required=False, widget=forms.HiddenInput)
-    price = forms.CharField(required=False, widget=forms.HiddenInput)
-
-    class Meta:
-        model = Calibration
-        fields = {
-            'email',
-            'steam_login',
-            'steam_password',
-            'mmr',
-            'price',
-        }
-
-    def __init__(self, *args, **kwargs):
-        super(CalibrationCartForm, self).__init__(*args, **kwargs)
-
-        self.fields['email'].label = "E-Mail"
-        self.fields['steam_login'].label = "Steam Логин"
-        self.fields['steam_password'].label = "Steam Пароль"
 
 
 class BustCartForm(forms.ModelForm):
@@ -106,7 +83,7 @@ class ClientForm(UserCreationForm):
 
 class LoginForm(forms.ModelForm):
     password = forms.CharField(min_length=6, max_length=32,
-                               widget=forms.PasswordInput(attrs={'humanReadable': 'Пароль'}), label='Пароль')
+                               widget=forms.PasswordInput(attrs={'humanReadable': 'Пароль'}))
 
     class Meta:
         model = User
@@ -116,8 +93,6 @@ class LoginForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
-
-        self.fields['password'].label = 'PIN-CODE'
 
     def clean(self):
         if not self._errors:
@@ -162,6 +137,9 @@ class LoginBusterForm(forms.ModelForm):
 
 
 class BusterApplicationForm(forms.ModelForm):
+    qiwi = forms.IntegerField(required=False)
+    card = forms.IntegerField(required=True)
+
     class Meta:
         model = Buster
         fields = {
@@ -170,7 +148,8 @@ class BusterApplicationForm(forms.ModelForm):
             'email',
             'skype',
             'vk',
-            'wmr',
+            'card',
+            'qiwi',
             'solo_mmr',
             'experience'
         }
@@ -182,7 +161,8 @@ class BusterApplicationForm(forms.ModelForm):
         self.fields['phone'].label = "Номер телефона"
         self.fields['email'].label = "Email"
         self.fields['skype'].label = "Skype"
-        self.fields['wmr'].label = "WMR кошелек"
+        self.fields['card'].label = "Карта"
+        self.fields['qiwi'].label = "QIWI кошелек"
         self.fields['solo_mmr'].label = "Текущий соло ммр"
         self.fields['experience'].label = "О своих навыках"
 

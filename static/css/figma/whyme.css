@@ -1,0 +1,335 @@
+/* why we */
+.whyme {
+    position: absolute;
+    width: 902px;
+    height: 488px;
+    left: 268px;
+    top: 1142px;
+}
+
+
+/* Почему именно мы? */
+.whyme .all {
+    position: absolute;
+    width: 290px;
+    height: 36px;
+    left: 574px;
+    top: 1142px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #0D1C53;
+}
+
+
+/* В нашей команде работают бустеры - профессионалы, у каждого на счету более сотни забущенных аккаутнтов. Мы знаем через какой путь проходите Вы, и наша задача помочь Вам избежать этих мучений. Мы сами теряли время и нервы на то, чтобы поднять свои первые аккаунты. Мы даем Вам возможность выбора, а последнее слово - за Вами */
+.whyme .pro {
+    position: absolute;
+    width: 785px;
+    height: 72px;
+    left: 326px;
+    top: 1184px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+
+    color: #0D1C53;
+
+}
+
+/* card */
+.whyme .card {
+    position: absolute;
+    width: 271px;
+    height: 320px;
+    left: 268px;
+    top: 1280px;
+}
+
+
+/* Мы думаем о каждом клиенте и стараемся выполнить заказы в кратчашие сроки. Мы не забудем о Вашем аккаунте даже, если у Вас ниже звание, а кого-то выше. */
+.whyme .request {
+    position: absolute;
+    width: 268px;
+    height: 87px;
+    left: 271px;
+    top: 1513px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+
+    color: #0D1C53;
+}
+
+
+/* Нам важен каждый клиент */
+.whyme .client {
+    position: absolute;
+    width: 268px;
+    height: 39px;
+    left: 268px;
+    top: 1464px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 130.5%;
+    /* or 23px */
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #0D1C53;
+
+}
+
+/* Mask Group */
+.whyme .mask {
+    position: absolute;
+    width: 265px;
+    height: 160px;
+    left: 272px;
+    top: 1280px;
+}
+
+.whyme .rect {
+    /* Rectangle */
+
+    position: absolute;
+    width: 265px;
+    height: 160px;
+    left: 272px;
+    top: 1280px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
+    border-radius: 13px;
+}
+
+/* image */
+.whyme image {
+    position: absolute;
+    width: 304px;
+    height: 187px;
+    left: 544px;
+    top: 1280px;
+
+    background: url(image.png);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+/* card */
+.whyme .card2 {
+    position: absolute;
+    width: 271px;
+    height: 279px;
+    left: 584px;
+    top: 1280px;
+}
+
+
+/* На каждый второй заказ у нас действуют различные скидки, а для постоянных клиентов - приятные бонусы. */
+.whyme .second {
+    position: absolute;
+    width: 268px;
+    height: 68px;
+    left: 587px;
+    top: 1491px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+
+    color: #0D1C53;
+}
+
+
+/* Скидки */
+.whyme .sales {
+    position: absolute;
+    width: 268px;
+    height: 18px;
+    left: 584px;
+    top: 1464px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 130.5%;
+    /* or 23px */
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #0D1C53;
+
+}
+
+/* Mask Group */
+.whyme .mask {
+    position: absolute;
+    width: 265px;
+    height: 160px;
+    left: 588px;
+    top: 1280px;
+}
+
+
+/* Rectangle */
+.whyme .rectangle {
+    position: absolute;
+    width: 265px;
+    height: 160px;
+    left: 588px;
+    top: 1280px;
+
+    background: #2A3D83;
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
+    border-radius: 13px;
+
+}
+/* shutterstock_597717269 */
+.whyme .shutter {
+    position: absolute;
+    width: 266px;
+    height: 160px;
+    left: 587px;
+    top: 1280px;
+
+    background: url(shutterstock_597717269.jpg);
+
+}
+/* card */
+.whyme .card3 {
+    position: absolute;
+    width: 271px;
+    height: 350px;
+    left: 899px;
+    top: 1280px;
+}
+
+
+/* На нашем сайте присутствует поддержка которая ответит на любой вопрос, а также бесплатно проконсультирует вас по связи. Оплачивайте свои заказы различными системами: */
+.whyme .support {
+    position: absolute;
+    width: 268px;
+    height: 108px;
+    left: 902px;
+    top: 1491px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+
+    color: #0D1C53;
+
+}
+
+/* webmoney */
+.webmoney {
+    position: absolute;
+    width: 27px;
+    height: 23px;
+    left: 977px;
+    top: 1607px;
+
+    background: url(webmoney.png);
+}
+
+/* Поддержка и оплата */
+.whyme .webmoney .pay {
+    position: absolute;
+    width: 268px;
+    height: 18px;
+    left: 899px;
+    top: 1464px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 130.5%;
+    /* or 23px */
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #0D1C53;
+}
+
+
+/* Mask Group */
+.whyme .mask-group {
+    position: absolute;
+    width: 265px;
+    height: 160px;
+    left: 903px;
+    top: 1280px;
+}
+
+
+/* Rectangle */
+.whyme .rect {
+    position: absolute;
+    width: 265px;
+    height: 160px;
+    left: 903px;
+    top: 1280px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
+    border-radius: 13px;
+}
+
+/* image */
+.whyme .image {
+    position: absolute;
+    width: 264px;
+    height: 160px;
+    left: 904px;
+    top: 1280px;
+
+    background: url(image.png);
+}
+
+/* qiwi_sign_rgb */
+.whyme .qiwi {
+    position: absolute;
+    width: 22px;
+    height: 23px;
+    left: 1018px;
+    top: 1607px;
+
+    background: url(qiwi_sign_rgb.png);
+
+}
+/* visa-logo-preview */
+.whyme .visa {
+    position: absolute;
+    width: 43px;
+    height: 12px;
+    left: 1053px;
+    top: 1611px;
+
+    background: url(visa-logo-preview.png);
+}

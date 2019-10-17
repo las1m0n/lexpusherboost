@@ -24,8 +24,8 @@ SECRET_KEY = 'i)2t424^okfd75p3v#@a(6zz!!!=le_$b98xjc@x=1@my--7xm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['54.88.91.204',
-                 '54.88.91.204:8000',
+ALLOWED_HOSTS = ['3.94.5.200',
+                 '3.94.5.200:8000',
                  'www.lexpusher.com',
                  'lexpusher.com',
                  ]
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
 ]
 
 CUSTOM_APPS = ['lex_pusher', 'crispy_forms', 'users.apps.UsersConfig', 'meta']

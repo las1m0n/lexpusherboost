@@ -1,0 +1,231 @@
+/* testimonials */
+.testimonals {
+    position: absolute;
+    width: 785px;
+    height: 293px;
+    left: 326px;
+    top: 2075px;
+}
+
+
+/* Отзывы наших клиентов */
+.testimonals .clients {
+    position: absolute
+    width: 354px;
+    height: 36px;
+    left: calc(50% - 354px / 2);
+    top: 2075px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #0D1C53;
+
+}
+
+/* Rectangle */
+.testimonals .rectangle {
+    position: absolute;
+    width: 671px;
+    height: 200px;
+    left: calc(50% - 671px / 2 + 0.5px);
+    bottom: 342px;
+
+    background: #FFFFFF;
+    /* shadow */
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
+    border-radius: 13px;
+}
+
+/* Отзывы клиентов – лучшее подтверждение нашей работы. */
+.testimonals .otzivi {
+    position: absolute;
+    width: 785px;
+    height: 18px;
+    left: calc(50% - 785px / 2 - 1.5px);
+    top: 2120px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+
+    color: #0D1C53;
+}
+
+
+/* arrows */
+.testimonals .arrows {
+    position: absolute;
+    width: 764.27px;
+    height: 27px;
+    left: 338.37px;
+    top: 2255px;
+}
+
+
+/* arrow */
+.testimonals .arrow2 {
+    position: absolute;
+    left: 23.5%;
+    right: 75.51%;
+    top: 83.21%;
+    bottom: 15.79%;
+}
+
+
+/* Vector */
+.testimonals .vector2 {
+    position: absolute;
+    width: 14.27px;
+    height: 27px;
+    left: calc(50% - 14.27px / 2 - 374.5px);
+    top: calc(50% - 27px / 2 + 913.5px);
+
+    background: #2A3D84;
+}
+
+/* arrow */
+.testimonals .arrow {
+    position: absolute;
+    left: 76.57%;
+    right: 22.44%;
+    top: 83.21%;
+    bottom: 15.79%;
+
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+/* Vector */
+.testimonals .vector {
+    position: absolute;
+    width: 14.27px;
+    height: 27px;
+    left: calc(50% - 14.27px / 2 + 389.77px);
+    top: calc(50% - 27px / 2 + 913.5px);
+
+    background: #2A3D84;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+/* Group 2 */
+.testimonals .group2{
+position: absolute;
+width: 584px;
+height: 96px;
+left: 430px;
+top: 2238px;
+}
+
+
+/* Ярослав */
+.testimonals .person {
+    position: absolute;
+    width: 58px;
+    height: 16px;
+    left: calc(50% - 58px / 2);
+    bottom: 376px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 130.5%;
+    /* identical to box height, or 16px */
+    text-align: center;
+
+    color: #0D1C53;
+}
+
+
+/* Group */
+.testimonals .group {
+    position: absolute;
+    width: 584px;
+    height: 79px;
+    left: 430px;
+    top: 2238px;
+}
+
+
+/* Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок! Грамматики живет власти текст дорогу. */
+.testimonals .podzagolovok {
+    position: absolute;
+    width: 584px;
+    height: 54px;
+    left: calc(50% - 584px / 2 + 2px);
+    bottom: 393px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+
+    color: #0D1C53;
+}
+
+
+/* Москва */
+.testimonals .city {
+    position: absolute;
+    width: 63px;
+    height: 18px;
+    left: calc(50% - 63px / 2 - 0.5px);
+    bottom: 454px;
+
+    font-family: Mplus 1 p;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 130.5%;
+    /* or 18px */
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #0D1C53;
+}
+
+
+/* quote */
+.quote {
+    position: absolute;
+    width: 35.58px;
+    height: 27px;
+    left: 701px;
+    top: 2190.34px;
+}
+
+
+/* path 1 57 */
+.path157 {
+    position: absolute;
+    width: 15.75px;
+    height: 27px;
+    left: calc(50% - 15.75px / 2 + 8.71px);
+    top: 2217.34px;
+
+    background: #2A3D84;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+/* path 1 56 */
+.path156 {
+    position: absolute;
+    width: 15.75px;
+    height: 27px;
+    left: calc(50% - 15.75px / 2 - 11.12px);
+    top: 2217.34px;
+
+    background: #2A3D84;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
