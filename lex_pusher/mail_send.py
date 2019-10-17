@@ -27,7 +27,11 @@ def send(to, key):
                                 <div class="yj6qo"></div><div class="adL">
                                  </div></div>"""
 
+<<<<<<< HEAD
     sender = Mailer('smtp.gmail.com', pwd="5525458565", usr="lexpusher77@gmail.com", use_tls=True)
+=======
+    sender = Mailer('smtp.gmail.com', pwd="", usr="bondarenkonikita295@gmail.com", use_tls=True)
+>>>>>>> 83918972b4662bcc65278f3da4e45aaa5ffa97d1
     sender.send(message)
 
 
@@ -45,7 +49,11 @@ def send_payout(to, nickname, id):
                                 <div class="yj6qo"></div><div class="adL">
                                  </div></div>"""
 
+<<<<<<< HEAD
     sender = Mailer('smtp.gmail.com', pwd="5525458565", usr="lexpusher77@gmail.com", use_tls=True)
+=======
+    sender = Mailer('smtp.gmail.com', pwd="", usr="bondarenkonikita295@gmail.com", use_tls=True)
+>>>>>>> 83918972b4662bcc65278f3da4e45aaa5ffa97d1
     sender.send(message)
 
 
@@ -71,5 +79,10 @@ def send_data_account(to, st_login, st_pass, em_login, em_pass):
                                 <div class="yj6qo"></div><div class="adL">
                                  </div></div>"""
 
+<<<<<<< HEAD
     sender = Mailer('smtp.gmail.com', pwd="5525458565", usr="lexpusher77@gmail.com", use_tls=True)
     sender.send(message)
+=======
+    sender = Mailer('smtp.gmail.com', pwd="", usr="bondarenkonikita295@gmail.com", use_tls=True)
+    sender.send(message)
+>>>>>>> 83918972b4662bcc65278f3da4e45aaa5ffa97d1
