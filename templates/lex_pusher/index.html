@@ -3,304 +3,360 @@
 {% load crispy_forms_tags %}
 
 {% block head %}
-    <link rel="icon" type="image/png" href="static/img/dota-2.png">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/comm.css' %}">
-    <link rel="stylesheet" href="{% static 'css/figma/header.css' %}">
-    <title>Недорогой буст</title>
+<link rel="icon" type="image/png" href="static/img/dota-2.png">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/comm.css' %}">
+<!--    <link rel="stylesheet" href="{% static 'css/figma/header.css' %}">-->
+<title>Недорогой буст</title>
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-expand-md">
-        <a class="logo" href="/">
+<nav class="navbar navbar-expand-md">
+    <a class="logo" href="/">
             <span class="logo">
                 <span class="sloi10">
                         <img src="{% static 'img/sloi10.png' %}" alt="logo-dota"/>
                     </span>
             </span>
-        </a>
+    </a>
 
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav ml-md-auto d-md-flex">
-                <li class="nav-item">
-                    <a class="nav-link buster" href="{% url 'to_busters' %}">Бустерам</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link scrollto about" href="#about">О нас</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link scrollto otzivi" href="#feedback">Отзывы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link scrollto garantees" href="#warranty">Гарантии</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link scrollto contacts" href="#society">Контакты</a>
-                </li>
-                {% if not request.user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle login" href="" id="dropdown" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">Войти
-                            <img src="{% static 'img/Group3.png' %}" alt="jora"/>
-                        </a>
-                        <div class="dropdown-menu p-4 text-muted dropdown-menu-lg-right frame" style="min-width: 20rem;"
-                             aria-labelledby="dropdown">
-                            <h5 class="pin">Укажите пин-код Вашего заказа</h5>
-                            <p class="stans">для просмотра состояния и хода выполнения заказа</p>
-                            <form method='POST' action=''>
-                                {% csrf_token %}
-                                <h6 style="font-family: 'M PLUS 1p', sans-serif;">
-                                    PIN CODE {{ form.password }}</h6>
-                            </form>
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav ml-md-auto d-md-flex">
+            <li class="nav-item">
+                <a class="nav-link buster" href="{% url 'to_busters' %}">Бустерам</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link scrollto about" href="#about">О нас</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link scrollto otzivi" href="#feedback">Отзывы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link scrollto garantees" href="#warranty">Гарантии</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link scrollto contacts" href="#society">Контакты</a>
+            </li>
+            {% if not request.user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle login" href="" id="dropdown" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">Войти
+                    <img src="{% static 'img/Group3.png' %}" alt="jora"/>
+                </a>
+                <div class="dropdown-menu p-4 text-muted dropdown-menu-lg-right frame login-dropdown"
+                     style="min-width: 20rem;"
+                     aria-labelledby="dropdown">
+                    <h5 class="pin">Укажите пин-код Вашего заказа</h5>
+                    <p class="stans">для просмотра состояния и хода выполнения заказа</p>
+                    <form method='POST' action=''>
+                        {% csrf_token %}
+                        <div class="pin-container">
+                            <p class="login-pin">
+                                PIN-CODE
+                            </p>
+                            {{ form.password }}
                         </div>
-                    </li>
-                {% endif %}
-                {% if request.user.is_booster %}
-                    <li class="nav-item">
-                        <a class='nav-link login' href="{% url 'buster' %}"><i class="fas fa-user"></i> Личный кабинет</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class='nav-link login' href="{% url 'logout' %}">Выйти</a>
-                    </li>
-                {% endif %}
 
-                {% if request.user.is_client %}
-                    <li class="nav-item">
-                        <a class='nav-link login' href="{% url 'client' %}"><i class="fas fa-user"></i> Личный кабинет </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class='nav-link login' href="{% url 'logout' %}">Выйти</a>
-                    </li>
-                {% endif %}
-            </ul>
+                    </form>
+                </div>
+            </li>
+            {% endif %}
+            {% if request.user.is_booster %}
+            <li class="nav-item">
+                <a class='nav-link login' href="{% url 'buster' %}"><i class="fas fa-user"></i> Личный кабинет</a>
+            </li>
+            <li class="nav-item">
+                <a class='nav-link login' href="{% url 'logout' %}">Выйти</a>
+            </li>
+            {% endif %}
 
-        </div>
+            {% if request.user.is_client %}
+            <li class="nav-item">
+                <a class='nav-link login' href="{% url 'client' %}"><i class="fas fa-user"></i> Личный кабинет </a>
+            </li>
+            <li class="nav-item">
+                <a class='nav-link login' href="{% url 'logout' %}">Выйти</a>
+            </li>
+            {% endif %}
+        </ul>
 
-    </nav>
+    </div>
+
+</nav>
 {% endblock %}
 
 
 {% block content %}
 
-    <div class="position-relative overflow-hidden p-3 p-md-5 text-center text-light bg-head" style="box-shadow: 0 0 0 100000px rgba(0, 0, 0, 0.33) inset;">
-        <div class="col-md-12 p-lg-5 mx-auto my-5" >
-            <p class="leads">Качественный недорогой буст</p>
-            <p class="bust-text">Листай ниже чтобы подняться на вершины. </p>
+<div class="position-relative overflow-hidden p-3 p-md-5 text-center text-light bg-head">
+    <div class="jumbotron-text">
+        <p class="leads">Качественный недорогой буст</p>
+        <p class="bust-text">Листай ниже чтобы подняться на вершины. </p>
+    </div>
+</div>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="services">
+    <div class="col-md-12 p-lg mx-auto">
+        <h2 class="services-text-header">Наши услуги</h2>
+        <h5 class="py-3 mb-3 services-text-content">Хочешь откалибровать аккаунт, поднять рейтинг и выйти на новый
+            уровень?<br>Наш сервис
+            поможет тебе в этом!
+            Низкие цены и качественная работа!
+        </h5>
+        <div class="packs">
+            <div class="list">
+                <div class="item">
+                    <img src="{% static 'img/shop.svg' %}"/>
+                    <div class="ellipsis"></div>
+                    <div class="title">МАГАЗИН</div>
+
+                    <div class="desc">Магазин уже готовых <br>аккаунтов<br> от 1 до 5500 ММР<br>По самым выгодным ценам
+                    </div>
+
+                    <a href="/shop/" class="btn-inv">Заказать</a>
+                </div>
+                <div class="item popular">
+                    <img src="{% static 'img/boost.svg' %}"/>
+                    <div class="ellipsis"></div>
+                    <div class="title">БУСТ</div>
+
+                    <div class="desc"><br>Забустим вам<br>Core или Support MMR с максимальным
+                        результатом<br> за самый короткий срок
+                    </div>
+
+                    <a href="/bust/" class="btn-inv shadow">
+                        Заказать
+                    </a>
+                </div>
+                <div class="item">
+                    <img src="{% static 'img/calibrate.svg' %}"/>
+                    <div class="ellipsis"></div>
+                    <div class="title">КАЛИБРОВКА</div>
+
+                    <div class="desc">Всего за 1 день мы<br>откалибруем вам<br>Core или Support MMR с
+                        максимальным результатом
+                    </div>
+
+                    <a href="/calibration/" class="btn-inv">Заказать</a>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="services">
-        <div class="col-md-12 p-lg mx-auto">
-	        <h2>Наши услуги</h2>
-	        <h5 class="py-3 mb-3">Хочешь откалибровать аккаунт, поднять рейтинг и выйти на новый уровень?<br>Наш сервис поможет тебе в этом!
-                <b>Низкие</b> цены и <b>качественная</b> работа!
-            </h5>
-            <div class="packs">
-                <div class="list">
-                    <div class="item">
-                        <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDIwMS4zODcgMjAxLjM4NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjAxLjM4NyAyMDEuMzg3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMTI5LjQxMywyNC44ODVDMTI3LjM4OSwxMC42OTksMTE1LjA0MSwwLDEwMC42OTIsMEM5MS40NjQsMCw4Mi43LDQuNDUzLDc3LjI1MSwxMS45MTYgICAgYy0xLjExMywxLjUyMi0wLjc4LDMuNjU3LDAuNzQyLDQuNzdjMS41MTcsMS4xMDksMy42NTcsMC43OCw0Ljc2OC0wLjc0NGM0LjE3MS01LjcwNywxMC44NzMtOS4xMTUsMTcuOTMtOS4xMTUgICAgYzEwLjk3NCwwLDIwLjQxNSw4LjE3OCwyMS45NjMsMTkuMDIxYzAuMjQ0LDEuNzAzLDEuNzA1LDIuOTMyLDMuMzc2LDIuOTMyYzAuMTU5LDAsMC4zMjMtMC4wMTIsMC40ODYtMC4wMzQgICAgQzEyOC4zODIsMjguNDc5LDEyOS42NzksMjYuNzUsMTI5LjQxMywyNC44ODV6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMTc4LjcxMiw2My4wOTZsLTEwLjI0LTE3LjA2N2MtMC42MTYtMS4wMjktMS43MjctMS42NTctMi45MjctMS42NTdoLTkuODEzYy0xLjg4NCwwLTMuNDEzLDEuNTI5LTMuNDEzLDMuNDEzICAgIHMxLjUyOSwzLjQxMywzLjQxMywzLjQxM2g3Ljg4MWw2LjE0NCwxMC4yNEgzMS42MjZsNi4xNDQtMTAuMjRoMy42MTVjMS44ODQsMCwzLjQxMy0xLjUyOSwzLjQxMy0zLjQxM3MtMS41MjktMy40MTMtMy40MTMtMy40MTMgICAgaC01LjU0N2MtMS4yLDAtMi4zMTEsMC42MjgtMi45MjcsMS42NTdsLTEwLjI0LDE3LjA2N2MtMC42MzMsMS4wNTYtMC42NDgsMi4zNjktMC4wNDMsMy40MzlzMS43MzksMS43MzIsMi45NywxLjczMmgxNTAuMTg3ICAgIGMxLjIzMSwwLDIuMzY0LTAuNjYyLDIuOTctMS43MzJTMTc5LjM0NSw2NC4xNSwxNzguNzEyLDYzLjA5NnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0xNjEuNjk4LDMxLjYyM2MtMC40NzgtMC43NzEtMS4yNDEtMS4zMTgtMi4xMjMtMS41MjRsLTQ2LjUzMS0xMC44ODNjLTAuODgxLTAuMjA3LTEuODA5LTAuMDUzLTIuNTc5LDAuNDIzICAgIGMtMC43NjgsMC40NzgtMS4zMTYsMS4yNDEtMS41MjIsMi4xMjNsLTMuNTA5LDE1Yy0wLjQzLDEuODM1LDAuNzEsMy42NzEsMi41NDYsNC4wOTljMS44MzUsMC40MywzLjY3My0wLjcxLDQuMTAxLTIuNTQ2ICAgIGwyLjczMi0xMS42NzVsMzkuODgzLDkuMzI5bC02LjI2NywyNi43OTVjLTAuNDMsMS44MzUsMC43MSwzLjY3MSwyLjU0Niw0LjA5OWMwLjI2MywwLjA2MSwwLjUyNCwwLjA5LDAuNzgyLDAuMDkgICAgYzEuNTUsMCwyLjk1My0xLjA2MiwzLjMxOC0yLjYzNWw3LjA0NS0zMC4xMThDMTYyLjMyOCwzMy4zMTksMTYyLjE3NiwzMi4zOTEsMTYxLjY5OCwzMS42MjN6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMTAyLjQ5NywzOS42OTJsLTMuMTEtMjYuMzA1Yy0wLjEwNi0wLjg5OS0wLjU2NS0xLjcyLTEuMjc3LTIuMjhjLTAuNzEyLTAuNTYtMS42MTEtMC44MTYtMi41MTQtMC43MWwtNTcuMDksNi43NDggICAgYy0xLjg3MSwwLjIyMi0zLjIwOSwxLjkxOC0yLjk4OCwzLjc5MWw1LjE4NSw0My44NzNjMC4yMDYsMS43MzcsMS42NzksMy4wMTQsMy4zODYsMy4wMTRjMC4xMzMsMCwwLjI3LTAuMDA5LDAuNDA2LTAuMDI0ICAgIGMxLjg3LTAuMjIyLDMuMjA4LTEuOTE4LDIuOTg4LTMuNzkxbC00Ljc4NS00MC40ODZsNTAuMzExLTUuOTQ2bDIuNzA4LDIyLjkxNWMwLjIyMiwxLjg3MiwxLjkxLDMuMjAyLDMuNzkxLDIuOTkgICAgQzEwMS4zNzksNDMuMjYxLDEwMi43MTcsNDEuNTY0LDEwMi40OTcsMzkuNjkyeiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTEyOS40OTIsNjMuNTU2bC02Ljc3NS0yOC4xNzRjLTAuMjEyLTAuODc5LTAuNzY1LTEuNjQtMS41MzYtMi4xMTNjLTAuNzcxLTAuNDY5LTEuNjk2LTAuNjE2LTIuNTgxLTAuNDA2TDYzLjYxMyw0Ni4wODcgICAgYy0xLjgzMywwLjQ0LTIuOTYxLDIuMjg0LTIuNTIxLDQuMTE3bDMuMzg2LDE0LjA4MmMwLjQ0LDEuODM1LDIuMjg0LDIuOTY0LDQuMTE2LDIuNTIxYzEuODMzLTAuNDQsMi45NjEtMi4yODQsMi41MjEtNC4xMTcgICAgbC0yLjU4OS0xMC43NjRsNDguMzUtMTEuNjI2bDUuOTc3LDI0Ljg1NGMwLjM3NSwxLjU2NSwxLjc3NSwyLjYxNSwzLjMxNiwyLjYxNWMwLjI2NSwwLDAuNTMzLTAuMDMxLDAuODAyLTAuMDk2ICAgIEMxMjguODA0LDY3LjIzMiwxMjkuOTMyLDY1LjM4OSwxMjkuNDkyLDYzLjU1NnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0xNzkuMTk3LDY0LjY3OWMtMC4wOTQtMS44MTQtMS41OTItMy4yMzgtMy40MS0zLjIzOEgyNS42Yy0xLjgxOCwwLTMuMzE2LDEuNDIzLTMuNDEsMy4yMzhsLTYuODI3LDEzMy4xMiAgICBjLTAuMDQ4LDAuOTM0LDAuMjksMS44NDgsMC45MzQsMi41MjZjMC42NDUsMC42NzcsMS41MzksMS4wNjIsMi40NzUsMS4wNjJoMTYzLjg0YzAuOTM1LDAsMS44My0wLjM4NCwyLjQ3OC0xLjA2MiAgICBjMC42NDMtMC42NzgsMC45ODEtMS41OTEsMC45MzQtMi41MjZMMTc5LjE5Nyw2NC42Nzl6IE0yMi4zNjQsMTk0LjU2bDYuNDc3LTEyNi4yOTNoMTQzLjcwMWw2LjQ3NywxMjYuMjkzSDIyLjM2NHoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0xMjYuMjkyLDc1LjA5M2MtNS42NDcsMC0xMC4yNCw0LjU5My0xMC4yNCwxMC4yNGMwLDUuNjQ3LDQuNTkzLDEwLjI0LDEwLjI0LDEwLjI0YzUuNjQ3LDAsMTAuMjQtNC41OTMsMTAuMjQtMTAuMjQgICAgQzEzNi41MzIsNzkuNjg2LDEzMS45MzksNzUuMDkzLDEyNi4yOTIsNzUuMDkzeiBNMTI2LjI5Miw4OC43NDdjLTEuODgzLDAtMy40MTMtMS41MzEtMy40MTMtMy40MTNzMS41MzEtMy40MTMsMy40MTMtMy40MTMgICAgYzEuODgyLDAsMy40MTMsMS41MzEsMy40MTMsMy40MTNTMTI4LjE3NCw4OC43NDcsMTI2LjI5Miw4OC43NDd6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNzUuMDkyLDc1LjA5M2MtNS42NDcsMC0xMC4yNCw0LjU5My0xMC4yNCwxMC4yNGMwLDUuNjQ3LDQuNTkzLDEwLjI0LDEwLjI0LDEwLjI0YzUuNjQ3LDAsMTAuMjQtNC41OTMsMTAuMjQtMTAuMjQgICAgQzg1LjMzMiw3OS42ODYsODAuNzM5LDc1LjA5Myw3NS4wOTIsNzUuMDkzeiBNNzUuMDkyLDg4Ljc0N2MtMS44ODIsMC0zLjQxMy0xLjUzMS0zLjQxMy0zLjQxM3MxLjUzMS0zLjQxMywzLjQxMy0zLjQxMyAgICBzMy40MTMsMS41MzEsMy40MTMsMy40MTNTNzYuOTc0LDg4Ljc0Nyw3NS4wOTIsODguNzQ3eiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTEyNi4yOTIsODUuMzMzaC0wLjI2M2MtMS44ODQsMC0zLjQxMywxLjUyOS0zLjQxMywzLjQxM2MwLDAuNDY2LDAuMDkyLDAuOTExLDAuMjYzLDEuMzE2djE3LjQ1NyAgICBjMCwxMi4yMzMtOS45NTMsMjIuMTg3LTIyLjE4NywyMi4xODdzLTIyLjE4Ny05Ljk1My0yMi4xODctMjIuMTg3Vjg4Ljc0N2MwLTEuODg0LTEuNTI5LTMuNDEzLTMuNDEzLTMuNDEzICAgIHMtMy40MTMsMS41MjktMy40MTMsMy40MTN2MTguNzczYzAsMTUuOTk4LDEzLjAxNSwyOS4wMTMsMjkuMDEzLDI5LjAxM3MyOS4wMTMtMTMuMDE1LDI5LjAxMy0yOS4wMTNWODguNzQ3ICAgIEMxMjkuNzA1LDg2Ljg2MywxMjguMTc2LDg1LjMzMywxMjYuMjkyLDg1LjMzM3oiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
-                        <div class="title">МАГАЗИН</div>
-                        <hr>
-                        <div class="desc">Магазин уже<br><b>готовых аккаунтов</b><br><br><br></div>
-                        <hr>
-                        <a href="/shop/" class="btn-inv">Заказать</a>
-                    </div>
-                    <div class="item popular">
-                        <div class="preheader">Акция</div>
-                        <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ4MC4wMDYgNDgwLjAwNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDgwLjAwNiA0ODAuMDA2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8cmVjdCB4PSI0MC4wMDMiIHk9IjQ4LjAwNiIgd2lkdGg9IjEwNCIgaGVpZ2h0PSIxNiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHJlY3QgeD0iNDAuMDAzIiB5PSI4MC4wMDYiIHdpZHRoPSIxMDQiIGhlaWdodD0iMTYiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxyZWN0IHg9IjQwLjAwMyIgeT0iMTEyLjAwNiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjE2IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cmVjdCB4PSI0MC4wMDMiIHk9IjE0NC4wMDYiIHdpZHRoPSI3MiIgaGVpZ2h0PSIxNiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHJlY3QgeD0iMC4wMDMiIHk9IjQ2NC4wMDYiIHdpZHRoPSI0ODAiIGhlaWdodD0iMTYiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00NjMuMTYzLDY4LjQzbC0zMi02NGMtMS45NzMtMy45NTQtNi43NzYtNS41Ni0xMC43My0zLjU4N2MtMC4wMDIsMC4wMDEtMC4wMDQsMC4wMDItMC4wMDYsMC4wMDNsLTY0LDMyICAgIGMtMy45NTQsMS45NzUtNS41NTksNi43ODItMy41ODQsMTAuNzM2czYuNzgyLDUuNTU5LDEwLjczNiwzLjU4NGw0Ni4zNTItMjMuMTZsLTEyLjY0OCwzNi4xMTIgICAgQzM0MS42OSwyMTguNDQ2LDE5OC41MDEsMzI5LjUyMiwzMS4zMjMsMzQ0LjAwNmwxLjM2LDE2QzIwNi4xNiwzNDQuOTc4LDM1NC43MzcsMjI5LjcwMSw0MTIuMzk1LDY1LjM5OGwxMi45MTItMzYuODk2ICAgIGwyMy41MzYsNDcuMDhjMS45NzUsMy45NTQsNi43ODIsNS41NTksMTAuNzM2LDMuNTg0QzQ2My41MzQsNzcuMTkxLDQ2NS4xMzgsNzIuMzg1LDQ2My4xNjMsNjguNDN6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNOTYuMDAzLDM4NC4wMDZoLTU2Yy00LjQxOCwwLTgsMy41ODItOCw4djQ4YzAsNC40MTgsMy41ODIsOCw4LDhoNTZjNC40MTgsMCw4LTMuNTgyLDgtOHYtNDggICAgQzEwNC4wMDMsMzg3LjU4OCwxMDAuNDIxLDM4NC4wMDYsOTYuMDAzLDM4NC4wMDZ6IE04OC4wMDMsNDMyLjAwNmgtNDB2LTMyaDQwVjQzMi4wMDZ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMTg0LjAwMywzNjAuMDA2aC01NmMtNC40MTgsMC04LDMuNTgyLTgsOHY3MmMwLDQuNDE4LDMuNTgyLDgsOCw4aDU2YzQuNDE4LDAsOC0zLjU4Miw4LTh2LTcyICAgIEMxOTIuMDAzLDM2My41ODgsMTg4LjQyMSwzNjAuMDA2LDE4NC4wMDMsMzYwLjAwNnogTTE3Ni4wMDMsNDMyLjAwNmgtNDB2LTU2aDQwVjQzMi4wMDZ6IiBmaWxsPSIjMDAwMDAwIi8+Cgk8L2c+CjwvZz4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNMjcyLjAwMywzMjAuMDA2aC01NmMtNC40MTgsMC04LDMuNTgyLTgsOHYxMTJjMCw0LjQxOCwzLjU4Miw4LDgsOGg1NmM0LjQxOCwwLDgtMy41ODIsOC04di0xMTIgICAgQzI4MC4wMDMsMzIzLjU4OCwyNzYuNDIxLDMyMC4wMDYsMjcyLjAwMywzMjAuMDA2eiBNMjY0LjAwMyw0MzIuMDA2aC00MHYtOTZoNDBWNDMyLjAwNnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0zNjAuMDAzLDI2NC4wMDZoLTU2Yy00LjQxOCwwLTgsMy41ODItOCw4djE2OGMwLDQuNDE4LDMuNTgyLDgsOCw4aDU2YzQuNDE4LDAsOC0zLjU4Miw4LTh2LTE2OCAgICBDMzY4LjAwMywyNjcuNTg4LDM2NC40MjEsMjY0LjAwNiwzNjAuMDAzLDI2NC4wMDZ6IE0zNTIuMDAzLDQzMi4wMDZoLTQwdi0xNTJoNDBWNDMyLjAwNnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik00NDguMDAzLDE1Mi4wMDZoLTU2Yy00LjQxOCwwLTgsMy41ODItOCw4djI4MGMwLDQuNDE4LDMuNTgyLDgsOCw4aDU2YzQuNDE4LDAsOC0zLjU4Miw4LTh2LTI4MCAgICBDNDU2LjAwMywxNTUuNTg4LDQ1Mi40MjEsMTUyLjAwNiw0NDguMDAzLDE1Mi4wMDZ6IE00NDAuMDAzLDQzMi4wMDZoLTQwdi0yNjRoNDBWNDMyLjAwNnoiIGZpbGw9IiMwMDAwMDAiLz4KCTwvZz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" />
-                        <div class="title">БУСТ</div>
-                        <hr>
-                        <div class="desc"><br>Забустим вам<br><b>Core</b> или <b>Support MMR</b> с максимальным результатом<br> за самый короткий срок</div>
-                        <hr>
-                        <a href="/bust/" class="btn-inv shadow">
-                            Заказать
-                        </a>
-                    </div>
-                    <div class="item">
-                        <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIC0zNyA1MTIgNTExIiB3aWR0aD0iNTEycHgiPjxwYXRoIGQ9Im00OTQuNjM2NzE5IDI2OS44NzVoLTEyNS4xODc1di01MS42MzI4MTJoNy4xMTcxODdjOS41NzQyMTkgMCAxNy4zNjMyODItNy43ODkwNjMgMTcuMzYzMjgyLTE3LjM2MzI4MnYtMTkuMjI2NTYyYzAtOS41NzQyMTktNy43ODkwNjMtMTcuMzYzMjgyLTE3LjM2MzI4Mi0xNy4zNjMyODJoLTExMy4xMjV2LTI4Ljc3MzQzN2MyNy4yNS0zLjY1MjM0NCA0OC4zNDM3NS0yNy4wMzkwNjMgNDguMzQzNzUtNTUuMjczNDM3di0zOS41ODIwMzJoMTMuMDcwMzEzdjc4LjMxNjQwNmMwIDUuMzMyMDMyIDIuOTE0MDYyIDEwLjIxMDkzOCA3LjYxMzI4MSAxMi43MzA0NjkgMi4xNDQ1MzEgMS4xNTIzNDQgNC40OTIxODggMS43MjI2NTcgNi44MzU5MzggMS43MjI2NTcgMi43ODUxNTYgMCA1LjU2NjQwNi0uODA4NTk0IDcuOTgwNDY4LTIuNDEwMTU3bDguNTM1MTU2LTUuNjU2MjUgOC41MzUxNTcgNS42NTYyNWM0LjQ0MTQwNiAyLjk0NTMxMyAxMC4xMTcxODcgMy4yMTA5MzggMTQuODE2NDA2LjY4NzUgNC42OTUzMTMtMi41MTk1MzEgNy42MTMyODEtNy4zOTg0MzcgNy42MTMyODEtMTIuNzMwNDY5di03OC4zMTY0MDZoNS42OTkyMTljNC4xMDkzNzUgMCA3LjQ0MTQwNi0zLjMzMjAzMSA3LjQ0MTQwNi03LjQ0MTQwNnMtMy4zMzIwMzEtNy40NDE0MDYtNy40NDE0MDYtNy40NDE0MDZoLTYuMzkwNjI1Yy0yLjIxODc1LTguMDk3NjU2LTkuNjIxMDk0LTE0LjA3ODEyNS0xOC40MTQwNjItMTQuMDc4MTI1aC0yMy43MTg3NWMtOC43OTI5NjkgMC0xNi4xOTUzMTMgNS45ODA0NjktMTguNDE0MDYzIDE0LjA3ODEyNWgtMTMuNzYxNzE5di02LjE2Nzk2OWMwLTEwLjUzOTA2My04LjU3NDIxOC0xOS4xMDkzNzUtMTkuMTA5Mzc1LTE5LjEwOTM3NWgtNzMuMzUxNTYyYy0xMC41MzUxNTcgMC0xOS4xMDU0NjkgOC41NzAzMTItMTkuMTA1NDY5IDE5LjEwOTM3NXY2LjE2Nzk2OWgtMTMuNzY1NjI1Yy0yLjIxNDg0NC04LjA5NzY1Ni05LjYyMTA5NC0xNC4wNzgxMjUtMTguNDE0MDYzLTE0LjA3ODEyNWgtMjMuNzE0ODQzYy04Ljc5Mjk2OSAwLTE2LjE5NTMxMyA1Ljk4MDQ2OS0xOC40MTAxNTcgMTQuMDc4MTI1aC02LjM5NDUzMWMtNC4xMDkzNzUgMC03LjQ0MTQwNiAzLjMzMjAzMS03LjQ0MTQwNiA3LjQ0MTQwNnMzLjMzMjAzMSA3LjQ0MTQwNiA3LjQ0MTQwNiA3LjQ0MTQwNmg1LjY5OTIxOXY3OC4zMTY0MDZjMCA1LjMzMjAzMiAyLjkxNzk2OSAxMC4yMTA5MzggNy42MTMyODEgMTIuNzMwNDY5IDIuMTQ0NTMxIDEuMTUyMzQ0IDQuNDkyMTg4IDEuNzIyNjU3IDYuODM1OTM4IDEuNzIyNjU3IDIuNzg5MDYyIDAgNS41NjY0MDYtLjgwODU5NCA3Ljk4MDQ2OS0yLjQxMDE1N2w4LjUzNTE1Ni01LjY1NjI1IDguNTM1MTU2IDUuNjU2MjVjNC40NDUzMTIgMi45NDkyMTkgMTAuMTIxMDk0IDMuMjEwOTM4IDE0LjgxNjQwNi42ODc1IDQuNjk1MzEzLTIuNTE5NTMxIDcuNjE3MTg4LTcuMzk4NDM3IDcuNjE3MTg4LTEyLjcyNjU2MnYtNzguMzIwMzEzaDEzLjA2NjQwNnYzOS41ODIwMzJjMCAyOC4yMzQzNzQgMjEuMDkzNzUgNTEuNjIxMDkzIDQ4LjM0Mzc1IDU1LjI3MzQzN3YyOC43NzM0MzdoLTExMy4xMjVjLTkuNTc0MjE5IDAtMTcuMzYzMjgxIDcuNzg5MDYzLTE3LjM2MzI4MSAxNy4zNjMyODJ2MTkuMjI2NTYyYzAgOS41NzQyMTkgNy43ODkwNjIgMTcuMzYzMjgyIDE3LjM2MzI4MSAxNy4zNjMyODJoNy4xMTcxODh2NTEuNjMyODEyaC01OS40NzY1NjNjLTQuMTA5Mzc1IDAtNy40NDE0MDYgMy4zMjgxMjUtNy40NDE0MDYgNy40Mzc1czMuMzMyMDMxIDcuNDQxNDA2IDcuNDQxNDA2IDcuNDQxNDA2aDU5LjQ2ODc1djI0LjE4NzVoLTEyNS4xODM1OTRjLTEuMzcxMDkzIDAtMi40ODA0NjktMS4xMTMyODEtMi40ODA0NjktMi40ODA0Njh2LTE5LjIyNjU2M2MwLTEuMzY3MTg3IDEuMTA5Mzc2LTIuNDgwNDY5IDIuNDgwNDY5LTIuNDgwNDY5aDMwLjYwMTU2M2M0LjEwOTM3NSAwIDcuNDM3NS0zLjMzMjAzMSA3LjQzNzUtNy40NDE0MDZzLTMuMzI4MTI1LTcuNDM3NS03LjQzNzUtNy40Mzc1aC0zMC42MDE1NjNjLTkuNTc0MjE5IDAtMTcuMzYzMjgxIDcuNzg5MDYyLTE3LjM2MzI4MSAxNy4zNTkzNzV2MTkuMjI2NTYzYzAgOS41NzQyMTggNy43ODkwNjIgMTcuMzYzMjgxIDE3LjM2MzI4MSAxNy4zNjMyODFoMi45Mjk2ODh2OTYuNTg1OTM3YzAgOS41NzQyMTkgNy43ODUxNTYgMTcuMzYzMjgyIDE3LjM1OTM3NSAxNy4zNjMyODJoNDM2LjY5NTMxMmM5LjU3NDIxOSAwIDE3LjM1OTM3NS03Ljc4OTA2MyAxNy4zNTkzNzUtMTcuMzYzMjgydi05Ni41ODU5MzdoMi45Mjk2ODhjOS41NzQyMTkgMCAxNy4zNjMyODEtNy43ODkwNjMgMTcuMzYzMjgxLTE3LjM2MzI4MXYtMTkuMjI2NTYzYzAtOS41NzAzMTMtNy43ODkwNjItMTcuMzU5Mzc1LTE3LjM2MzI4MS0xNy4zNTkzNzV6bS0xNTQuOTAyMzQ0LTIzOS4wNjY0MDZjMC0yLjMzMjAzMiAxLjg5NDUzMS00LjIyNjU2MyA0LjIyNjU2My00LjIyNjU2M2gyMy43MTQ4NDNjMi4zMzIwMzEgMCA0LjIyNjU2MyAxLjg5NDUzMSA0LjIyNjU2MyA0LjIyNjU2M3Y4Ny4zNjMyODFsLTExLjk3MjY1Ni03LjkzNzVjLTIuNDkyMTg4LTEuNjUyMzQ0LTUuNzMwNDY5LTEuNjUyMzQ0LTguMjIyNjU3IDBsLTExLjk3MjY1NiA3LjkzNzV6bS0xNjcuNDY4NzUgODcuMzYzMjgxLTExLjk3MjY1Ni03Ljk0MTQwNmMtMS4yNDYwOTQtLjgyNDIxOS0yLjY3OTY4OC0xLjIzODI4MS00LjExMzI4MS0xLjIzODI4MS0xLjQzMzU5NCAwLTIuODYzMjgyLjQxNDA2Mi00LjEwOTM3NiAxLjIzODI4MWwtMTEuOTcyNjU2IDcuOTM3NXYtODcuMzYzMjgxYzAtMi4zMjgxMjYgMS44OTQ1MzItNC4yMjY1NjMgNC4yMjY1NjMtNC4yMjY1NjNoMjMuNzE0ODQzYzIuMzMyMDMyIDAgNC4yMjY1NjMgMS44OTg0MzcgNC4yMjY1NjMgNC4yMjY1NjN6bTQyLjgzMjAzMS0zNy45Mjk2ODd2LTYwLjYzMjgxM2MwLTIuMzMyMDMxIDEuODk0NTMyLTQuMjI2NTYzIDQuMjI2NTYzLTQuMjI2NTYzaDczLjM1MTU2MmMyLjMzMjAzMSAwIDQuMjI2NTYzIDEuODk0NTMyIDQuMjI2NTYzIDQuMjI2NTYzdjYwLjYzMjgxM2MwIDIyLjU1NDY4Ny0xOC4zNDc2NTYgNDAuOTAyMzQzLTQwLjkwMjM0NCA0MC45MDIzNDNzLTQwLjkwMjM0NC0xOC4zNDc2NTYtNDAuOTAyMzQ0LTQwLjkwMjM0M3ptMTYzLjk0OTIxOSAxMDEuNDEwMTU2djE5LjIyNjU2MmMwIDEuMzY3MTg4LTEuMTA5Mzc1IDIuNDgwNDY5LTIuNDgwNDY5IDIuNDgwNDY5aC03NC40NDUzMTJ2LTI0LjE4NzVoNzQuNDQ1MzEyYzEuMzcxMDk0IDAgMi40ODA0NjkgMS4xMTMyODEgMi40ODA0NjkgMi40ODA0Njl6bS0yNDYuMDkzNzUgMTkuMjI2NTYydi0xOS4yMjY1NjJjMC0xLjM2NzE4OCAxLjEwOTM3NS0yLjQ4MDQ2OSAyLjQ4MDQ2OS0yLjQ4MDQ2OWg3NC40NDUzMTJ2MjQuMTg3NWgtNzQuNDQ1MzEyYy0xLjM3MTA5NCAwLTIuNDgwNDY5LTEuMTEzMjgxLTIuNDgwNDY5LTIuNDgwNDY5em0tOTcuNzgxMjUgMjE5LjUzMTI1di05Ni41ODU5MzdoMTA3LjM3NXY5OS4wNjY0MDZoLTEwNC44OTQ1MzFjLTEuMzY3MTg4IDAtMi40ODA0NjktMS4xMTMyODEtMi40ODA0NjktMi40ODA0Njl6bTQ0MS42NTYyNSAwYzAgMS4zNjcxODgtMS4xMTMyODEgMi40ODA0NjktMi40ODA0NjkgMi40ODA0NjloLTEwNC44OTg0Mzd2LTQxLjM1MTU2M2MwLTQuMTA5Mzc0LTMuMzI4MTI1LTcuNDQxNDA2LTcuNDQxNDA3LTcuNDQxNDA2LTQuMTA5Mzc0IDAtNy40Mzc1IDMuMzMyMDMyLTcuNDM3NSA3LjQ0MTQwNnY0MS4zNTE1NjNoLTE5Ny4xNDA2MjR2LTIwNC42NDg0MzdoNTIuNDQ5MjE4djEyLjEwOTM3NGMwIDQuMTA1NDY5IDMuMzI4MTI1IDcuNDM3NSA3LjQ0MTQwNiA3LjQzNzUgNC4xMDkzNzYgMCA3LjQzNzUtMy4zMzIwMzEgNy40Mzc1LTcuNDM3NXYtNTEuMTc5Njg3aDYyLjQ4MDQ2OXYxNjQuMzE2NDA2bC0yNy4xMjg5MDYtMTcuOTgwNDY5Yy0yLjQ5MjE4Ny0xLjY1MjM0My01LjcyNjU2My0xLjY1MjM0My04LjIxODc1IDBsLTI3LjEzMjgxMyAxNy45ODA0Njl2LTc4LjAyMzQzN2MwLTQuMTA5Mzc1LTMuMzI4MTI0LTcuNDQxNDA2LTcuNDM3NS03LjQ0MTQwNi00LjExMzI4MSAwLTcuNDQxNDA2IDMuMzMyMDMxLTcuNDQxNDA2IDcuNDQxNDA2djgwLjc5Njg3NWMwIDQuOTQxNDA2IDIuNzAzMTI1IDkuNDYwOTM3IDcuMDU4NTk0IDExLjgwMDc4MSAxLjk4ODI4MSAxLjA2NjQwNiA0LjE2NDA2MiAxLjU5Mzc1IDYuMzM1OTM4IDEuNTkzNzUgMi41ODIwMzEgMCA1LjE2MDE1Ni0uNzUgNy4zOTg0MzctMi4yMzA0NjlsMjUuMzI4MTI1LTE2Ljc5Mjk2OSAyNS4zMjQyMTkgMTYuNzkyOTY5YzQuMTIxMDkzIDIuNzMwNDY5IDkuMzgyODEyIDIuOTcyNjU3IDEzLjczODI4MS42MzY3MTkgNC4zNTE1NjItMi4zMzU5MzggNy4wNTg1OTQtNi44NTkzNzUgNy4wNTg1OTQtMTEuODAwNzgxdi0xMjguMDE5NTMxaDUyLjQ0NTMxMnYxMjguMTc5Njg3YzAgNC4xMDkzNzUgMy4zMzIwMzIgNy40NDE0MDYgNy40NDE0MDYgNy40NDE0MDYgNC4xMDkzNzYgMCA3LjQ0MTQwNy0zLjMzMjAzMSA3LjQ0MTQwNy03LjQ0MTQwNnYtMjIuNTk3NjU2aDEwNy4zNzV2OTYuNTg1OTM3em0yMC4yODkwNjMtMTEzLjk0OTIxOGMwIDEuMzY3MTg3LTEuMTA5Mzc2IDIuNDgwNDY4LTIuNDgwNDY5IDIuNDgwNDY4aC0xMjUuMTg3NXYtMjQuMTg3NWgxMjUuMTg3NWMxLjM3MTA5MyAwIDIuNDgwNDY5IDEuMTEzMjgyIDIuNDgwNDY5IDIuNDgwNDY5em0wIDAiIGZpbGw9IiMwMDAwMDAiLz48cGF0aCBkPSJtMjczLjQ2MDkzOCA4NS41YzAtNC4xMDkzNzUtMy4zMjgxMjYtNy40NDE0MDYtNy40NDE0MDctNy40NDE0MDZoLTIuNTc4MTI1di0zMi41OTc2NTZjMC0yLjU3ODEyNi0xLjMzNTkzNy00Ljk3MjY1Ny0zLjUzMTI1LTYuMzI4MTI2LTIuMTkxNDA2LTEuMzU1NDY4LTQuOTMzNTk0LTEuNDgwNDY4LTcuMjM4MjgxLS4zMjgxMjRsLTExLjY2Nzk2OSA1LjgzNTkzN2MtMy42NzU3ODEgMS44MzU5MzctNS4xNjQwNjIgNi4zMDQ2ODctMy4zMjgxMjUgOS45ODQzNzUgMS44Mzk4NDQgMy42NzU3ODEgNi4zMDg1OTQgNS4xNjQwNjIgOS45ODQzNzUgMy4zMjQyMTlsLjg5ODQzOC0uNDQ5MjE5djIwLjU1ODU5NGgtMi41ODIwMzJjLTQuMTA5Mzc0IDAtNy40Mzc1IDMuMzMyMDMxLTcuNDM3NSA3LjQ0MTQwNnMzLjMyODEyNiA3LjQ0MTQwNiA3LjQzNzUgNy40NDE0MDZoMjAuMDQyOTY5YzQuMTA5Mzc1IDAgNy40NDE0MDctMy4zMzIwMzEgNy40NDE0MDctNy40NDE0MDZ6bTAgMCIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPgo=" />
-                        <div class="title">КАЛИБРОВКА</div>
-                        <hr>
-                        <div class="desc">Всего за 1 день мы<br>откалибруем вам<br><b>Core</b> или <b>Support MMR</b> с максимальным результатом</div>
-                        <hr>
-                        <a href="/calibration/" class="btn-inv">Заказать</a>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="warranty">
+    <div class="col-md-12 p-lg-2">
+        <h1 class="why-us-header">Почему именно мы?</h1>
+        <h5 class="py-3 mb-3 services-text-content why-us-description">В нашей команде работают бустеры - профессионалы,
+            у каждого на счету более сотни забущенных <br> аккаутнтов. Мы знаем через какой путь проходите Вы, и наша
+            задача помочь Вам избежать этих мучений. Мы <br> сами теряли время и нервы на то, чтобы поднять свои первые
+            аккаунты. Мы даем Вам возможность выбора, а<br> последнее слово - за Вами
+        </h5>
+        <div class="container">
+            <div class="row pt-3 mt-5 why-us-cards">
+                <div class="col-sm-4 order-sm-1">
+                    <img src='{% static "img/every-client.svg" %}' alt="icon1">
+                    <h2 class="card-title" style="margin-top: 4px;">Нам важен каждый<br> клиент</h2>
+                </div>
+                <div class="col-sm-4 order-sm-4">
+                    <span>Мы думаем о каждом клиенте и стараемся выполнить заказы в кратчашие сроки. Мы не забудем о Вашем аккаунте даже, если у Вас<br> ниже звание, а кого-то выше.</span>
+                </div>
+
+                <div class="col-sm-4 order-sm-2">
+                    <img src='{% static "img/discounts.svg" %}' alt="icon2">
+                    <h2 class="card-title">Скидки</h2>
+                </div>
+                <div class="col-sm-4 order-sm-5">
+                    <span>На каждый второй заказ у нас действуют различные скидки, а для постоянных клиентов - приятные бонусы.</span>
+                </div>
+
+                <div class="col-sm-4 order-sm-3">
+                    <img src='{% static "img/payment.svg" %}' alt="icon3">
+                    <h2 class="card-title">Поддержка и оплата</h2>
+                </div>
+                <div class="col-sm-4 order-sm-6">
+                    <span>На нашем сайте присутствует поддержка которая ответит на любой вопрос, а также бесплатно проконсультирует вас по связи. Оплачивайте свои заказы<br> различными системами:</span>
+                    <div class="payment-methods">
+                        <img src='{% static "img/webmoney.svg" %}' alt="wm">
+                        <img src='{% static "img/qiwi.svg" %}' alt="qiwi">
+                        <img src='{% static "img/visa.svg" %}' alt="visa">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="position-relative overflow-hidden p-3 p-md-5 text-center text-light bg-head" id="about" style="box-shadow: 0 0 0 100000px rgba(0, 0, 0, 0.33) inset;">
-        <div class="col-md-12 p-lg-3 mx-auto about">
-            <h1>Почему мы этим занимаемся</h1>
-            <h5 class="pt-3">В нашей команде работают бустеры - профессионалы, у каждого на счету
-                более сотни забущенных аккаутнтов. Мы знаем через какой путь проходите Вы, и наша задача помочь Вам
-                избежать этих мучений. Мы сами теряли время и нервы на то, чтобы поднять свои первые аккаунты. Мы даем
-                Вам возможность выбора, а полседнне слово - за Вами</h5>
+<section class="security-explain">
+    <div class="wrapper1200px">
+        <h3>Это безопасно, потому что мы</h3>
+        <div class="security-wrapper">
+            <div class="security-item">
+                <img src='{% static "img/check.svg" %}'/>
+                <div>
+                    <h4>Работаем с системой ROBOKASSA</h4>
+                    <p>Которая, в свою очередь, использует метод безопасной сделки, при которой покупатель защищен
+                        пользовательским<br> соглашением. Удобные способы оплаты - банковские карты, электронные кошельки,
+                        терминалы и другие<br> возможности.</p>
+                </div>
+            </div>
+            <div class="security-item">
+                <img src='{% static "img/check.svg" %}'/>
+                <div>
+                    <h4>Используем "Семейный Просмотр"</h4>
+                    <p>Эта функция обеспечивает основную защиту вашего аккаунта. Не имея пин-кода, установленного вами,
+                        никто не<br> сможет изменить какие-либо данные на вашем аккаунте. Наши бустеры смогут только
+                        играть.</p>
+                </div>
+
+            </div>
+            <div class="security-item">
+                <img src='{% static "img/check.svg" %}'/>
+                <div>
+                    <h4>Нанимаем проверенных бустеров</h4>
+                    <p>Все бустеры проходят тщательную проверку, играют тестовые игры, предоставляют паспортные данные
+                        перед тем,<br> как выйти на работу. В итоге у нас работают только адекватные, общительные и сильные
+                        бустеры.</p>
+                </div>
+
+            </div>
         </div>
     </div>
+</section>
 
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="warranty">
-        <div class="col-md-12 p-lg-2">
-            <h1>Почему именно мы?</h1>
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="feedback">
+    <div class="col-md-12 p-lg-3 mx-auto">
+        <h2>Отзывы наших клиентов</h2>
+        <h5>
+            Отзывы клиентов – лучшее подтверждение нашей работы.
+        </h5>
+        <div id="testimonials">
             <div class="container">
-                <div class="row pt-3 mt-5">
-                    <div class="col-sm-4 order-sm-1">
-                        <img src='{% static "img/icon_1.png" %}' class="icon" alt="icon1">
-                        <h2>Нам важен каждый клиент</h2>
-                    </div>
-                    <div class="col-sm-4 order-sm-4">
-                        <span>Мы думаем о каждом клиенте и стараемся выполнить заказы в кратчашие сроки. Мы не забудем о Вашем аккаунте даже, если у Вас ниже звание, а кого-то выше.</span>
-                    </div>
-
-                    <div class="col-sm-4 order-sm-2">
-                        <img src='{% static "img/icon_2.png" %}' class="icon" alt="icon2">
-                        <h2>Скидки</h2>
-                    </div>
-                    <div class="col-sm-4 order-sm-5">
-                        <span>На каждый второй заказ у нас действуют различные скидки, а для постоянных клиентов - приятные бонусы.</span>
-                    </div>
-
-                    <div class="col-sm-4 order-sm-3">
-                        <img src='{% static "img/icon_3.png" %}' class="icon" alt="icon3">
-                        <h2>Поддержка и оплата</h2>
-                    </div>
-                    <div class="col-sm-4 order-sm-6">
-                        <span>На нашем сайте присутствует поддержка которая ответит на любой вопрос, а также бесплатно проконсультирует вас по связи. Оплачивайте свои заказы различными системами: webmoney/visa/qiwi</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section class="security-explain">
-        <div class="wrapper1200px">
-            <h3>Это безопасно, потому что мы</h3>
-            <div class="security-advantages">
-                <div>
-                    <h4>Работаем с <br>системой ROBOKASSA</h4>
-                    <span></span>
-                    <p>Которая, в свою очередь, использует метод безопасной сделки, при
-                    которой покупатель защищен пользовательским
-                    соглашением. Удобные способы оплаты - банковские карты,
-                    электронные кошельки, терминалы и другие возможности.</p>
-                </div>
-                <div>
-                    <h4>Используем <br>"Семейный Просмотр"</h4>
-                    <span></span>
-                    <p>Эта функция обеспечивает основную защиту вашего аккаунта. Не имея
-                    пин-кода, установленного вами,
-                    никто не сможет изменить какие-либо данные на вашем аккаунте. Наши
-                    бустеры смогут только играть.</p>
-                </div>
-                <div>
-                    <h4>Нанимаем<br>проверенных бустеров</h4>
-                    <span></span>
-                    <p>Все бустеры проходят тщательную проверку, играют тестовые игры,
-                    предоставляют паспортные данные перед тем,
-                    как выйти на работу. В итоге у нас работают только адекватные,
-                    общительные и сильные бустеры.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="feedback">
-        <div class="col-md-12 p-lg-3 mx-auto">
-            <h2>Отзывы наших клиентов</h2>
-            <h5>
-                <b>Отзывы клиентов – лучшее подтверждение</b> нашей работы.
-            </h5>
-            <div id="testimonials">
-                <div class="container">
-                    <div class="block-one-example">
-                        <div id="customNav" class="owl-my-nav"></div>
-                        <div class="owl-carousel block-items">
-                            <div class="item">
-                                <div class="inner-testimonial">
-                                    <img src='{% static "img/client1.png" %}' class="full-opacity" alt="Клиент 1">
-                                    <h3 class="city-name">Иван, Москва</h3>
-                                    <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок! Грамматики живет власти текст дорогу.</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="inner-testimonial">
-                                    <img src='{% static "img/client2.png" %}' class="full-opacity" alt="Клиент 2">
-                                    <h3 class="city-name">Светлана, Екатеринбург</h3>
-                                    <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок! Грамматики живет власти текст дорогу.</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="inner-testimonial">
-                                    <img src='{% static "img/client3.png" %}' class="full-opacity" alt="Клиент 3">
-                                    <h3 class="city-name">Александр, Ярославль</h3>
-                                    <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок! Грамматики живет власти текст дорогу.</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="inner-testimonial">
-                                    <img src='{% static "img/client3.png" %}' class="full-opacity" alt="Клиент 3">
-                                    <h3 class="city-name">Александр, Ярославль</h3>
-                                    <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок! Грамматики живет власти текст дорогу.</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="inner-testimonial">
-                                    <img src='{% static "img/client3.png" %}' class="full-opacity" alt="Клиент 3">
-                                    <h3 class="city-name">Александр, Ярославль</h3>
-                                    <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок! Грамматики живет власти текст дорогу.</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="inner-testimonial">
-                                    <img src='{% static "img/client3.png" %}' class="full-opacity" alt="Клиент 3">
-                                    <h3 class="city-name">Александр, Ярославль</h3>
-                                    <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок! Грамматики живет власти текст дорогу.</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="inner-testimonial">
-                                    <img src='{% static "img/client3.png" %}' class="full-opacity" alt="Клиент 3">
-                                    <h3 class="city-name">Александр, Ярославль</h3>
-                                    <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок! Грамматики живет власти текст дорогу.</p>
-                                </div>
+                <div class="block-one-example">
+                    <div id="customNav" class="owl-my-nav"></div>
+                    <div class="owl-carousel block-items">
+                        <div class="item">
+                            <div class="inner-testimonial">
+                                <img src='{% static "img/quote.svg" %}' class="full-opacity" alt="Клиент 1">
+                                <h3 class="city-name">Москва</h3>
+                                <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и
+                                    согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок!
+                                    Грамматики живет власти текст дорогу.</p>
+                                <p class="testimonal-author">Иван</p>
                             </div>
                         </div>
-                    </div><!-- .block-one-example -->
-                </div>
+                        <div class="item">
+                            <div class="inner-testimonial">
+                                <img src='{% static "img/quote.svg" %}' class="full-opacity" alt="Клиент 2">
+                                <h3 class="city-name">Екатеринбург</h3>
+                                <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и
+                                    согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок!
+                                    Грамматики живет власти текст дорогу.</p>
+                                <p class="testimonal-author">Иван</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="inner-testimonial">
+                                <img src='{% static "img/quote.svg" %}' class="full-opacity" alt="Клиент 3">
+                                <h3 class="city-name">Ярославль</h3>
+                                <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и
+                                    согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок!
+                                    Грамматики живет власти текст дорогу.</p>
+                                <p class="testimonal-author">Иван</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="inner-testimonial">
+                                <img src='{% static "img/quote.svg" %}' class="full-opacity" alt="Клиент 3">
+                                <h3 class="city-name">Ярославль</h3>
+                                <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и
+                                    согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок!
+                                    Грамматики живет власти текст дорогу.</p>
+                                <p class="testimonal-author">Иван</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="inner-testimonial">
+                                <img src='{% static "img/quote.svg" %}' class="full-opacity" alt="Клиент 3">
+                                <h3 class="city-name">Ярославль</h3>
+                                <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и
+                                    согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок!
+                                    Грамматики живет власти текст дорогу.</p>
+                                <p class="testimonal-author">Иван</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="inner-testimonial">
+                                <img src='{% static "img/quote.svg" %}' class="full-opacity" alt="Клиент 3">
+                                <h3 class="city-name">Ярославль</h3>
+                                <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и
+                                    согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок!
+                                    Грамматики живет власти текст дорогу.</p>
+                                <p class="testimonal-author">Иван</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="inner-testimonial">
+                                <img src='{% static "img/quote.svg" %}' class="full-opacity" alt="Клиент 3">
+                                <h3 class="city-name">Ярославль</h3>
+                                <p class="text-testimonial">Далеко-далеко за словесными горами в стране, гласных и
+                                    согласных живут рыбные тексты. Рот последний на берегу послушавшись, подзаголовок!
+                                    Грамматики живет власти текст дорогу.</p>
+                                <p class="testimonal-author">Иван</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .block-one-example -->
             </div>
         </div>
     </div>
+</div>
 
 
-
-    <div class="position-relative overflow-hidden p-3 p-md-1 m-md-3 text-center" id="society">
-        <div class="col-md-12 p-lg">
-            <h1>Наши соц сети</h1>
-            <div class="container">
-                <div class="row pt-3 mt-5" style="font-size: 2em;">
-                    <div class="col">
-                        <a href="https://vk.com/lexpusher" target="_blank">
-                            <button class="corner-button"><i class="fab fa-vk"></i></button>
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="https://www.instagram.com/lexpusher" target="_blank">
-                            <button class="corner-button"><i class="fab fa-instagram"></i></button>
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="https://www.facebook.com/lex-pusher-1988519241446722/" target="_blank">
-                            <button class="corner-button"><i class="fab fa-facebook-f"></i></button>
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="https://t.me/lexpusher" target="_blank">
-                            <button class="corner-button"><i class="fab fa-telegram-plane"></i></button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="position-relative overflow-hidden p-3 p-md-1 m-md-3 text-center" id="society">
+    <div class="col-md-12 p-lg">
+        <h1>Наши контакты</h1>
+        <h5>
+            Если у Вас остались какие-либо вопросы, напишите нам и мы на них ответим
+        </h5>
+<!--            <div class="row pt-3 mt-5" style="font-size: 2em;">-->
+<!--                <div class="col">-->
+<!--                    <a href="https://vk.com/lexpusher" target="_blank">-->
+<!--                        <button class="corner-button"><i class="fab fa-vk"></i></button>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="col">-->
+<!--                    <a href="https://www.instagram.com/lexpusher" target="_blank">-->
+<!--                        <button class="corner-button"><i class="fab fa-instagram"></i></button>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="col">-->
+<!--                    <a href="https://www.facebook.com/lex-pusher-1988519241446722/" target="_blank">-->
+<!--                        <button class="corner-button"><i class="fab fa-facebook-f"></i></button>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="col">-->
+<!--                    <a href="https://t.me/lexpusher" target="_blank">-->
+<!--                        <button class="corner-button"><i class="fab fa-telegram-plane"></i></button>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
     </div>
+    <div class="social-container">
+        <a href="https://vk.com/lexpusher">
+            <img src='{% static "img/vk.svg" %}' />
+        </a>
+        <a href="https://www.facebook.com/lex-pusher-1988519241446722/">
+            <img src='{% static "img/facebook.svg" %}' />
+        </a>
+        <a href="https://www.instagram.com/lexpusher">
+            <img src='{% static "img/instagram.svg" %}' />
+        </a>
+        <a href="https://t.me/lexpusher">
+            <img src='{% static "img/telegram.svg" %}'/>
+        </a>
+    </div>
+</div>
 
 {% endblock %}
