@@ -9,22 +9,24 @@
 
 
 {% block content %}
-    <div style="padding-bottom: 50px;">
+<h2 class="payment-form-header">Покупка аккаунта</h2>
     </div>
     <div class="form-style-5">
         <form action="{% url 'shop_account_end' %}" method="POST">
             {% csrf_token %}
-            <legend>Покупка аккаунта</legend>
-            <p>Core MMR: {{ account.core_mmr }}</p>
-            <p>Support MMR: {{ account.support_mmr }}</p>
-            <hr style="padding-bottom: 20px;">
-            <fieldset>
-                <legend><span class="number"></span> Контактные данные</legend>
+            <div class="payment-form-mmr">
+                <p>CORE MMR:<br> {{ account.core_mmr }}</p>
+                <p>SUPPORT MMR:<br> {{ account.support_mmr }}</p>
+            </div>
+            <fieldset class="fieldset-contacts calibration-contacts">
+                <p class="contact-data">Укажите Ваши контактные данные</p>
                 {{ form.email|as_crispy_field }}
                 {{ form.skype|as_crispy_field }}
                 {{ form.phone|as_crispy_field }}
             </fieldset>
-            <input type="submit" class="btn btn-buy btn-success btn-block" value="Перейти к оплате"/>
+            <div class="submit-wrap">
+                <input type="submit" class="btn btn-buy btn-success btn-block" value="Перейти к оплате"/>
+            </div>
             <input type="hidden" name="account_slug" value="{{account.slug}}"/>
         </form>
     </div>

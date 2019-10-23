@@ -78,19 +78,7 @@
 	border-radius: 15px 15px 15px 0px;
 }
 
-.btn-buy {
-  width: 100px;
-  float: right;
-}
 
-.btn-success {
-  color: #ffffff;
-  background-color: #5cb85c;
-  border-color: transparent;
-  -webkit-transition: 0.15s;
-  -o-transition: 0.15s;
-  transition: 0.15s;
-}
 
 .btn{
   display: inline-block;

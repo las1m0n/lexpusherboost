@@ -1,15 +1,30 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'calc/calc.css' %}">
+<form action="{% url 'cart_bust' %}" method="POST" class="boost-form">
+    <div class="row mt-3 boost-switch">
+        <div class="col">
+            <div class="center-2">
+                <p>Буст Core рейтинга</p>
+            </div>
+            <div class="center">
+                <input type="checkbox" id="cbx" name="type_boost" style="display:none"/>
+                <label for="cbx" class="toggle"><span></span></label>
+            </div>
 
-<div class="jumbotron mt-3 text-dark">
-    <form action="{% url 'cart_bust' %}" method="POST">
+            <div class="center-3">
+                <p>Буст Support рейтинга <strong style="color: rgba(15,23,78,1);">+25%</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron mt-3 text-dark mmr-container">
+
         {% csrf_token %}
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <label for="input-mmr-from" class="mb-0">Текущий ММР</label>
-                    <input type="number" class="form-control" id="input-mmr-from" name="mmr_from"
+                    <label for="input-mmr-from" class="mb-0 current-mmr">Текущий ММР</label>
+                    <input type="number" id="input-mmr-from" name="mmr_from"
                            placeholder="Текущий MMR" value="1">
                 </div>
                 <div class="col">
@@ -19,44 +34,29 @@
                     </div>
                 </div>
                 <div class="col">
-                    <label for="input-mmr-to" class="mb-0">Желаемый ММР</label>
-                    <input type="number" class="form-control" id="input-mmr-to" name="mmr_to" placeholder="Желаемый MMR" value="26">
+                    <label for="input-mmr-to" class="mb-0 wish-mmr">Желаемый ММР</label>
+                    <input type="number" id="input-mmr-to" name="mmr_to" placeholder="Желаемый MMR"
+                           value="26">
                 </div>
             </div>
 
-            <div class="row mt-3">
-                <div class="col">
-                    <label for="price" class="mb-0">Цена:</label>
-                    <strong>
-                        <div id="price"></div>
-                    </strong>
-                </div>
-                <div class="col">
-                    <input type="submit" class="btn btn-outline-primary float-right" value="Заказать буст">
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <div class="center-2">
-                        <p>Буст Core рейтинга</p>
-                    </div>
-                    <div class="center">
-                      <input type="checkbox" id="cbx" name="type_boost" style="display:none"/>
-                      <label for="cbx" class="toggle"><span></span></label>
-                    </div>
-                    <div class="cntr">
-                        <input id="cdx" type="checkbox" style="opacity: 0;"/>
-                        <label class="cdx" for="cdx"></label>
-                        <label class="lbl" for="cdx">Выполнить быстрее <b>+20%</b></label>
-                    </div>
-                    <div class="center-3">
-                        <p>Буст Support рейтинга <strong style="color: rgba(15,23,78,1);">+25%</strong></p>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <input type="hidden" id="price_hidden" name="price">
-    </form>
-</div>
 
+    </div>
+    <div class="row boost-faster">
+        <input id="cdx" type="checkbox" style="opacity: 0;"/>
+        <label class="cdx" for="cdx"></label>
+        <label class="lbl" for="cdx">Выполнить быстрее +20%</label>
+    </div>
+    <div class="row mt-3 boost-price">
+            <label for="price" class="mb-0">К оплате:</label>
+            <span id="price"></span><span class="rouble"> ₽</span>
+    </div>
+    <div class="row boost-btn">
+        <input type="submit" class="btn btn-outline-primary float-right" value="Перейти к оплате">
+    </div>
+
+</form>
 <script src="{% static 'calc/calc.js' %}"></script>

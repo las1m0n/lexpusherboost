@@ -16,19 +16,19 @@
 
 
 {% block content %}
-    <div class="position-relative overflow-hidden p-md-1 m-md-1 text-center" id="shop" style="padding-top: 100px;">
-        <div class="col-md-12 p-lg-7 mx-auto my-5">
-            <h1>УСТАЛ ЖДАТЬ БУСТА? КУПИ АККАУНТ!</h1>
-            <p class="lead font-weight-normal">Аккаунты с хорошими MMR рейтингами по вкусным ценам!</p>
+    <div class="position-relative overflow-hidden p-3 p-md-5 text-center text-light bg-head bg-acc-index">
+        <div class="jumbotron-text">
+            <p class="leads">УСТАЛ ЖДАТЬ БУСТА? КУПИ АККАУНТ!</p>
+            <p class="bust-text">Аккаунты с хорошими MMR рейтингами по вкусным ценам!</p>
         </div>
     </div>
 
-    <div class="container">
+    <div class="container acc-index-container">
         <div class="row flex-row">
             {% for account in accounts %}
                     <div class="product-item col-xs-12 col-sm-6 col-md-4 col-lg-3">
                       <a href="{% url 'account_info' account_id=account.id %}" class="product-item-link">
-                        <figure class="product-thumbnail" style="min-height:187px !important;">
+                        <figure class="product-thumbnail"  >
                           <img src="{{ account.image_avatar.url }}" alt="account image" class="thumbnail"/>
                         </figure>
                         <div class="product-info" style="min-height:45px !important;">
@@ -51,6 +51,30 @@
                         </footer>
                       </a>
                     </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" style="height: 320px !important;width: 265px !important;">
+                <div class="product-item">
+                    <figure class="product-thumbnail">
+                        <img src="{{ account.image_avatar.url }}" alt="account image" class="thumbnail"/>
+                    </figure>
+                    <div class="product-info" style="min-height:45px !important;">
+                        <h3 class="product-name">
+                            <span>CORE MMR: <span class="solo_mmr">{{account.core_mmr}}</span></span><br>
+                            <span>SUPPORT MMR:
+                            <span class="party_mmr">{{account.support_mmr}}</span></span><br>
+                        </h3>
+                    </div>
+                    <div class="product-price">
+                        <span>{{account.price}}<span class="rouble">₽</span></span>
+                    </div>
+                    <div class="product-btn-wrap">
+                        <a href="{% url 'account_info' account_id=account.id %}">
+                            <button class="product-btn">
+                                Купить
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>

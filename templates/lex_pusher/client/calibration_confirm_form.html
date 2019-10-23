@@ -3,32 +3,32 @@
 {% load crispy_forms_tags %}
 
 {% block navbar %}
-    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
-    {% include 'lex_pusher/navbar.html' %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% include 'lex_pusher/navbar.html' %}
 {% endblock %}
 
 
 {% block content %}
-    <div style="padding-bottom: 50px;">
-    </div>
-    <div class="form-style-5">
-        <form action="{% url 'cal_end' %}" method="POST">
-            {% csrf_token %}
-            <legend>Калибровка аккаунта</legend>
-            <p>MMR: {{ mmr }}</p>
-            <p>Цена: {{ price }} рублей</p>
-            <hr style="padding-bottom: 20px;">
-            <fieldset>
-                <legend><span class="number">1</span> Контактные данные</legend>
-                {{ form_acc.email|as_crispy_field }}
-                {{ form_bust.steam_login|as_crispy_field }}
-                {{ form_bust.steam_password|as_crispy_field }}
-            </fieldset>
-            <input type="hidden" name="mmr" value="{{mmr}}">
-            <input type="hidden" name="price" value="{{price}}">
+<h2 class="payment-form-header">Калибровка аккаунта</h2>
+<div class="form-style-5">
+    <form action="{% url 'cal_end' %}" method="POST">
+        {% csrf_token %}
+        <div class="payment-form-mmr calibration-mmr">
+            <p>MMR:<br> <span>{{ mmr }}</span></p>
+        </div>
+        <fieldset class="fieldset-contacts calibration-contacts">
+            <p class="contact-data">Укажите Ваши контактные данные</p>
+            {{ form_acc.email|as_crispy_field }}
+            {{ form_bust.steam_login|as_crispy_field }}
+            {{ form_bust.steam_password|as_crispy_field }}
+        </fieldset>
+        <input type="hidden" name="mmr" value="{{mmr}}">
+        <input type="hidden" name="price" value="{{price}}">
+        <div class="submit-wrap">
             <input type="submit" class="btn btn-buy btn-success btn-block" value="Перейти к оплате"/>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
 
 {% endblock %}
 

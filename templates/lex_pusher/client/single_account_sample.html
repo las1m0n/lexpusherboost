@@ -1,0 +1,142 @@
+{% extends 'lex_pusher/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="icon" type="image/png" href="static/img/dota-2.png">
+<!--    <link rel="stylesheet" href="{% static 'css/figma/header.css' %}">-->
+<style>
+    .single-account-header {
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 36px;
+        text-align: center;
+        text-transform: uppercase;
+
+        color: #203273;
+    }
+    .single-account-container {
+        width: 100%;
+        padding: 0 20%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .single-account-img-big {
+        height: 225px;
+    }
+
+    .single-account-image-container {
+        padding-left: 20px;
+        padding-right: 38px;
+        height: 100%;
+    }
+
+    .single-account-image-container img {
+        display: block;
+        height: 105px;
+        width: 220px;
+    }
+    .single-account-image-container img:first-child {
+        padding-bottom: 15px;
+    }
+
+    .single-account-details{
+        background: #FFFFFF;
+        box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1);
+        border-radius: 13px;
+        padding: 35px 41px;
+        text-align: center;
+    }
+
+    .single-account-price {
+        width: 100%;
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 31px;
+
+        text-align: center;
+        text-transform: uppercase;
+
+        color: #FCB40C;
+    }
+
+    .rouble {
+        color: #FCB40C;
+    }
+    .single-account-btn {
+        background: #2A3D83;
+        border-radius: 5px;font-style: normal;
+        border: none;
+        padding: 4px 26px 7px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 13px;
+
+        text-align: center;
+        text-transform: capitalize;
+
+        color: #FFFFFF;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .single-account-btn-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .single-account-links {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .single-account-links a, .single-account-links a:visited {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 13px;
+
+        text-align: center;
+        text-decoration-line: underline !important;
+        text-transform: uppercase;
+
+        color: #2A3D83 !important;
+    }
+    .single-account-links a:first-child {
+        padding-left: 37px;
+    }
+    .single-account-links a:last-child {
+        padding-right: 37px;
+    }
+</style>
+<title>Account</title>
+{% endblock %}
+{% block navbar %}
+{% include 'lex_pusher/navbar.html' %}
+{% endblock %}
+{% block content %}
+<h1 class="single-account-header">Аккаунт DOTA 2</h1>
+<div class="single-account-container">
+    <img src="{% static 'img/img-big.svg' %}" alt="img-big" class="single-account-img-big"/>
+    <div class="single-account-image-container">
+        <img src="{% static 'img/img-small-1.svg' %}" alt="img-small"/>
+        <img src="{% static 'img/img-small-2.svg' %}" alt="img-small"/>
+    </div>
+    <div class="single-account-details">
+        <div class="payment-form-mmr single-account-mmr">
+            <p>CORE MMR:<br> 5000</p>
+            <p>SUPPORT MMR:<br> 5000</p>
+        </div>
+        <span class="single-account-price">100</span><span class="rouble">₽</span>
+        <div class="single-account-btn-container">
+            <button class="single-account-btn">Купить</button>
+        </div>
+        <div class="single-account-links">
+            <a>DOTABUFF</a>
+            <a>PROFILE</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

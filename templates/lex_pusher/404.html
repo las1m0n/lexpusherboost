@@ -1,0 +1,145 @@
+{% extends 'lex_pusher/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="icon" type="image/png" href="static/img/dota-2.png">
+<title>404</title>
+<style>
+    body {
+        width: 100%;
+        height: 100%;
+        background: url("/static/img/404.png");
+        background-size: cover;
+    }
+
+    .error-data {
+        padding-top: 211px;
+        text-align: center;
+    }
+
+    .logo-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .error-header {
+        font-weight: 800;
+        font-size: 200px;
+        line-height: 297px;
+        text-align: center;
+        text-transform: uppercase;
+
+        color: #FFFFFF;
+
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .error-subheader {
+        font-style: normal;
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 36px;
+        text-align: center;
+
+        color: #FFFFFF;
+    }
+
+    .error-text {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        text-align: center;
+
+        color: #FFFFFF;
+    }
+
+    .error-btn-container button {
+        background: #2A3D83;
+        border-radius: 5px;
+        padding: 10px 31px 12px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 20px;
+
+        text-align: center;
+        border: none;
+
+        color: #FFFFFF;
+    }
+
+    .error-btn-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .error-subscribe {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        text-align: center;
+
+        color: #FFFFFF;
+        padding-top: 24px;
+    }
+
+    footer {
+        color: white !important;
+        border-color: white;
+    }
+
+    .social-container {
+        left: unset;
+        transform: unset;
+        bottom: unset;
+        position: relative;
+    }
+
+    .error-social {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-data">
+        <div class="logo-container">
+            <img src="{% static 'img/logo-white.svg' %}"/>
+        </div>
+        <h1 class="error-header">404</h1>
+        <h2 class="error-subheader">ВОЗНИКЛА ОШИБКА</h2>
+        <p class="error-text">
+            Эта ошибка возникла, когда сервер обрабатывал Ваш запрос.<br> Пожалуйста, обратитесь в поддержку, если
+            считаете, что это наша ошибка.<br> Спасибо!
+        </p>
+        <div class="error-btn-container">
+            <button>На главную</button>
+        </div>
+        <p class="error-subscribe">Подписывайтесь на наши обновления</p>
+        <div class="error-social">
+            <div class="social-container">
+                <a href="https://vk.com/lexpusher">
+                    <img src='{% static "img/vk.svg" %}'/>
+                </a>
+                <a href="https://www.facebook.com/lex-pusher-1988519241446722/">
+                    <img src='{% static "img/facebook.svg" %}'/>
+                </a>
+                <a href="https://www.instagram.com/lexpusher">
+                    <img src='{% static "img/instagram.svg" %}'/>
+                </a>
+                <a href="https://t.me/lexpusher">
+                    <img src='{% static "img/telegram.svg" %}'/>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

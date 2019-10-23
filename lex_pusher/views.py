@@ -134,6 +134,11 @@ def accs_shop_view(request):
 def bust_shop_view(request):
     return render(request, 'lex_pusher/client/bust_shop_start.html')
 
+def single_acc_test(request):
+    return render(request, 'lex_pusher/client/single_account_sample.html')
+
+def fourOfour(request):
+    return render(request, 'lex_pusher/404.html')
 
 def calibration_view(request):
     return render(request, 'lex_pusher/client/calibration_shop.html', {})

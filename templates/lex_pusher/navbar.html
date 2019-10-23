@@ -1,6 +1,73 @@
 {% load static %}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">LEX PUSHER</a>
+<nav class="navbar navbar-expand-md">
+        <a class="logo" href="/">
+            <span class="logo">
+                <span class="sloi10">
+                        <img src="{% static 'img/sloi10.png' %}" alt="logo-dota"/>
+                    </span>
+            </span>
+        </a>
+
         <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav ml-md-auto d-md-flex">
+                        <li class="nav-item">
+                                <a class="nav-link buster" href="{% url 'to_busters' %}">Бустерам</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link scrollto about" href="/#about">О нас</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link scrollto otzivi" href="#feedback">Отзывы</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link scrollto garantees" href="#warranty">Гарантии</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link scrollto contacts" href="#society">Контакты</a>
+                        </li>
+                        {% if not request.user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle login" href="" id="dropdown" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Войти
+                                        <img src="{% static 'img/Group3.png' %}" alt="jora"/>
+                                </a>
+                                <div class="dropdown-menu p-4 text-muted dropdown-menu-lg-right frame login-dropdown"
+                                     style="min-width: 20rem;"
+                                     aria-labelledby="dropdown">
+                                        <h5 class="pin">Укажите пин-код Вашего заказа</h5>
+                                        <p class="stans">для просмотра состояния и хода выполнения заказа</p>
+                                        <form method='POST' action=''>
+                                                {% csrf_token %}
+                                                <div class="pin-container">
+                                                        <p class="login-pin">
+                                                                PIN-CODE
+                                                        </p>
+                                                        {{ form.password }}
+                                                </div>
+
+                                        </form>
+                                </div>
+                        </li>
+                        {% endif %}
+                        {% if request.user.is_booster %}
+                        <li class="nav-item">
+                                <a class='nav-link login' href="{% url 'buster' %}"><i class="fas fa-user"></i> Личный кабинет</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class='nav-link login' href="{% url 'logout' %}">Выйти</a>
+                        </li>
+                        {% endif %}
+
+                        {% if request.user.is_client %}
+                        <li class="nav-item">
+                                <a class='nav-link login' href="{% url 'client' %}"><i class="fas fa-user"></i> Личный кабинет </a>
+                        </li>
+                        <li class="nav-item">
+                                <a class='nav-link login' href="{% url 'logout' %}">Выйти</a>
+                        </li>
+                        {% endif %}
+                </ul>
+
         </div>
+
 </nav>

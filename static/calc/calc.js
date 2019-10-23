@@ -135,7 +135,7 @@ function changePrice() {
             }
         }
     }
-    priceDiv.innerText = Math.round(price) + " ₽";
+    priceDiv.innerText = Math.round(price);
     priceHidden.value = Math.round(price);
 }
 

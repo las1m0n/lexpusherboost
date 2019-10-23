@@ -4,6 +4,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    # test
+    path('singleacc', views.single_acc_test, name='single_acc_test'),
+    path('404', views.fourOfour, name='fourOfour'),
     # start/index
     path('', views.index_view, name='index'),
     # client

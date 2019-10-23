@@ -71,7 +71,8 @@ html {
 
 body {
     margin-bottom: 3em !important;
-    font-family: 'M PLUS 1p', sans-serif;
+    font-family: 'M PLUS 1p', sans-serif !important;
+    height: 100%;
 }
 
 /*.navbar-brand {*/
