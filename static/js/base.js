@@ -4,8 +4,8 @@ $(document).ready(function()
     $(window).scroll(function()
     {
         if ($(this).scrollTop() > 100)
-        {$('.scrollup').fadeIn();} else {
-        $('.scrollup').fadeOut();}
+        {$('.scrollup').css('opacity', '1');} else {
+        $('.scrollup').css('opacity', '0');}
     });
     $('.scrollup').click(function()
     {$("html, body").animate({scrollTop: 0}, 500);return false;
