@@ -24,14 +24,9 @@ SECRET_KEY = ''
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = ['3.94.5.200',
-                 '3.94.5.200:8000',
-                 'www.lexpusher.com',
-                 'lexpusher.com',
-=======
+
 ALLOWED_HOSTS = [
->>>>>>> 83918972b4662bcc65278f3da4e45aaa5ffa97d1
+
                  ]
 
 # Application definition
@@ -87,16 +82,6 @@ WSGI_APPLICATION = 'lex_pusher_main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'flex_pusher',
-        'USER': 'flex_pusher',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
 
 CACHES = {
     'default': {
@@ -181,12 +166,3 @@ EMAIL_USE_SSL = False
 EMAIL_USE_TLS = True
 
 # free kassa
-
-FK_ID = '159076'
-FK_SECRET_1 = 'c6vaq2yo'
-FK_SECRET_2 = 'c6vaq2yo'
-
-
-META_SITE_PROTOCOL = "https"
-META_SITE_DOMAIN = "lexpusher.com"
-META_SITE_NAME = "Lex Pusher"
